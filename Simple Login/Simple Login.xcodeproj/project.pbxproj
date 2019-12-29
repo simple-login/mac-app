@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5AC694411C3D496346052EFF /* Pods_Simple_Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1691E2E66E8538DBD1DC6518 /* Pods_Simple_Login.framework */; };
 		C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */; };
 		C0FF316523B8C9CA00E84C4A /* EnterApiKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF316423B8C9CA00E84C4A /* EnterApiKeyViewController.swift */; };
 		C0FF316723B8C9D000E84C4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FF316623B8C9D000E84C4A /* Assets.xcassets */; };
@@ -14,6 +15,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1519C7D341643E85707BE92D /* Pods-Simple Login.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple Login.release.xcconfig"; path = "Target Support Files/Pods-Simple Login/Pods-Simple Login.release.xcconfig"; sourceTree = "<group>"; };
+		1691E2E66E8538DBD1DC6518 /* Pods_Simple_Login.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Simple_Login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B370421994539100B96BB43 /* Pods-Simple Login.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple Login.debug.xcconfig"; path = "Target Support Files/Pods-Simple Login/Pods-Simple Login.debug.xcconfig"; sourceTree = "<group>"; };
 		C0FF315F23B8C9CA00E84C4A /* Simple Login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0FF316423B8C9CA00E84C4A /* EnterApiKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterApiKeyViewController.swift; sourceTree = "<group>"; };
@@ -28,17 +32,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AC694411C3D496346052EFF /* Pods_Simple_Login.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9BD3871D830F512B3DB487A4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2B370421994539100B96BB43 /* Pods-Simple Login.debug.xcconfig */,
+				1519C7D341643E85707BE92D /* Pods-Simple Login.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C0FF315623B8C9CA00E84C4A = {
 			isa = PBXGroup;
 			children = (
 				C0FF316123B8C9CA00E84C4A /* Simple Login */,
 				C0FF316023B8C9CA00E84C4A /* Products */,
+				9BD3871D830F512B3DB487A4 /* Pods */,
+				CE8CCC2C9D999C8ED4C3DE04 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +88,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		CE8CCC2C9D999C8ED4C3DE04 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1691E2E66E8538DBD1DC6518 /* Pods_Simple_Login.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,9 +103,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0FF316F23B8C9D000E84C4A /* Build configuration list for PBXNativeTarget "Simple Login" */;
 			buildPhases = (
+				A041668006C8822810ED2192 /* [CP] Check Pods Manifest.lock */,
 				C0FF315B23B8C9CA00E84C4A /* Sources */,
 				C0FF315C23B8C9CA00E84C4A /* Frameworks */,
 				C0FF315D23B8C9CA00E84C4A /* Resources */,
+				4CBEF6ABBC761BA140624684 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +162,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4CBEF6ABBC761BA140624684 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Simple Login/Pods-Simple Login-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Simple Login/Pods-Simple Login-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Simple Login/Pods-Simple Login-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A041668006C8822810ED2192 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Simple Login-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C0FF315B23B8C9CA00E84C4A /* Sources */ = {
@@ -275,6 +344,7 @@
 		};
 		C0FF317023B8C9D000E84C4A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B370421994539100B96BB43 /* Pods-Simple Login.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Simple Login/Simple_Login.entitlements";
@@ -295,6 +365,7 @@
 		};
 		C0FF317123B8C9D000E84C4A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1519C7D341643E85707BE92D /* Pods-Simple Login.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Simple Login/Simple_Login.entitlements";
