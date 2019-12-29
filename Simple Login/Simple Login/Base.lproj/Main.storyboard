@@ -858,9 +858,14 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="7od-lA-OxR">
+                                <rect key="frame" x="286" y="148" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="7od-lA-OxR" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Hb9-86-f5z"/>
                             <constraint firstAttribute="trailing" secondItem="YQx-So-bhf" secondAttribute="trailing" constant="20" id="JZ9-z2-5YM"/>
+                            <constraint firstItem="7od-lA-OxR" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="bbq-ig-58K"/>
                             <constraint firstItem="YQx-So-bhf" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="hES-zL-uFQ"/>
                             <constraint firstItem="YQx-So-bhf" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="kcn-V0-d0Q"/>
                             <constraint firstItem="YQx-So-bhf" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="vQO-NT-viS"/>
@@ -870,6 +875,9 @@
                         <outlet property="apiKeyTextField" destination="eV1-Vk-jTi" id="fyA-xe-cuk"/>
                         <outlet property="createAccountLabel" destination="GoP-Vl-6TW" id="6Yq-WL-eUK"/>
                         <outlet property="createAndCopyApiKeyLabel" destination="1fP-aL-dqJ" id="5aW-gL-IQr"/>
+                        <outlet property="progressIndicator" destination="7od-lA-OxR" id="k2R-LT-g7B"/>
+                        <outlet property="rootStackView" destination="YQx-So-bhf" id="e8Z-FL-zf2"/>
+                        <outlet property="setApiKeyButton" destination="ni1-ro-wgG" id="eD9-Fe-x3M"/>
                         <outlet property="welcomeLabel" destination="lgO-bG-HQG" id="q6C-Vf-c47"/>
                     </connections>
                 </viewController>

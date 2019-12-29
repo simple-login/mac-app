@@ -7,16 +7,21 @@
 //
 
 import Cocoa
+import Alamofire
 
 final class EnterApiKeyViewController: NSViewController {
+    @IBOutlet private weak var rootStackView: NSStackView!
     @IBOutlet private weak var welcomeLabel: NSTextField!
     @IBOutlet private weak var createAccountLabel: NSTextField!
     @IBOutlet private weak var createAndCopyApiKeyLabel: NSTextField!
     @IBOutlet private weak var apiKeyTextField: NSTextField!
+    @IBOutlet private weak var setApiKeyButton: NSButton!
+    @IBOutlet private weak var progressIndicator: NSProgressIndicator!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabels()
+        progressIndicator.isHidden = true
     }
     
     override var representedObject: Any? {
@@ -26,7 +31,56 @@ final class EnterApiKeyViewController: NSViewController {
     }
     
     @IBAction private func setApiKey(_ sender: Any) {
-        print("\(#function)")
+        if (NetworkReachabilityManager()?.isReachable ?? false) == false {
+            // No internet connection
+            let noInternetAlert = NSAlert()
+            noInternetAlert.messageText = "No internet"
+            noInternetAlert.informativeText = "Please check your internet connection"
+            noInternetAlert.addButton(withTitle: "OK")
+            noInternetAlert.alertStyle = .warning
+            noInternetAlert.runModal()
+            return
+        }
+        
+        setLoading(true)
+        
+        let enteredApiKey = apiKeyTextField.stringValue
+        checkApiKey(apiKey: enteredApiKey) { (isValid) in
+            if (isValid) {
+                print("key is valid")
+            } else {
+                print("key is invalid")
+            }
+        }
+    }
+    
+    private func checkApiKey(apiKey: String, completion: @escaping (_ isValid: Bool) -> Void) {
+        let headers: HTTPHeaders = ["Authentication": apiKey]
+        
+        AF.request("https://app.simplelogin.io/api/alias/options", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { [weak self] response in
+            self?.setLoading(false)
+            
+            switch response.response?.statusCode {
+            case 200: completion(true)
+            default: completion(false)
+            }
+        }
+    }
+    
+    private func setLoading(_ isLoading: Bool) {
+        if (isLoading) {
+            rootStackView.alphaValue = 0.7
+            apiKeyTextField.isEnabled = false
+            setApiKeyButton.isEnabled = false
+            progressIndicator.isHidden = false
+            progressIndicator.startAnimation(self)
+        } else {
+            rootStackView.alphaValue = 1.0
+            apiKeyTextField.isEnabled = true
+            setApiKeyButton.isEnabled = true
+            progressIndicator.isHidden = true
+            progressIndicator.stopAnimation(self)
+        }
     }
 }
 
