@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5AC694411C3D496346052EFF /* Pods_Simple_Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1691E2E66E8538DBD1DC6518 /* Pods_Simple_Login.framework */; };
+		C0E86DE623B90DED00232B9A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE523B90DED00232B9A /* User.swift */; };
+		C0E86DE823B918A300232B9A /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
 		C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */; };
 		C0FF316523B8C9CA00E84C4A /* EnterApiKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF316423B8C9CA00E84C4A /* EnterApiKeyViewController.swift */; };
 		C0FF316723B8C9D000E84C4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FF316623B8C9D000E84C4A /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 		1519C7D341643E85707BE92D /* Pods-Simple Login.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple Login.release.xcconfig"; path = "Target Support Files/Pods-Simple Login/Pods-Simple Login.release.xcconfig"; sourceTree = "<group>"; };
 		1691E2E66E8538DBD1DC6518 /* Pods_Simple_Login.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Simple_Login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B370421994539100B96BB43 /* Pods-Simple Login.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple Login.debug.xcconfig"; path = "Target Support Files/Pods-Simple Login/Pods-Simple Login.debug.xcconfig"; sourceTree = "<group>"; };
+		C0E86DE523B90DED00232B9A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C0E86DE723B918A200232B9A /* SLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLError.swift; sourceTree = "<group>"; };
 		C0FF315F23B8C9CA00E84C4A /* Simple Login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0FF316423B8C9CA00E84C4A /* EnterApiKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterApiKeyViewController.swift; sourceTree = "<group>"; };
@@ -45,8 +49,16 @@
 				2B370421994539100B96BB43 /* Pods-Simple Login.debug.xcconfig */,
 				1519C7D341643E85707BE92D /* Pods-Simple Login.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C0E86DE423B90D6600232B9A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C0E86DE523B90DED00232B9A /* User.swift */,
+				C0E86DE723B918A200232B9A /* SLError.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C0FF315623B8C9CA00E84C4A = {
@@ -70,6 +82,7 @@
 		C0FF316123B8C9CA00E84C4A /* Simple Login */ = {
 			isa = PBXGroup;
 			children = (
+				C0E86DE423B90D6600232B9A /* Models */,
 				C0FF317223B8D67000E84C4A /* Controllers */,
 				C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */,
 				C0FF316623B8C9D000E84C4A /* Assets.xcassets */,
@@ -211,7 +224,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0FF316523B8C9CA00E84C4A /* EnterApiKeyViewController.swift in Sources */,
+				C0E86DE823B918A300232B9A /* SLError.swift in Sources */,
 				C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */,
+				C0E86DE623B90DED00232B9A /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

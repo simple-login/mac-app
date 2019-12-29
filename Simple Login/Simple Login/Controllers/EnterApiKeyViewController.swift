@@ -21,7 +21,7 @@ final class EnterApiKeyViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabels()
-        progressIndicator.isHidden = true
+        setLoading(false)
     }
     
     override var representedObject: Any? {
@@ -45,24 +45,36 @@ final class EnterApiKeyViewController: NSViewController {
         setLoading(true)
         
         let enteredApiKey = apiKeyTextField.stringValue
-        checkApiKey(apiKey: enteredApiKey) { (isValid) in
+        checkApiKey(apiKey: enteredApiKey) { [weak self] (isValid, data) in
+            guard let self = self else { return }
             if (isValid) {
-                print("key is valid")
+                // API key is valid
+                if let data = data {
+                    do {
+                        let user = try self.parseUser(fromData: data)
+                        print(user)
+                    } catch {
+                        self.showAlertErrorParsingUser()
+                    }
+                } else {
+                    self.showAlertNoDataError()
+                }
             } else {
-                print("key is invalid")
+                // API key is invalid
+                self.showAlertApiKeyIsInvalid()
             }
         }
     }
     
-    private func checkApiKey(apiKey: String, completion: @escaping (_ isValid: Bool) -> Void) {
+    private func checkApiKey(apiKey: String, completion: @escaping (_ isValid: Bool, _ responseData: Data?) -> Void) {
         let headers: HTTPHeaders = ["Authentication": apiKey]
         
         AF.request("https://app.simplelogin.io/api/alias/options", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { [weak self] response in
             self?.setLoading(false)
-            
+
             switch response.response?.statusCode {
-            case 200: completion(true)
-            default: completion(false)
+            case 200: completion(true, response.data)
+            default: completion(false, nil)
             }
         }
     }
@@ -70,17 +82,67 @@ final class EnterApiKeyViewController: NSViewController {
     private func setLoading(_ isLoading: Bool) {
         if (isLoading) {
             rootStackView.alphaValue = 0.7
-            apiKeyTextField.isEnabled = false
             setApiKeyButton.isEnabled = false
             progressIndicator.isHidden = false
             progressIndicator.startAnimation(self)
         } else {
             rootStackView.alphaValue = 1.0
-            apiKeyTextField.isEnabled = true
             setApiKeyButton.isEnabled = true
             progressIndicator.isHidden = true
             progressIndicator.stopAnimation(self)
         }
+    }
+}
+
+// MARK: Process response from server
+extension EnterApiKeyViewController {
+    private func showAlertApiKeyIsInvalid() {
+        let alert = NSAlert()
+        alert.messageText = "API Key is invalid ❌"
+        alert.informativeText = "Make sure you entered a valid API Key"
+        alert.addButton(withTitle: "OK")
+        alert.alertStyle = .warning
+        alert.runModal()
+    }
+    
+    private func showAlertNoDataError() {
+        let alert = NSAlert()
+        alert.messageText = "No data error"
+        alert.informativeText = "API key is valid but the server returns no data. Please contact us for further information. We are sorry for the inconvenience."
+        alert.addButton(withTitle: "Close")
+        alert.alertStyle = .critical
+        alert.runModal()
+    }
+    
+    private func parseUser(fromData data: Data) throws -> User {
+        guard let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+            throw SLError.failToParseUser
+        }
+        
+        let canCreateCustom = jsonDictionary["can_create_custom"] as? Bool
+        let existingAliases = jsonDictionary["existing"] as? [String]
+        let customDictionary = jsonDictionary["custom"] as? [String : Any]
+        let suffixes = customDictionary?["suffixes"] as? [String]
+        let suggestion = customDictionary?["suggestion"] as? String
+        
+        if let canCreateCustom = canCreateCustom,
+            let existingAliases = existingAliases,
+            let suffixes = suffixes,
+            let suggestion = suggestion {
+                return User(canCreateCustom: canCreateCustom, suffixes: suffixes, suggestion: suggestion, existingAliases: existingAliases)
+        } else {
+            throw SLError.failToParseUser
+        }
+        
+    }
+    
+    private func showAlertErrorParsingUser() {
+        let alert = NSAlert()
+        alert.messageText = "Error parsing user data"
+        alert.informativeText = "The application can not parse user data returned from server. Please contact us for further information. We are sorry for the inconvenience."
+        alert.addButton(withTitle: "Close")
+        alert.alertStyle = .critical
+        alert.runModal()
     }
 }
 
