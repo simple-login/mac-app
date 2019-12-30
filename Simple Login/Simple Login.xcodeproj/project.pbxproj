@@ -9,11 +9,15 @@
 /* Begin PBXBuildFile section */
 		5AC694411C3D496346052EFF /* Pods_Simple_Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1691E2E66E8538DBD1DC6518 /* Pods_Simple_Login.framework */; };
 		BC264B3A74C13B324BE7166B /* Pods_Safari_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3020AAC6B449F6AD315AA3BF /* Pods_Safari_Extension.framework */; };
+		C03B0BDA23BA68320040DA37 /* SLKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B0BD923BA68320040DA37 /* SLKeychainService.swift */; };
+		C03B0BDC23BA69FC0040DA37 /* SLKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B0BD923BA68320040DA37 /* SLKeychainService.swift */; };
+		C03B0BE023BA6A9B0040DA37 /* ApiKeyMissingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B0BDF23BA6A9B0040DA37 /* ApiKeyMissingViewController.swift */; };
+		C03B0BE223BA6B360040DA37 /* ApiKeyMissingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C03B0BE123BA6B360040DA37 /* ApiKeyMissingViewController.xib */; };
+		C03B0BE523BA76550040DA37 /* ExtensionHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B0BE423BA76550040DA37 /* ExtensionHomeViewController.swift */; };
+		C03B0BE723BA76960040DA37 /* ExtensionHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C03B0BE623BA76960040DA37 /* ExtensionHomeViewController.xib */; };
 		C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* HomeViewController.swift */; };
 		C062760923BA646300BCE972 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06275B723BA46C400BCE972 /* Cocoa.framework */; };
 		C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */; };
-		C062760E23BA646300BCE972 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C062760D23BA646300BCE972 /* SafariExtensionViewController.swift */; };
-		C062761123BA646300BCE972 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C062760F23BA646300BCE972 /* SafariExtensionViewController.xib */; };
 		C062761623BA646300BCE972 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C062761523BA646300BCE972 /* ToolbarItemIcon.pdf */; };
 		C062761A23BA646300BCE972 /* Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C062760823BA646300BCE972 /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C0E86DE623B90DED00232B9A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE523B90DED00232B9A /* User.swift */; };
@@ -55,12 +59,15 @@
 		2B370421994539100B96BB43 /* Pods-Simple Login.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple Login.debug.xcconfig"; path = "Target Support Files/Pods-Simple Login/Pods-Simple Login.debug.xcconfig"; sourceTree = "<group>"; };
 		3020AAC6B449F6AD315AA3BF /* Pods_Safari_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Safari_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		341742E4B284D7532740858F /* Pods-Safari Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safari Extension.release.xcconfig"; path = "Target Support Files/Pods-Safari Extension/Pods-Safari Extension.release.xcconfig"; sourceTree = "<group>"; };
+		C03B0BD923BA68320040DA37 /* SLKeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLKeychainService.swift; sourceTree = "<group>"; };
+		C03B0BDF23BA6A9B0040DA37 /* ApiKeyMissingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyMissingViewController.swift; sourceTree = "<group>"; };
+		C03B0BE123BA6B360040DA37 /* ApiKeyMissingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApiKeyMissingViewController.xib; sourceTree = "<group>"; };
+		C03B0BE423BA76550040DA37 /* ExtensionHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHomeViewController.swift; sourceTree = "<group>"; };
+		C03B0BE623BA76960040DA37 /* ExtensionHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExtensionHomeViewController.xib; sourceTree = "<group>"; };
 		C06275B023BA445600BCE972 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C06275B723BA46C400BCE972 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C062760823BA646300BCE972 /* Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
-		C062760D23BA646300BCE972 /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
-		C062761023BA646300BCE972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		C062761223BA646300BCE972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C062761523BA646300BCE972 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		C062761723BA646300BCE972 /* Safari_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Safari_Extension.entitlements; sourceTree = "<group>"; };
@@ -107,12 +114,46 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C03B0BD823BA68020040DA37 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C03B0BD923BA68320040DA37 /* SLKeychainService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C03B0BDD23BA6A6E0040DA37 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C03B0BE323BA76180040DA37 /* ExtensionHomeViewController */,
+				C03B0BDE23BA6A770040DA37 /* ApiKeyMissingViewController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C03B0BDE23BA6A770040DA37 /* ApiKeyMissingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C03B0BDF23BA6A9B0040DA37 /* ApiKeyMissingViewController.swift */,
+				C03B0BE123BA6B360040DA37 /* ApiKeyMissingViewController.xib */,
+			);
+			path = ApiKeyMissingViewController;
+			sourceTree = "<group>";
+		};
+		C03B0BE323BA76180040DA37 /* ExtensionHomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C03B0BE423BA76550040DA37 /* ExtensionHomeViewController.swift */,
+				C03B0BE623BA76960040DA37 /* ExtensionHomeViewController.xib */,
+			);
+			path = ExtensionHomeViewController;
+			sourceTree = "<group>";
+		};
 		C062760A23BA646300BCE972 /* Safari Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C03B0BDD23BA6A6E0040DA37 /* Controllers */,
 				C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */,
-				C062760D23BA646300BCE972 /* SafariExtensionViewController.swift */,
-				C062760F23BA646300BCE972 /* SafariExtensionViewController.xib */,
 				C062761223BA646300BCE972 /* Info.plist */,
 				C062761523BA646300BCE972 /* ToolbarItemIcon.pdf */,
 				C062761723BA646300BCE972 /* Safari_Extension.entitlements */,
@@ -152,6 +193,7 @@
 		C0FF316123B8C9CA00E84C4A /* Simple Login */ = {
 			isa = PBXGroup;
 			children = (
+				C03B0BD823BA68020040DA37 /* Services */,
 				C0E86DE423B90D6600232B9A /* Models */,
 				C0FF317223B8D67000E84C4A /* Controllers */,
 				C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */,
@@ -266,8 +308,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C03B0BE223BA6B360040DA37 /* ApiKeyMissingViewController.xib in Resources */,
+				C03B0BE723BA76960040DA37 /* ExtensionHomeViewController.xib in Resources */,
 				C062761623BA646300BCE972 /* ToolbarItemIcon.pdf in Resources */,
-				C062761123BA646300BCE972 /* SafariExtensionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,8 +394,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C062760E23BA646300BCE972 /* SafariExtensionViewController.swift in Sources */,
+				C03B0BE023BA6A9B0040DA37 /* ApiKeyMissingViewController.swift in Sources */,
 				C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */,
+				C03B0BDC23BA69FC0040DA37 /* SLKeychainService.swift in Sources */,
+				C03B0BE523BA76550040DA37 /* ExtensionHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +407,7 @@
 			files = (
 				C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */,
 				C0FF316523B8C9CA00E84C4A /* EnterApiKeyViewController.swift in Sources */,
+				C03B0BDA23BA68320040DA37 /* SLKeychainService.swift in Sources */,
 				C0E86DE823B918A300232B9A /* SLError.swift in Sources */,
 				C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */,
 				C0E86DE623B90DED00232B9A /* User.swift in Sources */,
@@ -379,14 +425,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C062760F23BA646300BCE972 /* SafariExtensionViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C062761023BA646300BCE972 /* Base */,
-			);
-			name = SafariExtensionViewController.xib;
-			sourceTree = "<group>";
-		};
 		C0FF316823B8C9D000E84C4A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

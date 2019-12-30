@@ -894,13 +894,22 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KjL-h6-l3V">
-                                <rect key="frame" x="20" y="144" width="487" height="57"/>
+                                <rect key="frame" x="20" y="102" width="487" height="141"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="9Ll-ea-0Me">
-                                        <rect key="frame" x="68" y="41" width="351" height="16"/>
-                                        <textFieldCell key="cell" selectable="YES" alignment="center" title="You can view and manage aliases using Safari extension." id="LlG-TS-gRR">
+                                        <rect key="frame" x="64" y="125" width="360" height="16"/>
+                                        <textFieldCell key="cell" selectable="YES" alignment="center" title="View and manage aliases using the app's Safari extension." id="LlG-TS-gRR">
                                             <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="MMZ-LO-8F6">
+                                        <rect key="frame" x="-2" y="41" width="491" height="64"/>
+                                        <textFieldCell key="cell" selectable="YES" alignment="justified" id="aq8-p8-UFl">
+                                            <font key="font" metaFont="system"/>
+                                            <string key="title">Your API key is securely saved in Keychain. When using the Safari Extension, the system might ask your permission for the extension to read the API key. Make sure to choose "Always Allow" because the extension uses this key for further request to our server.</string>
+                                            <color key="textColor" name="systemGreenColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
@@ -918,8 +927,10 @@
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>

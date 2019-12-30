@@ -16,6 +16,6 @@ final class HomeViewController: NSViewController {
     }
     
     @IBAction private func openSafari(_ sender: Any) {
-        
+        NSWorkspace.shared.launchApplication(withBundleIdentifier: "com.apple.safari", options: NSWorkspace.LaunchOptions.default, additionalEventParamDescriptor: nil, launchIdentifier: nil)
     }
 }

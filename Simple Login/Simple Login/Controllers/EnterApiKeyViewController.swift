@@ -21,6 +21,7 @@ final class EnterApiKeyViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabels()
+        checkSavedApiKey()
         setLoading(false)
     }
     
@@ -30,15 +31,42 @@ final class EnterApiKeyViewController: NSViewController {
         }
     }
     
+    private func checkSavedApiKey() {
+        if (NetworkReachabilityManager()?.isReachable ?? false) == false {
+            // No internet connection
+            showNoInternetAlert()
+            return
+        }
+        
+        guard let savedApiKey = SLKeychainService.getApiKey() else { return }
+        
+        setLoading(true, completelyHideOtherUis: true)
+        
+        checkApiKey(apiKey: savedApiKey) { [weak self] (isValid, data) in
+            guard let self = self else { return }
+            if (isValid) {
+                // API key is valid
+                self.showHomeViewController()
+            } else {
+                // API key is invalid
+                self.showAlertApiKeyIsInvalid()
+            }
+        }
+    }
+    
+    private func showNoInternetAlert() {
+        let noInternetAlert = NSAlert()
+        noInternetAlert.messageText = "No internet"
+        noInternetAlert.informativeText = "Please check your internet connection"
+        noInternetAlert.addButton(withTitle: "OK")
+        noInternetAlert.alertStyle = .warning
+        noInternetAlert.runModal()
+    }
+    
     @IBAction private func setApiKey(_ sender: Any) {
         if (NetworkReachabilityManager()?.isReachable ?? false) == false {
             // No internet connection
-            let noInternetAlert = NSAlert()
-            noInternetAlert.messageText = "No internet"
-            noInternetAlert.informativeText = "Please check your internet connection"
-            noInternetAlert.addButton(withTitle: "OK")
-            noInternetAlert.alertStyle = .warning
-            noInternetAlert.runModal()
+            showNoInternetAlert()
             return
         }
         
@@ -49,16 +77,20 @@ final class EnterApiKeyViewController: NSViewController {
             guard let self = self else { return }
             if (isValid) {
                 // API key is valid
-                if let data = data {
-                    do {
-                        let user = try self.parseUser(fromData: data)
-                        self.showAliasManagementViewController(user)
-                    } catch {
-                        self.showAlertErrorParsingUser()
-                    }
-                } else {
-                    self.showAlertNoDataError()
-                }
+                SLKeychainService.setApiKey(enteredApiKey)
+                self.showHomeViewController()
+//                if let data = data {
+//                    do {
+//                        SLKeychainService.setApiKey(enteredApiKey)
+//                        let user = try self.parseUser(fromData: data)
+//                        self.showHomeViewController()
+//                    } catch {
+//                        self.showAlertErrorParsingUser()
+//                    }
+//
+//                } else {
+//                    self.showAlertNoDataError()
+//                }
             } else {
                 // API key is invalid
                 self.showAlertApiKeyIsInvalid()
@@ -79,9 +111,14 @@ final class EnterApiKeyViewController: NSViewController {
         }
     }
     
-    private func setLoading(_ isLoading: Bool) {
+    private func setLoading(_ isLoading: Bool, completelyHideOtherUis: Bool = false) {
         if (isLoading) {
-            rootStackView.alphaValue = 0.7
+            if completelyHideOtherUis {
+                rootStackView.alphaValue = 0.0
+            } else {
+                rootStackView.alphaValue = 0.7
+            }
+            
             setApiKeyButton.isEnabled = false
             progressIndicator.isHidden = false
             progressIndicator.startAnimation(self)
@@ -93,7 +130,7 @@ final class EnterApiKeyViewController: NSViewController {
         }
     }
     
-    private func showAliasManagementViewController(_ user: User) {
+    private func showHomeViewController() {
         let storyboardID = NSStoryboard.SceneIdentifier(stringLiteral: "AliasManagementViewController")
         if let aliasManagementViewController = storyboard!.instantiateController(withIdentifier: storyboardID) as? HomeViewController {
             view.window?.contentViewController = aliasManagementViewController
