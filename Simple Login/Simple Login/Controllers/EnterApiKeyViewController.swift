@@ -52,7 +52,7 @@ final class EnterApiKeyViewController: NSViewController {
                 if let data = data {
                     do {
                         let user = try self.parseUser(fromData: data)
-                        print(user)
+                        self.showAliasManagementViewController(user)
                     } catch {
                         self.showAlertErrorParsingUser()
                     }
@@ -90,6 +90,13 @@ final class EnterApiKeyViewController: NSViewController {
             setApiKeyButton.isEnabled = true
             progressIndicator.isHidden = true
             progressIndicator.stopAnimation(self)
+        }
+    }
+    
+    private func showAliasManagementViewController(_ user: User) {
+        let storyboardID = NSStoryboard.SceneIdentifier(stringLiteral: "AliasManagementViewController")
+        if let aliasManagementViewController = storyboard!.instantiateController(withIdentifier: storyboardID) as? HomeViewController {
+            view.window?.contentViewController = aliasManagementViewController
         }
     }
 }

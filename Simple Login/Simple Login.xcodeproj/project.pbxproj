@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5AC694411C3D496346052EFF /* Pods_Simple_Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1691E2E66E8538DBD1DC6518 /* Pods_Simple_Login.framework */; };
+		C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* HomeViewController.swift */; };
 		C0E86DE623B90DED00232B9A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE523B90DED00232B9A /* User.swift */; };
 		C0E86DE823B918A300232B9A /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
 		C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */; };
@@ -16,10 +17,25 @@
 		C0FF316A23B8C9D000E84C4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FF316823B8C9D000E84C4A /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C06275CD23BA46C400BCE972 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1519C7D341643E85707BE92D /* Pods-Simple Login.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple Login.release.xcconfig"; path = "Target Support Files/Pods-Simple Login/Pods-Simple Login.release.xcconfig"; sourceTree = "<group>"; };
 		1691E2E66E8538DBD1DC6518 /* Pods_Simple_Login.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Simple_Login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B370421994539100B96BB43 /* Pods-Simple Login.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple Login.debug.xcconfig"; path = "Target Support Files/Pods-Simple Login/Pods-Simple Login.debug.xcconfig"; sourceTree = "<group>"; };
+		C06275B023BA445600BCE972 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C06275B723BA46C400BCE972 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C0E86DE523B90DED00232B9A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C0E86DE723B918A200232B9A /* SLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLError.swift; sourceTree = "<group>"; };
 		C0FF315F23B8C9CA00E84C4A /* Simple Login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				C0FF316423B8C9CA00E84C4A /* EnterApiKeyViewController.swift */,
+				C06275B023BA445600BCE972 /* HomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -105,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				1691E2E66E8538DBD1DC6518 /* Pods_Simple_Login.framework */,
+				C06275B723BA46C400BCE972 /* Cocoa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -121,6 +139,7 @@
 				C0FF315C23B8C9CA00E84C4A /* Frameworks */,
 				C0FF315D23B8C9CA00E84C4A /* Resources */,
 				4CBEF6ABBC761BA140624684 /* [CP] Embed Pods Frameworks */,
+				C06275CD23BA46C400BCE972 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -223,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */,
 				C0FF316523B8C9CA00E84C4A /* EnterApiKeyViewController.swift in Sources */,
 				C0E86DE823B918A300232B9A /* SLError.swift in Sources */,
 				C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */,
@@ -361,6 +381,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2B370421994539100B96BB43 /* Pods-Simple Login.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Simple Login/Simple_Login.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -382,6 +403,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1519C7D341643E85707BE92D /* Pods-Simple Login.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Simple Login/Simple_Login.entitlements";
 				CODE_SIGN_STYLE = Automatic;
