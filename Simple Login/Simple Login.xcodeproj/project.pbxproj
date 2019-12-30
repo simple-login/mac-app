@@ -8,7 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		5AC694411C3D496346052EFF /* Pods_Simple_Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1691E2E66E8538DBD1DC6518 /* Pods_Simple_Login.framework */; };
+		BC264B3A74C13B324BE7166B /* Pods_Safari_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3020AAC6B449F6AD315AA3BF /* Pods_Safari_Extension.framework */; };
 		C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* HomeViewController.swift */; };
+		C062760923BA646300BCE972 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06275B723BA46C400BCE972 /* Cocoa.framework */; };
+		C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */; };
+		C062760E23BA646300BCE972 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C062760D23BA646300BCE972 /* SafariExtensionViewController.swift */; };
+		C062761123BA646300BCE972 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C062760F23BA646300BCE972 /* SafariExtensionViewController.xib */; };
+		C062761623BA646300BCE972 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C062761523BA646300BCE972 /* ToolbarItemIcon.pdf */; };
+		C062761A23BA646300BCE972 /* Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C062760823BA646300BCE972 /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C0E86DE623B90DED00232B9A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE523B90DED00232B9A /* User.swift */; };
 		C0E86DE823B918A300232B9A /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
 		C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */; };
@@ -17,6 +24,16 @@
 		C0FF316A23B8C9D000E84C4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FF316823B8C9D000E84C4A /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C062761823BA646300BCE972 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0FF315723B8C9CA00E84C4A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C062760723BA646300BCE972;
+			remoteInfo = "Safari Extension";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		C06275CD23BA46C400BCE972 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -24,6 +41,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				C062761A23BA646300BCE972 /* Safari Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -33,9 +51,19 @@
 /* Begin PBXFileReference section */
 		1519C7D341643E85707BE92D /* Pods-Simple Login.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple Login.release.xcconfig"; path = "Target Support Files/Pods-Simple Login/Pods-Simple Login.release.xcconfig"; sourceTree = "<group>"; };
 		1691E2E66E8538DBD1DC6518 /* Pods_Simple_Login.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Simple_Login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2547DB9EB179F96F1D9B8E3A /* Pods-Safari Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safari Extension.debug.xcconfig"; path = "Target Support Files/Pods-Safari Extension/Pods-Safari Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		2B370421994539100B96BB43 /* Pods-Simple Login.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple Login.debug.xcconfig"; path = "Target Support Files/Pods-Simple Login/Pods-Simple Login.debug.xcconfig"; sourceTree = "<group>"; };
+		3020AAC6B449F6AD315AA3BF /* Pods_Safari_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Safari_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		341742E4B284D7532740858F /* Pods-Safari Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safari Extension.release.xcconfig"; path = "Target Support Files/Pods-Safari Extension/Pods-Safari Extension.release.xcconfig"; sourceTree = "<group>"; };
 		C06275B023BA445600BCE972 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C06275B723BA46C400BCE972 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		C062760823BA646300BCE972 /* Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
+		C062760D23BA646300BCE972 /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
+		C062761023BA646300BCE972 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
+		C062761223BA646300BCE972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C062761523BA646300BCE972 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
+		C062761723BA646300BCE972 /* Safari_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Safari_Extension.entitlements; sourceTree = "<group>"; };
 		C0E86DE523B90DED00232B9A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C0E86DE723B918A200232B9A /* SLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLError.swift; sourceTree = "<group>"; };
 		C0FF315F23B8C9CA00E84C4A /* Simple Login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +76,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C062760523BA646300BCE972 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C062760923BA646300BCE972 /* Cocoa.framework in Frameworks */,
+				BC264B3A74C13B324BE7166B /* Pods_Safari_Extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0FF315C23B8C9CA00E84C4A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -64,8 +101,23 @@
 			children = (
 				2B370421994539100B96BB43 /* Pods-Simple Login.debug.xcconfig */,
 				1519C7D341643E85707BE92D /* Pods-Simple Login.release.xcconfig */,
+				2547DB9EB179F96F1D9B8E3A /* Pods-Safari Extension.debug.xcconfig */,
+				341742E4B284D7532740858F /* Pods-Safari Extension.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C062760A23BA646300BCE972 /* Safari Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */,
+				C062760D23BA646300BCE972 /* SafariExtensionViewController.swift */,
+				C062760F23BA646300BCE972 /* SafariExtensionViewController.xib */,
+				C062761223BA646300BCE972 /* Info.plist */,
+				C062761523BA646300BCE972 /* ToolbarItemIcon.pdf */,
+				C062761723BA646300BCE972 /* Safari_Extension.entitlements */,
+			);
+			path = "Safari Extension";
 			sourceTree = "<group>";
 		};
 		C0E86DE423B90D6600232B9A /* Models */ = {
@@ -81,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				C0FF316123B8C9CA00E84C4A /* Simple Login */,
+				C062760A23BA646300BCE972 /* Safari Extension */,
 				C0FF316023B8C9CA00E84C4A /* Products */,
 				9BD3871D830F512B3DB487A4 /* Pods */,
 				CE8CCC2C9D999C8ED4C3DE04 /* Frameworks */,
@@ -91,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				C0FF315F23B8C9CA00E84C4A /* Simple Login.app */,
+				C062760823BA646300BCE972 /* Safari Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,6 +177,7 @@
 			children = (
 				1691E2E66E8538DBD1DC6518 /* Pods_Simple_Login.framework */,
 				C06275B723BA46C400BCE972 /* Cocoa.framework */,
+				3020AAC6B449F6AD315AA3BF /* Pods_Safari_Extension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,6 +185,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C062760723BA646300BCE972 /* Safari Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C062761D23BA646300BCE972 /* Build configuration list for PBXNativeTarget "Safari Extension" */;
+			buildPhases = (
+				029ECEBC59953B14A60A5E0B /* [CP] Check Pods Manifest.lock */,
+				C062760423BA646300BCE972 /* Sources */,
+				C062760523BA646300BCE972 /* Frameworks */,
+				C062760623BA646300BCE972 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Safari Extension";
+			productName = "Safari Extension";
+			productReference = C062760823BA646300BCE972 /* Safari Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C0FF315E23B8C9CA00E84C4A /* Simple Login */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0FF316F23B8C9D000E84C4A /* Build configuration list for PBXNativeTarget "Simple Login" */;
@@ -144,6 +217,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				C062761923BA646300BCE972 /* PBXTargetDependency */,
 			);
 			name = "Simple Login";
 			productName = "Simple Login";
@@ -160,6 +234,9 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = SimpleLogin;
 				TargetAttributes = {
+					C062760723BA646300BCE972 = {
+						CreatedOnToolsVersion = 11.3;
+					};
 					C0FF315E23B8C9CA00E84C4A = {
 						CreatedOnToolsVersion = 11.3;
 					};
@@ -179,11 +256,21 @@
 			projectRoot = "";
 			targets = (
 				C0FF315E23B8C9CA00E84C4A /* Simple Login */,
+				C062760723BA646300BCE972 /* Safari Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C062760623BA646300BCE972 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C062761623BA646300BCE972 /* ToolbarItemIcon.pdf in Resources */,
+				C062761123BA646300BCE972 /* SafariExtensionViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0FF315D23B8C9CA00E84C4A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -196,6 +283,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		029ECEBC59953B14A60A5E0B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Safari Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4CBEF6ABBC761BA140624684 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -238,6 +347,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C062760423BA646300BCE972 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C062760E23BA646300BCE972 /* SafariExtensionViewController.swift in Sources */,
+				C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C0FF315B23B8C9CA00E84C4A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -252,7 +370,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C062761923BA646300BCE972 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C062760723BA646300BCE972 /* Safari Extension */;
+			targetProxy = C062761823BA646300BCE972 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		C062760F23BA646300BCE972 /* SafariExtensionViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C062761023BA646300BCE972 /* Base */,
+			);
+			name = SafariExtensionViewController.xib;
+			sourceTree = "<group>";
+		};
 		C0FF316823B8C9D000E84C4A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -264,6 +398,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C062761B23BA646300BCE972 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2547DB9EB179F96F1D9B8E3A /* Pods-Safari Extension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Safari Extension/Safari_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 975H7B86B7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "Safari Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.Simple-Login.Safari-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		C062761C23BA646300BCE972 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 341742E4B284D7532740858F /* Pods-Safari Extension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Safari Extension/Safari_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 975H7B86B7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = "Safari Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.Simple-Login.Safari-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		C0FF316D23B8C9D000E84C4A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -424,6 +600,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C062761D23BA646300BCE972 /* Build configuration list for PBXNativeTarget "Safari Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C062761B23BA646300BCE972 /* Debug */,
+				C062761C23BA646300BCE972 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C0FF315A23B8C9CA00E84C4A /* Build configuration list for PBXProject "Simple Login" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

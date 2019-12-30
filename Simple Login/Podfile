@@ -1,12 +1,15 @@
 # Uncomment the next line to define a global platform for your project
 platform :macos, '10.12'
+use_frameworks!
+
+def common_pods
+  pod 'Alamofire', '~> 5.0.0-rc.3'
+end
 
 target 'Simple Login' do
-  # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+  common_pods
+end
 
-  pod 'Alamofire', '~> 5.0.0-rc.3'
-
-  # Pods for Simple Login
-
+target 'Safari Extension' do
+  common_pods
 end
