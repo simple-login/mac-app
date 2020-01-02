@@ -38,7 +38,7 @@ final class EnterApiKeyViewController: NSViewController {
             return
         }
         
-        guard let savedApiKey = SLKeychainService.getApiKey() else { return }
+        guard let savedApiKey = SLUserDefaultsService.getApiKey() else { return }
         
         setLoading(true, completelyHideOtherUis: true)
         
@@ -77,7 +77,7 @@ final class EnterApiKeyViewController: NSViewController {
             guard let self = self else { return }
             if (isValid) {
                 // API key is valid
-                SLKeychainService.setApiKey(enteredApiKey)
+                SLUserDefaultsService.setApiKey(enteredApiKey)
                 self.showHomeViewController()
 //                if let data = data {
 //                    do {

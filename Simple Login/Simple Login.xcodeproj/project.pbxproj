@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		5AC694411C3D496346052EFF /* Pods_Simple_Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1691E2E66E8538DBD1DC6518 /* Pods_Simple_Login.framework */; };
 		BC264B3A74C13B324BE7166B /* Pods_Safari_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3020AAC6B449F6AD315AA3BF /* Pods_Safari_Extension.framework */; };
-		C03B0BDA23BA68320040DA37 /* SLKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B0BD923BA68320040DA37 /* SLKeychainService.swift */; };
-		C03B0BDC23BA69FC0040DA37 /* SLKeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B0BD923BA68320040DA37 /* SLKeychainService.swift */; };
+		C013560423BE55F100287A82 /* SLUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013560323BE55F100287A82 /* SLUserDefaultsService.swift */; };
+		C013560523BE567600287A82 /* SLUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013560323BE55F100287A82 /* SLUserDefaultsService.swift */; };
 		C03B0BE023BA6A9B0040DA37 /* ApiKeyMissingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B0BDF23BA6A9B0040DA37 /* ApiKeyMissingViewController.swift */; };
 		C03B0BE223BA6B360040DA37 /* ApiKeyMissingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C03B0BE123BA6B360040DA37 /* ApiKeyMissingViewController.xib */; };
 		C03B0BE523BA76550040DA37 /* ExtensionHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B0BE423BA76550040DA37 /* ExtensionHomeViewController.swift */; };
@@ -59,7 +59,7 @@
 		2B370421994539100B96BB43 /* Pods-Simple Login.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple Login.debug.xcconfig"; path = "Target Support Files/Pods-Simple Login/Pods-Simple Login.debug.xcconfig"; sourceTree = "<group>"; };
 		3020AAC6B449F6AD315AA3BF /* Pods_Safari_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Safari_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		341742E4B284D7532740858F /* Pods-Safari Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safari Extension.release.xcconfig"; path = "Target Support Files/Pods-Safari Extension/Pods-Safari Extension.release.xcconfig"; sourceTree = "<group>"; };
-		C03B0BD923BA68320040DA37 /* SLKeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLKeychainService.swift; sourceTree = "<group>"; };
+		C013560323BE55F100287A82 /* SLUserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLUserDefaultsService.swift; sourceTree = "<group>"; };
 		C03B0BDF23BA6A9B0040DA37 /* ApiKeyMissingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyMissingViewController.swift; sourceTree = "<group>"; };
 		C03B0BE123BA6B360040DA37 /* ApiKeyMissingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApiKeyMissingViewController.xib; sourceTree = "<group>"; };
 		C03B0BE423BA76550040DA37 /* ExtensionHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHomeViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		C03B0BD823BA68020040DA37 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				C03B0BD923BA68320040DA37 /* SLKeychainService.swift */,
+				C013560323BE55F100287A82 /* SLUserDefaultsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -396,8 +396,8 @@
 			files = (
 				C03B0BE023BA6A9B0040DA37 /* ApiKeyMissingViewController.swift in Sources */,
 				C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */,
-				C03B0BDC23BA69FC0040DA37 /* SLKeychainService.swift in Sources */,
 				C03B0BE523BA76550040DA37 /* ExtensionHomeViewController.swift in Sources */,
+				C013560523BE567600287A82 /* SLUserDefaultsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,9 +405,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C013560423BE55F100287A82 /* SLUserDefaultsService.swift in Sources */,
 				C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */,
 				C0FF316523B8C9CA00E84C4A /* EnterApiKeyViewController.swift in Sources */,
-				C03B0BDA23BA68320040DA37 /* SLKeychainService.swift in Sources */,
 				C0E86DE823B918A300232B9A /* SLError.swift in Sources */,
 				C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */,
 				C0E86DE623B90DED00232B9A /* User.swift in Sources */,

@@ -28,7 +28,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     }
     
     override func popoverViewController() -> SFSafariExtensionViewController {
-        if let apiKey = SLKeychainService.getApiKey() {
+        if let apiKey = SLUserDefaultsService.getApiKey() {
             ExtensionHomeViewController.shared.apiKey = apiKey
             return ExtensionHomeViewController.shared
         } else {

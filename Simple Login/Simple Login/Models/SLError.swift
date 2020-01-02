@@ -8,6 +8,12 @@
 
 import Foundation
 
-enum SLError: Error {
+enum SLError: Error, CustomStringConvertible {
     case failToParseUser
+    
+    var description: String {
+        switch self {
+        case .failToParseUser: return "Failed to parse user's info"
+        }
+    }
 }
