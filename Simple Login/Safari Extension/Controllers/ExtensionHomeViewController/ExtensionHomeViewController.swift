@@ -34,6 +34,13 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         // Set up tableView
         tableView.backgroundColor = NSColor.clear
         tableView.register(NSNib(nibNamed: NSNib.Name("AliasTableCellView"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "AliasTableCellView"))
+        
+        // Set up bottom options
+        let manageAliasesClickGesture = NSClickGestureRecognizer(target: self, action: #selector(manageAliases))
+        manageAliasesButton.addGestureRecognizer(manageAliasesClickGesture)
+        
+        let signOutClickGesture = NSClickGestureRecognizer(target: self, action: #selector(signOut))
+        signOutButton.addGestureRecognizer(signOutClickGesture)
     }
     
     override func viewWillAppear() {
@@ -78,6 +85,29 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         suffixLabel.stringValue = user.suffixes[0]
         tableView.reloadData()
         scrollView.heightAnchor.constraint(equalToConstant: tableView.intrinsicContentSize.height).isActive = true
+    }
+}
+
+// MARK: - Bottom options
+extension ExtensionHomeViewController {
+    @objc private func manageAliases() {
+        guard let url = URL(string: "\(BASE_URL)/dashboard/") else { return }
+        NSWorkspace.shared.open(url)
+    }
+    
+    @objc private func signOut() {
+        let alert = NSAlert()
+        alert.messageText = "Confirmation"
+        alert.informativeText = "You will be signed out from Simple Login?"
+        alert.addButton(withTitle: "Yes, sign me out")
+        alert.addButton(withTitle: "Cancel")
+        alert.alertStyle = .informational
+        let modalResult = alert.runModal()
+        
+        switch modalResult {
+        case .alertFirstButtonReturn: SLUserDefaultsService.removeApiKey()
+        default: return
+        }
     }
 }
 

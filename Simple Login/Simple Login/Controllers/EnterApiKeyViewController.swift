@@ -141,8 +141,8 @@ extension EnterApiKeyViewController {
                 [.foregroundColor : NSColor(named: NSColor.Name(stringLiteral: "HyperlinkColor")) ?? NSColor.blue,
                  .font : NSFont.systemFont(ofSize: 20, weight: .medium),
                  .underlineStyle : NSUnderlineStyle.single.rawValue,
-                 .link : URL(string: "https://simplelogin.io/") as Any,
-                 .toolTip : "https://simplelogin.io/"],
+                 .link : URL(string: BASE_URL) as Any,
+                 .toolTip : BASE_URL],
                 range: NSRange(simpleLoginStringRange, in: welcomePlainString))
             
         }
@@ -163,8 +163,8 @@ extension EnterApiKeyViewController {
             [.foregroundColor : NSColor(named: NSColor.Name(stringLiteral: "HyperlinkColor")) ?? NSColor.blue,
              .font : NSFont.systemFont(ofSize: 13, weight: .medium),
              .underlineStyle : NSUnderlineStyle.single.rawValue,
-             .link : URL(string: "https://app.simplelogin.io/auth/register") as Any,
-             .toolTip : "https://app.simplelogin.io/auth/register"],
+             .link : URL(string: "\(BASE_URL)/auth/register") as Any,
+             .toolTip : "\(BASE_URL)/auth/register"],
             range: NSRange(hereStringRange, in: createAccountPlainString))
         }
         
@@ -184,8 +184,8 @@ extension EnterApiKeyViewController {
             [.foregroundColor : NSColor(named: NSColor.Name(stringLiteral: "HyperlinkColor")) ?? NSColor.blue,
              .font : NSFont.systemFont(ofSize: 13, weight: .medium),
              .underlineStyle : NSUnderlineStyle.single.rawValue,
-             .link : URL(string: "https://app.simplelogin.io/dashboard/api_key") as Any,
-             .toolTip : "https://app.simplelogin.io/dashboard/api_key"],
+             .link : URL(string: "\(BASE_URL)/dashboard/api_key") as Any,
+             .toolTip : "\(BASE_URL)/dashboard/api_key"],
             range: NSRange(hereStringRange, in: createAndCopyApiKeyPlainString))
         }
         
