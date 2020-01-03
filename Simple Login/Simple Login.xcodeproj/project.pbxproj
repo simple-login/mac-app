@@ -27,6 +27,10 @@
 		C0E6000823BFBFEA0011982B /* SLApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E6000723BFBFEA0011982B /* SLApiService.swift */; };
 		C0E6000923BFC0670011982B /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
 		C0E6000A23BFC7D10011982B /* SLApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E6000723BFBFEA0011982B /* SLApiService.swift */; };
+		C0E6001023BFDDDD0011982B /* AliasTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E6000F23BFDDDD0011982B /* AliasTableCellView.swift */; };
+		C0E6001223BFDE200011982B /* AliasTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0E6001123BFDE200011982B /* AliasTableCellView.xib */; };
+		C0E6001523BFEADF0011982B /* DisableableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E6001423BFEADF0011982B /* DisableableScrollView.swift */; };
+		C0E6001623BFEB3B0011982B /* DisableableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E6001423BFEADF0011982B /* DisableableScrollView.swift */; };
 		C0E86DE623B90DED00232B9A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE523B90DED00232B9A /* User.swift */; };
 		C0E86DE823B918A300232B9A /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
 		C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */; };
@@ -81,6 +85,9 @@
 		C0BE6CB023BF3F470082C2C2 /* Statics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
 		C0BE6CEC23BF68D40082C2C2 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		C0E6000723BFBFEA0011982B /* SLApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLApiService.swift; sourceTree = "<group>"; };
+		C0E6000F23BFDDDD0011982B /* AliasTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliasTableCellView.swift; sourceTree = "<group>"; };
+		C0E6001123BFDE200011982B /* AliasTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AliasTableCellView.xib; sourceTree = "<group>"; };
+		C0E6001423BFEADF0011982B /* DisableableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableableScrollView.swift; sourceTree = "<group>"; };
 		C0E86DE523B90DED00232B9A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C0E86DE723B918A200232B9A /* SLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLError.swift; sourceTree = "<group>"; };
 		C0FF315F23B8C9CA00E84C4A /* Simple Login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +170,7 @@
 		C062760A23BA646300BCE972 /* Safari Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C0E6000B23BFDD710011982B /* Views */,
 				C03B0BDD23BA6A6E0040DA37 /* Controllers */,
 				C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */,
 				C062761223BA646300BCE972 /* Info.plist */,
@@ -179,6 +187,31 @@
 				C0BE6CB023BF3F470082C2C2 /* Statics.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C0E6000B23BFDD710011982B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C0E6000C23BFDD790011982B /* AliasTableCellView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C0E6000C23BFDD790011982B /* AliasTableCellView */ = {
+			isa = PBXGroup;
+			children = (
+				C0E6000F23BFDDDD0011982B /* AliasTableCellView.swift */,
+				C0E6001123BFDE200011982B /* AliasTableCellView.xib */,
+			);
+			path = AliasTableCellView;
+			sourceTree = "<group>";
+		};
+		C0E6001323BFEAC10011982B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C0E6001423BFEADF0011982B /* DisableableScrollView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		C0E86DE423B90D6600232B9A /* Models */ = {
@@ -213,6 +246,7 @@
 		C0FF316123B8C9CA00E84C4A /* Simple Login */ = {
 			isa = PBXGroup;
 			children = (
+				C0E6001323BFEAC10011982B /* Views */,
 				C0BE6CAF23BF3F2D0082C2C2 /* Utilities */,
 				C03B0BD823BA68020040DA37 /* Services */,
 				C0E86DE423B90D6600232B9A /* Models */,
@@ -329,6 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0E6001223BFDE200011982B /* AliasTableCellView.xib in Resources */,
 				C03B0BE223BA6B360040DA37 /* ApiKeyMissingViewController.xib in Resources */,
 				C0BE6CED23BF68D40082C2C2 /* script.js in Resources */,
 				C03B0BE723BA76960040DA37 /* ExtensionHomeViewController.xib in Resources */,
@@ -416,8 +451,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0E6001623BFEB3B0011982B /* DisableableScrollView.swift in Sources */,
 				C03B0BE023BA6A9B0040DA37 /* ApiKeyMissingViewController.swift in Sources */,
 				C0E6000923BFC0670011982B /* SLError.swift in Sources */,
+				C0E6001023BFDDDD0011982B /* AliasTableCellView.swift in Sources */,
 				C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */,
 				C0E6000623BFBFC60011982B /* User.swift in Sources */,
 				C0BE6CB223BF3FFA0082C2C2 /* Statics.swift in Sources */,
@@ -437,6 +474,7 @@
 				C0E86DE823B918A300232B9A /* SLError.swift in Sources */,
 				C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */,
 				C0E86DE623B90DED00232B9A /* User.swift in Sources */,
+				C0E6001523BFEADF0011982B /* DisableableScrollView.swift in Sources */,
 				C0BE6CB123BF3F470082C2C2 /* Statics.swift in Sources */,
 				C0E6000823BFBFEA0011982B /* SLApiService.swift in Sources */,
 			);

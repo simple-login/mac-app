@@ -19,6 +19,8 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     @IBOutlet private weak var rootStackView: NSStackView!
     @IBOutlet private weak var hostnameTextField: NSTextField!
     @IBOutlet private weak var suffixLabel: NSTextField!
+    @IBOutlet private weak var scrollView: NSScrollView!
+    @IBOutlet private weak var tableView: NSTableView!
     @IBOutlet private weak var manageAliasesButton: NSTextField!
     @IBOutlet private weak var signOutButton: NSTextField!
     
@@ -28,6 +30,10 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         preferredContentSize = rootStackView.intrinsicContentSize
+        
+        // Set up tableView
+        tableView.backgroundColor = NSColor.clear
+        tableView.register(NSNib(nibNamed: NSNib.Name("AliasTableCellView"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "AliasTableCellView"))
     }
     
     override func viewWillAppear() {
@@ -47,8 +53,8 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                         return
                     }
                 } else if let user = user {
-                    self.hostnameTextField.stringValue = user.suggestion
-                    self.suffixLabel.stringValue = user.suffixes[0]
+                    self.user = user
+                    self.refreshUIs()
                 }
             }
         }
@@ -64,5 +70,44 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                 })
             })
         }
+    }
+    
+    private func refreshUIs() {
+        guard let user = user else { return }
+        hostnameTextField.stringValue = user.suggestion
+        suffixLabel.stringValue = user.suffixes[0]
+        tableView.reloadData()
+        scrollView.heightAnchor.constraint(equalToConstant: tableView.intrinsicContentSize.height).isActive = true
+    }
+}
+
+// MARK: - NSTableViewDataSource
+extension ExtensionHomeViewController: NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return user?.existingAliases.count ?? 0
+    }
+}
+
+// MARK: - NSTableViewDelegate
+extension ExtensionHomeViewController: NSTableViewDelegate {
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("AliasTableCellView"), owner: nil) as? AliasTableCellView {
+            cell.bind(alias: user!.existingAliases[row])
+            cell.copyAlias = { alias in
+                guard let alias = alias else { return }
+                let pasteboard = NSPasteboard.general
+                pasteboard.clearContents()
+                pasteboard.setString(alias, forType: .string)
+            }
+            
+            return cell
+        }
+        
+        return nil
+    }
+    
+    func selectionShouldChange(in tableView: NSTableView) -> Bool {
+        // Disable selection mode
+        return false
     }
 }
