@@ -20,6 +20,13 @@
 		C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */; };
 		C062761623BA646300BCE972 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C062761523BA646300BCE972 /* ToolbarItemIcon.pdf */; };
 		C062761A23BA646300BCE972 /* Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C062760823BA646300BCE972 /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C0BE6CB123BF3F470082C2C2 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE6CB023BF3F470082C2C2 /* Statics.swift */; };
+		C0BE6CB223BF3FFA0082C2C2 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE6CB023BF3F470082C2C2 /* Statics.swift */; };
+		C0BE6CED23BF68D40082C2C2 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = C0BE6CEC23BF68D40082C2C2 /* script.js */; };
+		C0E6000623BFBFC60011982B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE523B90DED00232B9A /* User.swift */; };
+		C0E6000823BFBFEA0011982B /* SLApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E6000723BFBFEA0011982B /* SLApiService.swift */; };
+		C0E6000923BFC0670011982B /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
+		C0E6000A23BFC7D10011982B /* SLApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E6000723BFBFEA0011982B /* SLApiService.swift */; };
 		C0E86DE623B90DED00232B9A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE523B90DED00232B9A /* User.swift */; };
 		C0E86DE823B918A300232B9A /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
 		C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */; };
@@ -71,6 +78,9 @@
 		C062761223BA646300BCE972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C062761523BA646300BCE972 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		C062761723BA646300BCE972 /* Safari_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Safari_Extension.entitlements; sourceTree = "<group>"; };
+		C0BE6CB023BF3F470082C2C2 /* Statics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
+		C0BE6CEC23BF68D40082C2C2 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
+		C0E6000723BFBFEA0011982B /* SLApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLApiService.swift; sourceTree = "<group>"; };
 		C0E86DE523B90DED00232B9A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C0E86DE723B918A200232B9A /* SLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLError.swift; sourceTree = "<group>"; };
 		C0FF315F23B8C9CA00E84C4A /* Simple Login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				C013560323BE55F100287A82 /* SLUserDefaultsService.swift */,
+				C0E6000723BFBFEA0011982B /* SLApiService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -157,8 +168,17 @@
 				C062761223BA646300BCE972 /* Info.plist */,
 				C062761523BA646300BCE972 /* ToolbarItemIcon.pdf */,
 				C062761723BA646300BCE972 /* Safari_Extension.entitlements */,
+				C0BE6CEC23BF68D40082C2C2 /* script.js */,
 			);
 			path = "Safari Extension";
+			sourceTree = "<group>";
+		};
+		C0BE6CAF23BF3F2D0082C2C2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C0BE6CB023BF3F470082C2C2 /* Statics.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		C0E86DE423B90D6600232B9A /* Models */ = {
@@ -193,6 +213,7 @@
 		C0FF316123B8C9CA00E84C4A /* Simple Login */ = {
 			isa = PBXGroup;
 			children = (
+				C0BE6CAF23BF3F2D0082C2C2 /* Utilities */,
 				C03B0BD823BA68020040DA37 /* Services */,
 				C0E86DE423B90D6600232B9A /* Models */,
 				C0FF317223B8D67000E84C4A /* Controllers */,
@@ -309,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C03B0BE223BA6B360040DA37 /* ApiKeyMissingViewController.xib in Resources */,
+				C0BE6CED23BF68D40082C2C2 /* script.js in Resources */,
 				C03B0BE723BA76960040DA37 /* ExtensionHomeViewController.xib in Resources */,
 				C062761623BA646300BCE972 /* ToolbarItemIcon.pdf in Resources */,
 			);
@@ -395,9 +417,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C03B0BE023BA6A9B0040DA37 /* ApiKeyMissingViewController.swift in Sources */,
+				C0E6000923BFC0670011982B /* SLError.swift in Sources */,
 				C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */,
+				C0E6000623BFBFC60011982B /* User.swift in Sources */,
+				C0BE6CB223BF3FFA0082C2C2 /* Statics.swift in Sources */,
 				C03B0BE523BA76550040DA37 /* ExtensionHomeViewController.swift in Sources */,
 				C013560523BE567600287A82 /* SLUserDefaultsService.swift in Sources */,
+				C0E6000A23BFC7D10011982B /* SLApiService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +437,8 @@
 				C0E86DE823B918A300232B9A /* SLError.swift in Sources */,
 				C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */,
 				C0E86DE623B90DED00232B9A /* User.swift in Sources */,
+				C0BE6CB123BF3F470082C2C2 /* Statics.swift in Sources */,
+				C0E6000823BFBFEA0011982B /* SLApiService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

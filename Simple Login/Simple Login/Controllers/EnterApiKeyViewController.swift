@@ -21,36 +21,12 @@ final class EnterApiKeyViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLabels()
-        checkSavedApiKey()
         setLoading(false)
     }
     
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
-        }
-    }
-    
-    private func checkSavedApiKey() {
-        if (NetworkReachabilityManager()?.isReachable ?? false) == false {
-            // No internet connection
-            showNoInternetAlert()
-            return
-        }
-        
-        guard let savedApiKey = SLUserDefaultsService.getApiKey() else { return }
-        
-        setLoading(true, completelyHideOtherUis: true)
-        
-        checkApiKey(apiKey: savedApiKey) { [weak self] (isValid, data) in
-            guard let self = self else { return }
-            if (isValid) {
-                // API key is valid
-                self.showHomeViewController()
-            } else {
-                // API key is invalid
-                self.showAlertApiKeyIsInvalid()
-            }
         }
     }
     
@@ -73,40 +49,18 @@ final class EnterApiKeyViewController: NSViewController {
         setLoading(true)
         
         let enteredApiKey = apiKeyTextField.stringValue
-        checkApiKey(apiKey: enteredApiKey) { [weak self] (isValid, data) in
+        SLApiService.checkApiKey(enteredApiKey) { [weak self] (isValid) in
             guard let self = self else { return }
+            
+            self.setLoading(false)
+            
             if (isValid) {
                 // API key is valid
                 SLUserDefaultsService.setApiKey(enteredApiKey)
                 self.showHomeViewController()
-//                if let data = data {
-//                    do {
-//                        SLKeychainService.setApiKey(enteredApiKey)
-//                        let user = try self.parseUser(fromData: data)
-//                        self.showHomeViewController()
-//                    } catch {
-//                        self.showAlertErrorParsingUser()
-//                    }
-//
-//                } else {
-//                    self.showAlertNoDataError()
-//                }
             } else {
                 // API key is invalid
                 self.showAlertApiKeyIsInvalid()
-            }
-        }
-    }
-    
-    private func checkApiKey(apiKey: String, completion: @escaping (_ isValid: Bool, _ responseData: Data?) -> Void) {
-        let headers: HTTPHeaders = ["Authentication": apiKey]
-        
-        AF.request("https://app.simplelogin.io/api/alias/options", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { [weak self] response in
-            self?.setLoading(false)
-
-            switch response.response?.statusCode {
-            case 200: completion(true, response.data)
-            default: completion(false, nil)
             }
         }
     }
@@ -156,28 +110,6 @@ extension EnterApiKeyViewController {
         alert.addButton(withTitle: "Close")
         alert.alertStyle = .critical
         alert.runModal()
-    }
-    
-    private func parseUser(fromData data: Data) throws -> User {
-        guard let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-            throw SLError.failToParseUser
-        }
-        
-        let canCreateCustom = jsonDictionary["can_create_custom"] as? Bool
-        let existingAliases = jsonDictionary["existing"] as? [String]
-        let customDictionary = jsonDictionary["custom"] as? [String : Any]
-        let suffixes = customDictionary?["suffixes"] as? [String]
-        let suggestion = customDictionary?["suggestion"] as? String
-        
-        if let canCreateCustom = canCreateCustom,
-            let existingAliases = existingAliases,
-            let suffixes = suffixes,
-            let suggestion = suggestion {
-                return User(canCreateCustom: canCreateCustom, suffixes: suffixes, suggestion: suggestion, existingAliases: existingAliases)
-        } else {
-            throw SLError.failToParseUser
-        }
-        
     }
     
     private func showAlertErrorParsingUser() {

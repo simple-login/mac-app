@@ -12,8 +12,9 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
     
     override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]?) {
         // This method will be called when a content script provided by your extension calls safari.extension.dispatchMessage("message").
-//        page.getPropertiesWithCompletionHandler { properties in
-//            NSLog("The extension received a message (\(messageName)) from a script injected into (\(String(describing: properties?.url))) with userInfo (\(userInfo ?? [:]))")
+        
+//        if (messageName == "FinishLoadingPage") {
+//            let hostname = userInfo?["hostname"] as? String ?? ""
 //        }
     }
     
@@ -35,5 +36,4 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
             return ApiKeyMissingViewController.shared
         }
     }
-
 }
