@@ -10,6 +10,19 @@
         "platform" : "osx",
         "reference" : "controlAccentColor"
       }
+    },
+    {
+      "idiom" : "universal",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "color" : {
+        "platform" : "osx",
+        "reference" : "systemTealColor"
+      }
     }
   ]
 }

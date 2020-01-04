@@ -110,7 +110,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <scrollView horizontalHuggingPriority="1" verticalCompressionResistancePriority="1000" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ym-8p-Hnp">
+                        <scrollView horizontalHuggingPriority="1" verticalCompressionResistancePriority="1000" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ym-8p-Hnp">
                             <rect key="frame" x="20" y="115" width="576" height="135"/>
                             <clipView key="contentView" drawsBackground="NO" id="Mrv-sA-Adh">
                                 <rect key="frame" x="1" y="1" width="574" height="133"/>
