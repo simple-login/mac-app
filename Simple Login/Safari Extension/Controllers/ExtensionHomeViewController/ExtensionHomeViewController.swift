@@ -20,19 +20,24 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     @IBOutlet private weak var hostnameTextField: NSTextField!
     @IBOutlet private weak var customPrefixStatusLabel: NSTextField!
     @IBOutlet private weak var suffixLabel: NSTextField!
+    @IBOutlet private weak var createButton: NSButton!
     @IBOutlet private weak var scrollView: NSScrollView!
     @IBOutlet private weak var tableView: NSTableView!
     @IBOutlet private weak var manageAliasesButton: NSTextField!
     @IBOutlet private weak var signOutButton: NSTextField!
     
+    @IBOutlet private weak var progressIndicator: NSProgressIndicator!
+    
     var apiKey: String?
     private var user: User?
     private var isValidEmailPrefix: Bool = true {
         didSet {
+            createButton.isEnabled = isValidEmailPrefix
+            
             if isValidEmailPrefix {
                 customPrefixStatusLabel.stringValue = "Sounds like a good name 👍"
                 customPrefixStatusLabel.textColor = .secondaryLabelColor
-                hostnameTextField.textColor = .black
+                hostnameTextField.textColor = NSColor(named: NSColor.Name("BodyTextColor"))
                 
                 if hostnameTextField.stringValue == "" {
                     hostnameTextField.stringValue = user?.suggestion ?? "something"
@@ -55,6 +60,8 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         super.viewDidLoad()
         preferredContentSize = rootStackView.intrinsicContentSize
         
+        setLoading(false)
+        
         // Set minimum width
         rootStackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 400).isActive = true
         
@@ -72,10 +79,16 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     
     override func viewWillAppear() {
         super.viewWillAppear()
+        refresh()
+    }
+    
+    private func refresh() {
         getURL { [unowned self] (url) in
             guard let hostname = url?.host, let apiKey = self.apiKey else { return }
+            self.setLoading(true)
             SLApiService.fetchUserData(apiKey: apiKey, hostname: hostname) { [weak self] (user, error) in
                 guard let self = self else { return }
+                self.setLoading(false)
                 
                 if let error = error {
                     switch error {
@@ -111,8 +124,44 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         hostnameTextField.stringValue = user.suggestion
         suffixLabel.stringValue = user.suffixes[0]
         tableView.reloadData()
-        scrollView.heightAnchor.constraint(equalToConstant: tableView.intrinsicContentSize.height).isActive = true
+        scrollView.heightAnchor.constraint(equalToConstant: min(tableView.intrinsicContentSize.height, 400)).isActive = true
         preferredContentSize = rootStackView.intrinsicContentSize
+    }
+    
+    private func setLoading(_ isLoading: Bool) {
+        if isLoading {
+            rootStackView.disableSubviews(true)
+            rootStackView.alphaValue = 0.7
+            progressIndicator.isHidden = false
+            progressIndicator.startAnimation(nil)
+        } else {
+            rootStackView.disableSubviews(false)
+            rootStackView.alphaValue = 1
+            progressIndicator.isHidden = true
+            progressIndicator.stopAnimation(nil)
+        }
+    }
+}
+
+// MARK: - Create new alias
+extension ExtensionHomeViewController {
+    @IBAction private func createNewAlias(_ sender: Any) {
+        guard isValidEmailPrefix, let apiKey = apiKey else { return }
+        
+        let prefix = hostnameTextField.stringValue
+        let suffix = suffixLabel.stringValue
+        setLoading(true)
+        SLApiService.createNewAlias(apiKey: apiKey, prefix: prefix, suffix: suffix) { [weak self] (error) in
+            guard let self = self else { return }
+            self.setLoading(false)
+            
+            if let error = error {
+                let alert = NSAlert(messageText: "Error occured", informativeText: error.description, buttonText: "Close", alertStyle: .critical)
+                alert.runModal()
+            } else {
+                self.refresh()
+            }
+        }
     }
 }
 

@@ -32,7 +32,12 @@ final class SLApiService {
                 return
             }
             
-            switch response.response?.statusCode {
+            guard let statusCode = response.response?.statusCode else {
+                completion(nil, SLError.unknownError(description: "error code unknown"))
+                return
+            }
+            
+            switch statusCode {
             case 200:
                 do {
                     let user = try User(fromData: data)
@@ -41,7 +46,25 @@ final class SLApiService {
                     completion(nil, error as? SLError)
                 }
             case 401: completion(nil, SLError.invalidApiKey)
-            default: completion(nil, SLError.unknownError(description: "error code \(String(describing: response.response?.statusCode))"))
+            default: completion(nil, SLError.unknownError(description: "error code \(statusCode)"))
+            }
+        }
+    }
+    
+    static func createNewAlias(apiKey: String, prefix: String, suffix: String, completion: @escaping (_ error: SLError?) -> Void) {
+        let headers: HTTPHeaders = ["Authentication": apiKey, "prefix": prefix, "suffix": suffix]
+        
+        AF.request("\(BASE_URL)/api/alias/custom/new", method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
+
+            guard let statusCode = response.response?.statusCode else {
+                completion(SLError.unknownError(description: "error code unknown"))
+                return
+            }
+            
+            switch statusCode {
+            case 201: completion(nil)
+            case 409: completion(SLError.duplicatedAlias)
+            default: completion(SLError.unknownError(description: "error code \(statusCode)"))
             }
         }
     }

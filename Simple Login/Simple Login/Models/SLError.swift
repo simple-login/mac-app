@@ -13,6 +13,7 @@ enum SLError: Error, CustomStringConvertible {
     case failToSerializeJSONData
     case failToParseUser
     case invalidApiKey
+    case duplicatedAlias
     case unknownError(description: String)
     
     var description: String {
@@ -21,6 +22,7 @@ enum SLError: Error, CustomStringConvertible {
         case .failToSerializeJSONData: return "Failed to serialize JSON data"
         case .failToParseUser: return "Failed to parse user's info"
         case .invalidApiKey: return "Invalid API key"
+        case .duplicatedAlias: return "Alias is duplicated"
         case .unknownError(let description): return "Unknown error: \(description)"
         }
     }
