@@ -141,3 +141,14 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
         return false
     }
 }
+
+// MARK: - NSTextFieldDelegate
+extension ExtensionHomeViewController: NSTextFieldDelegate {
+    func controlTextDidChange(_ obj: Notification) {
+        if hostnameTextField.stringValue.isValidEmailPrefix() {
+            hostnameTextField.textColor = .black
+        } else {
+            hostnameTextField.textColor = .red
+        }
+    }
+}

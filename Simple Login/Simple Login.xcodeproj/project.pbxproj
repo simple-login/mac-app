@@ -20,6 +20,10 @@
 		C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */; };
 		C062761623BA646300BCE972 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C062761523BA646300BCE972 /* ToolbarItemIcon.pdf */; };
 		C062761A23BA646300BCE972 /* Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C062760823BA646300BCE972 /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C0BA379423C0C2F000F23554 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BA379323C0C2F000F23554 /* StringExtensions.swift */; };
+		C0BA379623C0C36600F23554 /* RegexHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BA379523C0C36600F23554 /* RegexHelpers.swift */; };
+		C0BA379723C0C38100F23554 /* RegexHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BA379523C0C36600F23554 /* RegexHelpers.swift */; };
+		C0BA379823C0C44E00F23554 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BA379323C0C2F000F23554 /* StringExtensions.swift */; };
 		C0BE6CB123BF3F470082C2C2 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE6CB023BF3F470082C2C2 /* Statics.swift */; };
 		C0BE6CB223BF3FFA0082C2C2 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE6CB023BF3F470082C2C2 /* Statics.swift */; };
 		C0BE6CED23BF68D40082C2C2 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = C0BE6CEC23BF68D40082C2C2 /* script.js */; };
@@ -82,6 +86,8 @@
 		C062761223BA646300BCE972 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C062761523BA646300BCE972 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		C062761723BA646300BCE972 /* Safari_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Safari_Extension.entitlements; sourceTree = "<group>"; };
+		C0BA379323C0C2F000F23554 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		C0BA379523C0C36600F23554 /* RegexHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexHelpers.swift; sourceTree = "<group>"; };
 		C0BE6CB023BF3F470082C2C2 /* Statics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
 		C0BE6CEC23BF68D40082C2C2 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		C0E6000723BFBFEA0011982B /* SLApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLApiService.swift; sourceTree = "<group>"; };
@@ -185,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				C0BE6CB023BF3F470082C2C2 /* Statics.swift */,
+				C0BA379323C0C2F000F23554 /* StringExtensions.swift */,
+				C0BA379523C0C36600F23554 /* RegexHelpers.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -451,9 +459,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0BA379823C0C44E00F23554 /* StringExtensions.swift in Sources */,
 				C0E6001623BFEB3B0011982B /* DisableableScrollView.swift in Sources */,
 				C03B0BE023BA6A9B0040DA37 /* ApiKeyMissingViewController.swift in Sources */,
 				C0E6000923BFC0670011982B /* SLError.swift in Sources */,
+				C0BA379723C0C38100F23554 /* RegexHelpers.swift in Sources */,
 				C0E6001023BFDDDD0011982B /* AliasTableCellView.swift in Sources */,
 				C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */,
 				C0E6000623BFBFC60011982B /* User.swift in Sources */,
@@ -470,6 +480,8 @@
 			files = (
 				C013560423BE55F100287A82 /* SLUserDefaultsService.swift in Sources */,
 				C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */,
+				C0BA379423C0C2F000F23554 /* StringExtensions.swift in Sources */,
+				C0BA379623C0C36600F23554 /* RegexHelpers.swift in Sources */,
 				C0FF316523B8C9CA00E84C4A /* EnterApiKeyViewController.swift in Sources */,
 				C0E86DE823B918A300232B9A /* SLError.swift in Sources */,
 				C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */,

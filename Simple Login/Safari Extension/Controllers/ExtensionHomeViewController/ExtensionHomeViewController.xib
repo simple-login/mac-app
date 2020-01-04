@@ -56,6 +56,9 @@
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
+                                    <connections>
+                                        <outlet property="delegate" destination="-2" id="H3r-zf-12r"/>
+                                    </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="997" translatesAutoresizingMaskIntoConstraints="NO" id="o0o-FZ-eaE">
                                     <rect key="frame" x="393" y="3" width="147" height="16"/>
