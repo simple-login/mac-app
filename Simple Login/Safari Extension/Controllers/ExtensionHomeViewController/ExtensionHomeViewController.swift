@@ -17,16 +17,32 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     
     // Outlets
     @IBOutlet private weak var rootStackView: NSStackView!
+    
+    // New alias components
+    @IBOutlet private weak var newAliasLabel: NSTextField!
     @IBOutlet private weak var hostnameTextField: NSTextField!
     @IBOutlet private weak var customPrefixStatusLabel: NSTextField!
     @IBOutlet private weak var suffixLabel: NSTextField!
     @IBOutlet private weak var createButton: NSButton!
+    
+    // Go premium components
+    @IBOutlet private weak var premiumDescriptionLabel: NSTextField!
+    @IBOutlet private weak var upgradeButton: NSButton!
+    
     @IBOutlet private weak var scrollView: NSScrollView!
     @IBOutlet private weak var tableView: NSTableView!
     @IBOutlet private weak var manageAliasesButton: NSTextField!
     @IBOutlet private weak var signOutButton: NSTextField!
     
     @IBOutlet private weak var progressIndicator: NSProgressIndicator!
+    
+    lazy private var newAliasComponents: [NSView] = {
+        return [newAliasLabel, hostnameTextField, customPrefixStatusLabel, suffixLabel, createButton]
+    }()
+    
+    lazy private var upgradeComponents: [NSView] = {
+        return [premiumDescriptionLabel, upgradeButton]
+    }()
     
     var apiKey: String?
     private var user: User?
@@ -61,6 +77,8 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         preferredContentSize = rootStackView.intrinsicContentSize
         
         setLoading(false)
+        newAliasComponents.forEach({$0.isHidden = true})
+        upgradeComponents.forEach({$0.isHidden = true})
         
         // Set minimum width
         rootStackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 400).isActive = true
@@ -125,6 +143,15 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         suffixLabel.stringValue = user.suffixes[0]
         tableView.reloadData()
         scrollView.heightAnchor.constraint(equalToConstant: min(tableView.intrinsicContentSize.height, 400)).isActive = true
+        
+        if user.canCreateCustom {
+            newAliasComponents.forEach({$0.isHidden = false})
+            upgradeComponents.forEach({$0.isHidden = true})
+        } else {
+            newAliasComponents.forEach({$0.isHidden = true})
+            upgradeComponents.forEach({$0.isHidden = false})
+        }
+        
         preferredContentSize = rootStackView.intrinsicContentSize
     }
     
@@ -140,6 +167,11 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
             progressIndicator.isHidden = true
             progressIndicator.stopAnimation(nil)
         }
+    }
+    
+    @IBAction private func upgrade(_ sender: Any) {
+        guard let url = URL(string: "\(BASE_URL)/dashboard/pricing") else { return }
+        NSWorkspace.shared.open(url)
     }
 }
 

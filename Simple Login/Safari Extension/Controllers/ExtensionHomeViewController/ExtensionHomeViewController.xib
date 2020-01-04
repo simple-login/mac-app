@@ -12,26 +12,29 @@
                 <outlet property="customPrefixStatusLabel" destination="SCA-GX-fLM" id="kwf-0f-K1u"/>
                 <outlet property="hostnameTextField" destination="lJh-5o-atI" id="AgC-Vk-exA"/>
                 <outlet property="manageAliasesButton" destination="pfN-sv-LSA" id="XEA-Da-mwi"/>
+                <outlet property="newAliasLabel" destination="TxL-lj-hkA" id="tTU-YL-C2H"/>
+                <outlet property="premiumDescriptionLabel" destination="tU7-T5-Bly" id="b3R-YP-n2E"/>
                 <outlet property="progressIndicator" destination="vST-qQ-X4u" id="O8Q-bg-xWY"/>
                 <outlet property="rootStackView" destination="VfM-Vs-fq2" id="Pga-zN-Z5H"/>
                 <outlet property="scrollView" destination="4ym-8p-Hnp" id="MD4-tR-x76"/>
                 <outlet property="signOutButton" destination="kPs-eV-a7j" id="oND-zj-qKd"/>
                 <outlet property="suffixLabel" destination="o0o-FZ-eaE" id="AMF-YI-Qyl"/>
                 <outlet property="tableView" destination="SfY-oo-xy0" id="07b-oD-e7V"/>
+                <outlet property="upgradeButton" destination="CdE-6Z-hF3" id="VdF-mc-wmY"/>
                 <outlet property="view" destination="c22-O7-iKe" id="loZ-2Y-U2R"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="616" height="491"/>
+            <rect key="frame" x="0.0" y="0.0" width="616" height="601"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <stackView distribution="fillProportionally" orientation="vertical" alignment="centerX" spacing="9" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VfM-Vs-fq2">
-                    <rect key="frame" x="0.0" y="10" width="616" height="471"/>
+                    <rect key="frame" x="0.0" y="10" width="616" height="581"/>
                     <subviews>
                         <textField verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="MzO-FV-11V">
-                            <rect key="frame" x="249" y="449" width="118" height="22"/>
+                            <rect key="frame" x="249" y="559" width="118" height="22"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Simple Login" id="lne-Fw-Wdu">
                                 <font key="font" metaFont="system" size="19"/>
                                 <color key="textColor" name="HyperlinkColor"/>
@@ -39,10 +42,10 @@
                             </textFieldCell>
                         </textField>
                         <box horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="999" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Xhr-KB-Uka">
-                            <rect key="frame" x="0.0" y="437" width="616" height="5"/>
+                            <rect key="frame" x="0.0" y="547" width="616" height="5"/>
                         </box>
                         <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="998" translatesAutoresizingMaskIntoConstraints="NO" id="TxL-lj-hkA">
-                            <rect key="frame" x="255" y="407" width="107" height="23"/>
+                            <rect key="frame" x="255" y="517" width="107" height="23"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Email Alias" id="uoE-CU-7wy">
                                 <font key="font" metaFont="systemSemibold" size="20"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -50,10 +53,10 @@
                             </textFieldCell>
                         </textField>
                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="997" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZz-hS-Qcd">
-                            <rect key="frame" x="20" y="352" width="576" height="46"/>
+                            <rect key="frame" x="20" y="487" width="576" height="21"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" verticalCompressionResistancePriority="997" translatesAutoresizingMaskIntoConstraints="NO" id="lJh-5o-atI">
-                                    <rect key="frame" x="0.0" y="13" width="526" height="21"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="526" height="21"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="right" drawsBackground="YES" id="ULd-F3-x3C">
                                         <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -64,7 +67,7 @@
                                     </connections>
                                 </textField>
                                 <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="997" translatesAutoresizingMaskIntoConstraints="NO" id="o0o-FZ-eaE">
-                                    <rect key="frame" x="524" y="15" width="54" height="16"/>
+                                    <rect key="frame" x="524" y="3" width="54" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" id="fjZ-CI-OpL">
                                         <font key="font" metaFont="system"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -82,7 +85,7 @@
                             </customSpacing>
                         </stackView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="996" translatesAutoresizingMaskIntoConstraints="NO" id="SCA-GX-fLM">
-                            <rect key="frame" x="18" y="327" width="580" height="16"/>
+                            <rect key="frame" x="18" y="462" width="580" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Alias is autofilled by the current website name, feel free to change it." id="B4q-EC-wZ4">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -90,13 +93,32 @@
                             </textFieldCell>
                         </textField>
                         <button horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e1p-FA-8fG">
-                            <rect key="frame" x="14" y="290" width="588" height="32"/>
+                            <rect key="frame" x="14" y="425" width="588" height="32"/>
                             <buttonCell key="cell" type="push" title="Create" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1LV-RI-tc9">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
                                 <action selector="createNewAlias:" target="-2" id="yMB-vq-oK4"/>
+                            </connections>
+                        </button>
+                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tU7-T5-Bly">
+                            <rect key="frame" x="18" y="327" width="600" height="96"/>
+                            <textFieldCell key="cell" selectable="YES" alignment="center" id="teE-Gm-K0p">
+                                <font key="font" metaFont="system"/>
+                                <string key="title">You have reached the limit Go Premium for: ✅ Unlimited Aliases ✅ Custom Domain ✅ Catch-All (or Wildcard) Aliases ✅ Directory (or Username) (Coming soon)</string>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CdE-6Z-hF3">
+                            <rect key="frame" x="262" y="290" width="93" height="32"/>
+                            <buttonCell key="cell" type="push" title="Upgrade" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7ij-bt-U3T">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="upgrade:" target="-2" id="MeD-7T-5aa"/>
                             </connections>
                         </button>
                         <box horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="995" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="pLR-6e-CQU">
@@ -125,7 +147,7 @@
                                         <tableColumns>
                                             <tableColumn width="571" minWidth="40" maxWidth="1000" id="LJL-6f-9oX">
                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                    <font key="font" metaFont="label" size="11"/>
+                                                    <font key="font" metaFont="menu" size="11"/>
                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                 </tableHeaderCell>
@@ -221,8 +243,10 @@
                     </subviews>
                     <edgeInsets key="edgeInsets" left="10" right="10" top="0.0" bottom="0.0"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="tU7-T5-Bly" secondAttribute="trailing" id="2OB-We-ycK"/>
                         <constraint firstAttribute="trailing" secondItem="Msg-py-y7t" secondAttribute="trailing" id="4Uj-3f-J1t"/>
                         <constraint firstAttribute="trailing" secondItem="e1p-FA-8fG" secondAttribute="trailing" constant="20" symbolic="YES" id="D1M-ah-9Gl"/>
+                        <constraint firstItem="tU7-T5-Bly" firstAttribute="leading" secondItem="VfM-Vs-fq2" secondAttribute="leading" constant="20" symbolic="YES" id="E3g-ha-Ql4"/>
                         <constraint firstAttribute="trailing" secondItem="4ym-8p-Hnp" secondAttribute="trailing" constant="20" symbolic="YES" id="Eyv-xj-t9H"/>
                         <constraint firstAttribute="trailing" secondItem="Snp-9Z-LfV" secondAttribute="trailing" constant="20" symbolic="YES" id="FBu-GX-hjJ"/>
                         <constraint firstAttribute="trailing" secondItem="pLR-6e-CQU" secondAttribute="trailing" constant="20" symbolic="YES" id="JgV-ox-lXf"/>
@@ -250,8 +274,12 @@
                         <integer value="1000"/>
                         <integer value="1000"/>
                         <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
                     </visibilityPriorities>
                     <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
@@ -266,7 +294,7 @@
                     </customSpacing>
                 </stackView>
                 <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="vST-qQ-X4u">
-                    <rect key="frame" x="300" y="238" width="16" height="16"/>
+                    <rect key="frame" x="300" y="293" width="16" height="16"/>
                 </progressIndicator>
             </subviews>
             <constraints>
