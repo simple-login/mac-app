@@ -10,9 +10,11 @@ import Foundation
 
 extension String {
     func isValidEmailPrefix() -> Bool {
-        if let _ = RegexHelpers.firstMatch(for: "([^0-9|A-Z|a-z|-|_])", inString: self) {
+        if let _ = RegexHelpers.firstMatch(for: #"([^0-9|A-Z|a-z|\-|_])"#, inString: self) {
             return false
         }
+        
+        if count > ALIAS_PREFIX_MAX_LENGTH { return false }
         
         return true
     }

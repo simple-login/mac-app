@@ -18,6 +18,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     // Outlets
     @IBOutlet private weak var rootStackView: NSStackView!
     @IBOutlet private weak var hostnameTextField: NSTextField!
+    @IBOutlet private weak var customPrefixStatusLabel: NSTextField!
     @IBOutlet private weak var suffixLabel: NSTextField!
     @IBOutlet private weak var scrollView: NSScrollView!
     @IBOutlet private weak var tableView: NSTableView!
@@ -26,10 +27,36 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     
     var apiKey: String?
     private var user: User?
+    private var isValidEmailPrefix: Bool = true {
+        didSet {
+            if isValidEmailPrefix {
+                customPrefixStatusLabel.stringValue = "Sounds like a good name 👍"
+                customPrefixStatusLabel.textColor = .secondaryLabelColor
+                hostnameTextField.textColor = .black
+                
+                if hostnameTextField.stringValue == "" {
+                    hostnameTextField.stringValue = user?.suggestion ?? "something"
+                }
+            } else {
+                
+                customPrefixStatusLabel.textColor = .systemRed
+                hostnameTextField.textColor = .systemRed
+                
+                if hostnameTextField.stringValue.count > ALIAS_PREFIX_MAX_LENGTH {
+                    customPrefixStatusLabel.stringValue = "Your alias is too long 😵"
+                } else {
+                    customPrefixStatusLabel.stringValue = "Only letter, number, dash (-), underscore (_) are allowed"
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         preferredContentSize = rootStackView.intrinsicContentSize
+        
+        // Set minimum width
+        rootStackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 400).isActive = true
         
         // Set up tableView
         tableView.backgroundColor = NSColor.clear
@@ -85,6 +112,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         suffixLabel.stringValue = user.suffixes[0]
         tableView.reloadData()
         scrollView.heightAnchor.constraint(equalToConstant: tableView.intrinsicContentSize.height).isActive = true
+        preferredContentSize = rootStackView.intrinsicContentSize
     }
 }
 
@@ -145,10 +173,6 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
 // MARK: - NSTextFieldDelegate
 extension ExtensionHomeViewController: NSTextFieldDelegate {
     func controlTextDidChange(_ obj: Notification) {
-        if hostnameTextField.stringValue.isValidEmailPrefix() {
-            hostnameTextField.textColor = .black
-        } else {
-            hostnameTextField.textColor = .red
-        }
+        isValidEmailPrefix = hostnameTextField.stringValue.isValidEmailPrefix()
     }
 }

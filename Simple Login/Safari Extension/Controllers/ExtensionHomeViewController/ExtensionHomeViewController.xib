@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ExtensionHomeViewController" customModule="Safari_Extension" customModuleProvider="target">
             <connections>
+                <outlet property="customPrefixStatusLabel" destination="SCA-GX-fLM" id="kwf-0f-K1u"/>
                 <outlet property="hostnameTextField" destination="lJh-5o-atI" id="AgC-Vk-exA"/>
                 <outlet property="manageAliasesButton" destination="pfN-sv-LSA" id="XEA-Da-mwi"/>
                 <outlet property="rootStackView" destination="VfM-Vs-fq2" id="Pga-zN-Z5H"/>
