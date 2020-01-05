@@ -16,6 +16,8 @@
 		C03B0BE523BA76550040DA37 /* ExtensionHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B0BE423BA76550040DA37 /* ExtensionHomeViewController.swift */; };
 		C03B0BE723BA76960040DA37 /* ExtensionHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C03B0BE623BA76960040DA37 /* ExtensionHomeViewController.xib */; };
 		C05587A523C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05587A423C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift */; };
+		C05587AA23C233E500CA7418 /* EmptyTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05587A923C233E500CA7418 /* EmptyTableCellView.swift */; };
+		C05587AC23C233FE00CA7418 /* EmptyTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C05587AB23C233FE00CA7418 /* EmptyTableCellView.xib */; };
 		C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* HomeViewController.swift */; };
 		C062760923BA646300BCE972 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06275B723BA46C400BCE972 /* Cocoa.framework */; };
 		C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */; };
@@ -86,6 +88,8 @@
 		C03B0BE423BA76550040DA37 /* ExtensionHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHomeViewController.swift; sourceTree = "<group>"; };
 		C03B0BE623BA76960040DA37 /* ExtensionHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExtensionHomeViewController.xib; sourceTree = "<group>"; };
 		C05587A423C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariExtensionVCExtensions.swift; sourceTree = "<group>"; };
+		C05587A923C233E500CA7418 /* EmptyTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableCellView.swift; sourceTree = "<group>"; };
+		C05587AB23C233FE00CA7418 /* EmptyTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableCellView.xib; sourceTree = "<group>"; };
 		C06275B023BA445600BCE972 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C06275B723BA46C400BCE972 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C062760823BA646300BCE972 /* Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +194,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		C05587A823C233D600CA7418 /* EmptyTableCellView */ = {
+			isa = PBXGroup;
+			children = (
+				C05587A923C233E500CA7418 /* EmptyTableCellView.swift */,
+				C05587AB23C233FE00CA7418 /* EmptyTableCellView.xib */,
+			);
+			path = EmptyTableCellView;
+			sourceTree = "<group>";
+		};
 		C062760A23BA646300BCE972 /* Safari Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +233,7 @@
 		C0E6000B23BFDD710011982B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C05587A823C233D600CA7418 /* EmptyTableCellView */,
 				C0E6000C23BFDD790011982B /* AliasTableCellView */,
 			);
 			path = Views;
@@ -397,6 +411,7 @@
 				C03B0BE723BA76960040DA37 /* ExtensionHomeViewController.xib in Resources */,
 				C064847023C1104800AD97CA /* Assets.xcassets in Resources */,
 				C062761623BA646300BCE972 /* ToolbarItemIcon.pdf in Resources */,
+				C05587AC23C233FE00CA7418 /* EmptyTableCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +500,7 @@
 				C0E6001623BFEB3B0011982B /* DisableableScrollView.swift in Sources */,
 				C03B0BE023BA6A9B0040DA37 /* ApiKeyMissingViewController.swift in Sources */,
 				C0E6000923BFC0670011982B /* SLError.swift in Sources */,
+				C05587AA23C233E500CA7418 /* EmptyTableCellView.swift in Sources */,
 				C0BA379723C0C38100F23554 /* RegexHelpers.swift in Sources */,
 				C0E6001023BFDDDD0011982B /* AliasTableCellView.swift in Sources */,
 				C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */,

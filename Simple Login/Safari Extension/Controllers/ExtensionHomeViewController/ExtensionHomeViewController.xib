@@ -17,6 +17,7 @@
                 <outlet property="progressIndicator" destination="vST-qQ-X4u" id="O8Q-bg-xWY"/>
                 <outlet property="rootStackView" destination="VfM-Vs-fq2" id="Pga-zN-Z5H"/>
                 <outlet property="scrollView" destination="4ym-8p-Hnp" id="MD4-tR-x76"/>
+                <outlet property="scrollViewHeightConstraint" destination="qNf-Sb-EkI" id="FDx-5x-zOF"/>
                 <outlet property="signOutButton" destination="kPs-eV-a7j" id="oND-zj-qKd"/>
                 <outlet property="suffixLabel" destination="o0o-FZ-eaE" id="AMF-YI-Qyl"/>
                 <outlet property="tableView" destination="SfY-oo-xy0" id="07b-oD-e7V"/>
@@ -52,10 +53,10 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="997" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZz-hS-Qcd">
+                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="997" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZz-hS-Qcd">
                             <rect key="frame" x="20" y="487" width="576" height="21"/>
                             <subviews>
-                                <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" verticalCompressionResistancePriority="997" translatesAutoresizingMaskIntoConstraints="NO" id="lJh-5o-atI">
+                                <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" verticalCompressionResistancePriority="997" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lJh-5o-atI">
                                     <rect key="frame" x="0.0" y="0.0" width="526" height="21"/>
                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="right" drawsBackground="YES" id="ULd-F3-x3C">
                                         <font key="font" usesAppearanceFont="YES"/>
@@ -66,7 +67,7 @@
                                         <outlet property="delegate" destination="-2" id="H3r-zf-12r"/>
                                     </connections>
                                 </textField>
-                                <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="997" translatesAutoresizingMaskIntoConstraints="NO" id="o0o-FZ-eaE">
+                                <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="997" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o0o-FZ-eaE">
                                     <rect key="frame" x="524" y="3" width="54" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" id="fjZ-CI-OpL">
                                         <font key="font" metaFont="system"/>
@@ -84,7 +85,7 @@
                                 <real value="3.4028234663852886e+38"/>
                             </customSpacing>
                         </stackView>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="996" translatesAutoresizingMaskIntoConstraints="NO" id="SCA-GX-fLM">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="996" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SCA-GX-fLM">
                             <rect key="frame" x="18" y="462" width="580" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Alias is autofilled by the current website name, feel free to change it." id="B4q-EC-wZ4">
                                 <font key="font" metaFont="system"/>
@@ -92,7 +93,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <button horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e1p-FA-8fG">
+                        <button horizontalHuggingPriority="1" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1p-FA-8fG">
                             <rect key="frame" x="14" y="425" width="588" height="32"/>
                             <buttonCell key="cell" type="push" title="Create" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1LV-RI-tc9">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -102,7 +103,7 @@
                                 <action selector="createNewAlias:" target="-2" id="yMB-vq-oK4"/>
                             </connections>
                         </button>
-                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tU7-T5-Bly">
+                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tU7-T5-Bly">
                             <rect key="frame" x="18" y="327" width="600" height="96"/>
                             <textFieldCell key="cell" selectable="YES" alignment="center" id="teE-Gm-K0p">
                                 <font key="font" metaFont="system"/>
@@ -111,7 +112,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CdE-6Z-hF3">
+                        <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CdE-6Z-hF3">
                             <rect key="frame" x="262" y="290" width="93" height="32"/>
                             <buttonCell key="cell" type="push" title="Upgrade" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7ij-bt-U3T">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -121,10 +122,10 @@
                                 <action selector="upgrade:" target="-2" id="MeD-7T-5aa"/>
                             </connections>
                         </button>
-                        <box horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="995" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="pLR-6e-CQU">
+                        <box horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="995" ambiguous="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="pLR-6e-CQU">
                             <rect key="frame" x="0.0" y="285" width="596" height="5"/>
                         </box>
-                        <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XR8-zF-sOR">
+                        <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XR8-zF-sOR">
                             <rect key="frame" x="8" y="259" width="600" height="19"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Or use an existing alias" id="ql4-rf-Jz8">
                                 <font key="font" metaFont="systemSemibold" size="15"/>
@@ -132,7 +133,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <scrollView horizontalHuggingPriority="1" verticalCompressionResistancePriority="1000" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ym-8p-Hnp">
+                        <scrollView horizontalHuggingPriority="1" verticalCompressionResistancePriority="1000" ambiguous="YES" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ym-8p-Hnp">
                             <rect key="frame" x="20" y="115" width="576" height="135"/>
                             <clipView key="contentView" drawsBackground="NO" id="Mrv-sA-Adh">
                                 <rect key="frame" x="1" y="1" width="574" height="133"/>
@@ -147,7 +148,7 @@
                                         <tableColumns>
                                             <tableColumn width="571" minWidth="40" maxWidth="1000" id="LJL-6f-9oX">
                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                    <font key="font" metaFont="menu" size="11"/>
+                                                    <font key="font" metaFont="label" size="11"/>
                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                 </tableHeaderCell>
@@ -187,6 +188,9 @@
                                 </subviews>
                                 <nil key="backgroundColor"/>
                             </clipView>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="135" id="qNf-Sb-EkI"/>
+                            </constraints>
                             <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="FYd-zc-cm2">
                                 <rect key="frame" x="-100" y="-100" width="496" height="16"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -199,13 +203,13 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isScrollEnabled" value="NO"/>
                             </userDefinedRuntimeAttributes>
                         </scrollView>
-                        <box horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="995" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Snp-9Z-LfV">
+                        <box horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="995" ambiguous="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Snp-9Z-LfV">
                             <rect key="frame" x="0.0" y="103" width="596" height="5"/>
                         </box>
-                        <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="994" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Msg-py-y7t">
+                        <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="994" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Msg-py-y7t">
                             <rect key="frame" x="0.0" y="0.0" width="616" height="96"/>
                             <subviews>
-                                <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="pfN-sv-LSA">
+                                <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pfN-sv-LSA">
                                     <rect key="frame" x="-2" y="40" width="304" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="MANAGE ALIASES" id="amm-2X-JW7">
                                         <font key="font" metaFont="systemMedium" size="13"/>
@@ -213,10 +217,10 @@
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
-                                <box horizontalHuggingPriority="750" verticalHuggingPriority="1" verticalCompressionResistancePriority="1000" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="0fl-Oo-8cH">
+                                <box horizontalHuggingPriority="750" verticalHuggingPriority="1" verticalCompressionResistancePriority="1000" ambiguous="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="0fl-Oo-8cH">
                                     <rect key="frame" x="306" y="0.0" width="5" height="96"/>
                                 </box>
-                                <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="kPs-eV-a7j">
+                                <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kPs-eV-a7j">
                                     <rect key="frame" x="315" y="40" width="303" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="SIGN OUT" id="OFH-CN-hea">
                                         <font key="font" metaFont="systemMedium" size="13"/>

@@ -30,6 +30,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     @IBOutlet private weak var upgradeButton: NSButton!
     
     @IBOutlet private weak var scrollView: NSScrollView!
+    @IBOutlet private weak var scrollViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var tableView: NSTableView!
     @IBOutlet private weak var manageAliasesButton: NSTextField!
     @IBOutlet private weak var signOutButton: NSTextField!
@@ -86,6 +87,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         // Set up tableView
         tableView.backgroundColor = NSColor.clear
         tableView.register(NSNib(nibNamed: NSNib.Name("AliasTableCellView"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "AliasTableCellView"))
+        tableView.register(NSNib(nibNamed: NSNib.Name("EmptyTableCellView"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "EmptyTableCellView"))
         
         // Set up bottom options
         let manageAliasesClickGesture = NSClickGestureRecognizer(target: self, action: #selector(manageAliases))
@@ -152,7 +154,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         hostnameTextField.stringValue = user.suggestion
         suffixLabel.stringValue = user.suffixes[0]
         tableView.reloadData()
-        scrollView.heightAnchor.constraint(equalToConstant: min(tableView.intrinsicContentSize.height, 400)).isActive = true
+        scrollViewHeightConstraint.constant = min(tableView.intrinsicContentSize.height, 400)
         
         if user.canCreateCustom {
             newAliasComponents.forEach({$0.isHidden = false})
@@ -161,8 +163,10 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
             newAliasComponents.forEach({$0.isHidden = true})
             upgradeComponents.forEach({$0.isHidden = false})
         }
+
+        print(rootStackView.fittingSize)
         
-        preferredContentSize = rootStackView.intrinsicContentSize
+        view.layoutSubtreeIfNeeded()
     }
     
     private func setLoading(_ isLoading: Bool) {
@@ -233,15 +237,24 @@ extension ExtensionHomeViewController {
 // MARK: - NSTableViewDataSource
 extension ExtensionHomeViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return user?.existingAliases.count ?? 0
+        guard let user = user else { return 0 }
+        return max(1, user.existingAliases.count)
     }
 }
 
 // MARK: - NSTableViewDelegate
 extension ExtensionHomeViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        guard let user = user, user.existingAliases.count > 0 else {
+            if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("EmptyTableCellView"), owner: nil) as? EmptyTableCellView {
+                return cell
+            }
+            
+            return nil
+        }
+
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("AliasTableCellView"), owner: nil) as? AliasTableCellView {
-            cell.bind(alias: user!.existingAliases[row])
+            cell.bind(alias: user.existingAliases[row])
             cell.copyAlias = { alias in
                 guard let alias = alias else { return }
                 let pasteboard = NSPasteboard.general
