@@ -52,7 +52,7 @@ final class SLApiService {
     }
     
     static func createNewAlias(apiKey: String, prefix: String, suffix: String, completion: @escaping (_ error: SLError?) -> Void) {
-        let headers: HTTPHeaders = ["Authentication": apiKey, "prefix": prefix, "suffix": suffix]
+        let headers: HTTPHeaders = ["Authentication": apiKey, "alias_prefix": prefix, "alias_suffix": suffix]
         
         AF.request("\(BASE_URL)/api/alias/custom/new", method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
 

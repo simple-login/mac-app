@@ -15,6 +15,7 @@
 		C03B0BE223BA6B360040DA37 /* ApiKeyMissingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C03B0BE123BA6B360040DA37 /* ApiKeyMissingViewController.xib */; };
 		C03B0BE523BA76550040DA37 /* ExtensionHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B0BE423BA76550040DA37 /* ExtensionHomeViewController.swift */; };
 		C03B0BE723BA76960040DA37 /* ExtensionHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C03B0BE623BA76960040DA37 /* ExtensionHomeViewController.xib */; };
+		C05587A523C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05587A423C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift */; };
 		C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* HomeViewController.swift */; };
 		C062760923BA646300BCE972 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06275B723BA46C400BCE972 /* Cocoa.framework */; };
 		C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */; };
@@ -84,6 +85,7 @@
 		C03B0BE123BA6B360040DA37 /* ApiKeyMissingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApiKeyMissingViewController.xib; sourceTree = "<group>"; };
 		C03B0BE423BA76550040DA37 /* ExtensionHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHomeViewController.swift; sourceTree = "<group>"; };
 		C03B0BE623BA76960040DA37 /* ExtensionHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExtensionHomeViewController.xib; sourceTree = "<group>"; };
+		C05587A423C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariExtensionVCExtensions.swift; sourceTree = "<group>"; };
 		C06275B023BA445600BCE972 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C06275B723BA46C400BCE972 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C062760823BA646300BCE972 /* Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,9 +182,18 @@
 			path = ExtensionHomeViewController;
 			sourceTree = "<group>";
 		};
+		C055879D23C22A3800CA7418 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C05587A423C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		C062760A23BA646300BCE972 /* Safari Extension */ = {
 			isa = PBXGroup;
 			children = (
+				C055879D23C22A3800CA7418 /* Utilities */,
 				C0E6000B23BFDD710011982B /* Views */,
 				C03B0BDD23BA6A6E0040DA37 /* Controllers */,
 				C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */,
@@ -479,6 +490,7 @@
 				C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */,
 				C0E6000623BFBFC60011982B /* User.swift in Sources */,
 				C0BE6CB223BF3FFA0082C2C2 /* Statics.swift in Sources */,
+				C05587A523C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift in Sources */,
 				C03B0BE523BA76550040DA37 /* ExtensionHomeViewController.swift in Sources */,
 				C064846C23C1042F00AD97CA /* NSViewExtensions.swift in Sources */,
 				C013560523BE567600287A82 /* SLUserDefaultsService.swift in Sources */,

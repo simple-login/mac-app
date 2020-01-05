@@ -111,10 +111,20 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                 if let error = error {
                     switch error {
                     case .invalidApiKey:
-                        // TODO: Open host app for user to enter a valid api key
+                        // Invalid API key, prompt user to open host app
+                        let alert = NSAlert(messageText: "Invalid API key", informativeText: "Please open the app and enter a valid API key", buttonText: "Open app", alertStyle: .informational)
+                        let modalResult = alert.runModal()
+                        
+                        switch modalResult {
+                        case .alertFirstButtonReturn: self.openHostApp()
+                        default: return
+                        }
+                        
                         return
                     default:
-                        // TODO: Display error
+                        // Unknown error, display error alert
+                        let alert = NSAlert(messageText: "Error occured", informativeText: error.description, buttonText: "Close", alertStyle: .critical)
+                        alert.runModal()
                         return
                     }
                 } else if let user = user {

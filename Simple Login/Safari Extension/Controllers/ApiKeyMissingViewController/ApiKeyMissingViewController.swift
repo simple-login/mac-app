@@ -16,15 +16,7 @@ final class ApiKeyMissingViewController: SFSafariExtensionViewController {
     }()
     
     @IBAction private func openHostApp(_ sender: Any) {
-        guard let bundleIdentifier = Bundle.main.bundleIdentifier else { return }
-        
-        // bundleIdentifier is "io.simplelogin.Simple-Login.Safari-Extension""
-        // remove the last subdomain to retrieve the host app's bundle identifier
-        guard let lastIndexOfDot = bundleIdentifier.lastIndex(of: ".") else { return }
-        
-        let hostAppBundleIdentifier = String(bundleIdentifier[..<lastIndexOfDot])
-        
-        NSWorkspace.shared.launchApplication(withBundleIdentifier: hostAppBundleIdentifier, options: NSWorkspace.LaunchOptions.default, additionalEventParamDescriptor: nil, launchIdentifier: nil)
+        openHostApp()
     }
 }
 
