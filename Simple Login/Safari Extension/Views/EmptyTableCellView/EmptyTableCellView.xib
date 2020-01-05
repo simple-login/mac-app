@@ -14,7 +14,7 @@
             <subviews>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="SZz-67-v4U">
                     <rect key="frame" x="0.0" y="0.0" width="472" height="20"/>
-                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="You haven't create any alias yet" drawsBackground="YES" id="4YI-zU-cUC">
+                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="You haven't created any alias yet" drawsBackground="YES" id="4YI-zU-cUC">
                         <font key="font" size="13" name="HelveticaNeue-Italic"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

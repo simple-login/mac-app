@@ -57,7 +57,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                 hostnameTextField.textColor = NSColor(named: NSColor.Name("BodyTextColor"))
                 
                 if hostnameTextField.stringValue == "" {
-                    hostnameTextField.stringValue = user?.suggestion ?? "something"
+                    hostnameTextField.stringValue = user?.prefixSuggestion ?? "something"
                 }
             } else {
                 
@@ -151,12 +151,12 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     
     private func refreshUIs() {
         guard let user = user else { return }
-        hostnameTextField.stringValue = user.suggestion
+        hostnameTextField.stringValue = user.prefixSuggestion
         suffixLabel.stringValue = user.suffixes[0]
         tableView.reloadData()
         scrollViewHeightConstraint.constant = min(tableView.intrinsicContentSize.height, 400)
         
-        if user.canCreateCustom {
+        if user.canCreate {
             newAliasComponents.forEach({$0.isHidden = false})
             upgradeComponents.forEach({$0.isHidden = true})
         } else {
@@ -238,14 +238,14 @@ extension ExtensionHomeViewController {
 extension ExtensionHomeViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         guard let user = user else { return 0 }
-        return max(1, user.existingAliases.count)
+        return max(1, user.existing.count)
     }
 }
 
 // MARK: - NSTableViewDelegate
 extension ExtensionHomeViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let user = user, user.existingAliases.count > 0 else {
+        guard let user = user, user.existing.count > 0 else {
             if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("EmptyTableCellView"), owner: nil) as? EmptyTableCellView {
                 return cell
             }
@@ -254,7 +254,7 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
         }
 
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("AliasTableCellView"), owner: nil) as? AliasTableCellView {
-            cell.bind(alias: user.existingAliases[row])
+            cell.bind(alias: user.existing[row])
             cell.copyAlias = { alias in
                 guard let alias = alias else { return }
                 let pasteboard = NSPasteboard.general

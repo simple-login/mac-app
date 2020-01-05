@@ -13,7 +13,7 @@ final class SLApiService {
     static func checkApiKey(_ apiKey: String, completion: @escaping (_ isValid: Bool) -> Void) {
         let headers: HTTPHeaders = ["Authentication": apiKey]
 
-        AF.request("\(BASE_URL)/api/alias/options", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
+        AF.request("\(BASE_URL)/api/v2/alias/options", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
 
             switch response.response?.statusCode {
             case 200: completion(true)
@@ -25,7 +25,7 @@ final class SLApiService {
     static func fetchUserData(apiKey: String, hostname: String, completion: @escaping (_ user: User?, _ error: SLError?) -> Void) {
         let headers: HTTPHeaders = ["Authentication": apiKey]
 
-        AF.request("\(BASE_URL)/api/alias/options?hostname=\(hostname)", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
+        AF.request("\(BASE_URL)/api/v2/alias/options?hostname=\(hostname)", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
 
             guard let data = response.data else {
                 completion(nil, SLError.noData)

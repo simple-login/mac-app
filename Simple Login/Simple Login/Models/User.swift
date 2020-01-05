@@ -9,30 +9,29 @@
 import Foundation
 
 struct User {
-    let canCreateCustom: Bool
+    let canCreate: Bool
+    let existing: [String]
+    let prefixSuggestion: String
     let suffixes: [String]
-    let suggestion: String
-    let existingAliases: [String]
     
     init(fromData data: Data) throws {
         guard let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
             throw SLError.failToSerializeJSONData
         }
         
-        let canCreateCustom = jsonDictionary["can_create_custom"] as? Bool
-        let existingAliases = jsonDictionary["existing"] as? [String]
-        let customDictionary = jsonDictionary["custom"] as? [String : Any]
-        let suffixes = customDictionary?["suffixes"] as? [String]
-        let suggestion = customDictionary?["suggestion"] as? String
+        let canCreate = jsonDictionary["can_create"] as? Bool
+        let existing = jsonDictionary["existing"] as? [String]
+        let prefixSuggestion = jsonDictionary["prefix_suggestion"] as? String
+        let suffixes = jsonDictionary["suffixes"] as? [String]
         
-        if let canCreateCustom = canCreateCustom,
-            let existingAliases = existingAliases,
-            let suffixes = suffixes,
-            let suggestion = suggestion {
-            self.canCreateCustom = canCreateCustom
+        if let canCreate = canCreate,
+            let existing = existing,
+            let prefixSuggestion = prefixSuggestion,
+            let suffixes = suffixes {
+            self.canCreate = canCreate
+            self.existing = existing
+            self.prefixSuggestion = prefixSuggestion
             self.suffixes = suffixes
-            self.suggestion = suggestion
-            self.existingAliases = existingAliases
         } else {
             throw SLError.failToParseUser
         }
