@@ -26,7 +26,7 @@
 		C064846C23C1042F00AD97CA /* NSViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C064846A23C1035C00AD97CA /* NSViewExtensions.swift */; };
 		C064846E23C1062100AD97CA /* NSAlertExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C064846D23C1062100AD97CA /* NSAlertExtensions.swift */; };
 		C064846F23C1064100AD97CA /* NSAlertExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C064846D23C1062100AD97CA /* NSAlertExtensions.swift */; };
-		C092EDB223C3CC1800F2D434 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C092EDB123C3CC1700F2D434 /* ToolbarItemIcon.pdf */; };
+		C092EDB423C3CF9300F2D434 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C092EDB323C3CF9300F2D434 /* ToolbarItemIcon.pdf */; };
 		C0BA379423C0C2F000F23554 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BA379323C0C2F000F23554 /* StringExtensions.swift */; };
 		C0BA379623C0C36600F23554 /* RegexHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BA379523C0C36600F23554 /* RegexHelpers.swift */; };
 		C0BA379723C0C38100F23554 /* RegexHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BA379523C0C36600F23554 /* RegexHelpers.swift */; };
@@ -104,7 +104,7 @@
 		C062761723BA646300BCE972 /* Safari_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Safari_Extension.entitlements; sourceTree = "<group>"; };
 		C064846A23C1035C00AD97CA /* NSViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewExtensions.swift; sourceTree = "<group>"; };
 		C064846D23C1062100AD97CA /* NSAlertExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAlertExtensions.swift; sourceTree = "<group>"; };
-		C092EDB123C3CC1700F2D434 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
+		C092EDB323C3CF9300F2D434 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		C0BA379323C0C2F000F23554 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C0BA379523C0C36600F23554 /* RegexHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexHelpers.swift; sourceTree = "<group>"; };
 		C0BE6CB023BF3F470082C2C2 /* Statics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
@@ -219,8 +219,8 @@
 				C0E6000B23BFDD710011982B /* Views */,
 				C03B0BDD23BA6A6E0040DA37 /* Controllers */,
 				C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */,
+				C092EDB323C3CF9300F2D434 /* ToolbarItemIcon.pdf */,
 				C062761223BA646300BCE972 /* Info.plist */,
-				C092EDB123C3CC1700F2D434 /* ToolbarItemIcon.pdf */,
 				C062761723BA646300BCE972 /* Safari_Extension.entitlements */,
 				C0BE6CEC23BF68D40082C2C2 /* script.js */,
 			);
@@ -423,7 +423,7 @@
 				C03B0BE723BA76960040DA37 /* ExtensionHomeViewController.xib in Resources */,
 				C0FC076123C340E3002FB98B /* HUD.storyboard in Resources */,
 				C0FC076923C3B552002FB98B /* Assets.xcassets in Resources */,
-				C092EDB223C3CC1800F2D434 /* ToolbarItemIcon.pdf in Resources */,
+				C092EDB423C3CF9300F2D434 /* ToolbarItemIcon.pdf in Resources */,
 				C05587AC23C233FE00CA7418 /* EmptyTableCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
