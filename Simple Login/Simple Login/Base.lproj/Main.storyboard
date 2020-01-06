@@ -818,11 +818,14 @@
                                     </stackView>
                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eV1-Vk-jTi">
                                         <rect key="frame" x="0.0" y="29" width="548" height="21"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="API Key" drawsBackground="YES" id="eIp-Kn-u7o">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="API Key" drawsBackground="YES" id="eIp-Kn-u7o">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <connections>
+                                            <action selector="setApiKey:" target="XfG-lQ-9wD" id="M8x-mD-Asu"/>
+                                        </connections>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ni1-ro-wgG">
                                         <rect key="frame" x="-6" y="-7" width="560" height="32"/>
