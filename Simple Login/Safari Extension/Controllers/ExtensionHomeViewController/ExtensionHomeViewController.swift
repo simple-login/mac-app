@@ -64,7 +64,9 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                 customPrefixStatusLabel.textColor = .systemRed
                 hostnameTextField.textColor = .systemRed
                 
-                if hostnameTextField.stringValue.count > ALIAS_PREFIX_MAX_LENGTH {
+                if hostnameTextField.stringValue.count == 0 {
+                    customPrefixStatusLabel.stringValue = "This field can not be empty"
+                } else if hostnameTextField.stringValue.count > ALIAS_PREFIX_MAX_LENGTH {
                     customPrefixStatusLabel.stringValue = "Your alias is too long 😵"
                 } else {
                     customPrefixStatusLabel.stringValue = "Only letter, number, dash (-), underscore (_) are allowed"
@@ -104,7 +106,10 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     
     private func refresh() {
         getURL { [unowned self] (url) in
-            guard let hostname = url?.host, let apiKey = self.apiKey else { return }
+            guard let apiKey = self.apiKey else { return }
+            
+            let hostname = url?.host ?? ""
+            
             self.setLoading(true)
             SLApiService.fetchUserData(apiKey: apiKey, hostname: hostname) { [weak self] (user, error) in
                 guard let self = self else { return }
@@ -155,6 +160,8 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         suffixLabel.stringValue = user.suffixes[0]
         tableView.reloadData()
         scrollViewHeightConstraint.constant = min(tableView.intrinsicContentSize.height, 400)
+
+        isValidEmailPrefix = user.prefixSuggestion != ""
         
         if user.canCreate {
             newAliasComponents.forEach({$0.isHidden = false})

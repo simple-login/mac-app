@@ -14,7 +14,7 @@ extension String {
             return false
         }
         
-        if count > ALIAS_PREFIX_MAX_LENGTH { return false }
+        if count > ALIAS_PREFIX_MAX_LENGTH || count == 0 { return false }
         
         return true
     }
