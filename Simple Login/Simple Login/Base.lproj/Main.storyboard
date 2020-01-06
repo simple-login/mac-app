@@ -893,22 +893,121 @@
             <objects>
                 <viewController storyboardIdentifier="AliasManagementViewController" id="Jow-fs-7UC" customClass="HomeViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="jq1-Ri-Mhz">
-                        <rect key="frame" x="0.0" y="0.0" width="527" height="344"/>
+                        <rect key="frame" x="0.0" y="0.0" width="750" height="607"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KjL-h6-l3V">
-                                <rect key="frame" x="20" y="144" width="487" height="57"/>
+                                <rect key="frame" x="20" y="20" width="710" height="567"/>
                                 <subviews>
-                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="9Ll-ea-0Me">
-                                        <rect key="frame" x="64" y="41" width="360" height="16"/>
-                                        <textFieldCell key="cell" selectable="YES" alignment="center" title="View and manage aliases using the app's Safari extension." id="LlG-TS-gRR">
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="gpP-Tu-31V">
+                                        <rect key="frame" x="266" y="551" width="179" height="16"/>
+                                        <textFieldCell key="cell" selectable="YES" title="Enable Simple Login in Safari" id="WwN-fd-Pcn">
                                             <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nRV-at-iE7">
+                                        <rect key="frame" x="20" y="381" width="670" height="150"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="KdE-GX-fCq">
+                                                <rect key="frame" x="-2" y="67" width="416" height="16"/>
+                                                <textFieldCell key="cell" selectable="YES" title="Step 1" id="NfY-nb-LFX">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wQD-ch-HVp">
+                                                <rect key="frame" x="417" y="-3" width="256" height="156"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="TAi-K7-Pa6"/>
+                                                    <constraint firstAttribute="height" constant="150" id="w1D-Vz-d84"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" image="SafariPreferences" id="ABt-n3-a4h"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="wQD-ch-HVp" secondAttribute="bottom" id="DAD-LA-T0D"/>
+                                            <constraint firstItem="wQD-ch-HVp" firstAttribute="top" secondItem="nRV-at-iE7" secondAttribute="top" id="K64-1r-frS"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kab-sg-58z">
+                                        <rect key="frame" x="20" y="211" width="670" height="150"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="URi-Zy-yQm">
+                                                <rect key="frame" x="-2" y="67" width="416" height="16"/>
+                                                <textFieldCell key="cell" selectable="YES" title="Step 2" id="6eS-2p-LE3">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gG6-Wk-8IZ">
+                                                <rect key="frame" x="417" y="-3" width="256" height="156"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="W47-rl-mT5"/>
+                                                    <constraint firstAttribute="height" constant="150" id="wbZ-xq-g7c"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" image="SafariExtensions" id="4eg-c2-Hrc"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="gG6-Wk-8IZ" secondAttribute="bottom" id="D8f-0P-q5B"/>
+                                            <constraint firstItem="gG6-Wk-8IZ" firstAttribute="top" secondItem="Kab-sg-58z" secondAttribute="top" id="KF2-hk-tdY"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ksJ-Iz-Pac">
+                                        <rect key="frame" x="20" y="41" width="670" height="150"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="58u-cS-VDY">
+                                                <rect key="frame" x="-2" y="67" width="416" height="16"/>
+                                                <textFieldCell key="cell" selectable="YES" title="Step 3" id="yYg-VV-kMR">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o0k-6h-1Db">
+                                                <rect key="frame" x="417" y="-3" width="256" height="156"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="031-f0-ZOT"/>
+                                                    <constraint firstAttribute="height" constant="150" id="qmF-bN-R0B"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="ExtensionIcon" id="Y82-he-s63"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="o0k-6h-1Db" firstAttribute="top" secondItem="ksJ-Iz-Pac" secondAttribute="top" id="4mj-a8-FE9"/>
+                                            <constraint firstAttribute="bottom" secondItem="o0k-6h-1Db" secondAttribute="bottom" id="LYF-uf-x4K"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p5M-YB-ov3">
-                                        <rect key="frame" x="188" y="-7" width="112" height="32"/>
+                                        <rect key="frame" x="299" y="-7" width="112" height="32"/>
                                         <buttonCell key="cell" type="push" title="Open Safari" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cbe-Dq-B7l">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -918,27 +1017,54 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Kab-sg-58z" secondAttribute="trailing" constant="20" symbolic="YES" id="4Mo-34-8BC"/>
+                                    <constraint firstAttribute="trailing" secondItem="ksJ-Iz-Pac" secondAttribute="trailing" constant="20" symbolic="YES" id="7BN-SO-q7h"/>
+                                    <constraint firstItem="ksJ-Iz-Pac" firstAttribute="leading" secondItem="KjL-h6-l3V" secondAttribute="leading" constant="20" symbolic="YES" id="Rwn-Xh-JNr"/>
+                                    <constraint firstItem="nRV-at-iE7" firstAttribute="leading" secondItem="KjL-h6-l3V" secondAttribute="leading" constant="20" symbolic="YES" id="cJN-Ng-btI"/>
+                                    <constraint firstAttribute="trailing" secondItem="nRV-at-iE7" secondAttribute="trailing" constant="20" symbolic="YES" id="gJQ-Rb-sRp"/>
+                                    <constraint firstItem="Kab-sg-58z" firstAttribute="leading" secondItem="KjL-h6-l3V" secondAttribute="leading" constant="20" symbolic="YES" id="t6p-n3-XFf"/>
+                                </constraints>
                                 <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="KjL-h6-l3V" firstAttribute="centerX" secondItem="jq1-Ri-Mhz" secondAttribute="centerX" id="RFA-T1-SNg"/>
+                            <constraint firstAttribute="trailing" secondItem="KjL-h6-l3V" secondAttribute="trailing" constant="20" symbolic="YES" id="4aM-fw-dJe"/>
+                            <constraint firstItem="KjL-h6-l3V" firstAttribute="leading" secondItem="jq1-Ri-Mhz" secondAttribute="leading" constant="20" symbolic="YES" id="Sx2-DI-pcA"/>
                             <constraint firstItem="KjL-h6-l3V" firstAttribute="leading" secondItem="jq1-Ri-Mhz" secondAttribute="leading" constant="20" id="cKH-Ba-YuC"/>
+                            <constraint firstAttribute="bottom" secondItem="KjL-h6-l3V" secondAttribute="bottom" constant="20" symbolic="YES" id="gNh-aC-nE2"/>
                             <constraint firstAttribute="trailing" secondItem="KjL-h6-l3V" secondAttribute="trailing" constant="20" id="nHm-9s-r3R"/>
-                            <constraint firstItem="KjL-h6-l3V" firstAttribute="centerY" secondItem="jq1-Ri-Mhz" secondAttribute="centerY" id="wC4-Sx-JBt"/>
+                            <constraint firstItem="KjL-h6-l3V" firstAttribute="top" secondItem="jq1-Ri-Mhz" secondAttribute="top" constant="20" symbolic="YES" id="oDe-gK-UKU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="enableExtensionLabel" destination="gpP-Tu-31V" id="ig7-6O-BQl"/>
+                        <outlet property="step1Label" destination="KdE-GX-fCq" id="kaR-Rx-Ohh"/>
+                        <outlet property="step2Label" destination="URi-Zy-yQm" id="fXy-7d-Hgn"/>
+                        <outlet property="step3Label" destination="58u-cS-VDY" id="I26-8r-qqx"/>
+                    </connections>
                 </viewController>
                 <customObject id="zgH-wT-aVj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="51.5" y="1262"/>
+            <point key="canvasLocation" x="-292.5" y="1564.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ExtensionIcon" width="640" height="39"/>
+        <image name="SafariExtensions" width="1091" height="302"/>
+        <image name="SafariPreferences" width="307" height="288"/>
+    </resources>
 </document>
