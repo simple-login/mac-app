@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="yN7-U1-iwd">
+            <objects>
+                <windowController storyboardIdentifier="HUDWindowControllerID" id="qm9-LD-sp6" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titleVisibility="hidden" id="ndo-dW-SBC" customClass="NSPanel">
+                        <windowStyleMask key="styleMask" miniaturizable="YES" resizable="YES" utility="YES" HUD="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="200" height="150"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <value key="minSize" type="size" width="200" height="150"/>
+                        <value key="maxSize" type="size" width="200" height="150"/>
+                        <connections>
+                            <outlet property="delegate" destination="qm9-LD-sp6" id="rhA-OQ-hZg"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="svI-75-Mwo" kind="relationship" relationship="window.shadowedContentViewController" id="Ch7-3v-Aba"/>
+                    </connections>
+                </windowController>
+                <customObject id="fCf-IH-Ey1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60" y="107"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8WP-Kn-Wog">
+            <objects>
+                <viewController id="svI-75-Mwo" customClass="HUDViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" misplaced="YES" id="bvp-jO-9bh">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="32"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="2af-wl-0KY">
+                                <rect key="frame" x="6" y="8" width="188" height="16"/>
+                                <textFieldCell key="cell" alignment="center" title="Multiline Label" id="wyC-U9-9pF">
+                                    <font key="font" metaFont="systemMedium" size="13"/>
+                                    <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2af-wl-0KY" secondAttribute="trailing" constant="8" id="Mf3-m5-Rll"/>
+                            <constraint firstItem="2af-wl-0KY" firstAttribute="top" secondItem="bvp-jO-9bh" secondAttribute="top" constant="8" id="OKu-vD-3yj"/>
+                            <constraint firstAttribute="bottom" secondItem="2af-wl-0KY" secondAttribute="bottom" constant="8" id="Q1X-mT-MyG"/>
+                            <constraint firstItem="2af-wl-0KY" firstAttribute="leading" secondItem="bvp-jO-9bh" secondAttribute="leading" constant="8" id="fa2-sQ-tT7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="messageLabel" destination="2af-wl-0KY" id="vPi-BW-6kz"/>
+                    </connections>
+                </viewController>
+                <customObject id="JDQ-tO-N2w" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="383" y="113"/>
+        </scene>
+    </scenes>
+</document>

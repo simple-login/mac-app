@@ -163,8 +163,6 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
             newAliasComponents.forEach({$0.isHidden = true})
             upgradeComponents.forEach({$0.isHidden = false})
         }
-
-        print(rootStackView.fittingSize)
         
         view.layoutSubtreeIfNeeded()
     }
@@ -255,11 +253,13 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
 
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("AliasTableCellView"), owner: nil) as? AliasTableCellView {
             cell.bind(alias: user.existing[row])
-            cell.copyAlias = { alias in
+            cell.copyAlias = { [unowned self] alias in
                 guard let alias = alias else { return }
                 let pasteboard = NSPasteboard.general
                 pasteboard.clearContents()
                 pasteboard.setString(alias, forType: .string)
+                
+                self.showHUD(attributedMessageString: self.generateCopyAlertAttributedString(withAlias: alias))
             }
             
             return cell
@@ -271,6 +271,26 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
     func selectionShouldChange(in tableView: NSTableView) -> Bool {
         // Disable selection mode
         return false
+    }
+    
+    private func generateCopyAlertAttributedString(withAlias alias: String) -> NSAttributedString {
+        let plainString = "Copied\n\(alias)"
+        let attributedString = NSMutableAttributedString(string: plainString)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = NSTextAlignment.center
+        
+        attributedString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, plainString.count))
+    
+        if let copiedRange = plainString.range(of: "Copied") {
+            attributedString.addAttribute(.font, value: NSFont.systemFont(ofSize: 17, weight: .semibold), range: NSRange(copiedRange, in: plainString))
+        }
+
+        if let aliasRange = plainString.range(of: alias) {
+            attributedString.addAttribute(.font, value: NSFont.systemFont(ofSize: 13, weight: .regular), range: NSRange(aliasRange, in: plainString))
+        }
+        
+        return attributedString
     }
 }
 

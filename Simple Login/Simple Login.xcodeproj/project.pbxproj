@@ -45,6 +45,10 @@
 		C0E6001623BFEB3B0011982B /* DisableableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E6001423BFEADF0011982B /* DisableableScrollView.swift */; };
 		C0E86DE623B90DED00232B9A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE523B90DED00232B9A /* User.swift */; };
 		C0E86DE823B918A300232B9A /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
+		C0FC075E23C33F74002FB98B /* NSViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FC075D23C33F74002FB98B /* NSViewControllerExtensions.swift */; };
+		C0FC076023C33F96002FB98B /* HUD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FC075F23C33F96002FB98B /* HUD.storyboard */; };
+		C0FC076123C340E3002FB98B /* HUD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FC075F23C33F96002FB98B /* HUD.storyboard */; };
+		C0FC076223C346A5002FB98B /* NSViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FC075D23C33F74002FB98B /* NSViewControllerExtensions.swift */; };
 		C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */; };
 		C0FF316523B8C9CA00E84C4A /* EnterApiKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF316423B8C9CA00E84C4A /* EnterApiKeyViewController.swift */; };
 		C0FF316723B8C9D000E84C4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FF316623B8C9D000E84C4A /* Assets.xcassets */; };
@@ -109,6 +113,8 @@
 		C0E6001423BFEADF0011982B /* DisableableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableableScrollView.swift; sourceTree = "<group>"; };
 		C0E86DE523B90DED00232B9A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C0E86DE723B918A200232B9A /* SLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLError.swift; sourceTree = "<group>"; };
+		C0FC075D23C33F74002FB98B /* NSViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtensions.swift; sourceTree = "<group>"; };
+		C0FC075F23C33F96002FB98B /* HUD.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HUD.storyboard; sourceTree = "<group>"; };
 		C0FF315F23B8C9CA00E84C4A /* Simple Login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Login.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0FF316423B8C9CA00E84C4A /* EnterApiKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterApiKeyViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +232,7 @@
 				C0BA379523C0C36600F23554 /* RegexHelpers.swift */,
 				C064846A23C1035C00AD97CA /* NSViewExtensions.swift */,
 				C064846D23C1062100AD97CA /* NSAlertExtensions.swift */,
+				C0FC075D23C33F74002FB98B /* NSViewControllerExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -296,6 +303,7 @@
 				C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */,
 				C0FF316623B8C9D000E84C4A /* Assets.xcassets */,
 				C0FF316823B8C9D000E84C4A /* Main.storyboard */,
+				C0FC075F23C33F96002FB98B /* HUD.storyboard */,
 				C0FF316B23B8C9D000E84C4A /* Info.plist */,
 				C0FF316C23B8C9D000E84C4A /* Simple_Login.entitlements */,
 			);
@@ -411,6 +419,7 @@
 				C03B0BE723BA76960040DA37 /* ExtensionHomeViewController.xib in Resources */,
 				C064847023C1104800AD97CA /* Assets.xcassets in Resources */,
 				C062761623BA646300BCE972 /* ToolbarItemIcon.pdf in Resources */,
+				C0FC076123C340E3002FB98B /* HUD.storyboard in Resources */,
 				C05587AC23C233FE00CA7418 /* EmptyTableCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +428,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0FC076023C33F96002FB98B /* HUD.storyboard in Resources */,
 				C0FF316723B8C9D000E84C4A /* Assets.xcassets in Resources */,
 				C0FF316A23B8C9D000E84C4A /* Main.storyboard in Resources */,
 			);
@@ -495,6 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0FC076223C346A5002FB98B /* NSViewControllerExtensions.swift in Sources */,
 				C0BA379823C0C44E00F23554 /* StringExtensions.swift in Sources */,
 				C064846F23C1064100AD97CA /* NSAlertExtensions.swift in Sources */,
 				C0E6001623BFEB3B0011982B /* DisableableScrollView.swift in Sources */,
@@ -524,6 +535,7 @@
 				C0BA379423C0C2F000F23554 /* StringExtensions.swift in Sources */,
 				C0BA379623C0C36600F23554 /* RegexHelpers.swift in Sources */,
 				C0FF316523B8C9CA00E84C4A /* EnterApiKeyViewController.swift in Sources */,
+				C0FC075E23C33F74002FB98B /* NSViewControllerExtensions.swift in Sources */,
 				C0E86DE823B918A300232B9A /* SLError.swift in Sources */,
 				C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */,
 				C0E86DE623B90DED00232B9A /* User.swift in Sources */,
