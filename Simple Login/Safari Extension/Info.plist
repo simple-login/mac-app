@@ -55,6 +55,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019 SimpleLogin. All rights reserved.</string>
 	<key>NSHumanReadableDescription</key>
-	<string>This is a Safari Extension. You should tell us what your extension does here.</string>
+	<string>Simple Login needs to know the name of the site you are visiting in order to propose you an accurate alias prefix.</string>
 </dict>
 </plist>
