@@ -60,6 +60,7 @@ final class EnterApiKeyViewController: NSViewController {
             } else if let userInfo = userInfo {
                 SLUserDefaultsService.setApiKey(enteredApiKey)
                 self.openInstructionViewController(with: userInfo)
+                self.view.window?.performClose(nil)
             }
         })
     }

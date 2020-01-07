@@ -48,8 +48,18 @@ final class StartupViewController: NSViewController {
             if let error = error {
                 self.messageLabel.stringValue = "Error occured: \(error.description)"
                 self.retryButton.isHidden = false
+                
+                switch error {
+                case .invalidApiKey:
+                    self.openEnterApiKeyWindowController()
+                    self.view.window?.performClose(nil)
+                    
+                default: return
+                }
+                
             } else if let userInfo = userInfo {
                 self.openInstructionViewController(with: userInfo)
+                self.view.window?.performClose(nil)
             }
         })
     }

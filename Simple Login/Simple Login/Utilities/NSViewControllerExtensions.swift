@@ -39,7 +39,6 @@ extension NSViewController {
         
         if let enterApiKeyWindowController = storyboard.instantiateController(withIdentifier: storyboardID) as? NSWindowController {
             enterApiKeyWindowController.showWindow(nil)
-            view.window?.performClose(nil)
         }
     }
     
@@ -55,7 +54,6 @@ extension NSViewController {
             }
             
             instructionWindowController.showWindow(nil)
-            view.window?.performClose(nil)
         }
     }
     
