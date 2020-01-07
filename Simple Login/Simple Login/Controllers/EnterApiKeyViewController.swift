@@ -49,20 +49,19 @@ final class EnterApiKeyViewController: NSViewController {
         setLoading(true)
         
         let enteredApiKey = apiKeyTextField.stringValue
-        SLApiService.checkApiKey(enteredApiKey) { [weak self] (isValid) in
+        SLApiService.fetchUserInfo(enteredApiKey, completion: { [weak self] (userInfo, error) in
             guard let self = self else { return }
             
-            self.setLoading(false)
+            self.progressIndicator.isHidden = true
+            self.progressIndicator.stopAnimation(nil)
             
-            if (isValid) {
-                // API key is valid
+            if let error = error {
+                self.showErrorAlert(error)
+            } else if let userInfo = userInfo {
                 SLUserDefaultsService.setApiKey(enteredApiKey)
-                self.showInstructionViewController()
-            } else {
-                // API key is invalid
-                self.showAlertApiKeyIsInvalid()
+                self.openInstructionViewController(with: userInfo)
             }
-        }
+        })
     }
     
     private func setLoading(_ isLoading: Bool, completelyHideOtherUis: Bool = false) {
@@ -89,36 +88,6 @@ final class EnterApiKeyViewController: NSViewController {
         if let instructionViewController = storyboard!.instantiateController(withIdentifier: storyboardID) as? InstructionViewController {
             view.window?.contentViewController = instructionViewController
         }
-    }
-}
-
-// MARK: Process response from server
-extension EnterApiKeyViewController {
-    private func showAlertApiKeyIsInvalid() {
-        let alert = NSAlert()
-        alert.messageText = "API Key is invalid ❌"
-        alert.informativeText = "Make sure you entered a valid API Key"
-        alert.addButton(withTitle: "OK")
-        alert.alertStyle = .warning
-        alert.runModal()
-    }
-    
-    private func showAlertNoDataError() {
-        let alert = NSAlert()
-        alert.messageText = "No data error"
-        alert.informativeText = "API key is valid but the server returns no data. Please contact us for further information. We are sorry for the inconvenience."
-        alert.addButton(withTitle: "Close")
-        alert.alertStyle = .critical
-        alert.runModal()
-    }
-    
-    private func showAlertErrorParsingUser() {
-        let alert = NSAlert()
-        alert.messageText = "Error parsing user data"
-        alert.informativeText = "The application can not parse user data returned from server. Please contact us for further information. We are sorry for the inconvenience."
-        alert.addButton(withTitle: "Close")
-        alert.alertStyle = .critical
-        alert.runModal()
     }
 }
 

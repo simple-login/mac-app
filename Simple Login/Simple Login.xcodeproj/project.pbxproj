@@ -14,6 +14,8 @@
 		C000DFF223C49899005D61E4 /* EnterApiKey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C000DFF123C49899005D61E4 /* EnterApiKey.storyboard */; };
 		C000DFF423C498A3005D61E4 /* Instruction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C000DFF323C498A3005D61E4 /* Instruction.storyboard */; };
 		C000DFF623C49947005D61E4 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000DFF523C49947005D61E4 /* StartupViewController.swift */; };
+		C000DFF723C4CB81005D61E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FF316623B8C9D000E84C4A /* Assets.xcassets */; };
+		C000DFF823C4D25D005D61E4 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* InstructionViewController.swift */; };
 		C013560423BE55F100287A82 /* SLUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013560323BE55F100287A82 /* SLUserDefaultsService.swift */; };
 		C013560523BE567600287A82 /* SLUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013560323BE55F100287A82 /* SLUserDefaultsService.swift */; };
 		C03B0BE023BA6A9B0040DA37 /* ApiKeyMissingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B0BDF23BA6A9B0040DA37 /* ApiKeyMissingViewController.swift */; };
@@ -55,7 +57,6 @@
 		C0FC076223C346A5002FB98B /* NSViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FC075D23C33F74002FB98B /* NSViewControllerExtensions.swift */; };
 		C0FC076523C38BB8002FB98B /* NSMutableAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FC076423C38BB8002FB98B /* NSMutableAttributedStringExtensions.swift */; };
 		C0FC076623C38C22002FB98B /* NSMutableAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FC076423C38BB8002FB98B /* NSMutableAttributedStringExtensions.swift */; };
-		C0FC076923C3B552002FB98B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FF316623B8C9D000E84C4A /* Assets.xcassets */; };
 		C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */; };
 		C0FF316523B8C9CA00E84C4A /* EnterApiKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF316423B8C9CA00E84C4A /* EnterApiKeyViewController.swift */; };
 		C0FF316723B8C9D000E84C4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FF316623B8C9D000E84C4A /* Assets.xcassets */; };
@@ -443,8 +444,8 @@
 				C0BE6CED23BF68D40082C2C2 /* script.js in Resources */,
 				C03B0BE723BA76960040DA37 /* ExtensionHomeViewController.xib in Resources */,
 				C0FC076123C340E3002FB98B /* HUD.storyboard in Resources */,
-				C0FC076923C3B552002FB98B /* Assets.xcassets in Resources */,
 				C092EDB423C3CF9300F2D434 /* ToolbarItemIcon.pdf in Resources */,
+				C000DFF723C4CB81005D61E4 /* Assets.xcassets in Resources */,
 				C05587AC23C233FE00CA7418 /* EmptyTableCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +548,7 @@
 				C0E6000623BFBFC60011982B /* UserOptions.swift in Sources */,
 				C0BE6CB223BF3FFA0082C2C2 /* Statics.swift in Sources */,
 				C05587A523C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift in Sources */,
+				C000DFF823C4D25D005D61E4 /* InstructionViewController.swift in Sources */,
 				C03B0BE523BA76550040DA37 /* ExtensionHomeViewController.swift in Sources */,
 				C064846C23C1042F00AD97CA /* NSViewExtensions.swift in Sources */,
 				C013560523BE567600287A82 /* SLUserDefaultsService.swift in Sources */,

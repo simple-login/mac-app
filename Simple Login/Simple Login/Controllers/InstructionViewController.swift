@@ -9,15 +9,16 @@
 import Cocoa
 
 final class InstructionViewController: NSViewController {
+    @IBOutlet private weak var usernameLabel: NSTextField!
     @IBOutlet private weak var enableExtensionLabel: NSTextField!
     @IBOutlet private weak var step1Label: NSTextField!
     @IBOutlet private weak var step2Label: NSTextField!
     @IBOutlet private weak var step3Label: NSTextField!
     
     var userInfo: UserInfo?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+
+    override func viewWillAppear() {
+        super.viewWillAppear()
         setupUI()
     }
     
@@ -26,10 +27,21 @@ final class InstructionViewController: NSViewController {
     }
     
     private func setupUI() {
+        setupUsernameLabel()
         setupEnableExtensionLabel()
         setupStep1Label()
         setupStep2Label()
         setupStep3Label()
+    }
+    
+    private func setupUsernameLabel() {
+        guard var userInfo = userInfo else {
+            usernameLabel.stringValue = ""
+            return
+        }
+        
+        usernameLabel.allowsEditingTextAttributes = true
+        usernameLabel.attributedStringValue = userInfo.attributedString
     }
     
     private func setupEnableExtensionLabel() {
@@ -95,5 +107,33 @@ final class InstructionViewController: NSViewController {
         step3Label.isSelectable = false
         step3Label.allowsEditingTextAttributes = true
         step3Label.attributedStringValue = attributedString
+    }
+}
+
+// MARK: - IBActions
+extension InstructionViewController {
+    @IBAction private func manageAliases(_ sender: Any) {
+        guard let url = URL(string: "\(BASE_URL)/dashboard") else { return }
+        NSWorkspace.shared.open(url)
+    }
+    
+    @IBAction private func signOut(_ sender: Any) {
+        let alert = NSAlert()
+        alert.messageText = "Sign out"
+        alert.informativeText = "You will be signed out"
+        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Cancel")
+        
+        let modalResult = alert.runModal()
+        
+        switch modalResult {
+        case .alertFirstButtonReturn:
+            // Sign out
+            SLUserDefaultsService.removeApiKey()
+            openEnterApiKeyWindowController()
+            view.window?.performClose(nil)
+            
+        default: return
+        }
     }
 }

@@ -30,12 +30,95 @@
             <objects>
                 <viewController id="qua-cv-Csc" customClass="InstructionViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="kuu-Er-TjJ">
-                        <rect key="frame" x="0.0" y="0.0" width="750" height="607"/>
+                        <rect key="frame" x="0.0" y="0.0" width="750" height="680"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TeX-YP-oMd">
-                                <rect key="frame" x="20" y="20" width="710" height="567"/>
+                                <rect key="frame" x="20" y="20" width="710" height="640"/>
                                 <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B88-oS-CTo">
+                                        <rect key="frame" x="20" y="608" width="670" height="32"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="S8H-Xi-hD4">
+                                                <rect key="frame" x="-2" y="0.0" width="456" height="32"/>
+                                                <textFieldCell key="cell" selectable="YES" id="Dky-nZ-Iys">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <string key="title">UsernamePremium</string>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <button horizontalHuggingPriority="998" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xM6-hQ-3IQ">
+                                                <rect key="frame" x="452" y="8" width="98" height="16"/>
+                                                <buttonCell key="cell" type="bevel" title="Manage aliases" bezelStyle="regularSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="vc3-MC-AH9">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <color key="contentTintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                                <connections>
+                                                    <action selector="manageAliases:" target="qua-cv-Csc" id="nJM-oR-4xv"/>
+                                                </connections>
+                                            </button>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vC8-B6-Eal">
+                                                <rect key="frame" x="550" y="6" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="U3e-kC-NEP"/>
+                                                    <constraint firstAttribute="height" constant="20" id="cJR-ZI-guR"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Management" id="gWP-Ry-bAS"/>
+                                                <color key="contentTintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                            </imageView>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="eI2-3C-WcU">
+                                                <rect key="frame" x="570" y="0.0" width="25" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="25" id="TY9-x0-Te7"/>
+                                                </constraints>
+                                            </customView>
+                                            <button horizontalHuggingPriority="999" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Il9-Rz-oKO">
+                                                <rect key="frame" x="595" y="8" width="55" height="16"/>
+                                                <buttonCell key="cell" type="bevel" title="Sign out" bezelStyle="regularSquare" alignment="right" imageScaling="proportionallyDown" inset="2" id="j7J-L0-DNp">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <color key="contentTintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                                <connections>
+                                                    <action selector="signOut:" target="qua-cv-Csc" id="D0V-T2-uL5"/>
+                                                </connections>
+                                            </button>
+                                            <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="dw2-C2-P01">
+                                                <rect key="frame" x="650" y="6" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="YAb-EA-52w"/>
+                                                    <constraint firstAttribute="width" constant="20" id="bxk-Rd-Vaz"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="LogOut" id="PXF-NO-xqL"/>
+                                                <color key="contentTintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="S8H-Xi-hD4" secondAttribute="bottom" id="SsH-Bl-y8C"/>
+                                            <constraint firstItem="S8H-Xi-hD4" firstAttribute="top" secondItem="B88-oS-CTo" secondAttribute="top" id="U3p-ik-OoX"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="3ea-wg-M3s">
+                                        <rect key="frame" x="0.0" y="585" width="710" height="5"/>
+                                    </box>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Qem-i0-Cg5">
                                         <rect key="frame" x="266" y="551" width="179" height="16"/>
                                         <textFieldCell key="cell" selectable="YES" title="Enable Simple Login in Safari" id="i32-md-WJX">
@@ -156,11 +239,15 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="IAs-AA-J1W" secondAttribute="trailing" constant="20" symbolic="YES" id="2eg-Ro-rTL"/>
+                                    <constraint firstAttribute="trailing" secondItem="3ea-wg-M3s" secondAttribute="trailing" id="8Is-40-kyZ"/>
+                                    <constraint firstItem="B88-oS-CTo" firstAttribute="leading" secondItem="TeX-YP-oMd" secondAttribute="leading" constant="20" symbolic="YES" id="8sU-GU-9qH"/>
+                                    <constraint firstAttribute="trailing" secondItem="B88-oS-CTo" secondAttribute="trailing" constant="20" symbolic="YES" id="W8m-4t-Kzz"/>
                                     <constraint firstAttribute="trailing" secondItem="DbT-5T-mki" secondAttribute="trailing" constant="20" symbolic="YES" id="WJp-jL-xqC"/>
                                     <constraint firstItem="DLy-Xn-Gjq" firstAttribute="leading" secondItem="TeX-YP-oMd" secondAttribute="leading" constant="20" symbolic="YES" id="Ycz-T5-Pdo"/>
                                     <constraint firstItem="IAs-AA-J1W" firstAttribute="leading" secondItem="TeX-YP-oMd" secondAttribute="leading" constant="20" symbolic="YES" id="b8r-Sl-OV6"/>
                                     <constraint firstAttribute="trailing" secondItem="DLy-Xn-Gjq" secondAttribute="trailing" constant="20" symbolic="YES" id="t5h-Kh-tfb"/>
                                     <constraint firstItem="DbT-5T-mki" firstAttribute="leading" secondItem="TeX-YP-oMd" secondAttribute="leading" constant="20" symbolic="YES" id="vWK-ma-CSL"/>
+                                    <constraint firstItem="3ea-wg-M3s" firstAttribute="leading" secondItem="TeX-YP-oMd" secondAttribute="leading" id="zV4-E3-c6H"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -168,8 +255,12 @@
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -192,6 +283,7 @@
                         <outlet property="step1Label" destination="g5t-S0-Ypc" id="MIU-Ay-ar2"/>
                         <outlet property="step2Label" destination="8mJ-pa-VOp" id="Wxp-d4-q0f"/>
                         <outlet property="step3Label" destination="2kn-1k-kIz" id="Zrg-rD-Joz"/>
+                        <outlet property="usernameLabel" destination="S8H-Xi-hD4" id="Psb-ls-V2m"/>
                     </connections>
                 </viewController>
                 <customObject id="f8Z-Bs-GFb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -201,6 +293,8 @@
     </scenes>
     <resources>
         <image name="ExtensionIcon" width="1131" height="76"/>
+        <image name="LogOut" width="85" height="85"/>
+        <image name="Management" width="42.5" height="42.5"/>
         <image name="SafariExtensions" width="1123" height="417"/>
         <image name="SafariPreferences" width="588" height="572"/>
     </resources>

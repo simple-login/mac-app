@@ -53,31 +53,4 @@ final class StartupViewController: NSViewController {
             }
         })
     }
-    
-    private func openEnterApiKeyWindowController() {
-        let storyboardName = NSStoryboard.Name(stringLiteral: "EnterApiKey")
-        let storyboard = NSStoryboard(name: storyboardName, bundle: nil)
-        let storyboardID = NSStoryboard.SceneIdentifier(stringLiteral: "EnterApiKeyWindowControllerID")
-        
-        if let enterApiKeyWindowController = storyboard.instantiateController(withIdentifier: storyboardID) as? NSWindowController {
-            enterApiKeyWindowController.showWindow(nil)
-            view.window?.performClose(nil)
-        }
-    }
-    
-    private func openInstructionViewController(with userInfo: UserInfo) {
-        let storyboardName = NSStoryboard.Name(stringLiteral: "Instruction")
-        let storyboard = NSStoryboard(name: storyboardName, bundle: nil)
-        let storyboardID = NSStoryboard.SceneIdentifier(stringLiteral: "InstructionWindowControllerID")
-        
-        if let instructionWindowController = storyboard.instantiateController(withIdentifier: storyboardID) as? NSWindowController {
-            
-            if let instructionViewController = instructionWindowController.contentViewController as? InstructionViewController {
-                instructionViewController.userInfo = userInfo
-            }
-            
-            instructionWindowController.showWindow(nil)
-            view.window?.performClose(nil)
-        }
-    }
 }

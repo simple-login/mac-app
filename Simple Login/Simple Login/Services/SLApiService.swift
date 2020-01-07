@@ -10,18 +10,6 @@ import Foundation
 import Alamofire
 
 final class SLApiService {
-    static func checkApiKey(_ apiKey: String, completion: @escaping (_ isValid: Bool) -> Void) {
-        let headers: HTTPHeaders = ["Authentication": apiKey]
-
-        AF.request("\(BASE_URL)/api/v2/alias/options", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
-
-            switch response.response?.statusCode {
-            case 200: completion(true)
-            default: completion(false)
-            }
-        }
-    }
-    
     static func fetchUserInfo(_ apiKey: String, completion: @escaping (_ userInfo: UserInfo?, _ error: SLError?) -> Void) {
         let headers: HTTPHeaders = ["Authentication": apiKey]
         
