@@ -11,7 +11,8 @@ import Foundation
 enum SLError: Error, CustomStringConvertible {
     case noData
     case failToSerializeJSONData
-    case failToParseUser
+    case failToParseUserInfo
+    case failToParseUserOptions
     case invalidApiKey
     case duplicatedAlias
     case unknownError(description: String)
@@ -20,7 +21,8 @@ enum SLError: Error, CustomStringConvertible {
         switch self {
         case .noData: return "Server returns no data"
         case .failToSerializeJSONData: return "Failed to serialize JSON data"
-        case .failToParseUser: return "Failed to parse user's info"
+        case .failToParseUserInfo: return "Failed to parse user's info"
+        case .failToParseUserOptions: return "Failed to parse user's options"
         case .invalidApiKey: return "Invalid API key"
         case .duplicatedAlias: return "Alias is duplicated"
         case .unknownError(let description): return "Unknown error: \(description)"

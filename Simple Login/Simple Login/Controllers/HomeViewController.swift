@@ -14,6 +14,8 @@ final class HomeViewController: NSViewController {
     @IBOutlet private weak var step2Label: NSTextField!
     @IBOutlet private weak var step3Label: NSTextField!
     
+    var userInfo: UserInfo?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
