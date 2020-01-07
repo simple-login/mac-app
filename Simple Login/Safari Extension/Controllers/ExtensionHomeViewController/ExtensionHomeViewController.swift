@@ -46,7 +46,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     }()
     
     var apiKey: String?
-    private var user: User?
+    private var userOptions: UserOptions?
     private var isValidEmailPrefix: Bool = true {
         didSet {
             createButton.isEnabled = isValidEmailPrefix
@@ -57,7 +57,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                 hostnameTextField.textColor = NSColor(named: NSColor.Name("BodyTextColor"))
                 
                 if hostnameTextField.stringValue == "" {
-                    hostnameTextField.stringValue = user?.prefixSuggestion ?? "something"
+                    hostnameTextField.stringValue = userOptions?.prefixSuggestion ?? "something"
                 }
             } else {
                 
@@ -111,7 +111,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
             let hostname = url?.host ?? ""
             
             self.setLoading(true)
-            SLApiService.fetchUserData(apiKey: apiKey, hostname: hostname) { [weak self] (user, error) in
+            SLApiService.fetchUserOptions(apiKey: apiKey, hostname: hostname) { [weak self] (userOptions, error) in
                 guard let self = self else { return }
                 self.setLoading(false)
                 
@@ -134,8 +134,8 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                         alert.runModal()
                         return
                     }
-                } else if let user = user {
-                    self.user = user
+                } else if let userOptions = userOptions {
+                    self.userOptions = userOptions
                     self.refreshUIs()
                 }
             }
@@ -155,7 +155,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     }
     
     private func refreshUIs() {
-        guard let user = user else { return }
+        guard let user = userOptions else { return }
         hostnameTextField.stringValue = user.prefixSuggestion
         suffixLabel.stringValue = user.suffixes[0]
         tableView.reloadData()
@@ -242,7 +242,7 @@ extension ExtensionHomeViewController {
 // MARK: - NSTableViewDataSource
 extension ExtensionHomeViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        guard let user = user else { return 0 }
+        guard let user = userOptions else { return 0 }
         return max(1, user.existing.count)
     }
 }
@@ -250,7 +250,7 @@ extension ExtensionHomeViewController: NSTableViewDataSource {
 // MARK: - NSTableViewDelegate
 extension ExtensionHomeViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let user = user, user.existing.count > 0 else {
+        guard let userOptions = userOptions, userOptions.existing.count > 0 else {
             if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("EmptyTableCellView"), owner: nil) as? EmptyTableCellView {
                 return cell
             }
@@ -259,7 +259,7 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
         }
 
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("AliasTableCellView"), owner: nil) as? AliasTableCellView {
-            cell.bind(alias: user.existing[row])
+            cell.bind(alias: userOptions.existing[row])
             cell.copyAlias = { [unowned self] alias in
                 guard let alias = alias else { return }
                 let pasteboard = NSPasteboard.general

@@ -22,7 +22,7 @@ final class SLApiService {
         }
     }
     
-    static func fetchUserData(apiKey: String, hostname: String, completion: @escaping (_ user: User?, _ error: SLError?) -> Void) {
+    static func fetchUserOptions(apiKey: String, hostname: String, completion: @escaping (_ userOptions: UserOptions?, _ error: SLError?) -> Void) {
         let headers: HTTPHeaders = ["Authentication": apiKey]
 
         AF.request("\(BASE_URL)/api/v2/alias/options?hostname=\(hostname)", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
@@ -40,7 +40,7 @@ final class SLApiService {
             switch statusCode {
             case 200:
                 do {
-                    let user = try User(fromData: data)
+                    let user = try UserOptions(fromData: data)
                     completion(user, nil)
                 } catch let error {
                     completion(nil, error as? SLError)

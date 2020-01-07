@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  UserOptions.swift
 //  Simple Login
 //
 //  Created by Thanh-Nhon Nguyen on 29/12/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User {
+struct UserOptions {
     let canCreate: Bool
     let existing: [String]
     let prefixSuggestion: String
