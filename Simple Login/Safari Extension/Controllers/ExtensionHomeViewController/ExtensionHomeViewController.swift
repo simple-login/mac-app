@@ -270,7 +270,11 @@ extension ExtensionHomeViewController {
         let modalResult = alert.runModal()
         
         switch modalResult {
-        case .alertFirstButtonReturn: SLUserDefaultsService.removeApiKey()
+        case .alertFirstButtonReturn:
+            SLUserDefaultsService.removeApiKey()
+            // Post a notification to host app
+            DistributedNotificationCenter.default().post(name: SLNotificationName.signOut, object: nil)
+            
         default: return
         }
     }

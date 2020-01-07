@@ -16,6 +16,8 @@
 		C000DFF623C49947005D61E4 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000DFF523C49947005D61E4 /* StartupViewController.swift */; };
 		C000DFF723C4CB81005D61E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FF316623B8C9D000E84C4A /* Assets.xcassets */; };
 		C000DFF823C4D25D005D61E4 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* InstructionViewController.swift */; };
+		C0109A6123C528B100542E5B /* SLNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0109A6023C528B100542E5B /* SLNotificationName.swift */; };
+		C0109A6223C528F700542E5B /* SLNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0109A6023C528B100542E5B /* SLNotificationName.swift */; };
 		C013560423BE55F100287A82 /* SLUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013560323BE55F100287A82 /* SLUserDefaultsService.swift */; };
 		C013560523BE567600287A82 /* SLUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013560323BE55F100287A82 /* SLUserDefaultsService.swift */; };
 		C03B0BE023BA6A9B0040DA37 /* ApiKeyMissingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B0BDF23BA6A9B0040DA37 /* ApiKeyMissingViewController.swift */; };
@@ -98,6 +100,7 @@
 		C000DFF123C49899005D61E4 /* EnterApiKey.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EnterApiKey.storyboard; sourceTree = "<group>"; };
 		C000DFF323C498A3005D61E4 /* Instruction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Instruction.storyboard; sourceTree = "<group>"; };
 		C000DFF523C49947005D61E4 /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
+		C0109A6023C528B100542E5B /* SLNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLNotificationName.swift; sourceTree = "<group>"; };
 		C013560323BE55F100287A82 /* SLUserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLUserDefaultsService.swift; sourceTree = "<group>"; };
 		C03B0BDF23BA6A9B0040DA37 /* ApiKeyMissingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyMissingViewController.swift; sourceTree = "<group>"; };
 		C03B0BE123BA6B360040DA37 /* ApiKeyMissingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApiKeyMissingViewController.xib; sourceTree = "<group>"; };
@@ -294,6 +297,7 @@
 				C0E86DE523B90DED00232B9A /* UserOptions.swift */,
 				C000DFED23C49235005D61E4 /* UserInfo.swift */,
 				C0E86DE723B918A200232B9A /* SLError.swift */,
+				C0109A6023C528B100542E5B /* SLNotificationName.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -538,6 +542,7 @@
 				C0BA379823C0C44E00F23554 /* StringExtensions.swift in Sources */,
 				C064846F23C1064100AD97CA /* NSAlertExtensions.swift in Sources */,
 				C0E6001623BFEB3B0011982B /* DisableableScrollView.swift in Sources */,
+				C0109A6223C528F700542E5B /* SLNotificationName.swift in Sources */,
 				C0FC076623C38C22002FB98B /* NSMutableAttributedStringExtensions.swift in Sources */,
 				C03B0BE023BA6A9B0040DA37 /* ApiKeyMissingViewController.swift in Sources */,
 				C0E6000923BFC0670011982B /* SLError.swift in Sources */,
@@ -574,6 +579,7 @@
 				C0E86DE623B90DED00232B9A /* UserOptions.swift in Sources */,
 				C0FC076523C38BB8002FB98B /* NSMutableAttributedStringExtensions.swift in Sources */,
 				C0E6001523BFEADF0011982B /* DisableableScrollView.swift in Sources */,
+				C0109A6123C528B100542E5B /* SLNotificationName.swift in Sources */,
 				C0BE6CB123BF3F470082C2C2 /* Statics.swift in Sources */,
 				C064846E23C1062100AD97CA /* NSAlertExtensions.swift in Sources */,
 				C0E6000823BFBFEA0011982B /* SLApiService.swift in Sources */,

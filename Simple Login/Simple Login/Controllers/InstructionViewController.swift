@@ -25,6 +25,13 @@ final class InstructionViewController: NSViewController {
             openEnterApiKeyWindowController()
             view.window?.close()
         }
+        
+        // Observe sign out notification from safari extension
+        DistributedNotificationCenter.default().addObserver(self, selector: #selector(signOut), name: SLNotificationName.signOut, object: nil)
+    }
+    
+    deinit {
+        DistributedNotificationCenter.default().removeObserver(self, name: SLNotificationName.signOut, object: nil)
     }
     
     @IBAction private func openSafari(_ sender: Any) {
@@ -122,18 +129,19 @@ extension InstructionViewController {
         NSWorkspace.shared.open(url)
     }
     
-    @IBAction private func signOut(_ sender: Any) {
+    @IBAction private func signOutButtonClicked(_ sender: Any) {
         let alert = NSAlert.signOutAlert()
         let modalResult = alert.runModal()
         
         switch modalResult {
-        case .alertFirstButtonReturn:
-            // Sign out
-            SLUserDefaultsService.removeApiKey()
-            openEnterApiKeyWindowController()
-            view.window?.performClose(nil)
-            
+        case .alertFirstButtonReturn: signOut()
         default: return
         }
+    }
+    
+    @objc private func signOut() {
+        SLUserDefaultsService.removeApiKey()
+        openEnterApiKeyWindowController()
+        view.window?.performClose(nil)
     }
 }

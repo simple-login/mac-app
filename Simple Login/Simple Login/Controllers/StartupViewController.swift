@@ -26,6 +26,7 @@ final class StartupViewController: NSViewController {
             checkApiKeyAndProceed()
         } else {
             openEnterApiKeyWindowController()
+            self.view.window?.performClose(nil)
         }
     }
     
