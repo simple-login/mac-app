@@ -623,7 +623,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.mac-app.safari-extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.macapp.safari-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -645,7 +645,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.mac-app.safari-extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.macapp.safari-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;

@@ -24,11 +24,10 @@
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSExtension</key>
 	<dict>
-		<key>SFSafariWebsiteAccess</key>
-		<dict>
-			<key>Level</key>
-			<string>All</string>
-		</dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.Safari.extension</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>$(PRODUCT_MODULE_NAME).SafariExtensionHandler</string>
 		<key>SFSafariContentScript</key>
 		<array>
 			<dict>
@@ -36,10 +35,6 @@
 				<string>script.js</string>
 			</dict>
 		</array>
-		<key>NSExtensionPointIdentifier</key>
-		<string>com.apple.Safari.extension</string>
-		<key>NSExtensionPrincipalClass</key>
-		<string>$(PRODUCT_MODULE_NAME).SafariExtensionHandler</string>
 		<key>SFSafariToolbarItem</key>
 		<dict>
 			<key>Action</key>
@@ -50,6 +45,11 @@
 			<string>ToolbarItemIcon.pdf</string>
 			<key>Label</key>
 			<string>Simple Login</string>
+		</dict>
+		<key>SFSafariWebsiteAccess</key>
+		<dict>
+			<key>Level</key>
+			<string>All</string>
 		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
