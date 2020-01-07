@@ -85,9 +85,9 @@ final class EnterApiKeyViewController: NSViewController {
     }
     
     private func showHomeViewController() {
-        let storyboardID = NSStoryboard.SceneIdentifier(stringLiteral: "AliasManagementViewController")
-        if let aliasManagementViewController = storyboard!.instantiateController(withIdentifier: storyboardID) as? HomeViewController {
-            view.window?.contentViewController = aliasManagementViewController
+        let storyboardID = NSStoryboard.SceneIdentifier(stringLiteral: "HomeViewController")
+        if let homeViewController = storyboard!.instantiateController(withIdentifier: storyboardID) as? HomeViewController {
+            view.window?.contentViewController = homeViewController
         }
     }
 }

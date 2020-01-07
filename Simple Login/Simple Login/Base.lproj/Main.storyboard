@@ -684,7 +684,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Simple Login" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Simple Login" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <rect key="contentRect" x="196" y="240" width="500" height="400"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -888,10 +888,31 @@
             </objects>
             <point key="canvasLocation" x="74" y="859"/>
         </scene>
+        <!--Window Controller-->
+        <scene sceneID="uFf-6x-Wd1">
+            <objects>
+                <windowController storyboardIdentifier="HomeWindowControllerID" id="iLx-BF-Nfg" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="bTW-Ly-kCk">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <connections>
+                            <outlet property="delegate" destination="iLx-BF-Nfg" id="qQh-Ta-fbV"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="Jow-fs-7UC" kind="relationship" relationship="window.shadowedContentViewController" id="wnK-by-aed"/>
+                    </connections>
+                </windowController>
+                <customObject id="W9l-gi-dH3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1180" y="1491"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="lcD-G4-SDe">
             <objects>
-                <viewController storyboardIdentifier="AliasManagementViewController" id="Jow-fs-7UC" customClass="HomeViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="Jow-fs-7UC" customClass="HomeViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="jq1-Ri-Mhz">
                         <rect key="frame" x="0.0" y="0.0" width="750" height="607"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1063,8 +1084,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ExtensionIcon" width="640" height="39"/>
-        <image name="SafariExtensions" width="1091" height="302"/>
-        <image name="SafariPreferences" width="307" height="288"/>
+        <image name="ExtensionIcon" width="1131" height="76"/>
+        <image name="SafariExtensions" width="1123" height="417"/>
+        <image name="SafariPreferences" width="588" height="572"/>
     </resources>
 </document>
