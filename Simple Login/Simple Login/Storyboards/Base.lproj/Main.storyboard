@@ -765,7 +765,7 @@ Gw
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75.5" y="879"/>
+            <point key="canvasLocation" x="76" y="749"/>
         </scene>
     </scenes>
 </document>
