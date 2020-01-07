@@ -267,6 +267,7 @@ extension ExtensionHomeViewController {
     
     @objc private func signOut() {
         let alert = NSAlert.signOutAlert()
+        alert.icon = NSImage(named: NSImage.Name(stringLiteral: "SimpleLogin"))
         let modalResult = alert.runModal()
         
         switch modalResult {
