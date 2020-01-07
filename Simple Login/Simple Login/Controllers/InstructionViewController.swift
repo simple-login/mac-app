@@ -19,7 +19,12 @@ final class InstructionViewController: NSViewController {
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        setupUI()
+        if let _ = SLUserDefaultsService.getApiKey() {
+            setupUI()
+        } else {
+            openEnterApiKeyWindowController()
+            view.window?.close()
+        }
     }
     
     @IBAction private func openSafari(_ sender: Any) {
@@ -118,12 +123,7 @@ extension InstructionViewController {
     }
     
     @IBAction private func signOut(_ sender: Any) {
-        let alert = NSAlert()
-        alert.messageText = "Sign out"
-        alert.informativeText = "You will be signed out"
-        alert.addButton(withTitle: "OK")
-        alert.addButton(withTitle: "Cancel")
-        
+        let alert = NSAlert.signOutAlert()
         let modalResult = alert.runModal()
         
         switch modalResult {

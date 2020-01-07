@@ -16,10 +16,14 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     }()
     
     // Outlets
+    @IBOutlet private weak var usernameLabel: NSTextField!
+    @IBOutlet private weak var premiumOrUpgradeLabel: NSTextField!
+    
     @IBOutlet private weak var rootStackView: NSStackView!
     
     // New alias components
     @IBOutlet private weak var newAliasLabel: NSTextField!
+    @IBOutlet private weak var suffixPrefixStackView: NSStackView!
     @IBOutlet private weak var hostnameTextField: NSTextField!
     @IBOutlet private weak var customPrefixStatusLabel: NSTextField!
     @IBOutlet private weak var suffixLabel: NSTextField!
@@ -38,7 +42,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     @IBOutlet private weak var progressIndicator: NSProgressIndicator!
     
     lazy private var newAliasComponents: [NSView] = {
-        return [newAliasLabel, hostnameTextField, customPrefixStatusLabel, suffixLabel, createButton]
+        return [newAliasLabel, suffixPrefixStackView, customPrefixStatusLabel, createButton]
     }()
     
     lazy private var upgradeComponents: [NSView] = {
@@ -46,7 +50,9 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     }()
     
     var apiKey: String?
+    private var userInfo: UserInfo?
     private var userOptions: UserOptions?
+    
     private var isValidEmailPrefix: Bool = true {
         didSet {
             createButton.isEnabled = isValidEmailPrefix
@@ -79,6 +85,10 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         super.viewDidLoad()
         preferredContentSize = rootStackView.intrinsicContentSize
         
+        usernameLabel.stringValue = ""
+        premiumOrUpgradeLabel.stringValue = ""
+        suffixLabel.stringValue = ""
+        
         setLoading(false)
         newAliasComponents.forEach({$0.isHidden = true})
         upgradeComponents.forEach({$0.isHidden = true})
@@ -105,9 +115,23 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     }
     
     private func refresh() {
-        getURL { [unowned self] (url) in
-            guard let apiKey = self.apiKey else { return }
+        guard let apiKey = self.apiKey else { return }
+        // Fetch user info
+        self.setLoading(true)
+        SLApiService.fetchUserInfo(apiKey) { [weak self] (userInfo, error) in
+            guard let self = self else { return }
+            self.setLoading(false)
             
+            if let error = error {
+                self.showErrorAlert(error)
+            } else if let userInfo = userInfo {
+                self.userInfo = userInfo
+                self.refreshUserInfo()
+            }
+        }
+        
+        // Fetch user options
+        getURL { [unowned self] (url) in
             let hostname = url?.host ?? ""
             
             self.setLoading(true)
@@ -136,7 +160,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                     }
                 } else if let userOptions = userOptions {
                     self.userOptions = userOptions
-                    self.refreshUIs()
+                    self.refreshUserOptions()
                 }
             }
         }
@@ -154,16 +178,34 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         }
     }
     
-    private func refreshUIs() {
-        guard let user = userOptions else { return }
-        hostnameTextField.stringValue = user.prefixSuggestion
-        suffixLabel.stringValue = user.suffixes[0]
+    private func refreshUserInfo() {
+        guard let userInfo = userInfo else { return }
+        usernameLabel.stringValue = userInfo.name
+        
+        if userInfo.isPremium {
+            premiumOrUpgradeLabel.stringValue = "Premium"
+            premiumOrUpgradeLabel.textColor = .systemGreen
+            premiumOrUpgradeLabel.font = NSFont.systemFont(ofSize: 14)
+        } else {
+            premiumOrUpgradeLabel.stringValue = "Upgrade"
+            premiumOrUpgradeLabel.textColor = .systemBlue
+            premiumOrUpgradeLabel.font = NSFont.boldSystemFont(ofSize: 14)
+            
+            let click = NSClickGestureRecognizer(target: self, action: #selector(upgrade(_:)))
+            premiumOrUpgradeLabel.addGestureRecognizer(click)
+        }
+    }
+    
+    private func refreshUserOptions() {
+        guard let userOptions = userOptions else { return }
+        hostnameTextField.stringValue = userOptions.prefixSuggestion
+        suffixLabel.stringValue = userOptions.suffixes[0]
         tableView.reloadData()
         scrollViewHeightConstraint.constant = min(tableView.intrinsicContentSize.height, 400)
 
-        isValidEmailPrefix = user.prefixSuggestion != ""
+        isValidEmailPrefix = userOptions.prefixSuggestion != ""
         
-        if user.canCreate {
+        if userOptions.canCreate {
             newAliasComponents.forEach({$0.isHidden = false})
             upgradeComponents.forEach({$0.isHidden = true})
         } else {
@@ -188,7 +230,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         }
     }
     
-    @IBAction private func upgrade(_ sender: Any) {
+    @objc @IBAction private func upgrade(_ sender: Any) {
         guard let url = URL(string: "\(BASE_URL)/dashboard/pricing") else { return }
         NSWorkspace.shared.open(url)
     }
@@ -224,12 +266,7 @@ extension ExtensionHomeViewController {
     }
     
     @objc private func signOut() {
-        let alert = NSAlert()
-        alert.messageText = "Confirmation"
-        alert.informativeText = "You will be signed out from Simple Login?"
-        alert.addButton(withTitle: "Yes, sign me out")
-        alert.addButton(withTitle: "Cancel")
-        alert.alertStyle = .informational
+        let alert = NSAlert.signOutAlert()
         let modalResult = alert.runModal()
         
         switch modalResult {
