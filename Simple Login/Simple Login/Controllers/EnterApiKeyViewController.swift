@@ -57,7 +57,7 @@ final class EnterApiKeyViewController: NSViewController {
             if (isValid) {
                 // API key is valid
                 SLUserDefaultsService.setApiKey(enteredApiKey)
-                self.showHomeViewController()
+                self.showInstructionViewController()
             } else {
                 // API key is invalid
                 self.showAlertApiKeyIsInvalid()
@@ -84,10 +84,10 @@ final class EnterApiKeyViewController: NSViewController {
         }
     }
     
-    private func showHomeViewController() {
-        let storyboardID = NSStoryboard.SceneIdentifier(stringLiteral: "HomeViewController")
-        if let homeViewController = storyboard!.instantiateController(withIdentifier: storyboardID) as? HomeViewController {
-            view.window?.contentViewController = homeViewController
+    private func showInstructionViewController() {
+        let storyboardID = NSStoryboard.SceneIdentifier(stringLiteral: "InstructionViewController")
+        if let instructionViewController = storyboard!.instantiateController(withIdentifier: storyboardID) as? InstructionViewController {
+            view.window?.contentViewController = instructionViewController
         }
     }
 }

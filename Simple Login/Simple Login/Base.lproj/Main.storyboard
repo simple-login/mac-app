@@ -891,7 +891,7 @@
         <!--Window Controller-->
         <scene sceneID="uFf-6x-Wd1">
             <objects>
-                <windowController storyboardIdentifier="HomeWindowControllerID" id="iLx-BF-Nfg" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="InstructionWindowControllerID" id="iLx-BF-Nfg" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="bTW-Ly-kCk">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -909,10 +909,10 @@
             </objects>
             <point key="canvasLocation" x="-1180" y="1491"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Instruction View Controller-->
         <scene sceneID="lcD-G4-SDe">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="Jow-fs-7UC" customClass="HomeViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InstructionViewController" id="Jow-fs-7UC" customClass="InstructionViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="jq1-Ri-Mhz">
                         <rect key="frame" x="0.0" y="0.0" width="750" height="607"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -20,7 +20,7 @@
 		C05587A523C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05587A423C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift */; };
 		C05587AA23C233E500CA7418 /* EmptyTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05587A923C233E500CA7418 /* EmptyTableCellView.swift */; };
 		C05587AC23C233FE00CA7418 /* EmptyTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C05587AB23C233FE00CA7418 /* EmptyTableCellView.xib */; };
-		C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* HomeViewController.swift */; };
+		C06275B123BA445600BCE972 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* InstructionViewController.swift */; };
 		C062760923BA646300BCE972 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06275B723BA46C400BCE972 /* Cocoa.framework */; };
 		C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */; };
 		C062761A23BA646300BCE972 /* Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C062760823BA646300BCE972 /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -99,7 +99,7 @@
 		C05587A423C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariExtensionVCExtensions.swift; sourceTree = "<group>"; };
 		C05587A923C233E500CA7418 /* EmptyTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableCellView.swift; sourceTree = "<group>"; };
 		C05587AB23C233FE00CA7418 /* EmptyTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableCellView.xib; sourceTree = "<group>"; };
-		C06275B023BA445600BCE972 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C06275B023BA445600BCE972 /* InstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		C06275B723BA46C400BCE972 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C062760823BA646300BCE972 /* Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
@@ -322,7 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				C0FF316423B8C9CA00E84C4A /* EnterApiKeyViewController.swift */,
-				C06275B023BA445600BCE972 /* HomeViewController.swift */,
+				C06275B023BA445600BCE972 /* InstructionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -541,7 +541,7 @@
 			files = (
 				C013560423BE55F100287A82 /* SLUserDefaultsService.swift in Sources */,
 				C064846B23C1035C00AD97CA /* NSViewExtensions.swift in Sources */,
-				C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */,
+				C06275B123BA445600BCE972 /* InstructionViewController.swift in Sources */,
 				C0BA379423C0C2F000F23554 /* StringExtensions.swift in Sources */,
 				C000DFEE23C49235005D61E4 /* UserInfo.swift in Sources */,
 				C0BA379623C0C36600F23554 /* RegexHelpers.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  InstructionViewController.swift
 //  Simple Login
 //
 //  Created by Thanh-Nhon Nguyen on 29/12/2019.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-final class HomeViewController: NSViewController {
+final class InstructionViewController: NSViewController {
     @IBOutlet private weak var enableExtensionLabel: NSTextField!
     @IBOutlet private weak var step1Label: NSTextField!
     @IBOutlet private weak var step2Label: NSTextField!
