@@ -782,7 +782,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.mac-app";
+				PRODUCT_BUNDLE_IDENTIFIER = io.simplelogin.macapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -805,7 +805,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.mac-app";
+				PRODUCT_BUNDLE_IDENTIFIER = io.simplelogin.macapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
