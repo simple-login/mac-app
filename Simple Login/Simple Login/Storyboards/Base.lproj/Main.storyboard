@@ -707,26 +707,26 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="StartupViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="523" height="118"/>
+                        <rect key="frame" x="0.0" y="0.0" width="523" height="125"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lS4-kR-XxO">
-                                <rect key="frame" x="20" y="20" width="483" height="78"/>
+                                <rect key="frame" x="20" y="20" width="483" height="85"/>
                                 <subviews>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="u0V-83-Hql">
-                                        <rect key="frame" x="178" y="62" width="127" height="16"/>
+                                        <rect key="frame" x="178" y="69" width="127" height="16"/>
                                         <textFieldCell key="cell" selectable="YES" alignment="center" title="Contacting server..." id="5L1-pq-mBV">
                                             <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="nsy-Z0-7Bn">
-                                        <rect key="frame" x="234" y="29" width="16" height="25"/>
+                                    <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="nsy-Z0-7Bn">
+                                        <rect key="frame" x="226" y="29" width="32" height="32"/>
                                     </progressIndicator>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2tt-rv-qso">
-                                        <rect key="frame" x="201" y="-7" width="82" height="32"/>
-                                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TTi-v4-EkL">
+                                        <rect key="frame" x="205" y="-7" width="73" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Retry" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TTi-v4-EkL">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                             <string key="keyEquivalent" base64-UTF8="YES">
@@ -734,7 +734,7 @@ Gw
 </string>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="actionButtonClicked:" target="XfG-lQ-9wD" id="wQq-6q-paI"/>
+                                            <action selector="retryButtonClicked:" target="XfG-lQ-9wD" id="wQq-6q-paI"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -758,9 +758,9 @@ Gw
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="actionButton" destination="2tt-rv-qso" id="DDs-pY-J1O"/>
                         <outlet property="messageLabel" destination="u0V-83-Hql" id="4n0-za-voe"/>
                         <outlet property="progressIndicator" destination="nsy-Z0-7Bn" id="vmA-j5-wWO"/>
+                        <outlet property="retryButton" destination="2tt-rv-qso" id="DDs-pY-J1O"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

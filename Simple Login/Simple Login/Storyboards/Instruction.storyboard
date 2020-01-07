@@ -9,7 +9,7 @@
         <scene sceneID="WkD-Ch-S1O">
             <objects>
                 <windowController storyboardIdentifier="InstructionWindowControllerID" id="W2Z-us-w3g" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="YlA-Wf-s0w">
+                    <window key="window" title="Simple Login" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="YlA-Wf-s0w">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
@@ -28,7 +28,7 @@
         <!--Instruction View Controller-->
         <scene sceneID="wL3-zH-d1i">
             <objects>
-                <viewController storyboardIdentifier="InstructionViewController" id="qua-cv-Csc" customClass="InstructionViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qua-cv-Csc" customClass="InstructionViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="kuu-Er-TjJ">
                         <rect key="frame" x="0.0" y="0.0" width="750" height="607"/>
                         <autoresizingMask key="autoresizingMask"/>

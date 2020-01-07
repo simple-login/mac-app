@@ -22,10 +22,10 @@ final class SLApiService {
         }
     }
     
-    static func fetchUserInfo(_ apiKey: String, completion: @escaping (_ userInfo: UserInfo?, _ error: SLError?) -> Void) -> DataRequest {
+    static func fetchUserInfo(_ apiKey: String, completion: @escaping (_ userInfo: UserInfo?, _ error: SLError?) -> Void) {
         let headers: HTTPHeaders = ["Authentication": apiKey]
         
-        return AF.request("\(BASE_URL)/api/user_info", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
+        AF.request("\(BASE_URL)/api/user_info", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
             
             guard let data = response.data else {
                 completion(nil, SLError.noData)
