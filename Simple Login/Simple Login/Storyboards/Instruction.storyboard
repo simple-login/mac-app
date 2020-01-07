@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="WkD-Ch-S1O">
+            <objects>
+                <windowController storyboardIdentifier="InstructionWindowControllerID" id="W2Z-us-w3g" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="YlA-Wf-s0w">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <connections>
+                            <outlet property="delegate" destination="W2Z-us-w3g" id="5Eh-OQ-PP1"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="qua-cv-Csc" kind="relationship" relationship="window.shadowedContentViewController" id="xG8-wc-h3X"/>
+                    </connections>
+                </windowController>
+                <customObject id="NZZ-U1-3Vz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1180" y="1491"/>
+        </scene>
+        <!--Instruction View Controller-->
+        <scene sceneID="wL3-zH-d1i">
+            <objects>
+                <viewController storyboardIdentifier="InstructionViewController" id="qua-cv-Csc" customClass="InstructionViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="kuu-Er-TjJ">
+                        <rect key="frame" x="0.0" y="0.0" width="750" height="607"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TeX-YP-oMd">
+                                <rect key="frame" x="20" y="20" width="710" height="567"/>
+                                <subviews>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Qem-i0-Cg5">
+                                        <rect key="frame" x="266" y="551" width="179" height="16"/>
+                                        <textFieldCell key="cell" selectable="YES" title="Enable Simple Login in Safari" id="i32-md-WJX">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DbT-5T-mki">
+                                        <rect key="frame" x="20" y="381" width="670" height="150"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="g5t-S0-Ypc">
+                                                <rect key="frame" x="-2" y="67" width="416" height="16"/>
+                                                <textFieldCell key="cell" selectable="YES" title="Step 1" id="p3Y-5p-oC2">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Cd-EJ-ycz">
+                                                <rect key="frame" x="417" y="-3" width="256" height="156"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="c8A-2s-Nzm"/>
+                                                    <constraint firstAttribute="width" constant="250" id="csF-am-k64"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" image="SafariPreferences" id="c8j-8c-y7C"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="2Cd-EJ-ycz" firstAttribute="top" secondItem="DbT-5T-mki" secondAttribute="top" id="gT3-EI-uv7"/>
+                                            <constraint firstAttribute="bottom" secondItem="2Cd-EJ-ycz" secondAttribute="bottom" id="kiL-4o-ldu"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DLy-Xn-Gjq">
+                                        <rect key="frame" x="20" y="211" width="670" height="150"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8mJ-pa-VOp">
+                                                <rect key="frame" x="-2" y="67" width="416" height="16"/>
+                                                <textFieldCell key="cell" selectable="YES" title="Step 2" id="vkS-HJ-ELg">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QpR-hq-vts">
+                                                <rect key="frame" x="417" y="-3" width="256" height="156"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="ScR-Fv-B0I"/>
+                                                    <constraint firstAttribute="width" constant="250" id="ndU-nT-uAE"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" imageFrameStyle="grayBezel" image="SafariExtensions" id="OaL-p8-pUX"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="QpR-hq-vts" secondAttribute="bottom" id="Z4n-Hi-WqE"/>
+                                            <constraint firstItem="QpR-hq-vts" firstAttribute="top" secondItem="DLy-Xn-Gjq" secondAttribute="top" id="g9w-th-0M5"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IAs-AA-J1W">
+                                        <rect key="frame" x="20" y="41" width="670" height="150"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="2kn-1k-kIz">
+                                                <rect key="frame" x="-2" y="67" width="416" height="16"/>
+                                                <textFieldCell key="cell" selectable="YES" title="Step 3" id="sbW-Es-5bW">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fqz-er-Tta">
+                                                <rect key="frame" x="417" y="-3" width="256" height="156"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="250" id="GeT-gA-ajA"/>
+                                                    <constraint firstAttribute="height" constant="150" id="QBL-P3-Lne"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" image="ExtensionIcon" id="X35-i8-JV7"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Fqz-er-Tta" firstAttribute="top" secondItem="IAs-AA-J1W" secondAttribute="top" id="ECX-DT-pxa"/>
+                                            <constraint firstAttribute="bottom" secondItem="Fqz-er-Tta" secondAttribute="bottom" id="Isp-BP-vT6"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ojd-aB-nDe">
+                                        <rect key="frame" x="299" y="-7" width="112" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Open Safari" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="enB-o8-FxZ">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="openSafari:" target="qua-cv-Csc" id="0GS-nd-ytK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="IAs-AA-J1W" secondAttribute="trailing" constant="20" symbolic="YES" id="2eg-Ro-rTL"/>
+                                    <constraint firstAttribute="trailing" secondItem="DbT-5T-mki" secondAttribute="trailing" constant="20" symbolic="YES" id="WJp-jL-xqC"/>
+                                    <constraint firstItem="DLy-Xn-Gjq" firstAttribute="leading" secondItem="TeX-YP-oMd" secondAttribute="leading" constant="20" symbolic="YES" id="Ycz-T5-Pdo"/>
+                                    <constraint firstItem="IAs-AA-J1W" firstAttribute="leading" secondItem="TeX-YP-oMd" secondAttribute="leading" constant="20" symbolic="YES" id="b8r-Sl-OV6"/>
+                                    <constraint firstAttribute="trailing" secondItem="DLy-Xn-Gjq" secondAttribute="trailing" constant="20" symbolic="YES" id="t5h-Kh-tfb"/>
+                                    <constraint firstItem="DbT-5T-mki" firstAttribute="leading" secondItem="TeX-YP-oMd" secondAttribute="leading" constant="20" symbolic="YES" id="vWK-ma-CSL"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TeX-YP-oMd" secondAttribute="trailing" constant="20" id="0rA-Qf-A8h"/>
+                            <constraint firstAttribute="bottom" secondItem="TeX-YP-oMd" secondAttribute="bottom" constant="20" symbolic="YES" id="1mO-lc-qWk"/>
+                            <constraint firstAttribute="trailing" secondItem="TeX-YP-oMd" secondAttribute="trailing" constant="20" symbolic="YES" id="HBe-B9-HF8"/>
+                            <constraint firstItem="TeX-YP-oMd" firstAttribute="leading" secondItem="kuu-Er-TjJ" secondAttribute="leading" constant="20" id="dM6-So-Tqa"/>
+                            <constraint firstItem="TeX-YP-oMd" firstAttribute="leading" secondItem="kuu-Er-TjJ" secondAttribute="leading" constant="20" symbolic="YES" id="lXv-xv-aqf"/>
+                            <constraint firstItem="TeX-YP-oMd" firstAttribute="top" secondItem="kuu-Er-TjJ" secondAttribute="top" constant="20" symbolic="YES" id="nLz-8B-kB6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="enableExtensionLabel" destination="Qem-i0-Cg5" id="8lo-iZ-CEn"/>
+                        <outlet property="step1Label" destination="g5t-S0-Ypc" id="MIU-Ay-ar2"/>
+                        <outlet property="step2Label" destination="8mJ-pa-VOp" id="Wxp-d4-q0f"/>
+                        <outlet property="step3Label" destination="2kn-1k-kIz" id="Zrg-rD-Joz"/>
+                    </connections>
+                </viewController>
+                <customObject id="f8Z-Bs-GFb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-292.5" y="1564.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ExtensionIcon" width="1131" height="76"/>
+        <image name="SafariExtensions" width="1123" height="417"/>
+        <image name="SafariPreferences" width="588" height="572"/>
+    </resources>
+</document>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="UvY-7F-8Uv">
+            <objects>
+                <windowController storyboardIdentifier="EnterApiKeyWindowControllerID" id="Ijz-0D-zlR" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="aqa-e8-dWh">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <connections>
+                            <outlet property="delegate" destination="Ijz-0D-zlR" id="vF7-mV-o9a"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="EEm-ub-le5" kind="relationship" relationship="window.shadowedContentViewController" id="VqI-gP-bES"/>
+                    </connections>
+                </windowController>
+                <customObject id="6Lc-xj-ukk" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="22" y="439"/>
+        </scene>
+        <!--Enter Api Key View Controller-->
+        <scene sceneID="glJ-Hy-b8j">
+            <objects>
+                <viewController id="EEm-ub-le5" customClass="EnterApiKeyViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="n3X-gd-6P4">
+                        <rect key="frame" x="0.0" y="0.0" width="588" height="312"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="equalSpacing" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3od-sC-i2S">
+                                <rect key="frame" x="20" y="71" width="548" height="170"/>
+                                <subviews>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Pm7-w8-mMu">
+                                        <rect key="frame" x="-2" y="154" width="406" height="16"/>
+                                        <textFieldCell key="cell" selectable="YES" title="Welcome to SimpleLogin ↗, the most powerful email alias solution!" id="F04-DD-74k">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8QT-02-4XE">
+                                        <rect key="frame" x="-2" y="130" width="308" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="To get started, please follow these 3 simple steps:" id="BiZ-ET-3sS">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WE4-dS-Wxc">
+                                        <rect key="frame" x="0.0" y="106" width="422" height="16"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3NY-1X-31G">
+                                                <rect key="frame" x="-2" y="0.0" width="27" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="1️⃣" id="fve-pg-kjb">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iFg-HZ-oYc">
+                                                <rect key="frame" x="29" y="0.0" width="395" height="16"/>
+                                                <textFieldCell key="cell" selectable="YES" title="Create your SimpleLogin account here if this is not already done." id="b1H-E1-3fX">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="30Q-2j-OZw">
+                                        <rect key="frame" x="0.0" y="82" width="245" height="16"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tN2-NL-y8p">
+                                                <rect key="frame" x="-2" y="0.0" width="27" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="2️⃣" id="I2S-9M-IM1">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RcG-Zm-Bv4">
+                                                <rect key="frame" x="29" y="0.0" width="218" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Create and copy your API Key here." id="u7z-H0-pHo">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pL1-3P-y0l">
+                                        <rect key="frame" x="0.0" y="58" width="195" height="16"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uRV-sW-MVR">
+                                                <rect key="frame" x="-2" y="0.0" width="27" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="3️⃣" id="7eo-XL-NkN">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hNn-c2-zC3">
+                                                <rect key="frame" x="29" y="0.0" width="168" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Paste the API Key here 👇." id="eIa-R4-KRY">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WYF-47-cPd">
+                                        <rect key="frame" x="0.0" y="29" width="548" height="21"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="API Key" drawsBackground="YES" id="aHE-tH-beu">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <action selector="setApiKey:" target="EEm-ub-le5" id="7TW-oO-Cbu"/>
+                                        </connections>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4dX-RH-w94">
+                                        <rect key="frame" x="-6" y="-7" width="560" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Set API Key" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="xYP-4J-yjd">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="setApiKey:" target="EEm-ub-le5" id="k2i-bx-GJG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="4dX-RH-w94" firstAttribute="centerX" secondItem="3od-sC-i2S" secondAttribute="centerX" id="I2Z-pw-xL2"/>
+                                    <constraint firstAttribute="trailing" secondItem="WYF-47-cPd" secondAttribute="trailing" id="LDS-Ae-gqX"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="1zB-dm-Fip">
+                                <rect key="frame" x="286" y="148" width="16" height="16"/>
+                            </progressIndicator>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="3od-sC-i2S" firstAttribute="centerY" secondItem="n3X-gd-6P4" secondAttribute="centerY" id="2c8-HI-85T"/>
+                            <constraint firstItem="3od-sC-i2S" firstAttribute="centerX" secondItem="n3X-gd-6P4" secondAttribute="centerX" id="86k-aP-9hB"/>
+                            <constraint firstAttribute="trailing" secondItem="3od-sC-i2S" secondAttribute="trailing" constant="20" id="VDX-or-KiQ"/>
+                            <constraint firstItem="1zB-dm-Fip" firstAttribute="centerX" secondItem="n3X-gd-6P4" secondAttribute="centerX" id="ggO-bA-zkK"/>
+                            <constraint firstItem="1zB-dm-Fip" firstAttribute="centerY" secondItem="n3X-gd-6P4" secondAttribute="centerY" id="txK-qI-STV"/>
+                            <constraint firstItem="3od-sC-i2S" firstAttribute="leading" secondItem="n3X-gd-6P4" secondAttribute="leading" constant="20" id="yYN-RI-FGD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="apiKeyTextField" destination="WYF-47-cPd" id="dq8-H5-t15"/>
+                        <outlet property="createAccountLabel" destination="iFg-HZ-oYc" id="XAy-FJ-JIg"/>
+                        <outlet property="createAndCopyApiKeyLabel" destination="RcG-Zm-Bv4" id="HEv-GZ-9FB"/>
+                        <outlet property="progressIndicator" destination="1zB-dm-Fip" id="CGL-tI-2Ek"/>
+                        <outlet property="rootStackView" destination="3od-sC-i2S" id="Kp0-4H-Rhn"/>
+                        <outlet property="setApiKeyButton" destination="4dX-RH-w94" id="XBb-CL-DZ9"/>
+                        <outlet property="welcomeLabel" destination="Pm7-w8-mMu" id="VVZ-jg-X5v"/>
+                    </connections>
+                </viewController>
+                <customObject id="p8e-fU-LER" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="820"/>
+        </scene>
+    </scenes>
+</document>
