@@ -31,6 +31,18 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Edit" id="8Kd-9u-hpG">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Edit" id="XXz-Lz-VIl">
+                                    <items>
+                                        <menuItem title="Paste" keyEquivalent="v" id="xb0-9H-1D6">
+                                            <connections>
+                                                <action selector="paste:" target="Ady-hI-5gd" id="ebF-T7-dcC"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                         </items>
                     </menu>
                     <connections>
