@@ -14,14 +14,16 @@ final class EnterApiKeyViewController: NSViewController {
     @IBOutlet private weak var welcomeLabel: NSTextField!
     @IBOutlet private weak var createAccountLabel: NSTextField!
     @IBOutlet private weak var createAndCopyApiKeyLabel: NSTextField!
+    @IBOutlet private weak var pasteApiKeyLabel: NSTextField!
     @IBOutlet private weak var apiKeyTextField: NSTextField!
     @IBOutlet private weak var setApiKeyButton: NSButton!
     @IBOutlet private weak var progressIndicator: NSProgressIndicator!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLabels()
+        setupUI()
         setLoading(false)
+        setApiKeyButton.isEnabled = false
     }
     
     override var representedObject: Any? {
@@ -40,6 +42,10 @@ final class EnterApiKeyViewController: NSViewController {
     }
     
     @IBAction private func setApiKey(_ sender: Any) {
+        let enteredApiKey = apiKeyTextField.stringValue
+        
+        guard enteredApiKey.count > 0 else { return }
+        
         if (NetworkReachabilityManager()?.isReachable ?? false) == false {
             // No internet connection
             showNoInternetAlert()
@@ -48,9 +54,10 @@ final class EnterApiKeyViewController: NSViewController {
         
         setLoading(true)
         
-        let enteredApiKey = apiKeyTextField.stringValue
+        
         SLApiService.fetchUserInfo(enteredApiKey, completion: { [weak self] (userInfo, error) in
             guard let self = self else { return }
+            self.setLoading(false)
             
             self.progressIndicator.isHidden = true
             self.progressIndicator.stopAnimation(nil)
@@ -94,43 +101,20 @@ final class EnterApiKeyViewController: NSViewController {
 
 // MARK: Set up labels
 extension EnterApiKeyViewController {
-    private func setupLabels() {
-        setupWelcomeLabel()
+    private func setupUI() {
         setupCreateAccountLabel()
         setupCreateAndCopyApiKeyLabel()
     }
     
-    private func setupWelcomeLabel() {
-        let welcomePlainString = "Welcome to SimpleLogin ↗, the most powerful email alias solution!"
-        
-        let welcomeAttributedString = NSMutableAttributedString(string: welcomePlainString)
-        welcomeAttributedString.addAttribute(.font, value: NSFont.systemFont(ofSize: 20), range: NSMakeRange(0, welcomePlainString.count))
-        
-        if let simpleLoginStringRange = welcomePlainString.range(of: "SimpleLogin ↗") {
-            welcomeAttributedString.addAttributes(
-                [.foregroundColor : NSColor(named: NSColor.Name(stringLiteral: "HyperlinkColor")) ?? NSColor.blue,
-                 .font : NSFont.systemFont(ofSize: 20, weight: .medium),
-                 .underlineStyle : NSUnderlineStyle.single.rawValue,
-                 .link : URL(string: BASE_URL) as Any,
-                 .toolTip : BASE_URL],
-                range: NSRange(simpleLoginStringRange, in: welcomePlainString))
-            
-        }
-        
-        // If allowsEditingTextAttributes is not set to "true", when the user clicks the label, the attributedsStringValue is gone
-        welcomeLabel.allowsEditingTextAttributes = true
-        welcomeLabel.attributedStringValue = welcomeAttributedString
-    }
-    
     private func setupCreateAccountLabel() {
-        let createAccountPlainString = "Create your SimpleLogin account here if this is not already done."
+        let createAccountPlainString = "Create your SimpleLogin account here ↗"
         
         let createAccountAttributedString = NSMutableAttributedString(string: createAccountPlainString)
         createAccountAttributedString.addAttribute(.font, value: NSFont.systemFont(ofSize: 13), range: NSMakeRange(0, createAccountPlainString.count))
         
-        if let hereStringRange = createAccountPlainString.range(of: "here") {
+        if let hereStringRange = createAccountPlainString.range(of: "here ↗") {
             createAccountAttributedString.addAttributes(
-            [.foregroundColor : NSColor(named: NSColor.Name(stringLiteral: "HyperlinkColor")) ?? NSColor.blue,
+                [.foregroundColor : NSColor.systemTeal,
              .font : NSFont.systemFont(ofSize: 13, weight: .medium),
              .underlineStyle : NSUnderlineStyle.single.rawValue,
              .link : URL(string: "\(BASE_URL)/auth/register") as Any,
@@ -144,14 +128,14 @@ extension EnterApiKeyViewController {
     }
     
     private func setupCreateAndCopyApiKeyLabel() {
-        let createAndCopyApiKeyPlainString = "Create and copy your API Key here."
+        let createAndCopyApiKeyPlainString = "Create and copy your API Key ↗"
         
         let createAndCopyApiKeyAttributedString = NSMutableAttributedString(string: createAndCopyApiKeyPlainString)
         createAndCopyApiKeyAttributedString.addAttribute(.font, value: NSFont.systemFont(ofSize: 13), range: NSMakeRange(0, createAndCopyApiKeyPlainString.count))
         
-        if let hereStringRange = createAndCopyApiKeyPlainString.range(of: "here") {
+        if let hereStringRange = createAndCopyApiKeyPlainString.range(of: "API Key ↗") {
             createAndCopyApiKeyAttributedString.addAttributes(
-            [.foregroundColor : NSColor(named: NSColor.Name(stringLiteral: "HyperlinkColor")) ?? NSColor.blue,
+                [.foregroundColor : NSColor.systemTeal,
              .font : NSFont.systemFont(ofSize: 13, weight: .medium),
              .underlineStyle : NSUnderlineStyle.single.rawValue,
              .link : URL(string: "\(BASE_URL)/dashboard/api_key") as Any,
@@ -162,5 +146,12 @@ extension EnterApiKeyViewController {
         // If allowsEditingTextAttributes is not set to "true", when the user clicks the label, the attributedsStringValue is gone
         createAndCopyApiKeyLabel.allowsEditingTextAttributes = true
         createAndCopyApiKeyLabel.attributedStringValue = createAndCopyApiKeyAttributedString
+    }
+}
+
+// MARK: - NSTextFieldDelegate
+extension EnterApiKeyViewController: NSTextFieldDelegate {
+    func controlTextDidChange(_ obj: Notification) {
+        setApiKeyButton.isEnabled = apiKeyTextField.stringValue.count > 0
     }
 }

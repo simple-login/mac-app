@@ -53,7 +53,7 @@ Premium</string>
                                                 <rect key="frame" x="452" y="8" width="98" height="16"/>
                                                 <buttonCell key="cell" type="bevel" title="Manage aliases" bezelStyle="regularSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="vc3-MC-AH9">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="message"/>
+                                                    <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <color key="contentTintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                                 <connections>
@@ -79,7 +79,7 @@ Premium</string>
                                                 <rect key="frame" x="595" y="8" width="55" height="16"/>
                                                 <buttonCell key="cell" type="bevel" title="Sign out" bezelStyle="regularSquare" alignment="right" imageScaling="proportionallyDown" inset="2" id="j7J-L0-DNp">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="message"/>
+                                                    <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <color key="contentTintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
                                                 <connections>
@@ -231,7 +231,7 @@ Premium</string>
                                         <rect key="frame" x="299" y="-7" width="112" height="32"/>
                                         <buttonCell key="cell" type="push" title="Open Safari" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="enB-o8-FxZ">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="message"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="openSafari:" target="qua-cv-Csc" id="0GS-nd-ytK"/>
