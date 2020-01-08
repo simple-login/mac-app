@@ -60,7 +60,11 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
             if isValidEmailPrefix {
                 customPrefixStatusLabel.stringValue = "Sounds like a good name 👍"
                 customPrefixStatusLabel.textColor = .secondaryLabelColor
-                hostnameTextField.textColor = NSColor(named: NSColor.Name("BodyTextColor"))
+                if #available(OSXApplicationExtension 10.13, *) {
+                    hostnameTextField.textColor = NSColor(named: NSColor.Name("BodyTextColor"))
+                } else {
+                    hostnameTextField.textColor = .black
+                }
                 
                 if hostnameTextField.stringValue == "" {
                     hostnameTextField.stringValue = userOptions?.prefixSuggestion ?? "something"
