@@ -148,6 +148,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                     case .invalidApiKey:
                         // Invalid API key, prompt user to open host app
                         let alert = NSAlert(messageText: "Invalid API key", informativeText: "Please open the app and enter a valid API key", buttonText: "Open app", alertStyle: .informational)
+                        alert.icon = NSImage(named: NSImage.Name(stringLiteral: "SimpleLogin"))
                         let modalResult = alert.runModal()
                         
                         switch modalResult {
@@ -159,6 +160,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                     default:
                         // Unknown error, display error alert
                         let alert = NSAlert(messageText: "Error occured", informativeText: error.description, buttonText: "Close", alertStyle: .critical)
+                        alert.icon = NSImage(named: NSImage.Name(stringLiteral: "SimpleLogin"))
                         alert.runModal()
                         return
                     }
