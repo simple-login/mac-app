@@ -59,9 +59,10 @@ extension NSViewController {
     
     func showErrorAlert(_ error: SLError) {
         let alert = NSAlert()
+        alert.icon = NSImage(named: NSImage.Name(stringLiteral: "SimpleLogin"))
         alert.messageText = "Error occured"
         alert.informativeText = error.description
-        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Close")
         alert.alertStyle = .warning
         alert.runModal()
     }
