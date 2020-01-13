@@ -77,6 +77,5 @@ final class HUDViewController: NSViewController {
         super.viewWillAppear()
         messageLabel.attributedStringValue = attributedMessageString ?? NSAttributedString(string: "")
         view.window?.setContentSize(NSSize(width: messageLabel.intrinsicContentSize.width + 8*2, height: messageLabel.intrinsicContentSize.height + 8*2))
-        
     }
 }

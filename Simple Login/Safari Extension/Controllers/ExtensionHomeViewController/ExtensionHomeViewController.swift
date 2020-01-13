@@ -331,6 +331,8 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
     private func generateCopyAlertAttributedString(withAlias alias: String) -> NSAttributedString {
         let plainString = "Copied\n\(alias)"
         let attributedString = NSMutableAttributedString(string: plainString)
+
+        attributedString.addAttribute(.foregroundColor, value: NSColor.white, range: NSRange(location: 0, length: plainString.count))
     
         attributedString.addTextAlignCenterAttribute()
     
