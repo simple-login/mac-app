@@ -26,7 +26,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     @IBOutlet private weak var suffixPrefixStackView: NSStackView!
     @IBOutlet private weak var hostnameTextField: NSTextField!
     @IBOutlet private weak var customPrefixStatusLabel: NSTextField!
-    @IBOutlet private weak var suffixLabel: NSTextField!
+    @IBOutlet private weak var suffixPopupButton: NSPopUpButton!
     @IBOutlet private weak var createButton: NSButton!
     
     // Go premium components
@@ -85,13 +85,15 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         }
     }
     
+    private var highLightFirstAlias = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         preferredContentSize = rootStackView.intrinsicContentSize
         
         usernameLabel.stringValue = ""
         premiumOrUpgradeLabel.stringValue = ""
-        suffixLabel.stringValue = ""
+        suffixPopupButton.removeAllItems()
         
         setLoading(false)
         newAliasComponents.forEach({$0.isHidden = true})
@@ -205,7 +207,10 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     private func refreshUserOptions() {
         guard let userOptions = userOptions else { return }
         hostnameTextField.stringValue = userOptions.prefixSuggestion
-        suffixLabel.stringValue = userOptions.suffixes[0]
+        
+        suffixPopupButton.removeAllItems()
+        userOptions.suffixes.forEach({suffixPopupButton.addItem(withTitle: $0)})
+        
         tableView.reloadData()
         scrollViewHeightConstraint.constant = min(tableView.intrinsicContentSize.height, 400)
 
@@ -248,7 +253,10 @@ extension ExtensionHomeViewController {
         guard isValidEmailPrefix, let apiKey = apiKey else { return }
         
         let prefix = hostnameTextField.stringValue
-        let suffix = suffixLabel.stringValue
+        guard let suffix = suffixPopupButton.titleOfSelectedItem else {
+            showErrorAlert(SLError.emptySuffix)
+            return
+        }
         setLoading(true)
         SLApiService.createNewAlias(apiKey: apiKey, prefix: prefix, suffix: suffix) { [weak self] (error) in
             guard let self = self else { return }
@@ -258,6 +266,7 @@ extension ExtensionHomeViewController {
                 let alert = NSAlert(messageText: "Error occured", informativeText: error.description, buttonText: "Close", alertStyle: .critical)
                 alert.runModal()
             } else {
+                self.highLightFirstAlias = true
                 self.refresh()
             }
         }
@@ -290,8 +299,8 @@ extension ExtensionHomeViewController {
 // MARK: - NSTableViewDataSource
 extension ExtensionHomeViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        guard let user = userOptions else { return 0 }
-        return max(1, user.existing.count)
+        guard let userOptions = userOptions else { return 0 }
+        return max(1, userOptions.existing.count)
     }
 }
 
@@ -307,7 +316,7 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
         }
 
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("AliasTableCellView"), owner: nil) as? AliasTableCellView {
-            cell.bind(alias: userOptions.existing[row])
+            cell.bind(alias: userOptions.existing[userOptions.existing.count - row - 1])
             cell.copyAlias = { [unowned self] alias in
                 guard let alias = alias else { return }
                 let pasteboard = NSPasteboard.general
@@ -315,6 +324,14 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
                 pasteboard.setString(alias, forType: .string)
                 
                 self.showHUD(attributedMessageString: self.generateCopyAlertAttributedString(withAlias: alias))
+            }
+            
+            
+            if highLightFirstAlias && row == 0 {
+                cell.setHighLight(true)
+                highLightFirstAlias = false
+            } else {
+                cell.setHighLight(false)
             }
             
             return cell

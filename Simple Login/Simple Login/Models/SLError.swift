@@ -15,6 +15,7 @@ enum SLError: Error, CustomStringConvertible {
     case failToParseUserOptions
     case invalidApiKey
     case duplicatedAlias
+    case emptySuffix
     case unknownError(description: String)
     
     var description: String {
@@ -25,6 +26,7 @@ enum SLError: Error, CustomStringConvertible {
         case .failToParseUserOptions: return "Failed to parse user's options"
         case .invalidApiKey: return "Invalid API key"
         case .duplicatedAlias: return "Alias is duplicated"
+        case .emptySuffix: return "No suffix is selected"
         case .unknownError(let description): return "Unknown error: \(description)"
         }
     }
