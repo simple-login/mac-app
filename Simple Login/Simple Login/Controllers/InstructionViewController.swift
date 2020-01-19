@@ -106,7 +106,7 @@ final class InstructionViewController: NSViewController {
     }
     
     private func setupStep3Label() {
-        let plainString = "Step 3️⃣: 🎉🎉🎉 Simple Login is now avaible on your Safari among other extensions next to the address bar"
+        let plainString = "Step 3️⃣: 🎉🎉🎉 Simple Login is now available on your Safari among other extensions next to the address bar"
         
         let attributedString = NSMutableAttributedString(string: plainString)
         
