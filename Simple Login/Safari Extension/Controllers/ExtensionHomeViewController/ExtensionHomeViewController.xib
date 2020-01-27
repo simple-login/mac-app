@@ -23,7 +23,6 @@
                 <outlet property="suffixPopupButton" destination="DO5-MU-g2U" id="ugn-Pw-vkA"/>
                 <outlet property="suffixPrefixStackView" destination="YZz-hS-Qcd" id="RA6-Yx-KLA"/>
                 <outlet property="tableView" destination="SfY-oo-xy0" id="07b-oD-e7V"/>
-                <outlet property="upgradeButton" destination="CdE-6Z-hF3" id="VdF-mc-wmY"/>
                 <outlet property="usernameLabel" destination="tMo-BC-6bk" id="ArD-eM-TXQ"/>
                 <outlet property="view" destination="c22-O7-iKe" id="loZ-2Y-U2R"/>
             </connections>
@@ -151,26 +150,16 @@
                             <rect key="frame" x="18" y="722" width="785" height="96"/>
                             <textFieldCell key="cell" selectable="YES" alignment="center" id="teE-Gm-K0p">
                                 <font key="font" metaFont="system"/>
-                                <string key="title">You have reached the limit Go Premium for: ✅ Unlimited Aliases ✅ Custom Domain ✅ Catch-All (or Wildcard) Aliases ✅ Directory (or Username) (Coming soon)</string>
+                                <string key="title">You have reached the limit Go Premium for: ✅ Unlimited Aliases ✅ Custom Domain ✅ Catch-All (or Wildcard) Aliases ✅ Directory (or Username)</string>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CdE-6Z-hF3">
-                            <rect key="frame" x="354" y="685" width="93" height="32"/>
-                            <buttonCell key="cell" type="push" title="Upgrade" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7ij-bt-U3T">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="upgrade:" target="-2" id="MeD-7T-5aa"/>
-                            </connections>
-                        </button>
                         <box horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="995" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="pLR-6e-CQU">
-                            <rect key="frame" x="0.0" y="680" width="781" height="5"/>
+                            <rect key="frame" x="0.0" y="710" width="781" height="5"/>
                         </box>
                         <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XR8-zF-sOR">
-                            <rect key="frame" x="8" y="654" width="785" height="19"/>
+                            <rect key="frame" x="8" y="684" width="785" height="19"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Or use an existing alias" id="ql4-rf-Jz8">
                                 <font key="font" metaFont="systemSemibold" size="15"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -178,7 +167,7 @@
                             </textFieldCell>
                         </textField>
                         <scrollView horizontalHuggingPriority="1" verticalCompressionResistancePriority="1000" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ym-8p-Hnp">
-                            <rect key="frame" x="20" y="510" width="761" height="135"/>
+                            <rect key="frame" x="20" y="540" width="761" height="135"/>
                             <clipView key="contentView" drawsBackground="NO" id="Mrv-sA-Adh">
                                 <rect key="frame" x="1" y="1" width="759" height="133"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,7 +181,7 @@
                                         <tableColumns>
                                             <tableColumn width="756" minWidth="40" maxWidth="1000" id="LJL-6f-9oX">
                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                    <font key="font" metaFont="controlContent" size="11"/>
+                                                    <font key="font" metaFont="menu" size="11"/>
                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                 </tableHeaderCell>
@@ -248,13 +237,13 @@
                             </userDefinedRuntimeAttributes>
                         </scrollView>
                         <box horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="995" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Snp-9Z-LfV">
-                            <rect key="frame" x="0.0" y="498" width="781" height="5"/>
+                            <rect key="frame" x="0.0" y="528" width="781" height="5"/>
                         </box>
                         <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="994" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Msg-py-y7t">
-                            <rect key="frame" x="0.0" y="0.0" width="801" height="491"/>
+                            <rect key="frame" x="0.0" y="0.0" width="801" height="521"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="pfN-sv-LSA">
-                                    <rect key="frame" x="-2" y="238" width="396" height="16"/>
+                                    <rect key="frame" x="-2" y="253" width="396" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="MANAGE ALIASES" id="amm-2X-JW7">
                                         <font key="font" metaFont="systemMedium" size="13"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -262,10 +251,10 @@
                                     </textFieldCell>
                                 </textField>
                                 <box horizontalHuggingPriority="750" verticalHuggingPriority="1" verticalCompressionResistancePriority="1000" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="0fl-Oo-8cH">
-                                    <rect key="frame" x="398" y="0.0" width="5" height="491"/>
+                                    <rect key="frame" x="398" y="0.0" width="5" height="521"/>
                                 </box>
                                 <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="kPs-eV-a7j">
-                                    <rect key="frame" x="407" y="238" width="396" height="16"/>
+                                    <rect key="frame" x="407" y="253" width="396" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="SIGN OUT" id="OFH-CN-hea">
                                         <font key="font" metaFont="systemMedium" size="13"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -325,10 +314,8 @@
                         <integer value="1000"/>
                         <integer value="1000"/>
                         <integer value="1000"/>
-                        <integer value="1000"/>
                     </visibilityPriorities>
                     <customSpacing>
-                        <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>

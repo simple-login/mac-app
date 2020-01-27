@@ -31,7 +31,6 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     
     // Go premium components
     @IBOutlet private weak var premiumDescriptionLabel: NSTextField!
-    @IBOutlet private weak var upgradeButton: NSButton!
     
     @IBOutlet private weak var scrollView: NSScrollView!
     @IBOutlet private weak var scrollViewHeightConstraint: NSLayoutConstraint!
@@ -46,7 +45,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     }()
     
     lazy private var upgradeComponents: [NSView] = {
-        return [premiumDescriptionLabel, upgradeButton]
+        return [premiumDescriptionLabel]
     }()
     
     var apiKey: String?
@@ -195,12 +194,9 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
             premiumOrUpgradeLabel.textColor = .systemGreen
             premiumOrUpgradeLabel.font = NSFont.systemFont(ofSize: 14)
         } else {
-            premiumOrUpgradeLabel.stringValue = "Upgrade"
+            premiumOrUpgradeLabel.stringValue = "Freemium"
             premiumOrUpgradeLabel.textColor = .systemBlue
             premiumOrUpgradeLabel.font = NSFont.boldSystemFont(ofSize: 14)
-            
-            let click = NSClickGestureRecognizer(target: self, action: #selector(upgrade(_:)))
-            premiumOrUpgradeLabel.addGestureRecognizer(click)
         }
     }
     
@@ -241,10 +237,10 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         }
     }
     
-    @objc @IBAction private func upgrade(_ sender: Any) {
-        guard let url = URL(string: "\(BASE_URL)/dashboard/pricing") else { return }
-        NSWorkspace.shared.open(url)
-    }
+//    @objc @IBAction private func upgrade(_ sender: Any) {
+//        guard let url = URL(string: "\(BASE_URL)/dashboard/pricing") else { return }
+//        NSWorkspace.shared.open(url)
+//    }
 }
 
 // MARK: - Create new alias
