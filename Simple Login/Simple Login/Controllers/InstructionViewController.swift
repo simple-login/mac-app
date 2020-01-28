@@ -53,6 +53,7 @@ final class InstructionViewController: NSViewController {
         }
         
         usernameLabel.allowsEditingTextAttributes = true
+        usernameLabel.isSelectable = false
         usernameLabel.attributedStringValue = userInfo.attributedString
     }
     

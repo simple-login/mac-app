@@ -13,7 +13,7 @@ struct UserInfo {
     let isPremium: Bool
     
     lazy private(set) var attributedString: NSAttributedString = {
-        let premiumOrUpgrade = isPremium ? "Premium" : "Upgrade"
+        let premiumOrUpgrade = isPremium ? "Premium" : "Freemium"
         let plainString = "\(name)\n\(premiumOrUpgrade)"
         
         let attributedString = NSMutableAttributedString(string: plainString)
@@ -35,10 +35,7 @@ struct UserInfo {
                 
                 attributedString.addAttributes(
                 [.foregroundColor : textColor,
-                 .font : NSFont.systemFont(ofSize: 14, weight: .medium),
-                 .underlineStyle : NSUnderlineStyle.single.rawValue,
-                 .link : URL(string: "\(BASE_URL)/dashboard/pricing") as Any,
-                 .toolTip : "\(BASE_URL)/dashboard/pricing"],
+                 .font : NSFont.systemFont(ofSize: 14, weight: .medium)],
                 range: NSRange(premiumOrUpgradeRange, in: plainString))
             }
         }
