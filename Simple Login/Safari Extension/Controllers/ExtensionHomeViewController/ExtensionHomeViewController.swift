@@ -29,6 +29,11 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     @IBOutlet private weak var suffixPopupButton: NSPopUpButton!
     @IBOutlet private weak var createButton: NSButton!
     
+    // Random alias components
+    @IBOutlet private weak var createRandomlyUpperSeparator: NSBox!
+    @IBOutlet private weak var createRandomlyButton: NSButton!
+    @IBOutlet private weak var createRandomlyDescriptionLabel: NSTextField!
+    
     // Go premium components
     @IBOutlet private weak var premiumDescriptionLabel: NSTextField!
     
@@ -41,7 +46,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     @IBOutlet private weak var progressIndicator: NSProgressIndicator!
     
     lazy private var newAliasComponents: [NSView] = {
-        return [newAliasLabel, suffixPrefixStackView, customPrefixStatusLabel, createButton]
+        return [newAliasLabel, suffixPrefixStackView, customPrefixStatusLabel, createButton, createRandomlyUpperSeparator, createRandomlyButton, createRandomlyDescriptionLabel]
     }()
     
     lazy private var upgradeComponents: [NSView] = {
@@ -249,12 +254,34 @@ extension ExtensionHomeViewController {
         guard isValidEmailPrefix, let apiKey = apiKey else { return }
         
         let prefix = hostnameTextField.stringValue
+        
         guard let suffix = suffixPopupButton.titleOfSelectedItem else {
             showErrorAlert(SLError.emptySuffix)
             return
         }
+        
         setLoading(true)
+        
         SLApiService.createNewAlias(apiKey: apiKey, prefix: prefix, suffix: suffix) { [weak self] (error) in
+            guard let self = self else { return }
+            self.setLoading(false)
+            
+            if let error = error {
+                let alert = NSAlert(messageText: "Error occured", informativeText: error.description, buttonText: "Close", alertStyle: .critical)
+                alert.runModal()
+            } else {
+                self.highLightFirstAlias = true
+                self.refresh()
+            }
+        }
+    }
+    
+    @IBAction private func createRandomlyNewAlias(_ sender: Any) {
+        guard let apiKey = apiKey else { return }
+        
+        setLoading(true)
+        
+        SLApiService.createRandomlyNewAlias(apiKey: apiKey) { [weak self] (error) in
             guard let self = self else { return }
             self.setLoading(false)
             

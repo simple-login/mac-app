@@ -87,4 +87,40 @@ final class SLApiService {
             }
         }
     }
+    
+    static func createRandomlyNewAlias(apiKey: String, completion: @escaping (_ error: SLError?) -> Void) {
+        let headers: HTTPHeaders = ["Authentication": apiKey]
+        
+        AF.request("\(BASE_URL)/api/alias/random/new", method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
+            
+            guard let statusCode = response.response?.statusCode else {
+                completion(SLError.unknownError(description: "error code unknown"))
+                return
+            }
+            
+            switch statusCode {
+            case 201:
+                guard let data = response.data else {
+                    completion(SLError.noData)
+                    return
+                }
+                
+                do {
+                    let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String : Any]
+                    
+                    if let _ = jsonDictionary?["alias"] as? String {
+                        completion(nil)
+                    } else {
+                        completion(SLError.failToParseObject(objectName: "newly created alias"))
+                    }
+                    
+                } catch {
+                    completion(SLError.failToSerializeJSONData)
+                }
+                
+            case 401: completion(SLError.invalidApiKey)
+            default: completion(SLError.unknownError(description: "error code \(statusCode)"))
+            }
+        }
+    }
 }

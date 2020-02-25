@@ -9,6 +9,9 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ExtensionHomeViewController" customModule="Safari_Extension" customModuleProvider="target">
             <connections>
                 <outlet property="createButton" destination="e1p-FA-8fG" id="3v5-Ze-bKM"/>
+                <outlet property="createRandomlyButton" destination="HjO-r5-kbg" id="WM6-rX-p2m"/>
+                <outlet property="createRandomlyDescriptionLabel" destination="XE1-2l-wrb" id="78O-sv-if2"/>
+                <outlet property="createRandomlyUpperSeparator" destination="gfu-M0-aCb" id="kMM-5t-4MZ"/>
                 <outlet property="customPrefixStatusLabel" destination="SCA-GX-fLM" id="kwf-0f-K1u"/>
                 <outlet property="hostnameTextField" destination="lJh-5o-atI" id="AgC-Vk-exA"/>
                 <outlet property="manageAliasesButton" destination="pfN-sv-LSA" id="XEA-Da-mwi"/>
@@ -30,14 +33,14 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="801" height="1000"/>
+            <rect key="frame" x="0.0" y="0.0" width="801" height="1065"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <stackView distribution="fillProportionally" orientation="vertical" alignment="centerX" spacing="9" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VfM-Vs-fq2">
-                    <rect key="frame" x="0.0" y="10" width="801" height="980"/>
+                    <rect key="frame" x="0.0" y="10" width="801" height="1045"/>
                     <subviews>
                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iU6-ow-vZU">
-                            <rect key="frame" x="20" y="950" width="761" height="30"/>
+                            <rect key="frame" x="20" y="1015" width="761" height="30"/>
                             <subviews>
                                 <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l35-VX-uu9">
                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -76,18 +79,18 @@
                             </customSpacing>
                         </stackView>
                         <box horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="999" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Xhr-KB-Uka">
-                            <rect key="frame" x="0.0" y="938" width="801" height="5"/>
+                            <rect key="frame" x="0.0" y="1003" width="801" height="5"/>
                         </box>
                         <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="998" translatesAutoresizingMaskIntoConstraints="NO" id="TxL-lj-hkA">
-                            <rect key="frame" x="354" y="912" width="93" height="19"/>
-                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Create Alias" id="uoE-CU-7wy">
+                            <rect key="frame" x="359" y="977" width="84" height="19"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Email Alias" id="uoE-CU-7wy">
                                 <font key="font" metaFont="systemMedium" size="15"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZz-hS-Qcd">
-                            <rect key="frame" x="20" y="882" width="761" height="21"/>
+                            <rect key="frame" x="20" y="947" width="761" height="21"/>
                             <subviews>
                                 <textField horizontalHuggingPriority="1" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="lJh-5o-atI">
                                     <rect key="frame" x="0.0" y="0.0" width="689" height="21"/>
@@ -129,7 +132,7 @@
                             </customSpacing>
                         </stackView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" verticalCompressionResistancePriority="996" translatesAutoresizingMaskIntoConstraints="NO" id="SCA-GX-fLM">
-                            <rect key="frame" x="18" y="857" width="765" height="16"/>
+                            <rect key="frame" x="18" y="922" width="765" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Alias is autofilled by the current website name, feel free to change it." id="B4q-EC-wZ4">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -137,8 +140,8 @@
                             </textFieldCell>
                         </textField>
                         <button horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e1p-FA-8fG">
-                            <rect key="frame" x="14" y="820" width="773" height="32"/>
-                            <buttonCell key="cell" type="push" title="Create" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1LV-RI-tc9">
+                            <rect key="frame" x="14" y="885" width="773" height="32"/>
+                            <buttonCell key="cell" type="push" title="Create Alias" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1LV-RI-tc9">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -146,6 +149,27 @@
                                 <action selector="createNewAlias:" target="-2" id="yMB-vq-oK4"/>
                             </connections>
                         </button>
+                        <box horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="995" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="gfu-M0-aCb">
+                            <rect key="frame" x="10" y="880" width="781" height="5"/>
+                        </box>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HjO-r5-kbg">
+                            <rect key="frame" x="14" y="845" width="773" height="32"/>
+                            <buttonCell key="cell" type="push" title="Create Random Alias" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dBJ-Vg-OTF">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="createRandomlyNewAlias:" target="-2" id="ZzH-b5-cC4"/>
+                            </connections>
+                        </button>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XE1-2l-wrb">
+                            <rect key="frame" x="303" y="827" width="196" height="16"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="Generate a totally random alias." id="enm-4G-j3o">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tU7-T5-Bly">
                             <rect key="frame" x="18" y="722" width="785" height="96"/>
                             <textFieldCell key="cell" selectable="YES" alignment="center" id="teE-Gm-K0p">
@@ -181,7 +205,7 @@
                                         <tableColumns>
                                             <tableColumn width="756" minWidth="40" maxWidth="1000" id="LJL-6f-9oX">
                                                 <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                    <font key="font" metaFont="menu" size="11"/>
+                                                    <font key="font" metaFont="controlContent" size="11"/>
                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                 </tableHeaderCell>
@@ -282,6 +306,7 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="tU7-T5-Bly" secondAttribute="trailing" id="2OB-We-ycK"/>
                         <constraint firstAttribute="trailing" secondItem="Msg-py-y7t" secondAttribute="trailing" id="4Uj-3f-J1t"/>
+                        <constraint firstAttribute="trailing" secondItem="HjO-r5-kbg" secondAttribute="trailing" constant="20" symbolic="YES" id="4ch-pf-ut7"/>
                         <constraint firstAttribute="trailing" secondItem="e1p-FA-8fG" secondAttribute="trailing" constant="20" symbolic="YES" id="D1M-ah-9Gl"/>
                         <constraint firstItem="tU7-T5-Bly" firstAttribute="leading" secondItem="VfM-Vs-fq2" secondAttribute="leading" constant="20" symbolic="YES" id="E3g-ha-Ql4"/>
                         <constraint firstAttribute="trailing" secondItem="4ym-8p-Hnp" secondAttribute="trailing" constant="20" symbolic="YES" id="Eyv-xj-t9H"/>
@@ -297,11 +322,15 @@
                         <constraint firstItem="Xhr-KB-Uka" firstAttribute="leading" secondItem="VfM-Vs-fq2" secondAttribute="leading" id="atY-dK-CiE"/>
                         <constraint firstItem="pLR-6e-CQU" firstAttribute="leading" secondItem="VfM-Vs-fq2" secondAttribute="leading" id="evX-5C-rMp"/>
                         <constraint firstItem="Snp-9Z-LfV" firstAttribute="leading" secondItem="VfM-Vs-fq2" secondAttribute="leading" id="kHM-6E-9Iz"/>
+                        <constraint firstItem="HjO-r5-kbg" firstAttribute="leading" secondItem="VfM-Vs-fq2" secondAttribute="leading" constant="20" symbolic="YES" id="phL-a5-uon"/>
                         <constraint firstItem="e1p-FA-8fG" firstAttribute="leading" secondItem="VfM-Vs-fq2" secondAttribute="leading" constant="20" symbolic="YES" id="pm2-bF-CrC"/>
                         <constraint firstItem="YZz-hS-Qcd" firstAttribute="leading" secondItem="VfM-Vs-fq2" secondAttribute="leading" constant="20" symbolic="YES" id="uKA-wE-Kmw"/>
                         <constraint firstItem="iU6-ow-vZU" firstAttribute="leading" secondItem="VfM-Vs-fq2" secondAttribute="leading" constant="20" symbolic="YES" id="w4d-1V-c1L"/>
                     </constraints>
                     <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
                         <integer value="1000"/>
                         <integer value="1000"/>
                         <integer value="1000"/>
@@ -328,10 +357,13 @@
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
                         <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
                     </customSpacing>
                 </stackView>
                 <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="vST-qQ-X4u">
-                    <rect key="frame" x="393" y="492" width="16" height="16"/>
+                    <rect key="frame" x="393" y="525" width="16" height="16"/>
                 </progressIndicator>
             </subviews>
             <constraints>

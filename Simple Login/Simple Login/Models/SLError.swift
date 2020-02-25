@@ -11,6 +11,7 @@ import Foundation
 enum SLError: Error, CustomStringConvertible {
     case noData
     case failToSerializeJSONData
+    case failToParseObject(objectName: String)
     case failToParseUserInfo
     case failToParseUserOptions
     case invalidApiKey
@@ -22,6 +23,7 @@ enum SLError: Error, CustomStringConvertible {
         switch self {
         case .noData: return "Server returns no data"
         case .failToSerializeJSONData: return "Failed to serialize JSON data"
+        case .failToParseObject(let objectName): return "Failed to parse \(objectName)"
         case .failToParseUserInfo: return "Failed to parse user's info"
         case .failToParseUserOptions: return "Failed to parse user's options"
         case .invalidApiKey: return "Invalid API key"
