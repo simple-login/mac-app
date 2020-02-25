@@ -8,10 +8,10 @@
 
 import Foundation
 
-#if DEBUG
-let BASE_URL = "https://app.sldev.ovh"
-#else
-let BASE_URL = "https://app.simplelogin.io"
-#endif
+var BASE_URL: String {
+    get {
+        SLUserDefaultsService.getApiUrl()
+    }
+}
 
 let ALIAS_PREFIX_MAX_LENGTH = 100

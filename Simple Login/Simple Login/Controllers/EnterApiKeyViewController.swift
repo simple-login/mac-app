@@ -16,6 +16,7 @@ final class EnterApiKeyViewController: NSViewController {
     @IBOutlet private weak var createAndCopyApiKeyLabel: NSTextField!
     @IBOutlet private weak var pasteApiKeyLabel: NSTextField!
     @IBOutlet private weak var apiKeyTextField: NSTextField!
+    @IBOutlet private weak var apiUrlTextField: NSTextField!
     @IBOutlet private weak var setApiKeyButton: NSButton!
     @IBOutlet private weak var progressIndicator: NSProgressIndicator!
 
@@ -41,6 +42,27 @@ final class EnterApiKeyViewController: NSViewController {
         noInternetAlert.runModal()
     }
     
+    @IBAction private func modifyApiUrl(_ sender: Any) {
+        let alert = NSAlert()
+        alert.messageText = "Enter your custom API URL"
+        alert.addButton(withTitle: "Set API URL")
+        alert.addButton(withTitle: "Cancel")
+        alert.alertStyle = .informational
+        
+        let input = NSTextField(frame: NSRect(x: 0, y: 0, width: 300, height: 20))
+        alert.accessoryView = input
+        
+        let modalResult = alert.runModal()
+        
+        switch modalResult {
+        case .alertFirstButtonReturn:
+            SLUserDefaultsService.setApiUrl(input.stringValue)
+            apiUrlTextField.stringValue = input.stringValue
+            
+        default: return
+        }
+    }
+    
     @IBAction private func setApiKey(_ sender: Any) {
         let enteredApiKey = apiKeyTextField.stringValue
         
@@ -53,7 +75,6 @@ final class EnterApiKeyViewController: NSViewController {
         }
         
         setLoading(true)
-        
         
         SLApiService.fetchUserInfo(enteredApiKey, completion: { [weak self] (userInfo, error) in
             guard let self = self else { return }
@@ -102,6 +123,8 @@ final class EnterApiKeyViewController: NSViewController {
 // MARK: Set up labels
 extension EnterApiKeyViewController {
     private func setupUI() {
+        preferredContentSize = NSSize(width: 600, height: 300)
+        apiUrlTextField.stringValue = BASE_URL
         setupCreateAccountLabel()
         setupCreateAndCopyApiKeyLabel()
     }
