@@ -55,6 +55,8 @@
 		C0D6C1272454C2B5001AA865 /* ContactLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1252454C2A2001AA865 /* ContactLite.swift */; };
 		C0D6C12A2454CF3B001AA865 /* RegisterableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1292454CF3B001AA865 /* RegisterableCellView.swift */; };
 		C0D6C12B2454CFD2001AA865 /* RegisterableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1292454CF3B001AA865 /* RegisterableCellView.swift */; };
+		C0D6C12E2454D66C001AA865 /* LoadingTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C12D2454D66C001AA865 /* LoadingTableCellView.swift */; };
+		C0D6C1302454D67A001AA865 /* LoadingTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D6C12F2454D67A001AA865 /* LoadingTableCellView.xib */; };
 		C0E6000623BFBFC60011982B /* UserOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE523B90DED00232B9A /* UserOptions.swift */; };
 		C0E6000823BFBFEA0011982B /* SLApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E6000723BFBFEA0011982B /* SLApiService.swift */; };
 		C0E6000923BFC0670011982B /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
@@ -140,6 +142,8 @@
 		C0D6C1222454C0CD001AA865 /* Date+Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Distance.swift"; sourceTree = "<group>"; };
 		C0D6C1252454C2A2001AA865 /* ContactLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactLite.swift; sourceTree = "<group>"; };
 		C0D6C1292454CF3B001AA865 /* RegisterableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterableCellView.swift; sourceTree = "<group>"; };
+		C0D6C12D2454D66C001AA865 /* LoadingTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableCellView.swift; sourceTree = "<group>"; };
+		C0D6C12F2454D67A001AA865 /* LoadingTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableCellView.xib; sourceTree = "<group>"; };
 		C0E6000723BFBFEA0011982B /* SLApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLApiService.swift; sourceTree = "<group>"; };
 		C0E6000F23BFDDDD0011982B /* AliasTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliasTableCellView.swift; sourceTree = "<group>"; };
 		C0E6001123BFDE200011982B /* AliasTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AliasTableCellView.xib; sourceTree = "<group>"; };
@@ -301,9 +305,19 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		C0D6C12C2454D654001AA865 /* LoadingTableCellView */ = {
+			isa = PBXGroup;
+			children = (
+				C0D6C12D2454D66C001AA865 /* LoadingTableCellView.swift */,
+				C0D6C12F2454D67A001AA865 /* LoadingTableCellView.xib */,
+			);
+			path = LoadingTableCellView;
+			sourceTree = "<group>";
+		};
 		C0E6000B23BFDD710011982B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C0D6C12C2454D654001AA865 /* LoadingTableCellView */,
 				C05587A823C233D600CA7418 /* EmptyTableCellView */,
 				C0E6000C23BFDD790011982B /* AliasTableCellView */,
 			);
@@ -490,6 +504,7 @@
 				C0FC076123C340E3002FB98B /* HUD.storyboard in Resources */,
 				C092EDB423C3CF9300F2D434 /* ToolbarItemIcon.pdf in Resources */,
 				C000DFF723C4CB81005D61E4 /* Assets.xcassets in Resources */,
+				C0D6C1302454D67A001AA865 /* LoadingTableCellView.xib in Resources */,
 				C05587AC23C233FE00CA7418 /* EmptyTableCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,6 +610,7 @@
 				C0D6C1272454C2B5001AA865 /* ContactLite.swift in Sources */,
 				C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */,
 				C0E6000623BFBFC60011982B /* UserOptions.swift in Sources */,
+				C0D6C12E2454D66C001AA865 /* LoadingTableCellView.swift in Sources */,
 				C0BE6CB223BF3FFA0082C2C2 /* Statics.swift in Sources */,
 				C05587A523C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift in Sources */,
 				C000DFF823C4D25D005D61E4 /* InstructionViewController.swift in Sources */,

@@ -118,6 +118,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         
         EmptyTableCellView.register(with: tableView)
         AliasTableCellView.register(with: tableView)
+        LoadingTableCellView.register(with: tableView)
         
         // Set up bottom options
         let manageAliasesClickGesture = NSClickGestureRecognizer(target: self, action: #selector(manageAliases))
@@ -369,6 +370,10 @@ extension ExtensionHomeViewController: NSTableViewDataSource {
             return 1
         }
         
+        if moreToLoad {
+            return aliases.count + 1
+        }
+        
         return aliases.count
     }
 }
@@ -380,11 +385,17 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
             return EmptyTableCellView.make(from: tableView)
         }
         
-        let cell = AliasTableCellView.make(from: tableView)
+        if moreToLoad && row == aliases.count {
+            let loadingCell = LoadingTableCellView.make(from: tableView)
+            fetchAliases()
+            return loadingCell
+        }
+        
+        let aliasCell = AliasTableCellView.make(from: tableView)
         let alias = aliases[row]
         
-        cell.bind(alias: alias)
-        cell.didClickCopyButton = { [unowned self] in
+        aliasCell.bind(alias: alias)
+        aliasCell.didClickCopyButton = { [unowned self] in
             let pasteboard = NSPasteboard.general
             pasteboard.clearContents()
             pasteboard.setString(alias.email, forType: .string)
@@ -393,13 +404,13 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
         }
         
         if highLightFirstAlias && row == 0 {
-            cell.setHighLight(true)
+            aliasCell.setHighLight(true)
             highLightFirstAlias = false
         } else {
-            cell.setHighLight(false)
+            aliasCell.setHighLight(false)
         }
         
-        return cell
+        return aliasCell
     }
     
     func selectionShouldChange(in tableView: NSTableView) -> Bool {
