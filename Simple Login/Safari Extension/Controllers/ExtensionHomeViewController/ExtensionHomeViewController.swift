@@ -208,13 +208,11 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     private func fetchAliases() {
         guard let apiKey = apiKey, moreToLoad, !isFetching else { return }
         
-        setLoading(true)
         isFetching = true
         
         SLApiService.fetchAliases(apiKey: apiKey, page: fetchedPage + 1) { [weak self] result in
             guard let self = self else { return }
             self.isFetching = false
-            self.setLoading(false)
             
             switch result {
             case .success(let aliases):
@@ -386,16 +384,15 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
         }
         
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("AliasTableCellView"), owner: nil) as? AliasTableCellView {
-            cell.bind(alias: aliases[row].email)
-            cell.copyAlias = { [unowned self] alias in
-                guard let alias = alias else { return }
+            let alias = aliases[row]
+            cell.bind(alias: alias)
+            cell.didClickCopyButton = { [unowned self] in
                 let pasteboard = NSPasteboard.general
                 pasteboard.clearContents()
-                pasteboard.setString(alias, forType: .string)
+                pasteboard.setString(alias.email, forType: .string)
                 
-                self.showHUD(attributedMessageString: self.generateCopyAlertAttributedString(withAlias: alias))
+                self.showHUD(attributedMessageString: alias.copyAlertAttributedString)
             }
-            
             
             if highLightFirstAlias && row == 0 {
                 cell.setHighLight(true)
@@ -413,25 +410,6 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
     func selectionShouldChange(in tableView: NSTableView) -> Bool {
         // Disable selection mode
         return false
-    }
-    
-    private func generateCopyAlertAttributedString(withAlias alias: String) -> NSAttributedString {
-        let plainString = "Copied\n\(alias)"
-        let attributedString = NSMutableAttributedString(string: plainString)
-
-        attributedString.addAttribute(.foregroundColor, value: NSColor.white, range: NSRange(location: 0, length: plainString.count))
-    
-        attributedString.addTextAlignCenterAttribute()
-    
-        if let copiedRange = plainString.range(of: "Copied") {
-            attributedString.addAttribute(.font, value: NSFont.systemFont(ofSize: 17, weight: .semibold), range: NSRange(copiedRange, in: plainString))
-        }
-
-        if let aliasRange = plainString.range(of: alias) {
-            attributedString.addAttribute(.font, value: NSFont.systemFont(ofSize: 13, weight: .regular), range: NSRange(aliasRange, in: plainString))
-        }
-        
-        return attributedString
     }
 }
 

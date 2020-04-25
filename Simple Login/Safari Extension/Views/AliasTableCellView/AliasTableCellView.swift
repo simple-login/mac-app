@@ -12,8 +12,7 @@ final class AliasTableCellView: NSTableCellView {
     @IBOutlet private weak var aliasLabel: NSTextField!
     @IBOutlet private weak var copyButton: NSButton!
     
-    private var alias: String?
-    var copyAlias: ((_ alias: String?) -> Void)?
+    var didClickCopyButton: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,12 +24,11 @@ final class AliasTableCellView: NSTableCellView {
     }
     
     @IBAction private func copyButtonClicked(_ sender: Any) {
-        copyAlias?(alias)
+        didClickCopyButton?()
     }
     
-    func bind(alias: String) {
-        aliasLabel.stringValue = alias
-        self.alias = alias
+    func bind(alias: Alias) {
+        aliasLabel.stringValue = alias.email
     }
     
     func setHighLight(_ highLighted: Bool) {

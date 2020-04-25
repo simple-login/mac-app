@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 
 final class Alias: Equatable {
     typealias Identifier = Int
@@ -27,6 +28,25 @@ final class Alias: Equatable {
         let preciseDateAndTime = preciseDateFormatter.string(from: date)
         let (value, unit) =  date.distanceFromNow()
         return "Created on \(preciseDateAndTime) (\(value) \(unit) ago)"
+    }()
+    
+    lazy var copyAlertAttributedString: NSAttributedString = {
+        let plainString = "Copied\n\(email)"
+        let attributedString = NSMutableAttributedString(string: plainString)
+        
+        attributedString.addAttribute(.foregroundColor, value: NSColor.white, range: NSRange(location: 0, length: plainString.count))
+        
+        attributedString.addTextAlignCenterAttribute()
+        
+        if let copiedRange = plainString.range(of: "Copied") {
+            attributedString.addAttribute(.font, value: NSFont.systemFont(ofSize: 17, weight: .semibold), range: NSRange(copiedRange, in: plainString))
+        }
+        
+        if let emailRange = plainString.range(of: email) {
+            attributedString.addAttribute(.font, value: NSFont.systemFont(ofSize: 13, weight: .regular), range: NSRange(emailRange, in: plainString))
+        }
+        
+        return attributedString
     }()
 //
 //    lazy var countAttributedString: NSAttributedString = {
