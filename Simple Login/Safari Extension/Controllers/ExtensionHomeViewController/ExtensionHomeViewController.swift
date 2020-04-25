@@ -115,8 +115,9 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         
         // Set up tableView
         tableView.backgroundColor = NSColor.clear
-        tableView.register(NSNib(nibNamed: NSNib.Name("AliasTableCellView"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "AliasTableCellView"))
-        tableView.register(NSNib(nibNamed: NSNib.Name("EmptyTableCellView"), bundle: nil), forIdentifier: NSUserInterfaceItemIdentifier(rawValue: "EmptyTableCellView"))
+        
+        EmptyTableCellView.register(with: tableView)
+        AliasTableCellView.register(with: tableView)
         
         // Set up bottom options
         let manageAliasesClickGesture = NSClickGestureRecognizer(target: self, action: #selector(manageAliases))
@@ -124,6 +125,9 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         
         let signOutClickGesture = NSClickGestureRecognizer(target: self, action: #selector(signOut))
         signOutButton.addGestureRecognizer(signOutClickGesture)
+        
+        // Fetch aliases
+        fetchAliases()
     }
     
     override func viewWillAppear() {
@@ -188,9 +192,6 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                 }
             }
         }
-        
-        // Fetch aliases
-        fetchAliases()
     }
     
     private func getURL(_ completion: @escaping (_ url: URL?) -> Void) {
@@ -376,35 +377,29 @@ extension ExtensionHomeViewController: NSTableViewDataSource {
 extension ExtensionHomeViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard !aliases.isEmpty else {
-            if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("EmptyTableCellView"), owner: nil) as? EmptyTableCellView {
-                return cell
-            }
-            
-            return nil
+            return EmptyTableCellView.make(from: tableView)
         }
         
-        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("AliasTableCellView"), owner: nil) as? AliasTableCellView {
-            let alias = aliases[row]
-            cell.bind(alias: alias)
-            cell.didClickCopyButton = { [unowned self] in
-                let pasteboard = NSPasteboard.general
-                pasteboard.clearContents()
-                pasteboard.setString(alias.email, forType: .string)
-                
-                self.showHUD(attributedMessageString: alias.copyAlertAttributedString)
-            }
+        let cell = AliasTableCellView.make(from: tableView)
+        let alias = aliases[row]
+        
+        cell.bind(alias: alias)
+        cell.didClickCopyButton = { [unowned self] in
+            let pasteboard = NSPasteboard.general
+            pasteboard.clearContents()
+            pasteboard.setString(alias.email, forType: .string)
             
-            if highLightFirstAlias && row == 0 {
-                cell.setHighLight(true)
-                highLightFirstAlias = false
-            } else {
-                cell.setHighLight(false)
-            }
-            
-            return cell
+            self.showHUD(attributedMessageString: alias.copyAlertAttributedString)
         }
         
-        return nil
+        if highLightFirstAlias && row == 0 {
+            cell.setHighLight(true)
+            highLightFirstAlias = false
+        } else {
+            cell.setHighLight(false)
+        }
+        
+        return cell
     }
     
     func selectionShouldChange(in tableView: NSTableView) -> Bool {

@@ -53,6 +53,8 @@
 		C0D6C1242454C0E2001AA865 /* Date+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1222454C0CD001AA865 /* Date+Distance.swift */; };
 		C0D6C1262454C2A2001AA865 /* ContactLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1252454C2A2001AA865 /* ContactLite.swift */; };
 		C0D6C1272454C2B5001AA865 /* ContactLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1252454C2A2001AA865 /* ContactLite.swift */; };
+		C0D6C12A2454CF3B001AA865 /* RegisterableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1292454CF3B001AA865 /* RegisterableCellView.swift */; };
+		C0D6C12B2454CFD2001AA865 /* RegisterableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1292454CF3B001AA865 /* RegisterableCellView.swift */; };
 		C0E6000623BFBFC60011982B /* UserOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE523B90DED00232B9A /* UserOptions.swift */; };
 		C0E6000823BFBFEA0011982B /* SLApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E6000723BFBFEA0011982B /* SLApiService.swift */; };
 		C0E6000923BFC0670011982B /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
@@ -137,6 +139,7 @@
 		C0D6C11D2454BFF2001AA865 /* AliasActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliasActivity.swift; sourceTree = "<group>"; };
 		C0D6C1222454C0CD001AA865 /* Date+Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Distance.swift"; sourceTree = "<group>"; };
 		C0D6C1252454C2A2001AA865 /* ContactLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactLite.swift; sourceTree = "<group>"; };
+		C0D6C1292454CF3B001AA865 /* RegisterableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterableCellView.swift; sourceTree = "<group>"; };
 		C0E6000723BFBFEA0011982B /* SLApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLApiService.swift; sourceTree = "<group>"; };
 		C0E6000F23BFDDDD0011982B /* AliasTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliasTableCellView.swift; sourceTree = "<group>"; };
 		C0E6001123BFDE200011982B /* AliasTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AliasTableCellView.xib; sourceTree = "<group>"; };
@@ -269,6 +272,7 @@
 		C0BE6CAF23BF3F2D0082C2C2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C0D6C1282454CF2A001AA865 /* Protocol */,
 				C0D6C1212454C0AB001AA865 /* Extensions */,
 				C0BE6CB023BF3F470082C2C2 /* Statics.swift */,
 				C0BA379323C0C2F000F23554 /* StringExtensions.swift */,
@@ -287,6 +291,14 @@
 				C0D6C1222454C0CD001AA865 /* Date+Distance.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C0D6C1282454CF2A001AA865 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C0D6C1292454CF3B001AA865 /* RegisterableCellView.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		C0E6000B23BFDD710011982B /* Views */ = {
@@ -575,6 +587,7 @@
 				C03B0BE023BA6A9B0040DA37 /* ApiKeyMissingViewController.swift in Sources */,
 				C0E6000923BFC0670011982B /* SLError.swift in Sources */,
 				C0D6C1202454C002001AA865 /* LatestActivity.swift in Sources */,
+				C0D6C12B2454CFD2001AA865 /* RegisterableCellView.swift in Sources */,
 				C05587AA23C233E500CA7418 /* EmptyTableCellView.swift in Sources */,
 				C0D6C11A2454BFCD001AA865 /* Alias.swift in Sources */,
 				C0BA379723C0C38100F23554 /* RegexHelpers.swift in Sources */,
@@ -599,6 +612,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0D6C1232454C0CD001AA865 /* Date+Distance.swift in Sources */,
+				C0D6C12A2454CF3B001AA865 /* RegisterableCellView.swift in Sources */,
 				C013560423BE55F100287A82 /* SLUserDefaultsService.swift in Sources */,
 				C0D6C11C2454BFD7001AA865 /* LatestActivity.swift in Sources */,
 				C064846B23C1035C00AD97CA /* NSViewExtensions.swift in Sources */,

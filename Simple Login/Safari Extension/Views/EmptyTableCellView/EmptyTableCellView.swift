@@ -8,6 +8,6 @@
 
 import Cocoa
 
-final class EmptyTableCellView: NSTableCellView {
+final class EmptyTableCellView: NSTableCellView, RegisterableCellView {
     
 }

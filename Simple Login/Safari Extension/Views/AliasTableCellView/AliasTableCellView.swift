@@ -8,7 +8,7 @@
 
 import Cocoa
 
-final class AliasTableCellView: NSTableCellView {
+final class AliasTableCellView: NSTableCellView, RegisterableCellView {
     @IBOutlet private weak var aliasLabel: NSTextField!
     @IBOutlet private weak var copyButton: NSButton!
     
