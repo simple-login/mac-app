@@ -48,32 +48,6 @@ final class Alias: Equatable {
         
         return attributedString
     }()
-//
-//    lazy var countAttributedString: NSAttributedString = {
-//        var plainString = ""
-//        plainString += " \(forwardCount) "
-//        plainString += forwardCount > 1 ? "forwards," : "forward,"
-//
-//        plainString += " \(blockCount) "
-//        plainString += blockCount > 1 ? "blocks," : "block,"
-//
-//        plainString += " \(replyCount) "
-//        plainString += replyCount > 1 ? "replies" : "reply"
-//
-//        let attributedString = NSMutableAttributedString(string: plainString)
-//        attributedString.addAttributes([
-//            .foregroundColor: SLColor.titleColor,
-//            .font: UIFont.systemFont(ofSize: 12, weight: .medium)], range: NSRange(plainString.startIndex..., in: plainString))
-//
-//        let matchRanges = RegexHelpers.matchRanges(of: "[0-9]{1,}", inString: plainString)
-//        matchRanges.forEach { (range) in
-//            attributedString.addAttributes([
-//            .foregroundColor: SLColor.textColor,
-//            .font: UIFont.systemFont(ofSize: 13, weight: .medium)], range: range)
-//        }
-//
-//        return attributedString
-//    }()
     
     lazy var creationString: String = {
         let (value, unit) =  Date.init(timeIntervalSince1970: creationTimestamp).distanceFromNow()
@@ -87,6 +61,33 @@ final class Alias: Equatable {
         
         let (value, unit) =  Date.init(timeIntervalSince1970: latestActivity.timestamp).distanceFromNow()
         return "\(latestActivity.contact.email) • \(value) \(unit) ago"
+    }()
+    
+    lazy var activitiesString: String = {
+        var string = ""
+        
+        string += "\(forwardCount) "
+        if forwardCount > 1 {
+            string += "forwards, "
+        } else {
+            string += "forward, "
+        }
+        
+        string += "\(replyCount)"
+        if replyCount > 1 {
+            string += "replies, "
+        } else {
+            string += "reply, "
+        }
+        
+        string += "\(blockCount)"
+        if blockCount > 1 {
+            string += "blocks, "
+        } else {
+            string += "block, "
+        }
+        
+        return string
     }()
     
     init(fromDictionary dictionary: [String : Any]) throws {
