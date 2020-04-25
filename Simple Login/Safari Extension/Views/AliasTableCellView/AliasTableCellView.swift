@@ -38,15 +38,13 @@ final class AliasTableCellView: NSTableCellView, RegisterableCellView {
     
     func bind(alias: Alias) {
         aliasLabel.stringValue = alias.email
+        aliasLabel.textColor = alias.enabled ? .labelColor : .secondaryLabelColor
         
-        if let latestActivityString = alias.latestActivityString {
-            latestActivityLabel.stringValue = latestActivityString
-        } else {
-            latestActivityLabel.stringValue = alias.creationString
-        }
+        copyButton.isEnabled = alias.enabled
+        copyButton.title = alias.enabled ? "Copy" : "Disabled"
         
-        activitiesLabel.stringValue = alias.activitiesString
-        
+        latestActivityLabel.attributedStringValue = alias.latestActivityAttributedString
+        activitiesLabel.attributedStringValue = alias.activitiesAttributedString
         noteLabel.isHidden = alias.note == nil
         noteLabel.stringValue = alias.note ?? ""
     }

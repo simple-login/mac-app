@@ -57,6 +57,8 @@
 		C0D6C12B2454CFD2001AA865 /* RegisterableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1292454CF3B001AA865 /* RegisterableCellView.swift */; };
 		C0D6C12E2454D66C001AA865 /* LoadingTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C12D2454D66C001AA865 /* LoadingTableCellView.swift */; };
 		C0D6C1302454D67A001AA865 /* LoadingTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D6C12F2454D67A001AA865 /* LoadingTableCellView.xib */; };
+		C0D6C1322454EA8E001AA865 /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1312454EA8E001AA865 /* NSImage+Extensions.swift */; };
+		C0D6C1332454EB5E001AA865 /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1312454EA8E001AA865 /* NSImage+Extensions.swift */; };
 		C0E6000623BFBFC60011982B /* UserOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE523B90DED00232B9A /* UserOptions.swift */; };
 		C0E6000823BFBFEA0011982B /* SLApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E6000723BFBFEA0011982B /* SLApiService.swift */; };
 		C0E6000923BFC0670011982B /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
@@ -144,6 +146,7 @@
 		C0D6C1292454CF3B001AA865 /* RegisterableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterableCellView.swift; sourceTree = "<group>"; };
 		C0D6C12D2454D66C001AA865 /* LoadingTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableCellView.swift; sourceTree = "<group>"; };
 		C0D6C12F2454D67A001AA865 /* LoadingTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableCellView.xib; sourceTree = "<group>"; };
+		C0D6C1312454EA8E001AA865 /* NSImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
 		C0E6000723BFBFEA0011982B /* SLApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLApiService.swift; sourceTree = "<group>"; };
 		C0E6000F23BFDDDD0011982B /* AliasTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliasTableCellView.swift; sourceTree = "<group>"; };
 		C0E6001123BFDE200011982B /* AliasTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AliasTableCellView.xib; sourceTree = "<group>"; };
@@ -293,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				C0D6C1222454C0CD001AA865 /* Date+Distance.swift */,
+				C0D6C1312454EA8E001AA865 /* NSImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -617,6 +621,7 @@
 				C0D6C1242454C0E2001AA865 /* Date+Distance.swift in Sources */,
 				C03B0BE523BA76550040DA37 /* ExtensionHomeViewController.swift in Sources */,
 				C064846C23C1042F00AD97CA /* NSViewExtensions.swift in Sources */,
+				C0D6C1332454EB5E001AA865 /* NSImage+Extensions.swift in Sources */,
 				C013560523BE567600287A82 /* SLUserDefaultsService.swift in Sources */,
 				C0E6000A23BFC7D10011982B /* SLApiService.swift in Sources */,
 				C0D6C11F2454C000001AA865 /* AliasActivity.swift in Sources */,
@@ -635,6 +640,7 @@
 				C0D6C1262454C2A2001AA865 /* ContactLite.swift in Sources */,
 				C0D6C11E2454BFF2001AA865 /* AliasActivity.swift in Sources */,
 				C06275B123BA445600BCE972 /* InstructionViewController.swift in Sources */,
+				C0D6C1322454EA8E001AA865 /* NSImage+Extensions.swift in Sources */,
 				C0BA379423C0C2F000F23554 /* StringExtensions.swift in Sources */,
 				C000DFEE23C49235005D61E4 /* UserInfo.swift in Sources */,
 				C0BA379623C0C36600F23554 /* RegexHelpers.swift in Sources */,

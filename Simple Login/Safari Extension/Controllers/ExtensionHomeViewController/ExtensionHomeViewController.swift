@@ -381,14 +381,14 @@ extension ExtensionHomeViewController: NSTableViewDataSource {
 // MARK: - NSTableViewDelegate
 extension ExtensionHomeViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard !aliases.isEmpty else {
-            return EmptyTableCellView.make(from: tableView)
-        }
-        
         if moreToLoad && row == aliases.count {
             let loadingCell = LoadingTableCellView.make(from: tableView)
             fetchAliases()
             return loadingCell
+        }
+        
+        guard !aliases.isEmpty else {
+            return EmptyTableCellView.make(from: tableView)
         }
         
         let aliasCell = AliasTableCellView.make(from: tableView)

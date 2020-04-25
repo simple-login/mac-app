@@ -49,21 +49,38 @@ final class Alias: Equatable {
         return attributedString
     }()
     
-    lazy var creationString: String = {
-        let (value, unit) =  Date.init(timeIntervalSince1970: creationTimestamp).distanceFromNow()
-        return "Created \(value) \(unit) ago"
-    }()
-    
-    lazy var latestActivityString: String? = {
-        guard let latestActivity = latestActivity else {
-            return nil
+    lazy var latestActivityAttributedString: NSAttributedString = {
+        let image: NSImage
+        let text: String
+        
+        if let latestActivity = latestActivity {
+            let (value, unit) =  Date.init(timeIntervalSince1970: latestActivity.timestamp).distanceFromNow()
+            text = " \(latestActivity.contact.email) • \(value) \(unit) ago"
+        
+            switch latestActivity.action {
+            case .block, .bounced: image = blockImage
+            case .forward: image = forwardImage
+            case .reply: image = replyImage
+            }
+        } else {
+            let (value, unit) =  Date.init(timeIntervalSince1970: creationTimestamp).distanceFromNow()
+            text = " Created \(value) \(unit) ago"
+            image = clockImage
         }
         
-        let (value, unit) =  Date.init(timeIntervalSince1970: latestActivity.timestamp).distanceFromNow()
-        return "\(latestActivity.contact.email) • \(value) \(unit) ago"
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = image
+        // Adjust image's y to center it with the text after
+        imageAttachment.bounds = CGRect(x: 0, y: -4, width: imageAttachment.image?.size.width ?? 0, height: imageAttachment.image?.size.height ?? 0)
+        
+        let attributedString = NSMutableAttributedString()
+        attributedString.append(NSAttributedString(attachment: imageAttachment))
+        attributedString.append(NSAttributedString(string: text))
+        
+        return attributedString
     }()
     
-    lazy var activitiesString: String = {
+    lazy var activitiesAttributedString: NSAttributedString = {
         var string = ""
         
         string += "\(forwardCount) "
@@ -73,21 +90,30 @@ final class Alias: Equatable {
             string += "forward, "
         }
         
-        string += "\(replyCount)"
+        string += "\(replyCount) "
         if replyCount > 1 {
             string += "replies, "
         } else {
             string += "reply, "
         }
         
-        string += "\(blockCount)"
+        string += "\(blockCount) "
         if blockCount > 1 {
-            string += "blocks, "
+            string += "blocks"
         } else {
-            string += "block, "
+            string += "block"
         }
         
-        return string
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = waveImage
+        // Adjust image's y to center it with the text after
+        imageAttachment.bounds = CGRect(x: 0, y: -4, width: imageAttachment.image?.size.width ?? 0, height: imageAttachment.image?.size.height ?? 0)
+        
+        let attributedString = NSMutableAttributedString()
+        attributedString.append(NSAttributedString(attachment: imageAttachment))
+        attributedString.append(NSAttributedString(string: " \(string)"))
+        
+        return attributedString
     }()
     
     init(fromDictionary dictionary: [String : Any]) throws {

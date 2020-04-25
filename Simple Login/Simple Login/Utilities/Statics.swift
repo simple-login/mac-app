@@ -6,7 +6,7 @@
 //  Copyright © 2020 SimpleLogin. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 
 var BASE_URL: String {
     get {
@@ -24,3 +24,33 @@ let preciseDateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
+// Activiy activity icons
+let blockImage: NSImage = {
+    let image = NSImage(named: NSImage.Name("BlockIcon"))!
+    image.setTint(.systemRed)
+    return image
+}()
+
+let forwardImage: NSImage = {
+    let image = NSImage(named: NSImage.Name("PaperPlaneIcon"))!
+    image.setTint(.secondaryLabelColor)
+    return image
+}()
+
+let replyImage: NSImage = {
+    let image = NSImage(named: NSImage.Name("ReplyIcon"))!
+    image.setTint(.secondaryLabelColor)
+    return image
+}()
+
+let clockImage: NSImage = {
+    let image = NSImage(named: NSImage.Name("ClockIcon"))!
+    image.setTint(.secondaryLabelColor)
+    return image
+}()
+
+let waveImage: NSImage = {
+    let image = NSImage(named: NSImage.Name("WaveIcon"))!
+    image.setTint(.secondaryLabelColor)
+    return image
+}()
