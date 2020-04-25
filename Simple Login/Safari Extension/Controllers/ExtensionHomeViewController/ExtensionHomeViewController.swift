@@ -56,7 +56,13 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     var apiKey: String?
     private var userInfo: UserInfo?
     private var userOptions: UserOptions?
+    
+    // Aliases
     private var aliases: [Alias] = []
+    
+    private var fetchedPage: Int = -1
+    private var isFetching: Bool = false
+    private var moreToLoad: Bool = true
     
     private var isValidEmailPrefix: Bool = true {
         didSet {
@@ -175,14 +181,16 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                         return
                     default:
                         // Unknown error, display error alert
-                        let alert = NSAlert(messageText: "Error occured", informativeText: error.description, buttonText: "Close", alertStyle: .critical)
-                        alert.icon = NSImage(named: NSImage.Name(stringLiteral: "SimpleLogin"))
+                        let alert = NSAlert(error: error)
                         alert.runModal()
                         return
                     }
                 }
             }
         }
+        
+        // Fetch aliases
+        fetchAliases()
     }
     
     private func getURL(_ completion: @escaping (_ url: URL?) -> Void) {
@@ -194,6 +202,31 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                     })
                 })
             })
+        }
+    }
+    
+    private func fetchAliases() {
+        guard let apiKey = apiKey, moreToLoad, !isFetching else { return }
+        
+        setLoading(true)
+        isFetching = true
+        
+        SLApiService.fetchAliases(apiKey: apiKey, page: fetchedPage + 1) { [weak self] result in
+            guard let self = self else { return }
+            self.isFetching = false
+            self.setLoading(false)
+            
+            switch result {
+            case .success(let aliases):
+                self.moreToLoad = aliases.count > 0
+                self.fetchedPage += 1
+                self.aliases.append(contentsOf: aliases)
+                self.tableView.reloadData()
+                
+            case .failure(let error):
+                let alert = NSAlert(error: error)
+                alert.runModal()
+            }
         }
     }
     
@@ -333,25 +366,27 @@ extension ExtensionHomeViewController {
 // MARK: - NSTableViewDataSource
 extension ExtensionHomeViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        guard let userOptions = userOptions else { return 0 }
-        return 0
-        //return max(1, userOptions.existing.count)
+        if aliases.isEmpty {
+            return 1
+        }
+        
+        return aliases.count
     }
 }
 
 // MARK: - NSTableViewDelegate
 extension ExtensionHomeViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let userOptions = userOptions else {
+        guard !aliases.isEmpty else {
             if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("EmptyTableCellView"), owner: nil) as? EmptyTableCellView {
                 return cell
             }
             
             return nil
         }
-
+        
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("AliasTableCellView"), owner: nil) as? AliasTableCellView {
-            cell.bind(alias: "Touti \(row)")
+            cell.bind(alias: aliases[row].email)
             cell.copyAlias = { [unowned self] alias in
                 guard let alias = alias else { return }
                 let pasteboard = NSPasteboard.general

@@ -172,4 +172,65 @@ final class SLApiService {
             }
         }
     }
+    
+    static func fetchAliases(apiKey: ApiKey, page: Int, searchTerm: String? = nil, completion: @escaping (Result<[Alias], SLError>) -> Void) {
+        let headers: HTTPHeaders = ["Authentication": apiKey]
+        
+        let method: HTTPMethod
+        let parameters: [String: Any]?
+        if let searchTerm = searchTerm {
+            parameters = ["query": searchTerm]
+            method = .post
+        } else {
+            parameters = nil
+            method = .get
+        }
+        
+        
+        AF.request("\(BASE_URL)/api/v2/aliases?page_id=\(page)", method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: nil).response { response in
+            
+            guard let statusCode = response.response?.statusCode else {
+                completion(.failure(.unknownResponseStatusCode))
+                return
+            }
+            
+            switch statusCode {
+            case 200:
+                guard let data = response.data else {
+                    completion(.failure(.noData))
+                    return
+                }
+                
+                do {
+                    let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String : Any]
+                    
+                    if let aliasDictionaries = jsonDictionary?["aliases"] as? [[String : Any]] {
+                        var aliases: [Alias] = []
+                        try aliasDictionaries.forEach { (dictionary) in
+                            do {
+                                try aliases.append(Alias(fromDictionary: dictionary))
+                            } catch let error as SLError {
+                                completion(.failure(error))
+                                return
+                            }
+                        }
+                        
+                        completion(.success(aliases))
+                        
+                    } else {
+                        completion(.failure(.failToSerializeJSONData))
+                    }
+                    
+                } catch {
+                    completion(.failure(.failToSerializeJSONData))
+                }
+                
+            case 400: completion(.failure(.badRequest(description: "page_id must be provided in request query.")))
+            case 401: completion(.failure(.invalidApiKey))
+            case 500: completion(.failure(.internalServerError))
+            case 502: completion(.failure(.badGateway))
+            default: completion(.failure(.unknownErrorWithStatusCode(statusCode: statusCode)))
+            }
+        }
+    }
 }
