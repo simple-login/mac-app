@@ -12,24 +12,34 @@ enum SLError: Error, CustomStringConvertible {
     case noData
     case failToSerializeJSONData
     case failToParseObject(objectName: String)
-    case failToParseUserInfo
-    case failToParseUserOptions
     case invalidApiKey
     case duplicatedAlias
+    case internalServerError
+    case badGateway
     case emptySuffix
-    case unknownError(description: String)
+    case unknownResponseStatusCode
+    case badRequest(description: String)
+    case unknownErrorWithStatusCode(statusCode: Int)
+    case unknownError(error: Error)
     
     var description: String {
         switch self {
-        case .noData: return "Server returns no data"
+        case .noData: return "Server isn't responding. Please try again later."
         case .failToSerializeJSONData: return "Failed to serialize JSON data"
         case .failToParseObject(let objectName): return "Failed to parse \(objectName)"
-        case .failToParseUserInfo: return "Failed to parse user's info"
-        case .failToParseUserOptions: return "Failed to parse user's options"
         case .invalidApiKey: return "Invalid API key"
         case .duplicatedAlias: return "Alias is duplicated"
+        case .internalServerError: return "Internal server error"
+        case .badGateway: return "Bad gateway error"
+        case .unknownResponseStatusCode: return "Unknown response status code"
         case .emptySuffix: return "No suffix is selected"
-        case .unknownError(let description): return "Unknown error: \(description)"
+        case .badRequest(let description): return "Bad request: \(description)"
+        case .unknownErrorWithStatusCode(let statusCode): return "Unknown error with status code \(statusCode)"
+        case .unknownError(let error): return "Unknown error: \(error.localizedDescription)"
         }
+    }
+    
+    func toParameter() -> [String: Any] {
+        return ["error": description]
     }
 }

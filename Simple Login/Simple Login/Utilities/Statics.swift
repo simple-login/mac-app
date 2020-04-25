@@ -15,3 +15,12 @@ var BASE_URL: String {
 }
 
 let ALIAS_PREFIX_MAX_LENGTH = 100
+
+typealias ApiKey = String
+
+let preciseDateFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "d MMM yyyy 'at' HH:mm"
+    return dateFormatter
+}()
+

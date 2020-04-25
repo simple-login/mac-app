@@ -76,21 +76,23 @@ final class EnterApiKeyViewController: NSViewController {
         
         setLoading(true)
         
-        SLApiService.fetchUserInfo(enteredApiKey, completion: { [weak self] (userInfo, error) in
+        SLApiService.fetchUserInfo(apiKey: enteredApiKey) { [weak self] result in
             guard let self = self else { return }
             self.setLoading(false)
             
             self.progressIndicator.isHidden = true
             self.progressIndicator.stopAnimation(nil)
             
-            if let error = error {
-                self.showErrorAlert(error)
-            } else if let userInfo = userInfo {
+            switch result {
+            case .success(let userInfo):
                 SLUserDefaultsService.setApiKey(enteredApiKey)
                 self.openInstructionViewController(with: userInfo)
                 self.view.window?.performClose(nil)
+                
+            case .failure(let error):
+                self.showErrorAlert(error)
             }
-        })
+        }
     }
     
     private func setLoading(_ isLoading: Bool, completelyHideOtherUis: Bool = false) {

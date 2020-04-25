@@ -43,6 +43,16 @@
 		C0BE6CB123BF3F470082C2C2 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE6CB023BF3F470082C2C2 /* Statics.swift */; };
 		C0BE6CB223BF3FFA0082C2C2 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BE6CB023BF3F470082C2C2 /* Statics.swift */; };
 		C0BE6CED23BF68D40082C2C2 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = C0BE6CEC23BF68D40082C2C2 /* script.js */; };
+		C0D6C1192454BFA5001AA865 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1182454BFA5001AA865 /* Alias.swift */; };
+		C0D6C11A2454BFCD001AA865 /* Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1182454BFA5001AA865 /* Alias.swift */; };
+		C0D6C11C2454BFD7001AA865 /* LatestActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C11B2454BFD7001AA865 /* LatestActivity.swift */; };
+		C0D6C11E2454BFF2001AA865 /* AliasActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C11D2454BFF2001AA865 /* AliasActivity.swift */; };
+		C0D6C11F2454C000001AA865 /* AliasActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C11D2454BFF2001AA865 /* AliasActivity.swift */; };
+		C0D6C1202454C002001AA865 /* LatestActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C11B2454BFD7001AA865 /* LatestActivity.swift */; };
+		C0D6C1232454C0CD001AA865 /* Date+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1222454C0CD001AA865 /* Date+Distance.swift */; };
+		C0D6C1242454C0E2001AA865 /* Date+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1222454C0CD001AA865 /* Date+Distance.swift */; };
+		C0D6C1262454C2A2001AA865 /* ContactLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1252454C2A2001AA865 /* ContactLite.swift */; };
+		C0D6C1272454C2B5001AA865 /* ContactLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1252454C2A2001AA865 /* ContactLite.swift */; };
 		C0E6000623BFBFC60011982B /* UserOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE523B90DED00232B9A /* UserOptions.swift */; };
 		C0E6000823BFBFEA0011982B /* SLApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E6000723BFBFEA0011982B /* SLApiService.swift */; };
 		C0E6000923BFC0670011982B /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
@@ -122,6 +132,11 @@
 		C0BA379523C0C36600F23554 /* RegexHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexHelpers.swift; sourceTree = "<group>"; };
 		C0BE6CB023BF3F470082C2C2 /* Statics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
 		C0BE6CEC23BF68D40082C2C2 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
+		C0D6C1182454BFA5001AA865 /* Alias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alias.swift; sourceTree = "<group>"; };
+		C0D6C11B2454BFD7001AA865 /* LatestActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestActivity.swift; sourceTree = "<group>"; };
+		C0D6C11D2454BFF2001AA865 /* AliasActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliasActivity.swift; sourceTree = "<group>"; };
+		C0D6C1222454C0CD001AA865 /* Date+Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Distance.swift"; sourceTree = "<group>"; };
+		C0D6C1252454C2A2001AA865 /* ContactLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactLite.swift; sourceTree = "<group>"; };
 		C0E6000723BFBFEA0011982B /* SLApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLApiService.swift; sourceTree = "<group>"; };
 		C0E6000F23BFDDDD0011982B /* AliasTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliasTableCellView.swift; sourceTree = "<group>"; };
 		C0E6001123BFDE200011982B /* AliasTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AliasTableCellView.xib; sourceTree = "<group>"; };
@@ -254,6 +269,7 @@
 		C0BE6CAF23BF3F2D0082C2C2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C0D6C1212454C0AB001AA865 /* Extensions */,
 				C0BE6CB023BF3F470082C2C2 /* Statics.swift */,
 				C0BA379323C0C2F000F23554 /* StringExtensions.swift */,
 				C0BA379523C0C36600F23554 /* RegexHelpers.swift */,
@@ -263,6 +279,14 @@
 				C0FC076423C38BB8002FB98B /* NSMutableAttributedStringExtensions.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C0D6C1212454C0AB001AA865 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C0D6C1222454C0CD001AA865 /* Date+Distance.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C0E6000B23BFDD710011982B /* Views */ = {
@@ -298,6 +322,10 @@
 				C000DFED23C49235005D61E4 /* UserInfo.swift */,
 				C0E86DE723B918A200232B9A /* SLError.swift */,
 				C0109A6023C528B100542E5B /* SLNotificationName.swift */,
+				C0D6C1182454BFA5001AA865 /* Alias.swift */,
+				C0D6C11D2454BFF2001AA865 /* AliasActivity.swift */,
+				C0D6C11B2454BFD7001AA865 /* LatestActivity.swift */,
+				C0D6C1252454C2A2001AA865 /* ContactLite.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -546,18 +574,23 @@
 				C0FC076623C38C22002FB98B /* NSMutableAttributedStringExtensions.swift in Sources */,
 				C03B0BE023BA6A9B0040DA37 /* ApiKeyMissingViewController.swift in Sources */,
 				C0E6000923BFC0670011982B /* SLError.swift in Sources */,
+				C0D6C1202454C002001AA865 /* LatestActivity.swift in Sources */,
 				C05587AA23C233E500CA7418 /* EmptyTableCellView.swift in Sources */,
+				C0D6C11A2454BFCD001AA865 /* Alias.swift in Sources */,
 				C0BA379723C0C38100F23554 /* RegexHelpers.swift in Sources */,
 				C0E6001023BFDDDD0011982B /* AliasTableCellView.swift in Sources */,
+				C0D6C1272454C2B5001AA865 /* ContactLite.swift in Sources */,
 				C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */,
 				C0E6000623BFBFC60011982B /* UserOptions.swift in Sources */,
 				C0BE6CB223BF3FFA0082C2C2 /* Statics.swift in Sources */,
 				C05587A523C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift in Sources */,
 				C000DFF823C4D25D005D61E4 /* InstructionViewController.swift in Sources */,
+				C0D6C1242454C0E2001AA865 /* Date+Distance.swift in Sources */,
 				C03B0BE523BA76550040DA37 /* ExtensionHomeViewController.swift in Sources */,
 				C064846C23C1042F00AD97CA /* NSViewExtensions.swift in Sources */,
 				C013560523BE567600287A82 /* SLUserDefaultsService.swift in Sources */,
 				C0E6000A23BFC7D10011982B /* SLApiService.swift in Sources */,
+				C0D6C11F2454C000001AA865 /* AliasActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,8 +598,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0D6C1232454C0CD001AA865 /* Date+Distance.swift in Sources */,
 				C013560423BE55F100287A82 /* SLUserDefaultsService.swift in Sources */,
+				C0D6C11C2454BFD7001AA865 /* LatestActivity.swift in Sources */,
 				C064846B23C1035C00AD97CA /* NSViewExtensions.swift in Sources */,
+				C0D6C1262454C2A2001AA865 /* ContactLite.swift in Sources */,
+				C0D6C11E2454BFF2001AA865 /* AliasActivity.swift in Sources */,
 				C06275B123BA445600BCE972 /* InstructionViewController.swift in Sources */,
 				C0BA379423C0C2F000F23554 /* StringExtensions.swift in Sources */,
 				C000DFEE23C49235005D61E4 /* UserInfo.swift in Sources */,
@@ -574,6 +611,7 @@
 				C0FF316523B8C9CA00E84C4A /* EnterApiKeyViewController.swift in Sources */,
 				C000DFF623C49947005D61E4 /* StartupViewController.swift in Sources */,
 				C0FC075E23C33F74002FB98B /* NSViewControllerExtensions.swift in Sources */,
+				C0D6C1192454BFA5001AA865 /* Alias.swift in Sources */,
 				C0E86DE823B918A300232B9A /* SLError.swift in Sources */,
 				C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */,
 				C0E86DE623B90DED00232B9A /* UserOptions.swift in Sources */,

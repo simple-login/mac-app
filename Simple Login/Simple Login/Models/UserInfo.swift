@@ -8,9 +8,11 @@
 
 import Cocoa
 
-struct UserInfo {
+class UserInfo {
     let name: String
-    let isPremium: Bool
+    let email: String
+    private(set) var isPremium: Bool
+    let inTrial: Bool
     
     lazy private(set) var attributedString: NSAttributedString = {
         let premiumOrUpgrade = isPremium ? "Premium" : "Freemium"
@@ -49,13 +51,21 @@ struct UserInfo {
         }
         
         let name = jsonDictionary["name"] as? String
+        let email = jsonDictionary["email"] as? String
         let isPremium = jsonDictionary["is_premium"] as? Bool
+        let inTrial = jsonDictionary["in_trial"] as? Bool
         
-        if let name = name, let isPremium = isPremium {
+        if let name = name, let email = email, let isPremium = isPremium, let inTrial = inTrial {
             self.name = name
+            self.email = email
             self.isPremium = isPremium
+            self.inTrial = inTrial
         } else {
-            throw SLError.failToParseUserInfo
+            throw SLError.failToParseObject(objectName: "UserInfo")
         }
+    }
+    
+    func setIsPremium(_ isPremium: Bool) {
+        self.isPremium = isPremium
     }
 }

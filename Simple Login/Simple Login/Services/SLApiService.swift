@@ -10,18 +10,18 @@ import Foundation
 import Alamofire
 
 final class SLApiService {
-    static func fetchUserInfo(_ apiKey: String, completion: @escaping (_ userInfo: UserInfo?, _ error: SLError?) -> Void) {
+    static func fetchUserInfo(apiKey: ApiKey, completion: @escaping (Result<UserInfo, SLError>) -> Void) {
         let headers: HTTPHeaders = ["Authentication": apiKey]
         
         AF.request("\(BASE_URL)/api/user_info", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
             
             guard let data = response.data else {
-                completion(nil, SLError.noData)
+                completion(.failure(.noData))
                 return
             }
             
             guard let statusCode = response.response?.statusCode else {
-                completion(nil, SLError.unknownError(description: "error code unknown"))
+                completion(.failure(.unknownResponseStatusCode))
                 return
             }
             
@@ -29,29 +29,40 @@ final class SLApiService {
             case 200:
                 do {
                     let userInfo = try UserInfo(fromData: data)
-                    completion(userInfo, nil)
-                } catch let error {
-                    completion(nil, error as? SLError)
+                    completion(.success(userInfo))
+                } catch let error as SLError {
+                    completion(.failure(error))
+                } catch {
+                    completion(.failure(.unknownError(error: error)))
                 }
                 
-            case 401: completion(nil, SLError.invalidApiKey)
-            default: completion(nil, SLError.unknownError(description: "error code \(statusCode)"))
+            case 401: completion(.failure(.invalidApiKey))
+            case 500: completion(.failure(.internalServerError))
+            case 502: completion(.failure(.badGateway))
+            default: completion(.failure(.unknownErrorWithStatusCode(statusCode: statusCode)))
             }
         }
     }
     
-    static func fetchUserOptions(apiKey: String, hostname: String, completion: @escaping (_ userOptions: UserOptions?, _ error: SLError?) -> Void) {
+    static func fetchUserOptions(apiKey: ApiKey, hostname: String? = nil, completion: @escaping (Result<UserOptions, SLError>) -> Void) {
         let headers: HTTPHeaders = ["Authentication": apiKey]
-
-        AF.request("\(BASE_URL)/api/v2/alias/options?hostname=\(hostname)", method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
-
+        
+        let urlString: String
+        if let hostname = hostname {
+            urlString = "\(BASE_URL)/api/v3/alias/options?hostname=\(hostname)"
+        } else {
+            urlString = "\(BASE_URL)/api/v3/alias/options"
+        }
+        
+        AF.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
+            
             guard let data = response.data else {
-                completion(nil, SLError.noData)
+                completion(.failure(.noData))
                 return
             }
             
             guard let statusCode = response.response?.statusCode else {
-                completion(nil, SLError.unknownError(description: "error code unknown"))
+                completion(.failure(.unknownResponseStatusCode))
                 return
             }
             
@@ -59,67 +70,105 @@ final class SLApiService {
             case 200:
                 do {
                     let userOptions = try UserOptions(fromData: data)
-                    completion(userOptions, nil)
-                } catch let error {
-                    completion(nil, error as? SLError)
+                    completion(.success(userOptions))
+                } catch let error as SLError {
+                    completion(.failure(error))
+                } catch {
+                    completion(.failure(.unknownError(error: error)))
                 }
-            case 401: completion(nil, SLError.invalidApiKey)
-            default: completion(nil, SLError.unknownError(description: "error code \(statusCode)"))
+                
+            case 401: completion(.failure(.invalidApiKey))
+            case 500: completion(.failure(.internalServerError))
+            case 502: completion(.failure(.badGateway))
+            default: completion(.failure(.unknownErrorWithStatusCode(statusCode: statusCode)))
             }
         }
     }
     
-    static func createNewAlias(apiKey: String, prefix: String, suffix: String, completion: @escaping (_ error: SLError?) -> Void) {
+    static func createAlias(apiKey: ApiKey, prefix: String, suffix: String, note: String?, completion: @escaping (Result<Alias, SLError>) -> Void) {
         let headers: HTTPHeaders = ["Authentication": apiKey]
-        let parameters = ["alias_prefix" : prefix, "alias_suffix" : suffix]
-    
-        AF.request("\(BASE_URL)/api/alias/custom/new", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: nil).response { response in
-
-            guard let statusCode = response.response?.statusCode else {
-                completion(SLError.unknownError(description: "error code unknown"))
-                return
-            }
-            
-            switch statusCode {
-            case 201: completion(nil)
-            case 409: completion(SLError.duplicatedAlias)
-            default: completion(SLError.unknownError(description: "error code \(statusCode)"))
-            }
-        }
-    }
-    
-    static func createRandomlyNewAlias(apiKey: String, completion: @escaping (_ error: SLError?) -> Void) {
-        let headers: HTTPHeaders = ["Authentication": apiKey]
+        var parameters = ["alias_prefix" : prefix, "alias_suffix" : suffix]
         
-        AF.request("\(BASE_URL)/api/alias/random/new", method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
+        if let note = note {
+            parameters["note"] = note
+        }
+        
+        AF.request("\(BASE_URL)/api/alias/custom/new", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: nil).response { response in
             
             guard let statusCode = response.response?.statusCode else {
-                completion(SLError.unknownError(description: "error code unknown"))
+                completion(.failure(.unknownResponseStatusCode))
                 return
             }
             
             switch statusCode {
             case 201:
                 guard let data = response.data else {
-                    completion(SLError.noData)
+                    completion(.failure(.noData))
                     return
                 }
                 
                 do {
                     let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String : Any]
                     
-                    if let _ = jsonDictionary?["alias"] as? String {
-                        completion(nil)
-                    } else {
-                        completion(SLError.failToParseObject(objectName: "newly created alias"))
+                    if let jsonDictionary = jsonDictionary {
+                        do {
+                            let alias = try Alias(fromDictionary: jsonDictionary)
+                            completion(.success(alias))
+                        } catch let error as SLError {
+                            completion(.failure(error))
+                        }
                     }
                     
                 } catch {
-                    completion(SLError.failToSerializeJSONData)
+                    completion(.failure(.failToSerializeJSONData))
                 }
                 
-            case 401: completion(SLError.invalidApiKey)
-            default: completion(SLError.unknownError(description: "error code \(statusCode)"))
+            case 401: completion(.failure(.invalidApiKey))
+            case 409: completion(.failure(.duplicatedAlias))
+            case 500: completion(.failure(.internalServerError))
+            case 502: completion(.failure(.badGateway))
+            default: completion(.failure(.unknownErrorWithStatusCode(statusCode: statusCode)))
+            }
+        }
+    }
+    
+    static func randomAlias(apiKey: ApiKey, completion: @escaping (Result<Alias, SLError>) -> Void) {
+        let headers: HTTPHeaders = ["Authentication": apiKey]
+        
+        AF.request("\(BASE_URL)/api/alias/random/new", method: .post, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
+            
+            guard let statusCode = response.response?.statusCode else {
+                completion(.failure(.unknownResponseStatusCode))
+                return
+            }
+            
+            switch statusCode {
+            case 201:
+                guard let data = response.data else {
+                    completion(.failure(.noData))
+                    return
+                }
+                
+                do {
+                    let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String : Any]
+                    
+                    if let jsonDictionary = jsonDictionary {
+                        do {
+                            let alias = try Alias(fromDictionary: jsonDictionary)
+                            completion(.success(alias))
+                        } catch let error as SLError {
+                            completion(.failure(error))
+                        }
+                    }
+                    
+                } catch {
+                    completion(.failure(.failToSerializeJSONData))
+                }
+                
+            case 401: completion(.failure(.invalidApiKey))
+            case 500: completion(.failure(.internalServerError))
+            case 502: completion(.failure(.badGateway))
+            default: completion(.failure(.unknownErrorWithStatusCode(statusCode: statusCode)))
             }
         }
     }

@@ -40,13 +40,18 @@ final class StartupViewController: NSViewController {
         messageLabel.stringValue = "Connecting to server..."
         retryButton.isHidden = true
         
-        SLApiService.fetchUserInfo(apiKey!, completion: { [weak self] (userInfo, error) in
+        SLApiService.fetchUserInfo(apiKey: apiKey!) { [weak self] result in
             guard let self = self else { return }
             
             self.progressIndicator.isHidden = true
             self.progressIndicator.stopAnimation(nil)
             
-            if let error = error {
+            switch result {
+            case .success(let userInfo):
+                self.openInstructionViewController(with: userInfo)
+                self.view.window?.performClose(nil)
+                
+            case .failure(let error):
                 self.messageLabel.stringValue = "Error occured: \(error.description)"
                 self.retryButton.isHidden = false
                 
@@ -57,11 +62,7 @@ final class StartupViewController: NSViewController {
                     
                 default: return
                 }
-                
-            } else if let userInfo = userInfo {
-                self.openInstructionViewController(with: userInfo)
-                self.view.window?.performClose(nil)
             }
-        })
+        }
     }
 }

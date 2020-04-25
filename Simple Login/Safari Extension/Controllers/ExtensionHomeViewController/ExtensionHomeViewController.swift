@@ -56,6 +56,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     var apiKey: String?
     private var userInfo: UserInfo?
     private var userOptions: UserOptions?
+    private var aliases: [Alias] = []
     
     private var isValidEmailPrefix: Bool = true {
         didSet {
@@ -128,15 +129,18 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         guard let apiKey = self.apiKey else { return }
         // Fetch user info
         self.setLoading(true)
-        SLApiService.fetchUserInfo(apiKey) { [weak self] (userInfo, error) in
+        
+        SLApiService.fetchUserInfo(apiKey: apiKey) { [weak self] result in
             guard let self = self else { return }
             self.setLoading(false)
             
-            if let error = error {
-                self.showErrorAlert(error)
-            } else if let userInfo = userInfo {
+            switch result {
+            case .success(let userInfo):
                 self.userInfo = userInfo
                 self.refreshUserInfo()
+                
+            case .failure(let error):
+                self.showErrorAlert(error)
             }
         }
         
@@ -145,11 +149,17 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
             let hostname = url?.host ?? ""
             
             self.setLoading(true)
-            SLApiService.fetchUserOptions(apiKey: apiKey, hostname: hostname) { [weak self] (userOptions, error) in
+            
+            SLApiService.fetchUserOptions(apiKey: apiKey, hostname: hostname) { [weak self] result in
                 guard let self = self else { return }
                 self.setLoading(false)
                 
-                if let error = error {
+                switch result {
+                case .success(let userOptions):
+                    self.userOptions = userOptions
+                    self.refreshUserOptions()
+                    
+                case .failure(let error):
                     switch error {
                     case .invalidApiKey:
                         // Invalid API key, prompt user to open host app
@@ -170,9 +180,6 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                         alert.runModal()
                         return
                     }
-                } else if let userOptions = userOptions {
-                    self.userOptions = userOptions
-                    self.refreshUserOptions()
                 }
             }
         }
@@ -262,16 +269,18 @@ extension ExtensionHomeViewController {
         
         setLoading(true)
         
-        SLApiService.createNewAlias(apiKey: apiKey, prefix: prefix, suffix: suffix) { [weak self] (error) in
+        SLApiService.createAlias(apiKey: apiKey, prefix: prefix, suffix: suffix, note: nil) { [weak self] result in
             guard let self = self else { return }
             self.setLoading(false)
             
-            if let error = error {
-                let alert = NSAlert(messageText: "Error occured", informativeText: error.description, buttonText: "Close", alertStyle: .critical)
-                alert.runModal()
-            } else {
+            switch result {
+            case .success(_):
                 self.highLightFirstAlias = true
                 self.refresh()
+                
+            case .failure(let error):
+                let alert = NSAlert(messageText: "Error occured", informativeText: error.description, buttonText: "Close", alertStyle: .critical)
+                alert.runModal()
             }
         }
     }
@@ -281,16 +290,18 @@ extension ExtensionHomeViewController {
         
         setLoading(true)
         
-        SLApiService.createRandomlyNewAlias(apiKey: apiKey) { [weak self] (error) in
+        SLApiService.randomAlias(apiKey: apiKey) { [weak self] result in
             guard let self = self else { return }
             self.setLoading(false)
             
-            if let error = error {
-                let alert = NSAlert(messageText: "Error occured", informativeText: error.description, buttonText: "Close", alertStyle: .critical)
-                alert.runModal()
-            } else {
+            switch result {
+            case .success(_):
                 self.highLightFirstAlias = true
                 self.refresh()
+                
+            case .failure(let error):
+                let alert = NSAlert(messageText: "Error occured", informativeText: error.description, buttonText: "Close", alertStyle: .critical)
+                alert.runModal()
             }
         }
     }
@@ -323,14 +334,15 @@ extension ExtensionHomeViewController {
 extension ExtensionHomeViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
         guard let userOptions = userOptions else { return 0 }
-        return max(1, userOptions.existing.count)
+        return 0
+        //return max(1, userOptions.existing.count)
     }
 }
 
 // MARK: - NSTableViewDelegate
 extension ExtensionHomeViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let userOptions = userOptions, userOptions.existing.count > 0 else {
+        guard let userOptions = userOptions else {
             if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("EmptyTableCellView"), owner: nil) as? EmptyTableCellView {
                 return cell
             }
@@ -339,7 +351,7 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
         }
 
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("AliasTableCellView"), owner: nil) as? AliasTableCellView {
-            cell.bind(alias: userOptions.existing[userOptions.existing.count - row - 1])
+            cell.bind(alias: "Touti \(row)")
             cell.copyAlias = { [unowned self] alias in
                 guard let alias = alias else { return }
                 let pasteboard = NSPasteboard.general
