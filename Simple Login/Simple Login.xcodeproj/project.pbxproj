@@ -58,7 +58,6 @@
 		C0D6C1302454D67A001AA865 /* LoadingTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D6C12F2454D67A001AA865 /* LoadingTableCellView.xib */; };
 		C0D6C1322454EA8E001AA865 /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1312454EA8E001AA865 /* NSImage+Extensions.swift */; };
 		C0D6C1332454EB5E001AA865 /* NSImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D6C1312454EA8E001AA865 /* NSImage+Extensions.swift */; };
-		C0D6C1372454FA75001AA865 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C0D6C1362454FA75001AA865 /* ToolbarItemIcon.pdf */; };
 		C0E6000623BFBFC60011982B /* UserOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE523B90DED00232B9A /* UserOptions.swift */; };
 		C0E6000823BFBFEA0011982B /* SLApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E6000723BFBFEA0011982B /* SLApiService.swift */; };
 		C0E6000923BFC0670011982B /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
@@ -69,6 +68,7 @@
 		C0E6001623BFEB3B0011982B /* DisableableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E6001423BFEADF0011982B /* DisableableScrollView.swift */; };
 		C0E86DE623B90DED00232B9A /* UserOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE523B90DED00232B9A /* UserOptions.swift */; };
 		C0E86DE823B918A300232B9A /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
+		C0F106C22454FF4300C37F8B /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C0F106C12454FF4300C37F8B /* ToolbarItemIcon.pdf */; };
 		C0FC075E23C33F74002FB98B /* NSViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FC075D23C33F74002FB98B /* NSViewControllerExtensions.swift */; };
 		C0FC076023C33F96002FB98B /* HUD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FC075F23C33F96002FB98B /* HUD.storyboard */; };
 		C0FC076123C340E3002FB98B /* HUD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FC075F23C33F96002FB98B /* HUD.storyboard */; };
@@ -146,13 +146,13 @@
 		C0D6C12D2454D66C001AA865 /* LoadingTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableCellView.swift; sourceTree = "<group>"; };
 		C0D6C12F2454D67A001AA865 /* LoadingTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableCellView.xib; sourceTree = "<group>"; };
 		C0D6C1312454EA8E001AA865 /* NSImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extensions.swift"; sourceTree = "<group>"; };
-		C0D6C1362454FA75001AA865 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		C0E6000723BFBFEA0011982B /* SLApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLApiService.swift; sourceTree = "<group>"; };
 		C0E6000F23BFDDDD0011982B /* AliasTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AliasTableCellView.swift; sourceTree = "<group>"; };
 		C0E6001123BFDE200011982B /* AliasTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AliasTableCellView.xib; sourceTree = "<group>"; };
 		C0E6001423BFEADF0011982B /* DisableableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisableableScrollView.swift; sourceTree = "<group>"; };
 		C0E86DE523B90DED00232B9A /* UserOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOptions.swift; sourceTree = "<group>"; };
 		C0E86DE723B918A200232B9A /* SLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLError.swift; sourceTree = "<group>"; };
+		C0F106C12454FF4300C37F8B /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		C0FC075D23C33F74002FB98B /* NSViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtensions.swift; sourceTree = "<group>"; };
 		C0FC075F23C33F96002FB98B /* HUD.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HUD.storyboard; sourceTree = "<group>"; };
 		C0FC076423C38BB8002FB98B /* NSMutableAttributedStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtensions.swift; sourceTree = "<group>"; };
@@ -269,7 +269,7 @@
 				C03B0BDD23BA6A6E0040DA37 /* Controllers */,
 				C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */,
 				C062761223BA646300BCE972 /* Info.plist */,
-				C0D6C1362454FA75001AA865 /* ToolbarItemIcon.pdf */,
+				C0F106C12454FF4300C37F8B /* ToolbarItemIcon.pdf */,
 				C062761723BA646300BCE972 /* Safari_Extension.entitlements */,
 				C0BE6CEC23BF68D40082C2C2 /* script.js */,
 			);
@@ -504,7 +504,7 @@
 				C0E6001223BFDE200011982B /* AliasTableCellView.xib in Resources */,
 				C03B0BE223BA6B360040DA37 /* ApiKeyMissingViewController.xib in Resources */,
 				C0BE6CED23BF68D40082C2C2 /* script.js in Resources */,
-				C0D6C1372454FA75001AA865 /* ToolbarItemIcon.pdf in Resources */,
+				C0F106C22454FF4300C37F8B /* ToolbarItemIcon.pdf in Resources */,
 				C03B0BE723BA76960040DA37 /* ExtensionHomeViewController.xib in Resources */,
 				C0FC076123C340E3002FB98B /* HUD.storyboard in Resources */,
 				C000DFF723C4CB81005D61E4 /* Assets.xcassets in Resources */,
