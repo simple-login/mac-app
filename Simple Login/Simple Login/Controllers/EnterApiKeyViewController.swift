@@ -139,8 +139,7 @@ extension EnterApiKeyViewController {
         
         if let hereStringRange = createAccountPlainString.range(of: "here ↗") {
             createAccountAttributedString.addAttributes(
-                [.foregroundColor : NSColor.systemTeal,
-             .font : NSFont.systemFont(ofSize: 13, weight: .medium),
+                [.font : NSFont.systemFont(ofSize: 13, weight: .medium),
              .underlineStyle : NSUnderlineStyle.single.rawValue,
              .link : URL(string: "\(BASE_URL)/auth/register") as Any,
              .toolTip : "\(BASE_URL)/auth/register"],
@@ -160,14 +159,13 @@ extension EnterApiKeyViewController {
         
         if let hereStringRange = createAndCopyApiKeyPlainString.range(of: "API Key ↗") {
             createAndCopyApiKeyAttributedString.addAttributes(
-                [.foregroundColor : NSColor.systemTeal,
-             .font : NSFont.systemFont(ofSize: 13, weight: .medium),
+                [.font : NSFont.systemFont(ofSize: 13, weight: .medium),
              .underlineStyle : NSUnderlineStyle.single.rawValue,
              .link : URL(string: "\(BASE_URL)/dashboard/api_key") as Any,
              .toolTip : "\(BASE_URL)/dashboard/api_key"],
             range: NSRange(hereStringRange, in: createAndCopyApiKeyPlainString))
         }
-        
+
         // If allowsEditingTextAttributes is not set to "true", when the user clicks the label, the attributedsStringValue is gone
         createAndCopyApiKeyLabel.allowsEditingTextAttributes = true
         createAndCopyApiKeyLabel.attributedStringValue = createAndCopyApiKeyAttributedString

@@ -28,15 +28,8 @@ class UserInfo {
                     [.font : NSFont.systemFont(ofSize: 14, weight: .light),
                      .foregroundColor: NSColor.systemGreen], range: NSRange(premiumOrUpgradeRange, in: plainString))
             } else {
-                let textColor: NSColor
-                if #available(OSX 10.13, *) {
-                    textColor = NSColor(named: NSColor.Name(stringLiteral: "HyperlinkColor")) ?? NSColor.blue
-                } else {
-                    textColor = NSColor.systemBlue
-                }
-                
                 attributedString.addAttributes(
-                [.foregroundColor : textColor,
+                [.foregroundColor : NSColor.systemBlue,
                  .font : NSFont.systemFont(ofSize: 14, weight: .medium)],
                 range: NSRange(premiumOrUpgradeRange, in: plainString))
             }

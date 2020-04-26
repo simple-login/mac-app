@@ -47,7 +47,7 @@ final class InstructionViewController: NSViewController {
     }
     
     private func setupUsernameLabel() {
-        guard var userInfo = userInfo else {
+        guard let userInfo = userInfo else {
             usernameLabel.stringValue = ""
             return
         }

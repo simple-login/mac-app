@@ -27,6 +27,8 @@
 		C05587A523C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05587A423C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift */; };
 		C05587AA23C233E500CA7418 /* EmptyTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05587A923C233E500CA7418 /* EmptyTableCellView.swift */; };
 		C05587AC23C233FE00CA7418 /* EmptyTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C05587AB23C233FE00CA7418 /* EmptyTableCellView.xib */; };
+		C05910802455B454004A766C /* SLColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C059107F2455B454004A766C /* SLColor.swift */; };
+		C05910812455B5AF004A766C /* SLColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C059107F2455B454004A766C /* SLColor.swift */; };
 		C06275B123BA445600BCE972 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* InstructionViewController.swift */; };
 		C062760923BA646300BCE972 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06275B723BA46C400BCE972 /* Cocoa.framework */; };
 		C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */; };
@@ -125,6 +127,7 @@
 		C05587A423C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariExtensionVCExtensions.swift; sourceTree = "<group>"; };
 		C05587A923C233E500CA7418 /* EmptyTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableCellView.swift; sourceTree = "<group>"; };
 		C05587AB23C233FE00CA7418 /* EmptyTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableCellView.xib; sourceTree = "<group>"; };
+		C059107F2455B454004A766C /* SLColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLColor.swift; sourceTree = "<group>"; };
 		C06275B023BA445600BCE972 /* InstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		C06275B723BA46C400BCE972 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C062760823BA646300BCE972 /* Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,6 +291,7 @@
 				C064846D23C1062100AD97CA /* NSAlertExtensions.swift */,
 				C0FC075D23C33F74002FB98B /* NSViewControllerExtensions.swift */,
 				C0FC076423C38BB8002FB98B /* NSMutableAttributedStringExtensions.swift */,
+				C059107F2455B454004A766C /* SLColor.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -598,6 +602,7 @@
 			files = (
 				C000DFEF23C492D5005D61E4 /* UserInfo.swift in Sources */,
 				C0FC076223C346A5002FB98B /* NSViewControllerExtensions.swift in Sources */,
+				C05910812455B5AF004A766C /* SLColor.swift in Sources */,
 				C0BA379823C0C44E00F23554 /* StringExtensions.swift in Sources */,
 				C064846F23C1064100AD97CA /* NSAlertExtensions.swift in Sources */,
 				C0E6001623BFEB3B0011982B /* DisableableScrollView.swift in Sources */,
@@ -652,6 +657,7 @@
 				C0FF316323B8C9CA00E84C4A /* AppDelegate.swift in Sources */,
 				C0E86DE623B90DED00232B9A /* UserOptions.swift in Sources */,
 				C0FC076523C38BB8002FB98B /* NSMutableAttributedStringExtensions.swift in Sources */,
+				C05910802455B454004A766C /* SLColor.swift in Sources */,
 				C0E6001523BFEADF0011982B /* DisableableScrollView.swift in Sources */,
 				C0109A6123C528B100542E5B /* SLNotificationName.swift in Sources */,
 				C0BE6CB123BF3F470082C2C2 /* Statics.swift in Sources */,
@@ -698,7 +704,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.macapp.safari-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -723,7 +729,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.macapp.safari-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -863,7 +869,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = io.simplelogin.macapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -889,7 +895,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = io.simplelogin.macapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
