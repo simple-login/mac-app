@@ -48,7 +48,7 @@ final class StartupViewController: NSViewController {
             
             switch result {
             case .success(let userInfo):
-                self.openInstructionViewController(with: userInfo)
+                self.showHomeWindowController(with: userInfo)
                 self.view.window?.performClose(nil)
                 
             case .failure(let error):

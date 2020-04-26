@@ -12,10 +12,10 @@
 		C000DFEE23C49235005D61E4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000DFED23C49235005D61E4 /* UserInfo.swift */; };
 		C000DFEF23C492D5005D61E4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000DFED23C49235005D61E4 /* UserInfo.swift */; };
 		C000DFF223C49899005D61E4 /* EnterApiKey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C000DFF123C49899005D61E4 /* EnterApiKey.storyboard */; };
-		C000DFF423C498A3005D61E4 /* Instruction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C000DFF323C498A3005D61E4 /* Instruction.storyboard */; };
+		C000DFF423C498A3005D61E4 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C000DFF323C498A3005D61E4 /* Home.storyboard */; };
 		C000DFF623C49947005D61E4 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C000DFF523C49947005D61E4 /* StartupViewController.swift */; };
 		C000DFF723C4CB81005D61E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FF316623B8C9D000E84C4A /* Assets.xcassets */; };
-		C000DFF823C4D25D005D61E4 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* InstructionViewController.swift */; };
+		C000DFF823C4D25D005D61E4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* HomeViewController.swift */; };
 		C0109A6123C528B100542E5B /* SLNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0109A6023C528B100542E5B /* SLNotificationName.swift */; };
 		C0109A6223C528F700542E5B /* SLNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0109A6023C528B100542E5B /* SLNotificationName.swift */; };
 		C013560423BE55F100287A82 /* SLUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013560323BE55F100287A82 /* SLUserDefaultsService.swift */; };
@@ -32,7 +32,9 @@
 		C05910832455D67D004A766C /* IAP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05910822455D67D004A766C /* IAP.storyboard */; };
 		C05910852455D974004A766C /* IapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05910842455D974004A766C /* IapViewController.swift */; };
 		C05910862455DAC9004A766C /* IapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05910842455D974004A766C /* IapViewController.swift */; };
-		C06275B123BA445600BCE972 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* InstructionViewController.swift */; };
+		C059108C24561D3A004A766C /* HomeWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C059108B24561D3A004A766C /* HomeWindowController.swift */; };
+		C059108D24561DF4004A766C /* HomeWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C059108B24561D3A004A766C /* HomeWindowController.swift */; };
+		C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* HomeViewController.swift */; };
 		C062760923BA646300BCE972 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06275B723BA46C400BCE972 /* Cocoa.framework */; };
 		C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */; };
 		C062761A23BA646300BCE972 /* Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C062760823BA646300BCE972 /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -119,7 +121,7 @@
 		341742E4B284D7532740858F /* Pods-Safari Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Safari Extension.release.xcconfig"; path = "Target Support Files/Pods-Safari Extension/Pods-Safari Extension.release.xcconfig"; sourceTree = "<group>"; };
 		C000DFED23C49235005D61E4 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		C000DFF123C49899005D61E4 /* EnterApiKey.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EnterApiKey.storyboard; sourceTree = "<group>"; };
-		C000DFF323C498A3005D61E4 /* Instruction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Instruction.storyboard; sourceTree = "<group>"; };
+		C000DFF323C498A3005D61E4 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		C000DFF523C49947005D61E4 /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 		C0109A6023C528B100542E5B /* SLNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLNotificationName.swift; sourceTree = "<group>"; };
 		C013560323BE55F100287A82 /* SLUserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLUserDefaultsService.swift; sourceTree = "<group>"; };
@@ -133,7 +135,8 @@
 		C059107F2455B454004A766C /* SLColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLColor.swift; sourceTree = "<group>"; };
 		C05910822455D67D004A766C /* IAP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IAP.storyboard; sourceTree = "<group>"; };
 		C05910842455D974004A766C /* IapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IapViewController.swift; sourceTree = "<group>"; };
-		C06275B023BA445600BCE972 /* InstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
+		C059108B24561D3A004A766C /* HomeWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWindowController.swift; sourceTree = "<group>"; };
+		C06275B023BA445600BCE972 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C06275B723BA46C400BCE972 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C062760823BA646300BCE972 /* Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
@@ -210,7 +213,7 @@
 			children = (
 				C0FF316823B8C9D000E84C4A /* Main.storyboard */,
 				C000DFF123C49899005D61E4 /* EnterApiKey.storyboard */,
-				C000DFF323C498A3005D61E4 /* Instruction.storyboard */,
+				C000DFF323C498A3005D61E4 /* Home.storyboard */,
 				C0FC075F23C33F96002FB98B /* HUD.storyboard */,
 				C05910822455D67D004A766C /* IAP.storyboard */,
 			);
@@ -268,6 +271,15 @@
 				C05587AB23C233FE00CA7418 /* EmptyTableCellView.xib */,
 			);
 			path = EmptyTableCellView;
+			sourceTree = "<group>";
+		};
+		C059108A24561D2D004A766C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C06275B023BA445600BCE972 /* HomeViewController.swift */,
+				C059108B24561D3A004A766C /* HomeWindowController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		C062760A23BA646300BCE972 /* Safari Extension */ = {
@@ -410,8 +422,8 @@
 		C0FF317223B8D67000E84C4A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C059108A24561D2D004A766C /* Home */,
 				C0FF316423B8C9CA00E84C4A /* EnterApiKeyViewController.swift */,
-				C06275B023BA445600BCE972 /* InstructionViewController.swift */,
 				C000DFF523C49947005D61E4 /* StartupViewController.swift */,
 				C05910842455D974004A766C /* IapViewController.swift */,
 			);
@@ -530,7 +542,7 @@
 			files = (
 				C0FC076023C33F96002FB98B /* HUD.storyboard in Resources */,
 				C05910832455D67D004A766C /* IAP.storyboard in Resources */,
-				C000DFF423C498A3005D61E4 /* Instruction.storyboard in Resources */,
+				C000DFF423C498A3005D61E4 /* Home.storyboard in Resources */,
 				C0FF316723B8C9D000E84C4A /* Assets.xcassets in Resources */,
 				C000DFF223C49899005D61E4 /* EnterApiKey.storyboard in Resources */,
 				C0FF316A23B8C9D000E84C4A /* Main.storyboard in Resources */,
@@ -631,9 +643,10 @@
 				C0D6C12E2454D66C001AA865 /* LoadingTableCellView.swift in Sources */,
 				C0BE6CB223BF3FFA0082C2C2 /* Statics.swift in Sources */,
 				C05587A523C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift in Sources */,
-				C000DFF823C4D25D005D61E4 /* InstructionViewController.swift in Sources */,
+				C000DFF823C4D25D005D61E4 /* HomeViewController.swift in Sources */,
 				C0D6C1242454C0E2001AA865 /* Date+Distance.swift in Sources */,
 				C03B0BE523BA76550040DA37 /* ExtensionHomeViewController.swift in Sources */,
+				C059108D24561DF4004A766C /* HomeWindowController.swift in Sources */,
 				C064846C23C1042F00AD97CA /* NSViewExtensions.swift in Sources */,
 				C0D6C1332454EB5E001AA865 /* NSImage+Extensions.swift in Sources */,
 				C013560523BE567600287A82 /* SLUserDefaultsService.swift in Sources */,
@@ -653,13 +666,14 @@
 				C064846B23C1035C00AD97CA /* NSViewExtensions.swift in Sources */,
 				C0D6C1262454C2A2001AA865 /* ContactLite.swift in Sources */,
 				C0D6C11E2454BFF2001AA865 /* AliasActivity.swift in Sources */,
-				C06275B123BA445600BCE972 /* InstructionViewController.swift in Sources */,
+				C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */,
 				C0D6C1322454EA8E001AA865 /* NSImage+Extensions.swift in Sources */,
 				C0BA379423C0C2F000F23554 /* StringExtensions.swift in Sources */,
 				C000DFEE23C49235005D61E4 /* UserInfo.swift in Sources */,
 				C0BA379623C0C36600F23554 /* RegexHelpers.swift in Sources */,
 				C0FF316523B8C9CA00E84C4A /* EnterApiKeyViewController.swift in Sources */,
 				C000DFF623C49947005D61E4 /* StartupViewController.swift in Sources */,
+				C059108C24561D3A004A766C /* HomeWindowController.swift in Sources */,
 				C0FC075E23C33F74002FB98B /* NSViewControllerExtensions.swift in Sources */,
 				C0D6C1192454BFA5001AA865 /* Alias.swift in Sources */,
 				C0E86DE823B918A300232B9A /* SLError.swift in Sources */,

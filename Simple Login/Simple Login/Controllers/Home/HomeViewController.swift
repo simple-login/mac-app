@@ -1,5 +1,5 @@
 //
-//  InstructionViewController.swift
+//  HomeViewController.swift
 //  Simple Login
 //
 //  Created by Thanh-Nhon Nguyen on 29/12/2019.

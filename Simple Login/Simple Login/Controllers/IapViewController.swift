@@ -16,9 +16,16 @@ final class IapViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Opt-out dark mode for this controller because in dark mode labels become white
-        // and they are visually dimmed out in the pink background
+        /* Opt-out dark mode for this controller because in dark mode labels become white and they are visually dimmed out in the pink background
+         */
         view.appearance = NSAppearance(named: .aqua)
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        /* Disable resizable for this sheet's window. Must be in viewDidAppear()
+        */
+        view.window?.styleMask.remove(.resizable)
     }
 }
 

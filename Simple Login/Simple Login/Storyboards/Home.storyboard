@@ -10,7 +10,7 @@
         <!--Window Controller-->
         <scene sceneID="WkD-Ch-S1O">
             <objects>
-                <windowController storyboardIdentifier="InstructionWindowControllerID" id="W2Z-us-w3g" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="HomeWindowController" id="W2Z-us-w3g" customClass="HomeWindowController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Simple Login" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="YlA-Wf-s0w">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="-329" y="800"/>
         </scene>
-        <!--Instruction View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="wL3-zH-d1i">
             <objects>
-                <viewController id="qua-cv-Csc" customClass="InstructionViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qua-cv-Csc" customClass="HomeViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="kuu-Er-TjJ">
                         <rect key="frame" x="0.0" y="0.0" width="1343" height="848"/>
                         <subviews>
@@ -261,12 +261,12 @@
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
-                                    <real value="1000"/>
-                                    <real value="1000"/>
-                                    <real value="1000"/>
-                                    <real value="1000"/>
-                                    <real value="1000"/>
-                                    <real value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
                                     <real value="3.4028234663852886e+38"/>

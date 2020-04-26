@@ -42,19 +42,13 @@ extension NSViewController {
         }
     }
     
-    func openInstructionViewController(with userInfo: UserInfo) {
-        let storyboardName = NSStoryboard.Name(stringLiteral: "Instruction")
-        let storyboard = NSStoryboard(name: storyboardName, bundle: nil)
-        let storyboardID = NSStoryboard.SceneIdentifier(stringLiteral: "InstructionWindowControllerID")
+    func showHomeWindowController(with userInfo: UserInfo) {
+        let storyboard = NSStoryboard(name: NSStoryboard.Name(stringLiteral: "Home"), bundle: nil)
+        let storyboardID = NSStoryboard.SceneIdentifier(stringLiteral: "HomeWindowController")
         
-        if let instructionWindowController = storyboard.instantiateController(withIdentifier: storyboardID) as? NSWindowController {
-            
-            if let instructionViewController = instructionWindowController.contentViewController as? InstructionViewController {
-                instructionViewController.userInfo = userInfo
-            }
-            
-            instructionWindowController.showWindow(nil)
-        }
+        let homeWindowController = storyboard.instantiateController(withIdentifier: storyboardID) as? NSWindowController
+        (homeWindowController?.contentViewController as? HomeViewController)?.userInfo = userInfo
+        homeWindowController?.showWindow(nil)
     }
     
     func showErrorAlert(_ error: SLError) {

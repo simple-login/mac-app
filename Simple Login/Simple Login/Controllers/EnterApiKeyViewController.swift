@@ -86,7 +86,7 @@ final class EnterApiKeyViewController: NSViewController {
             switch result {
             case .success(let userInfo):
                 SLUserDefaultsService.setApiKey(enteredApiKey)
-                self.openInstructionViewController(with: userInfo)
+                self.showHomeWindowController(with: userInfo)
                 self.view.window?.performClose(nil)
                 
             case .failure(let error):
@@ -111,13 +111,6 @@ final class EnterApiKeyViewController: NSViewController {
             setApiKeyButton.isEnabled = true
             progressIndicator.isHidden = true
             progressIndicator.stopAnimation(self)
-        }
-    }
-    
-    private func showInstructionViewController() {
-        let storyboardID = NSStoryboard.SceneIdentifier(stringLiteral: "InstructionViewController")
-        if let instructionViewController = storyboard!.instantiateController(withIdentifier: storyboardID) as? InstructionViewController {
-            view.window?.contentViewController = instructionViewController
         }
     }
 }
