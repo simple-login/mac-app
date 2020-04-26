@@ -25,7 +25,7 @@ final class StartupViewController: NSViewController {
             self.apiKey = apiKey
             checkApiKeyAndProceed()
         } else {
-            openEnterApiKeyWindowController()
+            showEnterApiKeyWindowController()
             self.view.window?.performClose(nil)
         }
     }
@@ -57,7 +57,7 @@ final class StartupViewController: NSViewController {
                 
                 switch error {
                 case .invalidApiKey:
-                    self.openEnterApiKeyWindowController()
+                    self.showEnterApiKeyWindowController()
                     self.view.window?.performClose(nil)
                     
                 default: return

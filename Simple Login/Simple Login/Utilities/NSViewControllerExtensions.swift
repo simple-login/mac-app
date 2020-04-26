@@ -32,7 +32,7 @@ extension NSViewController {
         }
     }
     
-    func openEnterApiKeyWindowController() {
+    func showEnterApiKeyWindowController() {
         let storyboardName = NSStoryboard.Name(stringLiteral: "EnterApiKey")
         let storyboard = NSStoryboard(name: storyboardName, bundle: nil)
         let storyboardID = NSStoryboard.SceneIdentifier(stringLiteral: "EnterApiKeyWindowControllerID")
@@ -46,8 +46,8 @@ extension NSViewController {
         let storyboard = NSStoryboard(name: NSStoryboard.Name(stringLiteral: "Home"), bundle: nil)
         let storyboardID = NSStoryboard.SceneIdentifier(stringLiteral: "HomeWindowController")
         
-        let homeWindowController = storyboard.instantiateController(withIdentifier: storyboardID) as? NSWindowController
-        (homeWindowController?.contentViewController as? HomeViewController)?.userInfo = userInfo
+        let homeWindowController = storyboard.instantiateController(withIdentifier: storyboardID) as? HomeWindowController
+        homeWindowController?.userInfo = userInfo
         homeWindowController?.showWindow(nil)
     }
     

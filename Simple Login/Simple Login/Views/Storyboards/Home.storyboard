@@ -11,19 +11,143 @@
         <scene sceneID="WkD-Ch-S1O">
             <objects>
                 <windowController storyboardIdentifier="HomeWindowController" id="W2Z-us-w3g" customClass="HomeWindowController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Simple Login" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="YlA-Wf-s0w">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                    <window key="window" title="SimpleLogin" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="YlA-Wf-s0w">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <toolbar key="toolbar" implicitIdentifier="B038F2A8-B6F5-4AB6-A300-597A4244C11B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="Y9h-hZ-KxX">
+                            <allowedToolbarItems/>
+                            <defaultToolbarItems/>
+                            <connections>
+                                <outlet property="delegate" destination="W2Z-us-w3g" id="cUt-OW-wFc"/>
+                            </connections>
+                        </toolbar>
                         <connections>
                             <outlet property="delegate" destination="W2Z-us-w3g" id="5Eh-OQ-PP1"/>
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="manageAliasesView" destination="Yiv-V5-1Zr" id="jdw-to-KQ5"/>
+                        <outlet property="signOutView" destination="krO-GT-MUD" id="Hke-pD-OlS"/>
+                        <outlet property="statusLabel" destination="kku-Hw-khZ" id="0WV-5A-wIf"/>
+                        <outlet property="toolbar" destination="Y9h-hZ-KxX" id="mP6-LL-mnE"/>
+                        <outlet property="upgradeView" destination="He4-HY-utZ" id="ysp-QU-drU"/>
+                        <outlet property="userInfoView" destination="ZIZ-SA-sSf" id="Rr6-r2-xfB"/>
+                        <outlet property="usernameLabel" destination="hRV-xf-sj4" id="1YN-1Y-bIk"/>
                         <segue destination="qua-cv-Csc" kind="relationship" relationship="window.shadowedContentViewController" id="xG8-wc-h3X"/>
                     </connections>
                 </windowController>
                 <customObject id="NZZ-U1-3Vz" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customView misplaced="YES" id="ZIZ-SA-sSf">
+                    <rect key="frame" x="0.0" y="0.0" width="163" height="41"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="spd-y0-Lrg">
+                            <rect key="frame" x="0.0" y="0.0" width="163" height="43"/>
+                            <subviews>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hRV-xf-sj4">
+                                    <rect key="frame" x="-2" y="24" width="72" height="19"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="John Doe" id="nAM-Vr-sn7">
+                                        <font key="font" metaFont="systemSemibold" size="15"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kku-Hw-khZ">
+                                    <rect key="frame" x="-2" y="0.0" width="59" height="16"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Premium" id="a25-TL-0E0">
+                                        <font key="font" metaFont="systemMedium" size="13"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="spd-y0-Lrg" secondAttribute="bottom" id="Sv2-ek-AEH"/>
+                        <constraint firstItem="spd-y0-Lrg" firstAttribute="leading" secondItem="ZIZ-SA-sSf" secondAttribute="leading" id="Y8K-LC-xWW"/>
+                        <constraint firstAttribute="trailing" secondItem="spd-y0-Lrg" secondAttribute="trailing" id="dAR-PD-mYI"/>
+                        <constraint firstItem="spd-y0-Lrg" firstAttribute="top" secondItem="ZIZ-SA-sSf" secondAttribute="top" id="gQJ-II-lcr"/>
+                    </constraints>
+                </customView>
+                <customView id="He4-HY-utZ">
+                    <rect key="frame" x="0.0" y="0.0" width="165" height="96"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="YXA-wi-9ym">
+                            <rect key="frame" x="0.0" y="0.0" width="165" height="96"/>
+                            <buttonCell key="cell" type="square" title="Upgrade" bezelStyle="shadowlessSquare" image="Diamond" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="01M-mj-MwO">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <color key="contentTintColor" name="TintColor"/>
+                            <connections>
+                                <action selector="upgradeButtonClicked:" target="W2Z-us-w3g" id="xJy-37-d8o"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="YXA-wi-9ym" firstAttribute="top" secondItem="He4-HY-utZ" secondAttribute="top" id="BB0-3V-sTk"/>
+                        <constraint firstAttribute="bottom" secondItem="YXA-wi-9ym" secondAttribute="bottom" id="EJZ-Ff-WGP"/>
+                        <constraint firstItem="YXA-wi-9ym" firstAttribute="leading" secondItem="He4-HY-utZ" secondAttribute="leading" id="LvE-Ih-Ai6"/>
+                        <constraint firstAttribute="trailing" secondItem="YXA-wi-9ym" secondAttribute="trailing" id="rLd-oh-k2u"/>
+                    </constraints>
+                </customView>
+                <customView id="Yiv-V5-1Zr">
+                    <rect key="frame" x="0.0" y="0.0" width="165" height="96"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="d1b-oC-LCW">
+                            <rect key="frame" x="0.0" y="0.0" width="165" height="96"/>
+                            <buttonCell key="cell" type="square" title="Manage Aliases" bezelStyle="shadowlessSquare" image="Management" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="JYr-rY-9Yk">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <color key="contentTintColor" name="TintColor"/>
+                            <connections>
+                                <action selector="manageAliasesButtonClicked:" target="W2Z-us-w3g" id="U5W-Us-tgv"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="d1b-oC-LCW" secondAttribute="bottom" id="0Sr-gP-Yls"/>
+                        <constraint firstAttribute="trailing" secondItem="d1b-oC-LCW" secondAttribute="trailing" id="6Yq-js-9rd"/>
+                        <constraint firstItem="d1b-oC-LCW" firstAttribute="leading" secondItem="Yiv-V5-1Zr" secondAttribute="leading" id="93X-qX-aJg"/>
+                        <constraint firstItem="d1b-oC-LCW" firstAttribute="top" secondItem="Yiv-V5-1Zr" secondAttribute="top" id="D3G-Cu-cth"/>
+                    </constraints>
+                </customView>
+                <customView id="krO-GT-MUD">
+                    <rect key="frame" x="0.0" y="0.0" width="165" height="96"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="4ea-OW-oCv">
+                            <rect key="frame" x="0.0" y="0.0" width="165" height="96"/>
+                            <buttonCell key="cell" type="square" title="Sign Out" bezelStyle="shadowlessSquare" image="LogOut" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="n21-x1-N0e">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <color key="contentTintColor" name="TintColor"/>
+                            <connections>
+                                <action selector="signOutButtonClicked:" target="W2Z-us-w3g" id="7CL-CC-Yf1"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="4ea-OW-oCv" secondAttribute="bottom" id="WgD-Yb-JUh"/>
+                        <constraint firstItem="4ea-OW-oCv" firstAttribute="leading" secondItem="krO-GT-MUD" secondAttribute="leading" id="gLT-mp-6bU"/>
+                        <constraint firstItem="4ea-OW-oCv" firstAttribute="top" secondItem="krO-GT-MUD" secondAttribute="top" id="jOS-1r-MXT"/>
+                        <constraint firstAttribute="trailing" secondItem="4ea-OW-oCv" secondAttribute="trailing" id="o2O-L8-fmB"/>
+                    </constraints>
+                </customView>
             </objects>
             <point key="canvasLocation" x="-329" y="800"/>
         </scene>
@@ -32,105 +156,13 @@
             <objects>
                 <viewController id="qua-cv-Csc" customClass="HomeViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="kuu-Er-TjJ">
-                        <rect key="frame" x="0.0" y="0.0" width="1343" height="848"/>
+                        <rect key="frame" x="0.0" y="0.0" width="726" height="608"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TeX-YP-oMd">
-                                <rect key="frame" x="20" y="20" width="1303" height="808"/>
+                                <rect key="frame" x="20" y="20" width="686" height="568"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B88-oS-CTo">
-                                        <rect key="frame" x="20" y="609" width="1263" height="199"/>
-                                        <subviews>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Q0H-XD-gOB">
-                                                <rect key="frame" x="0.0" y="75" width="50" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="1YI-Xx-29W"/>
-                                                    <constraint firstAttribute="height" constant="50" id="ijA-wM-i8o"/>
-                                                </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="SimpleLogin" id="BJv-1p-fdE"/>
-                                            </imageView>
-                                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uXs-VJ-JOj">
-                                                <rect key="frame" x="60" y="78" width="963" height="44"/>
-                                                <subviews>
-                                                    <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qjx-pn-69i">
-                                                        <rect key="frame" x="-2" y="24" width="80" height="20"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="John Doe" id="Sps-IS-zhh">
-                                                            <font key="font" metaFont="systemSemibold" size="17"/>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                    <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KFM-zd-5AU">
-                                                        <rect key="frame" x="-2" y="0.0" width="59" height="16"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Premium" id="sRy-ce-fD2">
-                                                            <font key="font" metaFont="systemMedium" size="13"/>
-                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
-                                                </subviews>
-                                                <visibilityPriorities>
-                                                    <integer value="1000"/>
-                                                    <integer value="1000"/>
-                                                </visibilityPriorities>
-                                                <customSpacing>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                    <real value="3.4028234663852886e+38"/>
-                                                </customSpacing>
-                                            </stackView>
-                                            <button verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Q4X-f2-INi">
-                                                <rect key="frame" x="1033" y="80" width="57" height="40"/>
-                                                <buttonCell key="cell" type="square" title="Upgrade" bezelStyle="shadowlessSquare" image="Diamond" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="gQg-pH-Cba">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <color key="contentTintColor" name="TintColor"/>
-                                                <connections>
-                                                    <action selector="upgradeButtonClicked:" target="qua-cv-Csc" id="ASD-Bn-sh5"/>
-                                                </connections>
-                                            </button>
-                                            <button horizontalHuggingPriority="999" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="u1z-bP-jWi">
-                                                <rect key="frame" x="1100" y="80" width="98" height="40"/>
-                                                <buttonCell key="cell" type="square" title="Manage aliases" bezelStyle="shadowlessSquare" image="Management" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="AVj-yw-5xz">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <color key="contentTintColor" name="TintColor"/>
-                                                <connections>
-                                                    <action selector="manageAliasesButtonClicked:" target="qua-cv-Csc" id="d3Q-E8-ldh"/>
-                                                </connections>
-                                            </button>
-                                            <button horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Fgl-qd-WBf">
-                                                <rect key="frame" x="1208" y="80" width="55" height="40"/>
-                                                <buttonCell key="cell" type="square" title="Sign out" bezelStyle="shadowlessSquare" image="LogOut" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="3XL-yD-CxJ">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <color key="contentTintColor" name="TintColor"/>
-                                                <connections>
-                                                    <action selector="signOutButtonClicked:" target="qua-cv-Csc" id="3Z2-fj-DFE"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
-                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="3ea-wg-M3s">
-                                        <rect key="frame" x="0.0" y="586" width="1303" height="5"/>
-                                    </box>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Qem-i0-Cg5">
-                                        <rect key="frame" x="444" y="551" width="415" height="17"/>
+                                        <rect key="frame" x="136" y="551" width="415" height="17"/>
                                         <textFieldCell key="cell" selectable="YES" title="Create and retrieve aliases with SimpleLogin Safari Extension" id="i32-md-WJX">
                                             <font key="font" metaFont="systemSemibold" size="14"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -138,10 +170,10 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DbT-5T-mki">
-                                        <rect key="frame" x="20" y="381" width="1263" height="150"/>
+                                        <rect key="frame" x="20" y="381" width="646" height="150"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="g5t-S0-Ypc">
-                                                <rect key="frame" x="-2" y="67" width="1009" height="16"/>
+                                                <rect key="frame" x="-2" y="67" width="392" height="16"/>
                                                 <textFieldCell key="cell" selectable="YES" title="Step 1" id="p3Y-5p-oC2">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -149,7 +181,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Cd-EJ-ycz">
-                                                <rect key="frame" x="1010" y="-3" width="256" height="156"/>
+                                                <rect key="frame" x="393" y="-3" width="256" height="156"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="c8A-2s-Nzm"/>
                                                     <constraint firstAttribute="width" constant="250" id="csF-am-k64"/>
@@ -171,10 +203,10 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DLy-Xn-Gjq">
-                                        <rect key="frame" x="20" y="211" width="1263" height="150"/>
+                                        <rect key="frame" x="20" y="211" width="646" height="150"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="8mJ-pa-VOp">
-                                                <rect key="frame" x="-2" y="67" width="1009" height="16"/>
+                                                <rect key="frame" x="-2" y="67" width="392" height="16"/>
                                                 <textFieldCell key="cell" selectable="YES" title="Step 2" id="vkS-HJ-ELg">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -182,7 +214,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QpR-hq-vts">
-                                                <rect key="frame" x="1010" y="-3" width="256" height="156"/>
+                                                <rect key="frame" x="393" y="-3" width="256" height="156"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="150" id="ScR-Fv-B0I"/>
                                                     <constraint firstAttribute="width" constant="250" id="ndU-nT-uAE"/>
@@ -204,10 +236,10 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IAs-AA-J1W">
-                                        <rect key="frame" x="20" y="41" width="1263" height="150"/>
+                                        <rect key="frame" x="20" y="41" width="646" height="150"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="2kn-1k-kIz">
-                                                <rect key="frame" x="-2" y="67" width="1009" height="16"/>
+                                                <rect key="frame" x="-2" y="67" width="392" height="16"/>
                                                 <textFieldCell key="cell" selectable="YES" title="Step 3" id="sbW-Es-5bW">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -215,7 +247,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fqz-er-Tta">
-                                                <rect key="frame" x="1010" y="-3" width="256" height="156"/>
+                                                <rect key="frame" x="393" y="-3" width="256" height="156"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="250" id="GeT-gA-ajA"/>
                                                     <constraint firstAttribute="height" constant="150" id="QBL-P3-Lne"/>
@@ -237,7 +269,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ojd-aB-nDe">
-                                        <rect key="frame" x="596" y="-7" width="112" height="32"/>
+                                        <rect key="frame" x="287" y="-7" width="112" height="32"/>
                                         <buttonCell key="cell" type="push" title="Open Safari" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="enB-o8-FxZ">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -249,15 +281,11 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="IAs-AA-J1W" secondAttribute="trailing" constant="20" symbolic="YES" id="2eg-Ro-rTL"/>
-                                    <constraint firstAttribute="trailing" secondItem="3ea-wg-M3s" secondAttribute="trailing" id="8Is-40-kyZ"/>
-                                    <constraint firstItem="B88-oS-CTo" firstAttribute="leading" secondItem="TeX-YP-oMd" secondAttribute="leading" constant="20" symbolic="YES" id="8sU-GU-9qH"/>
-                                    <constraint firstAttribute="trailing" secondItem="B88-oS-CTo" secondAttribute="trailing" constant="20" symbolic="YES" id="W8m-4t-Kzz"/>
                                     <constraint firstAttribute="trailing" secondItem="DbT-5T-mki" secondAttribute="trailing" constant="20" symbolic="YES" id="WJp-jL-xqC"/>
                                     <constraint firstItem="DLy-Xn-Gjq" firstAttribute="leading" secondItem="TeX-YP-oMd" secondAttribute="leading" constant="20" symbolic="YES" id="Ycz-T5-Pdo"/>
                                     <constraint firstItem="IAs-AA-J1W" firstAttribute="leading" secondItem="TeX-YP-oMd" secondAttribute="leading" constant="20" symbolic="YES" id="b8r-Sl-OV6"/>
                                     <constraint firstAttribute="trailing" secondItem="DLy-Xn-Gjq" secondAttribute="trailing" constant="20" symbolic="YES" id="t5h-Kh-tfb"/>
                                     <constraint firstItem="DbT-5T-mki" firstAttribute="leading" secondItem="TeX-YP-oMd" secondAttribute="leading" constant="20" symbolic="YES" id="vWK-ma-CSL"/>
-                                    <constraint firstItem="3ea-wg-M3s" firstAttribute="leading" secondItem="TeX-YP-oMd" secondAttribute="leading" id="zV4-E3-c6H"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -265,12 +293,8 @@
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -290,17 +314,14 @@
                     </view>
                     <connections>
                         <outlet property="enableExtensionLabel" destination="Qem-i0-Cg5" id="8lo-iZ-CEn"/>
-                        <outlet property="statusLabel" destination="KFM-zd-5AU" id="kM9-Ql-z88"/>
                         <outlet property="step1Label" destination="g5t-S0-Ypc" id="MIU-Ay-ar2"/>
                         <outlet property="step2Label" destination="8mJ-pa-VOp" id="Wxp-d4-q0f"/>
                         <outlet property="step3Label" destination="2kn-1k-kIz" id="Zrg-rD-Joz"/>
-                        <outlet property="upgradeButton" destination="Q4X-f2-INi" id="7yZ-BG-CIX"/>
-                        <outlet property="usernameLabel" destination="qjx-pn-69i" id="7H2-0V-cCO"/>
                     </connections>
                 </viewController>
                 <customObject id="f8Z-Bs-GFb" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-329" y="1558"/>
+            <point key="canvasLocation" x="-329" y="1491"/>
         </scene>
     </scenes>
     <resources>
@@ -310,7 +331,6 @@
         <image name="Management" width="24" height="24"/>
         <image name="SafariExtensions" width="1123" height="417"/>
         <image name="SafariPreferences" width="588" height="572"/>
-        <image name="SimpleLogin" width="85" height="85"/>
         <namedColor name="TintColor">
             <color red="0.93333333333333335" green="0.18823529411764706" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

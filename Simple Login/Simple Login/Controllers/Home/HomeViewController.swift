@@ -8,6 +8,10 @@
 
 import Cocoa
 
+protocol HomeViewControllerDelegate {
+    func homeViewControllerWillAppear() -> Void
+}
+
 final class HomeViewController: NSViewController {
     @IBOutlet private weak var usernameLabel: NSTextField!
     @IBOutlet private weak var statusLabel: NSTextField!
@@ -17,23 +21,18 @@ final class HomeViewController: NSViewController {
     @IBOutlet private weak var step2Label: NSTextField!
     @IBOutlet private weak var step3Label: NSTextField!
     
-    var userInfo: UserInfo?
+    var delegate: HomeViewControllerDelegate?
 
     override func viewWillAppear() {
         super.viewWillAppear()
         if let _ = SLUserDefaultsService.getApiKey() {
             setupUI()
         } else {
-            openEnterApiKeyWindowController()
+            showEnterApiKeyWindowController()
             view.window?.close()
         }
         
-        // Observe sign out notification from safari extension
-        DistributedNotificationCenter.default().addObserver(self, selector: #selector(signOut), name: SLNotificationName.signOut, object: nil)
-    }
-    
-    deinit {
-        DistributedNotificationCenter.default().removeObserver(self, name: SLNotificationName.signOut, object: nil)
+        delegate?.homeViewControllerWillAppear()
     }
     
     @IBAction private func openSafari(_ sender: Any) {
@@ -41,27 +40,9 @@ final class HomeViewController: NSViewController {
     }
     
     private func setupUI() {
-        preferredContentSize = NSSize(width: 800, height: 600)
         setupStep1Label()
         setupStep2Label()
         setupStep3Label()
-        
-        guard let userInfo = userInfo else { return }
-        usernameLabel.stringValue = userInfo.name
-        
-        if userInfo.inTrial {
-            statusLabel.stringValue = "Premium trial"
-            statusLabel.textColor = .systemTeal
-            upgradeButton.isHidden = false
-        } else if userInfo.isPremium {
-            statusLabel.stringValue = "Premium"
-            statusLabel.textColor = .systemGreen
-            upgradeButton.isHidden = true
-        } else {
-            statusLabel.stringValue = "Free plan"
-            statusLabel.textColor = .labelColor
-            upgradeButton.isHidden = false
-        }
     }
     
     private func setupStep1Label() {
@@ -110,36 +91,5 @@ final class HomeViewController: NSViewController {
         step3Label.isSelectable = false
         step3Label.allowsEditingTextAttributes = true
         step3Label.attributedStringValue = attributedString
-    }
-}
-
-// MARK: - IBActions
-extension HomeViewController {
-    @IBAction private func upgradeButtonClicked(_ sender: Any) {
-        let storyboard = NSStoryboard(name: NSStoryboard.Name("IAP"), bundle: nil)
-        let storyboardId = NSStoryboard.SceneIdentifier(stringLiteral: "IapViewController")
-        let iapViewController = storyboard.instantiateController(withIdentifier: storyboardId) as! IapViewController
-        presentAsSheet(iapViewController)
-    }
-    
-    @IBAction private func manageAliasesButtonClicked(_ sender: Any) {
-        guard let url = URL(string: "\(BASE_URL)/dashboard") else { return }
-        NSWorkspace.shared.open(url)
-    }
-    
-    @IBAction private func signOutButtonClicked(_ sender: Any) {
-        let alert = NSAlert.signOutAlert()
-        let modalResult = alert.runModal()
-        
-        switch modalResult {
-        case .alertFirstButtonReturn: signOut()
-        default: return
-        }
-    }
-    
-    @objc private func signOut() {
-        SLUserDefaultsService.removeApiKey()
-        openEnterApiKeyWindowController()
-        view.window?.performClose(nil)
     }
 }
