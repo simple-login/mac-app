@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="DYa-UH-90t">
+            <objects>
+                <windowController id="7WA-9h-Sja" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="hLY-hp-vVz">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <connections>
+                            <outlet property="delegate" destination="7WA-9h-Sja" id="WIg-SW-jYK"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="Pp6-cb-eNq" kind="relationship" relationship="window.shadowedContentViewController" id="N9N-Q8-6Qa"/>
+                    </connections>
+                </windowController>
+                <customObject id="MnM-fR-coE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-442" y="828"/>
+        </scene>
+        <!--Iap View Controller-->
+        <scene sceneID="IZ3-0l-kcI">
+            <objects>
+                <viewController storyboardIdentifier="IapViewController" id="Pp6-cb-eNq" customClass="IapViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="iLE-lo-Cmn">
+                        <rect key="frame" x="0.0" y="0.0" width="530" height="392"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="teu-Oo-jcc">
+                                <rect key="frame" x="20" y="61" width="490" height="311"/>
+                            </stackView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zI1-7M-aNx">
+                                <rect key="frame" x="434" y="13" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4BO-z9-fPD">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" target="Pp6-cb-eNq" id="9bS-km-igf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="teu-Oo-jcc" firstAttribute="leading" secondItem="iLE-lo-Cmn" secondAttribute="leading" constant="20" symbolic="YES" id="9lY-VI-Naa"/>
+                            <constraint firstItem="zI1-7M-aNx" firstAttribute="top" secondItem="teu-Oo-jcc" secondAttribute="bottom" constant="20" symbolic="YES" id="Rn6-Mj-szQ"/>
+                            <constraint firstAttribute="bottom" secondItem="zI1-7M-aNx" secondAttribute="bottom" constant="20" symbolic="YES" id="Sxb-HW-c3u"/>
+                            <constraint firstAttribute="trailing" secondItem="teu-Oo-jcc" secondAttribute="trailing" constant="20" symbolic="YES" id="WPt-cP-RaD"/>
+                            <constraint firstItem="teu-Oo-jcc" firstAttribute="top" secondItem="iLE-lo-Cmn" secondAttribute="top" constant="20" symbolic="YES" id="bJH-pC-kuT"/>
+                            <constraint firstAttribute="trailing" secondItem="zI1-7M-aNx" secondAttribute="trailing" constant="20" symbolic="YES" id="zrN-b0-e1X"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="GFd-kF-iPE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-417" y="1391"/>
+        </scene>
+    </scenes>
+</document>

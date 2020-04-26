@@ -29,6 +29,9 @@
 		C05587AC23C233FE00CA7418 /* EmptyTableCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C05587AB23C233FE00CA7418 /* EmptyTableCellView.xib */; };
 		C05910802455B454004A766C /* SLColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C059107F2455B454004A766C /* SLColor.swift */; };
 		C05910812455B5AF004A766C /* SLColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C059107F2455B454004A766C /* SLColor.swift */; };
+		C05910832455D67D004A766C /* IAP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C05910822455D67D004A766C /* IAP.storyboard */; };
+		C05910852455D974004A766C /* IapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05910842455D974004A766C /* IapViewController.swift */; };
+		C05910862455DAC9004A766C /* IapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05910842455D974004A766C /* IapViewController.swift */; };
 		C06275B123BA445600BCE972 /* InstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06275B023BA445600BCE972 /* InstructionViewController.swift */; };
 		C062760923BA646300BCE972 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C06275B723BA46C400BCE972 /* Cocoa.framework */; };
 		C062760C23BA646300BCE972 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C062760B23BA646300BCE972 /* SafariExtensionHandler.swift */; };
@@ -128,6 +131,8 @@
 		C05587A923C233E500CA7418 /* EmptyTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableCellView.swift; sourceTree = "<group>"; };
 		C05587AB23C233FE00CA7418 /* EmptyTableCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableCellView.xib; sourceTree = "<group>"; };
 		C059107F2455B454004A766C /* SLColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLColor.swift; sourceTree = "<group>"; };
+		C05910822455D67D004A766C /* IAP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IAP.storyboard; sourceTree = "<group>"; };
+		C05910842455D974004A766C /* IapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IapViewController.swift; sourceTree = "<group>"; };
 		C06275B023BA445600BCE972 /* InstructionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionViewController.swift; sourceTree = "<group>"; };
 		C06275B723BA46C400BCE972 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		C062760823BA646300BCE972 /* Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +212,7 @@
 				C000DFF123C49899005D61E4 /* EnterApiKey.storyboard */,
 				C000DFF323C498A3005D61E4 /* Instruction.storyboard */,
 				C0FC075F23C33F96002FB98B /* HUD.storyboard */,
+				C05910822455D67D004A766C /* IAP.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 				C0FF316423B8C9CA00E84C4A /* EnterApiKeyViewController.swift */,
 				C06275B023BA445600BCE972 /* InstructionViewController.swift */,
 				C000DFF523C49947005D61E4 /* StartupViewController.swift */,
+				C05910842455D974004A766C /* IapViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -522,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0FC076023C33F96002FB98B /* HUD.storyboard in Resources */,
+				C05910832455D67D004A766C /* IAP.storyboard in Resources */,
 				C000DFF423C498A3005D61E4 /* Instruction.storyboard in Resources */,
 				C0FF316723B8C9D000E84C4A /* Assets.xcassets in Resources */,
 				C000DFF223C49899005D61E4 /* EnterApiKey.storyboard in Resources */,
@@ -610,6 +618,7 @@
 				C0FC076623C38C22002FB98B /* NSMutableAttributedStringExtensions.swift in Sources */,
 				C03B0BE023BA6A9B0040DA37 /* ApiKeyMissingViewController.swift in Sources */,
 				C0E6000923BFC0670011982B /* SLError.swift in Sources */,
+				C05910862455DAC9004A766C /* IapViewController.swift in Sources */,
 				C0D6C1202454C002001AA865 /* LatestActivity.swift in Sources */,
 				C0D6C12B2454CFD2001AA865 /* RegisterableCellView.swift in Sources */,
 				C05587AA23C233E500CA7418 /* EmptyTableCellView.swift in Sources */,
@@ -662,6 +671,7 @@
 				C0109A6123C528B100542E5B /* SLNotificationName.swift in Sources */,
 				C0BE6CB123BF3F470082C2C2 /* Statics.swift in Sources */,
 				C064846E23C1062100AD97CA /* NSAlertExtensions.swift in Sources */,
+				C05910852455D974004A766C /* IapViewController.swift in Sources */,
 				C0E6000823BFBFEA0011982B /* SLApiService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

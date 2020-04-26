@@ -116,7 +116,10 @@ final class InstructionViewController: NSViewController {
 // MARK: - IBActions
 extension InstructionViewController {
     @IBAction private func upgradeButtonClicked(_ sender: Any) {
-        
+        let storyboard = NSStoryboard(name: NSStoryboard.Name("IAP"), bundle: nil)
+        let storyboardId = NSStoryboard.SceneIdentifier(stringLiteral: "IapViewController")
+        let iapViewController = storyboard.instantiateController(withIdentifier: storyboardId) as! IapViewController
+        presentAsSheet(iapViewController)
     }
     
     @IBAction private func manageAliasesButtonClicked(_ sender: Any) {
