@@ -10,6 +10,8 @@ import Cocoa
 
 final class InstructionViewController: NSViewController {
     @IBOutlet private weak var usernameLabel: NSTextField!
+    @IBOutlet private weak var statusLabel: NSTextField!
+    @IBOutlet private weak var upgradeButton: NSButton!
     @IBOutlet private weak var enableExtensionLabel: NSTextField!
     @IBOutlet private weak var step1Label: NSTextField!
     @IBOutlet private weak var step2Label: NSTextField!
@@ -39,39 +41,27 @@ final class InstructionViewController: NSViewController {
     }
     
     private func setupUI() {
-        setupUsernameLabel()
-        setupEnableExtensionLabel()
+        preferredContentSize = NSSize(width: 800, height: 600)
         setupStep1Label()
         setupStep2Label()
         setupStep3Label()
-    }
-    
-    private func setupUsernameLabel() {
-        guard let userInfo = userInfo else {
-            usernameLabel.stringValue = ""
-            return
+        
+        guard let userInfo = userInfo else { return }
+        usernameLabel.stringValue = userInfo.name
+        
+        if userInfo.inTrial {
+            statusLabel.stringValue = "Premium trial"
+            statusLabel.textColor = .systemTeal
+            upgradeButton.isHidden = false
+        } else if userInfo.isPremium {
+            statusLabel.stringValue = "Premium"
+            statusLabel.textColor = .systemGreen
+            upgradeButton.isHidden = true
+        } else {
+            statusLabel.stringValue = "Free plan"
+            statusLabel.textColor = .labelColor
+            upgradeButton.isHidden = false
         }
-        
-        usernameLabel.allowsEditingTextAttributes = true
-        usernameLabel.isSelectable = false
-        usernameLabel.attributedStringValue = userInfo.attributedString
-    }
-    
-    private func setupEnableExtensionLabel() {
-        let plainString = "Enable Simple Login for Safari in 3️⃣ easy steps"
-        
-        let attributedString = NSMutableAttributedString(string: plainString)
-        attributedString.addTextAlignCenterAttribute()
-        
-        attributedString.addAttribute(.font, value: NSFont.systemFont(ofSize: 18, weight: .medium), range: NSMakeRange(0, plainString.count + 2))
-        
-        if let simpleLoginRange = plainString.range(of: "Simple Login") {
-            attributedString.addAttributes([.font: NSFont.systemFont(ofSize: 19, weight: .semibold), .foregroundColor: NSColor.systemBlue], range: NSRange(simpleLoginRange, in: plainString))
-        }
-        
-        enableExtensionLabel.isSelectable = false
-        enableExtensionLabel.allowsEditingTextAttributes = true
-        enableExtensionLabel.attributedStringValue = attributedString
     }
     
     private func setupStep1Label() {
@@ -91,7 +81,7 @@ final class InstructionViewController: NSViewController {
     }
     
     private func setupStep2Label() {
-        let plainString = "Step 2️⃣: Select Extensions tab and then ✔️ on Simple Login"
+        let plainString = "Step 2️⃣: Select Extensions tab and then ✔️ on SimpleLogin"
         
         let attributedString = NSMutableAttributedString(string: plainString)
         
@@ -107,11 +97,11 @@ final class InstructionViewController: NSViewController {
     }
     
     private func setupStep3Label() {
-        let plainString = "Step 3️⃣: 🎉🎉🎉 Simple Login is now available on your Safari among other extensions next to the address bar"
+        let plainString = "Step 3️⃣: 🎉🎉🎉 SimpleLogin Safari Extension is now available on your Safari among other extensions next to the address bar"
         
         let attributedString = NSMutableAttributedString(string: plainString)
         
-        ["Step 3️⃣:", "Simple Login"].forEach { (string) in
+        ["Step 3️⃣:", "SimpleLogin Safari Extension"].forEach { (string) in
             if let stringRange = plainString.range(of: string) {
                 attributedString.addAttribute(.font, value: NSFont.systemFont(ofSize: 13, weight: .semibold), range: NSRange(stringRange, in: plainString))
             }
@@ -125,7 +115,11 @@ final class InstructionViewController: NSViewController {
 
 // MARK: - IBActions
 extension InstructionViewController {
-    @IBAction private func manageAliases(_ sender: Any) {
+    @IBAction private func upgradeButtonClicked(_ sender: Any) {
+        
+    }
+    
+    @IBAction private func manageAliasesButtonClicked(_ sender: Any) {
         guard let url = URL(string: "\(BASE_URL)/dashboard") else { return }
         NSWorkspace.shared.open(url)
     }
