@@ -16,6 +16,9 @@ final class IapViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Opt-out dark mode for this controller because in dark mode labels become white
+        // and they are visually dimmed out in the pink background
+        view.appearance = NSAppearance(named: .aqua)
     }
 }
 
