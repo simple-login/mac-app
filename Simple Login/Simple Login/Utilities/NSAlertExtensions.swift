@@ -24,8 +24,8 @@ extension NSAlert {
     
     static func signOutAlert() -> NSAlert {
         let alert = NSAlert()
-        alert.messageText = "Confirmation"
-        alert.informativeText = "You will be signed out from SimpleLogin. Please confirm."
+        alert.messageText = "You will be sign out"
+        alert.informativeText = "Please confirm."
         alert.addButton(withTitle: "Yes, sign me out")
         alert.addButton(withTitle: "Cancel")
         alert.alertStyle = .informational
