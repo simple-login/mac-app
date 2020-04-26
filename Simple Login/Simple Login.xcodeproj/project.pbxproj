@@ -362,6 +362,7 @@
 		C0E6001323BFEAC10011982B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C000DFF023C49880005D61E4 /* Storyboards */,
 				C0E6001423BFEADF0011982B /* DisableableScrollView.swift */,
 			);
 			path = Views;
@@ -405,12 +406,11 @@
 		C0FF316123B8C9CA00E84C4A /* Simple Login */ = {
 			isa = PBXGroup;
 			children = (
-				C000DFF023C49880005D61E4 /* Storyboards */,
+				C0E86DE423B90D6600232B9A /* Models */,
 				C0E6001323BFEAC10011982B /* Views */,
+				C0FF317223B8D67000E84C4A /* Controllers */,
 				C0BE6CAF23BF3F2D0082C2C2 /* Utilities */,
 				C03B0BD823BA68020040DA37 /* Services */,
-				C0E86DE423B90D6600232B9A /* Models */,
-				C0FF317223B8D67000E84C4A /* Controllers */,
 				C0FF316223B8C9CA00E84C4A /* AppDelegate.swift */,
 				C0FF316623B8C9D000E84C4A /* Assets.xcassets */,
 				C0FF316B23B8C9D000E84C4A /* Info.plist */,
