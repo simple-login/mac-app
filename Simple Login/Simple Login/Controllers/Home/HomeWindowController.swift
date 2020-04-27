@@ -9,22 +9,31 @@
 import Cocoa
 
 private extension NSToolbarItem.Identifier {
-    static let userInfo = NSToolbarItem.Identifier(rawValue: "UserInfo")
+    static let userInfoItem = NSToolbarItem.Identifier(rawValue: "UserInfo")
     static let upgrade = NSToolbarItem.Identifier(rawValue: "Upgrade")
     static let manageAliases = NSToolbarItem.Identifier(rawValue: "ManageAliases")
     static let signOut = NSToolbarItem.Identifier(rawValue: "SignOut")
+    static let ios = NSToolbarItem.Identifier(rawValue: "iOS")
+    static let rating = NSToolbarItem.Identifier(rawValue: "Rating")
+    static let about = NSToolbarItem.Identifier(rawValue: "About")
 }
 
 final class HomeWindowController: NSWindowController {
     @IBOutlet private weak var toolbar: NSToolbar!
     
     @IBOutlet private weak var userInfoView: NSView!
-    @IBOutlet private weak var usernameLabel: NSTextField!
+    @IBOutlet private weak var avatarImageView: NSImageView!
+    @IBOutlet private weak var nameLabel: NSTextField!
+    @IBOutlet private weak var emailLabel: NSTextField!
     @IBOutlet private weak var statusLabel: NSTextField!
     
     @IBOutlet private weak var upgradeView: NSView!
     @IBOutlet private weak var manageAliasesView: NSView!
     @IBOutlet private weak var signOutView: NSView!
+    
+    @IBOutlet private weak var iOSView: NSView!
+    @IBOutlet private weak var ratingView: NSView!
+    @IBOutlet private weak var aboutView: NSView!
     
     var userInfo: UserInfo?
     
@@ -35,28 +44,15 @@ final class HomeWindowController: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         toolbar.allowsUserCustomization = true
-        toolbar.autosavesConfiguration = true
+        
+        nameLabel.stringValue = ""
+        emailLabel.stringValue = ""
+        statusLabel.stringValue = ""
         
         (contentViewController as? HomeViewController)?.delegate = self
-        
+
         // Observe sign out notification from safari extension
         DistributedNotificationCenter.default().addObserver(self, selector: #selector(signOut), name: SLNotificationName.signOut, object: nil)
-    }
-    
-    private func setUpUi() {
-        guard let userInfo = userInfo else { return }
-        usernameLabel.stringValue = userInfo.name
-        
-        if userInfo.inTrial {
-            statusLabel.stringValue = "Premium trial"
-            statusLabel.textColor = .systemGreen
-        } else if userInfo.isPremium {
-            statusLabel.stringValue = "Premium"
-            statusLabel.textColor = .systemGreen
-        } else {
-            statusLabel.stringValue = "Free plan"
-            statusLabel.textColor = .labelColor
-        }
     }
     
     private func customToolbarItem(
@@ -90,6 +86,39 @@ final class HomeWindowController: NSWindowController {
     }
 }
 
+// MARK: - NSWindowDelegate
+extension HomeWindowController: HomeViewControllerDelegate {
+    func homeViewControllerDidAppear() {
+        guard let userInfo = userInfo else { return }
+        nameLabel.stringValue = userInfo.name
+        emailLabel.stringValue = userInfo.email
+        
+        if userInfo.inTrial {
+            statusLabel.stringValue = "Premium trial"
+            statusLabel.textColor = .systemGreen
+        } else if userInfo.isPremium {
+            statusLabel.stringValue = "Premium"
+            statusLabel.textColor = .systemGreen
+        } else {
+            statusLabel.stringValue = "Free plan"
+            statusLabel.textColor = .labelColor
+        }
+        
+        if userInfo.isPremium {
+            removeUpgradeViewFromToolbar()
+        }
+    }
+
+    private func removeUpgradeViewFromToolbar() {
+        for (index, item) in toolbar.items.enumerated() {
+            if item.itemIdentifier == .upgrade {
+                toolbar.removeItem(at: index)
+                return
+            }
+        }
+    }
+}
+
 // MARK: - IBActions
 extension HomeWindowController {
     @IBAction private func upgradeButtonClicked(_ sender: Any) {
@@ -119,16 +148,31 @@ extension HomeWindowController {
         contentViewController?.showEnterApiKeyWindowController()
         close()
     }
+    
+    @IBAction private func iOSButtonClicked(_ sender: Any) {
+        guard let url = URL(string: "https://apps.apple.com/us/app/simplelogin-anti-spam/id1494359858") else { return }
+        NSWorkspace.shared.open(url)
+    }
+    
+    @IBAction private func ratingButtonClicked(_ sender: Any) {
+        guard let url = URL(string: "https://apps.apple.com/us/app/simplelogin/id1494051017?action=write-review") else { return }
+        NSWorkspace.shared.open(url)
+    }
+    
+    @IBAction private func aboutButtonClicked(_ sender: Any) {
+        guard let url = URL(string: "https://simplelogin.io/about/") else { return }
+        NSWorkspace.shared.open(url)
+    }
 }
 
 // MARK: - NSToolbarDelegate
 extension HomeWindowController: NSToolbarDelegate {
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.userInfo, .upgrade, .manageAliases, .signOut, .space, .flexibleSpace]
+        return [.userInfoItem, .upgrade, .manageAliases, .signOut, .ios, .rating, .about, .space, .flexibleSpace]
     }
     
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.userInfo, .flexibleSpace, .upgrade, .manageAliases, .signOut]
+        return [.userInfoItem, .flexibleSpace, .upgrade, .manageAliases, .signOut, .space, .ios, .rating, .about]
     }
     
     func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
@@ -136,8 +180,8 @@ extension HomeWindowController: NSToolbarDelegate {
         var toolbarItem = NSToolbarItem()
         
         switch itemIdentifier {
-        case .userInfo:
-            toolbarItem = customToolbarItem(itemForItemIdentifier: NSToolbarItem.Identifier.userInfo.rawValue, label: "", paletteLabel: "", toolTip: "Your username & status", itemContent: userInfoView)!
+        case .userInfoItem:
+            toolbarItem = customToolbarItem(itemForItemIdentifier: NSToolbarItem.Identifier.userInfoItem.rawValue, label: "", paletteLabel: "", toolTip: "Your display name & status", itemContent: userInfoView)!
             
         case .upgrade:
             toolbarItem = customToolbarItem(itemForItemIdentifier: NSToolbarItem.Identifier.upgrade.rawValue, label: "", paletteLabel: "", toolTip: "Enhance your superpowers", itemContent: upgradeView)!
@@ -148,29 +192,18 @@ extension HomeWindowController: NSToolbarDelegate {
         case .signOut:
             toolbarItem = customToolbarItem(itemForItemIdentifier: NSToolbarItem.Identifier.signOut.rawValue, label: "", paletteLabel: "", toolTip: "Sign out from SimpleLogin", itemContent: signOutView)!
             
+        case .ios:
+            toolbarItem = customToolbarItem(itemForItemIdentifier: NSToolbarItem.Identifier.ios.rawValue, label: "", paletteLabel: "", toolTip: "SimpleLogin on iOS", itemContent: iOSView)!
+            
+        case .rating:
+            toolbarItem = customToolbarItem(itemForItemIdentifier: NSToolbarItem.Identifier.rating.rawValue, label: "", paletteLabel: "", toolTip: "Rate us", itemContent: ratingView)!
+            
+        case .about:
+            toolbarItem = customToolbarItem(itemForItemIdentifier: NSToolbarItem.Identifier.about.rawValue, label: "", paletteLabel: "", toolTip: "Our team", itemContent: aboutView)!
+            
         default: break
         }
         
         return toolbarItem
-    }
-}
-
-
-// MARK: - HomeViewControllerDelegate
-extension HomeWindowController: HomeViewControllerDelegate {
-    func homeViewControllerWillAppear() {
-        setUpUi()
-        if let userInfo = userInfo, userInfo.isPremium {
-           removeUpgradeViewFromToolbar()
-        }
-    }
-    
-    private func removeUpgradeViewFromToolbar() {
-        for (index, item) in toolbar.items.enumerated() {
-            if item.itemIdentifier == .upgrade {
-                toolbar.removeItem(at: index)
-                return
-            }
-        }
     }
 }

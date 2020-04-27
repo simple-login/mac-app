@@ -9,13 +9,10 @@
 import Cocoa
 
 protocol HomeViewControllerDelegate {
-    func homeViewControllerWillAppear() -> Void
+    func homeViewControllerDidAppear()
 }
 
 final class HomeViewController: NSViewController {
-    @IBOutlet private weak var usernameLabel: NSTextField!
-    @IBOutlet private weak var statusLabel: NSTextField!
-    @IBOutlet private weak var upgradeButton: NSButton!
     @IBOutlet private weak var enableExtensionLabel: NSTextField!
     @IBOutlet private weak var step1Label: NSTextField!
     @IBOutlet private weak var step2Label: NSTextField!
@@ -31,8 +28,11 @@ final class HomeViewController: NSViewController {
             showEnterApiKeyWindowController()
             view.window?.close()
         }
-        
-        delegate?.homeViewControllerWillAppear()
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        delegate?.homeViewControllerDidAppear()
     }
     
     @IBAction private func openSafari(_ sender: Any) {
