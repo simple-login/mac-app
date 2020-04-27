@@ -121,19 +121,19 @@ extension HomeWindowController: HomeViewControllerDelegate {
 
 // MARK: - IBActions
 extension HomeWindowController {
-    @IBAction private func upgradeButtonClicked(_ sender: Any) {
+    @objc @IBAction func upgradeButtonClicked(_ sender: Any) {
         let storyboard = NSStoryboard(name: NSStoryboard.Name("IAP"), bundle: nil)
         let storyboardId = NSStoryboard.SceneIdentifier(stringLiteral: "IapViewController")
         let iapViewController = storyboard.instantiateController(withIdentifier: storyboardId) as! IapViewController
         contentViewController?.presentAsSheet(iapViewController)
     }
     
-    @IBAction private func manageAliasesButtonClicked(_ sender: Any) {
+    @objc @IBAction func manageAliasesButtonClicked(_ sender: Any) {
         guard let url = URL(string: "\(BASE_URL)/dashboard".replacingOccurrences(of: "//", with: "/")) else { return }
         NSWorkspace.shared.open(url)
     }
     
-    @IBAction private func signOutButtonClicked(_ sender: Any) {
+    @objc @IBAction func signOutButtonClicked(_ sender: Any) {
         let alert = NSAlert.signOutAlert()
         let modalResult = alert.runModal()
         
@@ -149,19 +149,23 @@ extension HomeWindowController {
         close()
     }
     
-    @IBAction private func iOSButtonClicked(_ sender: Any) {
+    @objc @IBAction func iOSButtonClicked(_ sender: Any) {
         guard let url = URL(string: "https://apps.apple.com/us/app/simplelogin-anti-spam/id1494359858") else { return }
         NSWorkspace.shared.open(url)
     }
     
-    @IBAction private func ratingButtonClicked(_ sender: Any) {
+    @objc @IBAction func ratingButtonClicked(_ sender: Any) {
         guard let url = URL(string: "https://apps.apple.com/us/app/simplelogin/id1494051017?action=write-review") else { return }
         NSWorkspace.shared.open(url)
     }
     
-    @IBAction private func aboutButtonClicked(_ sender: Any) {
+    @objc @IBAction func aboutButtonClicked(_ sender: Any) {
         guard let url = URL(string: "https://simplelogin.io/about/") else { return }
         NSWorkspace.shared.open(url)
+    }
+    
+    @objc func openSafari() {
+        NSWorkspace.shared.launchApplication(withBundleIdentifier: "com.apple.safari", options: NSWorkspace.LaunchOptions.default, additionalEventParamDescriptor: nil, launchIdentifier: nil)
     }
 }
 
