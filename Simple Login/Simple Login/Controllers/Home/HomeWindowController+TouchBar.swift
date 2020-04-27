@@ -9,17 +9,17 @@
 import Cocoa
 
 private extension NSTouchBar.CustomizationIdentifier {
-    static let touchBar = "io.simplelogin.macapp.touchBar"
+    static let touchBar = "io.simplelogin.macapp.home.touchBar"
 }
 
 private extension NSTouchBarItem.Identifier {
-    static let upgrade = NSTouchBarItem.Identifier("io.simplelogin.macapp.TouchBarItem.upgrade")
-    static let manageAliases = NSTouchBarItem.Identifier("io.simplelogin.macapp.TouchBarItem.manageAliases")
-    static let signOut = NSTouchBarItem.Identifier("io.simplelogin.macapp.TouchBarItem.signOut")
-    static let iOS = NSTouchBarItem.Identifier("io.simplelogin.macapp.TouchBarItem.iOS")
-    static let rating = NSTouchBarItem.Identifier("io.simplelogin.macapp.TouchBarItem.rating")
-    static let about = NSTouchBarItem.Identifier("io.simplelogin.macapp.TouchBarItem.about")
-    static let safari = NSTouchBarItem.Identifier("io.simplelogin.macapp.TouchBarItem.safari")
+    static let upgrade = NSTouchBarItem.Identifier("io.simplelogin.macapp.home.TouchBarItem.upgrade")
+    static let manageAliases = NSTouchBarItem.Identifier("io.simplelogin.macapp.home.TouchBarItem.manageAliases")
+    static let signOut = NSTouchBarItem.Identifier("io.simplelogin.macapp.home.TouchBarItem.signOut")
+    static let iOS = NSTouchBarItem.Identifier("io.simplelogin.macapp.home.TouchBarItem.iOS")
+    static let rating = NSTouchBarItem.Identifier("io.simplelogin.macapp.home.TouchBarItem.rating")
+    static let about = NSTouchBarItem.Identifier("io.simplelogin.macapp.home.TouchBarItem.about")
+    static let safari = NSTouchBarItem.Identifier("io.simplelogin.macapp.home.TouchBarItem.safari")
 }
 
 extension HomeWindowController: NSTouchBarDelegate {
@@ -74,7 +74,9 @@ extension HomeWindowController: NSTouchBarDelegate {
             
         case .safari:
             let safariTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
-            safariTouchBarItem.view = NSButton(title: "Open Safari", target: self, action: #selector(openSafari))
+            let button = NSButton(title: "Open Safari", target: self, action: #selector(openSafari))
+            button.bezelColor = SLColor.tintColor
+            safariTouchBarItem.view = button
             
             return safariTouchBarItem
             

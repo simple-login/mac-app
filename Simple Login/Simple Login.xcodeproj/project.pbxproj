@@ -78,6 +78,7 @@
 		C0E86DE823B918A300232B9A /* SLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E86DE723B918A200232B9A /* SLError.swift */; };
 		C0F72D282457384F001BD620 /* HomeWindowController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F72D272457384F001BD620 /* HomeWindowController+TouchBar.swift */; };
 		C0F72D292457385B001BD620 /* HomeWindowController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F72D272457384F001BD620 /* HomeWindowController+TouchBar.swift */; };
+		C0F72D2F2457467D001BD620 /* IapViewController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F72D2E2457467D001BD620 /* IapViewController+TouchBar.swift */; };
 		C0FC075E23C33F74002FB98B /* NSViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FC075D23C33F74002FB98B /* NSViewControllerExtensions.swift */; };
 		C0FC076023C33F96002FB98B /* HUD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FC075F23C33F96002FB98B /* HUD.storyboard */; };
 		C0FC076123C340E3002FB98B /* HUD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FC075F23C33F96002FB98B /* HUD.storyboard */; };
@@ -167,6 +168,7 @@
 		C0E86DE523B90DED00232B9A /* UserOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOptions.swift; sourceTree = "<group>"; };
 		C0E86DE723B918A200232B9A /* SLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLError.swift; sourceTree = "<group>"; };
 		C0F72D272457384F001BD620 /* HomeWindowController+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeWindowController+TouchBar.swift"; sourceTree = "<group>"; };
+		C0F72D2E2457467D001BD620 /* IapViewController+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IapViewController+TouchBar.swift"; sourceTree = "<group>"; };
 		C0FC075D23C33F74002FB98B /* NSViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtensions.swift; sourceTree = "<group>"; };
 		C0FC075F23C33F96002FB98B /* HUD.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HUD.storyboard; sourceTree = "<group>"; };
 		C0FC076423C38BB8002FB98B /* NSMutableAttributedStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtensions.swift; sourceTree = "<group>"; };
@@ -387,6 +389,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		C0F72D2D24574668001BD620 /* IAP */ = {
+			isa = PBXGroup;
+			children = (
+				C05910842455D974004A766C /* IapViewController.swift */,
+				C0F72D2E2457467D001BD620 /* IapViewController+TouchBar.swift */,
+			);
+			path = IAP;
+			sourceTree = "<group>";
+		};
 		C0FF315623B8C9CA00E84C4A = {
 			isa = PBXGroup;
 			children = (
@@ -427,9 +438,9 @@
 			isa = PBXGroup;
 			children = (
 				C059108A24561D2D004A766C /* Home */,
+				C0F72D2D24574668001BD620 /* IAP */,
 				C0FF316423B8C9CA00E84C4A /* EnterApiKeyViewController.swift */,
 				C000DFF523C49947005D61E4 /* StartupViewController.swift */,
-				C05910842455D974004A766C /* IapViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -670,6 +681,7 @@
 				C0D6C11C2454BFD7001AA865 /* LatestActivity.swift in Sources */,
 				C064846B23C1035C00AD97CA /* NSViewExtensions.swift in Sources */,
 				C0D6C1262454C2A2001AA865 /* ContactLite.swift in Sources */,
+				C0F72D2F2457467D001BD620 /* IapViewController+TouchBar.swift in Sources */,
 				C0D6C11E2454BFF2001AA865 /* AliasActivity.swift in Sources */,
 				C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */,
 				C0D6C1322454EA8E001AA865 /* NSImage+Extensions.swift in Sources */,

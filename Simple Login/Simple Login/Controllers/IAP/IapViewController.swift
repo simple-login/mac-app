@@ -31,7 +31,7 @@ final class IapViewController: NSViewController {
 
 // MARK: - IBActions
 extension IapViewController {
-    @IBAction private func cancelButtonTapped(_ sender: Any) {
+    @objc @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(nil)
     }
 }
