@@ -79,6 +79,7 @@
 		C0F72D282457384F001BD620 /* HomeWindowController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F72D272457384F001BD620 /* HomeWindowController+TouchBar.swift */; };
 		C0F72D292457385B001BD620 /* HomeWindowController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F72D272457384F001BD620 /* HomeWindowController+TouchBar.swift */; };
 		C0F72D2F2457467D001BD620 /* IapViewController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F72D2E2457467D001BD620 /* IapViewController+TouchBar.swift */; };
+		C0F72D3224575193001BD620 /* EnterApiKeyViewController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F72D3124575193001BD620 /* EnterApiKeyViewController+TouchBar.swift */; };
 		C0FC075E23C33F74002FB98B /* NSViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FC075D23C33F74002FB98B /* NSViewControllerExtensions.swift */; };
 		C0FC076023C33F96002FB98B /* HUD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FC075F23C33F96002FB98B /* HUD.storyboard */; };
 		C0FC076123C340E3002FB98B /* HUD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0FC075F23C33F96002FB98B /* HUD.storyboard */; };
@@ -169,6 +170,7 @@
 		C0E86DE723B918A200232B9A /* SLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLError.swift; sourceTree = "<group>"; };
 		C0F72D272457384F001BD620 /* HomeWindowController+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeWindowController+TouchBar.swift"; sourceTree = "<group>"; };
 		C0F72D2E2457467D001BD620 /* IapViewController+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IapViewController+TouchBar.swift"; sourceTree = "<group>"; };
+		C0F72D3124575193001BD620 /* EnterApiKeyViewController+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnterApiKeyViewController+TouchBar.swift"; sourceTree = "<group>"; };
 		C0FC075D23C33F74002FB98B /* NSViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewControllerExtensions.swift; sourceTree = "<group>"; };
 		C0FC075F23C33F96002FB98B /* HUD.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HUD.storyboard; sourceTree = "<group>"; };
 		C0FC076423C38BB8002FB98B /* NSMutableAttributedStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedStringExtensions.swift; sourceTree = "<group>"; };
@@ -398,6 +400,15 @@
 			path = IAP;
 			sourceTree = "<group>";
 		};
+		C0F72D3024575171001BD620 /* Enter Api Key */ = {
+			isa = PBXGroup;
+			children = (
+				C0FF316423B8C9CA00E84C4A /* EnterApiKeyViewController.swift */,
+				C0F72D3124575193001BD620 /* EnterApiKeyViewController+TouchBar.swift */,
+			);
+			path = "Enter Api Key";
+			sourceTree = "<group>";
+		};
 		C0FF315623B8C9CA00E84C4A = {
 			isa = PBXGroup;
 			children = (
@@ -437,9 +448,9 @@
 		C0FF317223B8D67000E84C4A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C0F72D3024575171001BD620 /* Enter Api Key */,
 				C059108A24561D2D004A766C /* Home */,
 				C0F72D2D24574668001BD620 /* IAP */,
-				C0FF316423B8C9CA00E84C4A /* EnterApiKeyViewController.swift */,
 				C000DFF523C49947005D61E4 /* StartupViewController.swift */,
 			);
 			path = Controllers;
@@ -686,6 +697,7 @@
 				C06275B123BA445600BCE972 /* HomeViewController.swift in Sources */,
 				C0D6C1322454EA8E001AA865 /* NSImage+Extensions.swift in Sources */,
 				C0BA379423C0C2F000F23554 /* StringExtensions.swift in Sources */,
+				C0F72D3224575193001BD620 /* EnterApiKeyViewController+TouchBar.swift in Sources */,
 				C000DFEE23C49235005D61E4 /* UserInfo.swift in Sources */,
 				C0BA379623C0C36600F23554 /* RegexHelpers.swift in Sources */,
 				C0FF316523B8C9CA00E84C4A /* EnterApiKeyViewController.swift in Sources */,

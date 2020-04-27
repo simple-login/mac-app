@@ -38,42 +38,49 @@ extension HomeWindowController: NSTouchBarDelegate {
         case .upgrade:
             guard let userInfo = userInfo, !userInfo.isPremium else { return nil }
             let upgradeTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
+            upgradeTouchBarItem.customizationLabel = "Upgrade"
             upgradeTouchBarItem.view = NSButton(image: NSImage(named: NSImage.Name("Diamond"))!, target: self, action: #selector(upgradeButtonClicked))
             
             return upgradeTouchBarItem
             
         case .manageAliases:
             let manageAliasesTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
+            manageAliasesTouchBarItem.customizationLabel = "Manage your aliases"
             manageAliasesTouchBarItem.view = NSButton(image: NSImage(named: NSImage.Name("Management"))!, target: self, action: #selector(manageAliasesButtonClicked))
             
             return manageAliasesTouchBarItem
             
         case .signOut:
             let signOutTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
+            signOutTouchBarItem.customizationLabel = "Sign out from SimpleLogin"
             signOutTouchBarItem.view = NSButton(image: NSImage(named: NSImage.Name("LogOut"))!, target: self, action: #selector(signOutButtonClicked))
             
             return signOutTouchBarItem
             
         case .iOS:
             let iOSTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
+            iOSTouchBarItem.customizationLabel = "SimpleLogin on iOS"
             iOSTouchBarItem.view = NSButton(image: NSImage(named: NSImage.Name("iOS"))!, target: self, action: #selector(iOSButtonClicked))
             
             return iOSTouchBarItem
             
         case .rating:
             let ratingTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
+            ratingTouchBarItem.customizationLabel = "Rate us"
             ratingTouchBarItem.view = NSButton(image: NSImage(named: NSImage.Name("Star"))!, target: self, action: #selector(ratingButtonClicked))
             
             return ratingTouchBarItem
             
         case .about:
             let aboutTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
+            aboutTouchBarItem.customizationLabel = "About us"
             aboutTouchBarItem.view = NSButton(image: NSImage(named: NSImage.Name("Info"))!, target: self, action: #selector(aboutButtonClicked))
             
             return aboutTouchBarItem
             
         case .safari:
             let safariTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
+            safariTouchBarItem.customizationLabel = "Open Safari"
             let button = NSButton(title: "Open Safari", target: self, action: #selector(openSafari))
             button.bezelColor = SLColor.tintColor
             safariTouchBarItem.view = button

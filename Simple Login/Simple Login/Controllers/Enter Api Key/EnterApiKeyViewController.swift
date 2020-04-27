@@ -42,7 +42,8 @@ final class EnterApiKeyViewController: NSViewController {
         noInternetAlert.runModal()
     }
     
-    @IBAction private func modifyApiUrl(_ sender: Any) {
+    @objc
+    @IBAction func modifyApiUrl(_ sender: Any) {
         let alert = NSAlert()
         alert.messageText = "Enter your custom API URL"
         alert.addButton(withTitle: "Set API URL")
@@ -63,7 +64,8 @@ final class EnterApiKeyViewController: NSViewController {
         }
     }
     
-    @IBAction private func setApiKey(_ sender: Any) {
+    @objc
+    @IBAction func setApiKey(_ sender: Any) {
         let enteredApiKey = apiKeyTextField.stringValue
         
         guard enteredApiKey.count > 0 else { return }

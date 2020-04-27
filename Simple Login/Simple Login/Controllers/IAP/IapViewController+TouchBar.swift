@@ -22,17 +22,15 @@ extension IapViewController: NSTouchBarDelegate {
         let touchBar = NSTouchBar()
         touchBar.delegate = self
         touchBar.customizationIdentifier = .touchBar
-        touchBar.defaultItemIdentifiers = [.flexibleSpace, .cancel, .flexibleSpace]
-        touchBar.customizationAllowedItemIdentifiers = [.flexibleSpace, .cancel]
+        touchBar.defaultItemIdentifiers = [.cancel, .otherItemsProxy]
+        touchBar.principalItemIdentifier = .cancel // Make this item centered in the touchBar
         
         return touchBar
     }
     
     func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
         let cancelTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
-        let button = NSButton(title: "Cancel", target: self, action: #selector(cancelButtonTapped))
-        button.bezelColor = SLColor.tintColor
-        cancelTouchBarItem.view = button
+        cancelTouchBarItem.view = NSButton(title: "Cancel", target: self, action: #selector(cancelButtonTapped))
         
         return cancelTouchBarItem
     }
