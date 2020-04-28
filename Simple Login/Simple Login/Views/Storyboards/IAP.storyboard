@@ -443,6 +443,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="systemMedium" size="13"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="upgradeButtonClicked:" target="Pp6-cb-eNq" id="wQi-Ac-l5f"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l3r-Gh-Ltj">
                                         <rect key="frame" x="-6" y="130" width="502" height="32"/>
@@ -450,6 +453,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="systemMedium" size="13"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="restoreButtonClicked:" target="Pp6-cb-eNq" id="AKI-Ff-OaF"/>
+                                        </connections>
                                     </button>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="fkt-yI-SJ3">
                                         <rect key="frame" x="0.0" y="120" width="490" height="10"/>
@@ -558,6 +564,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="systemMedium" size="13"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="contactUsButtonClicked:" target="Pp6-cb-eNq" id="GwE-Tz-yY5"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -663,7 +672,7 @@ Gw
 </string>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="cancelButtonTapped:" target="Pp6-cb-eNq" id="9bS-km-igf"/>
+                                    <action selector="cancelButtonClicked:" target="Pp6-cb-eNq" id="9bS-km-igf"/>
                                 </connections>
                             </button>
                         </subviews>

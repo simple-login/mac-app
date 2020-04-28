@@ -96,11 +96,22 @@ final class IapViewController: NSViewController {
         monthlyButton.title = "Monthly subscription \(productMonthly.regularPrice ?? "")/month"
         yearlyButton.title = "Yearly subscription \(productYearly.regularPrice ?? "")/year"
     }
+    
+    private func restart() {
+        guard let resourcePath = Bundle.main.resourcePath else { return }
+        let url = URL(fileURLWithPath: resourcePath)
+        let path = url.deletingLastPathComponent().deletingLastPathComponent().absoluteString
+        let task = Process()
+        task.launchPath = "/usr/bin/open"
+        task.arguments = [path]
+        task.launch()
+        exit(0)
+    }
 }
 
 // MARK: - IBActions
 extension IapViewController {
-    @objc @IBAction func cancelButtonTapped(_ sender: Any) {
+    @objc @IBAction func cancelButtonClicked(_ sender: Any) {
         dismiss(nil)
     }
     
@@ -111,6 +122,23 @@ extension IapViewController {
             selectedIapProduct = .yearly
         } else {
             selectedIapProduct = .monthly
+        }
+    }
+    
+    @IBAction private func upgradeButtonClicked(_ sender: Any) {
+        restart()
+    }
+    
+    @IBAction private func restoreButtonClicked(_ sender: Any) {
+        print(#function)
+    }
+    
+    @IBAction private func contactUsButtonClicked(_ sender: Any) {
+        guard let emailService = NSSharingService.init(named: .composeEmail) else { return }
+        
+        emailService.recipients = ["hi@simplelogin.io"]
+        if emailService.canPerform(withItems: [""]) {
+            emailService.perform(withItems: [""])
         }
     }
 }

@@ -30,7 +30,7 @@ extension IapViewController: NSTouchBarDelegate {
     
     func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
         let cancelTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
-        cancelTouchBarItem.view = NSButton(title: "Cancel", target: self, action: #selector(cancelButtonTapped))
+        cancelTouchBarItem.view = NSButton(title: "Cancel", target: self, action: #selector(cancelButtonClicked))
         
         return cancelTouchBarItem
     }
