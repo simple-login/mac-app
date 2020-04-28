@@ -36,6 +36,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     
     // Go premium components
     @IBOutlet private weak var premiumDescriptionLabel: NSTextField!
+    @IBOutlet private weak var upgradeButton: NSButton!
     
     @IBOutlet private weak var scrollView: NSScrollView!
     @IBOutlet private weak var scrollViewHeightConstraint: NSLayoutConstraint!
@@ -50,12 +51,12 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     }()
     
     lazy private var upgradeComponents: [NSView] = {
-        return [premiumDescriptionLabel]
+        return [premiumDescriptionLabel, upgradeButton]
     }()
     
     var apiKey: String?
     private var userInfo: UserInfo?
-    private var userOptions: UserOptions?
+    private(set) var userOptions: UserOptions?
     
     // Aliases
     private var aliases: [Alias] = []
@@ -122,9 +123,6 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         
         let signOutClickGesture = NSClickGestureRecognizer(target: self, action: #selector(signOut))
         signOutButton.addGestureRecognizer(signOutClickGesture)
-        
-        // Fetch aliases
-        fetchAliases()
     }
     
     override func viewWillAppear() {
@@ -189,6 +187,13 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                 }
             }
         }
+        
+        // Fetch aliases
+        fetchedPage = -1
+        isFetching = false
+        moreToLoad = true
+        aliases.removeAll()
+        fetchAliases()
     }
     
     private func getURL(_ completion: @escaping (_ url: URL?) -> Void) {
@@ -282,11 +287,20 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
 //        guard let url = URL(string: "\(BASE_URL)/dashboard/pricing") else { return }
 //        NSWorkspace.shared.open(url)
 //    }
+    
+    func copyAliasToClipboard(_ alias: Alias) {
+        let pasteboard = NSPasteboard.general
+        pasteboard.clearContents()
+        pasteboard.setString(alias.email, forType: .string)
+        
+        showHUD(attributedMessageString: alias.copyAlertAttributedString)
+    }
 }
 
 // MARK: - Create new alias
 extension ExtensionHomeViewController {
-    @IBAction private func createNewAlias(_ sender: Any) {
+    @objc
+    @IBAction func createNewAlias(_ sender: Any) {
         guard isValidEmailPrefix, let apiKey = apiKey else { return }
         
         let prefix = hostnameTextField.stringValue
@@ -314,7 +328,8 @@ extension ExtensionHomeViewController {
         }
     }
     
-    @IBAction private func createRandomlyNewAlias(_ sender: Any) {
+    @objc
+    @IBAction func createRandomlyNewAlias(_ sender: Any) {
         guard let apiKey = apiKey else { return }
         
         setLoading(true)
@@ -334,16 +349,21 @@ extension ExtensionHomeViewController {
             }
         }
     }
+    
+    @objc
+    @IBAction func upgrade(_ sender: Any) {
+        print("Go premium!!!")
+    }
 }
 
 // MARK: - Bottom options
 extension ExtensionHomeViewController {
-    @objc private func manageAliases() {
-        guard let url = URL(string: "\(BASE_URL)/dashboard/") else { return }
+    @objc func manageAliases() {
+        guard let url = URL(string: "\(BASE_URL)/dashboard/".replacingOccurrences(of: "//", with: "/")) else { return }
         NSWorkspace.shared.open(url)
     }
     
-    @objc private func signOut() {
+    @objc func signOut() {
         let alert = NSAlert.signOutAlert()
         alert.icon = NSImage(named: NSImage.Name(stringLiteral: "SimpleLogin"))
         let modalResult = alert.runModal()
@@ -392,19 +412,15 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
         
         aliasCell.bind(alias: alias)
         aliasCell.didClickCopyButton = { [unowned self] in
-            let pasteboard = NSPasteboard.general
-            pasteboard.clearContents()
-            pasteboard.setString(alias.email, forType: .string)
-            
-            self.showHUD(attributedMessageString: alias.copyAlertAttributedString)
+            self.copyAliasToClipboard(alias)
         }
         
-        if highLightFirstAlias && row == 0 {
-            aliasCell.setHighLight(true)
-            highLightFirstAlias = false
-        } else {
-            aliasCell.setHighLight(false)
-        }
+//        if highLightFirstAlias && row == 0 {
+//            aliasCell.setHighLight(true)
+//            highLightFirstAlias = false
+//        } else {
+//            aliasCell.setHighLight(false)
+//        }
         
         return aliasCell
     }
