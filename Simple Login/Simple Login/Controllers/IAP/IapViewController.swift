@@ -109,6 +109,82 @@ final class IapViewController: NSViewController {
     }
 }
 
+// MARK: - Payment
+extension IapViewController {
+    private func buy(_ product: SKProduct) {
+        setLoading(true)
+        SwiftyStoreKit.purchaseProduct(product.productIdentifier) { [weak self] (result) in
+            guard let self = self else { return }
+            self.setLoading(false)
+            
+            switch result {
+            case .success(_):
+                self.fetchAndSendReceiptToServer()
+                
+            case .error(let error):
+                let errorMessage: String
+                switch error.code {
+                case .unknown: errorMessage = "Unknown error"
+                case .clientInvalid: errorMessage =  "Invalid client"
+                case .paymentCancelled: errorMessage = "Payment cancelled"
+                case .paymentInvalid: errorMessage = "Invalid payment"
+                case .paymentNotAllowed: errorMessage = "Payment not allowed"
+                case .storeProductNotAvailable: errorMessage = "Product is not available"
+                case .cloudServicePermissionDenied: errorMessage = "Cloud service permission denied"
+                case .cloudServiceNetworkConnectionFailed: errorMessage = "Cloud service network connection failed"
+                case .cloudServiceRevoked: errorMessage =  "Cloud service revoked"
+                default: errorMessage = "Error: \((error as NSError).localizedDescription)"
+                }
+                
+                let alert = NSAlert(messageText: "Error purchasing product", informativeText: errorMessage, buttonText: "Close", alertStyle: .warning)
+                alert.runModal()
+            }
+        }
+    }
+    
+    private func fetchAndSendReceiptToServer() {
+        guard let apiKey = SLUserDefaultsService.getApiKey() else {
+            return
+        }
+        
+        setLoading(true)
+        
+        SwiftyStoreKit.fetchReceipt(forceRefresh: false) { [weak self ] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let receiptData):
+                let encryptedReceipt = receiptData.base64EncodedString(options: [])
+                SLApiService.processPayment(apiKey: apiKey, receiptData: encryptedReceipt) { [weak self] processPaymentResult in
+                    guard let self = self else { return }
+                    self.setLoading(false)
+                    
+                    switch processPaymentResult {
+                    case .success(_):
+                        self.alertPaymentSuccessful()
+  
+                    case .failure(let error):
+                        let alert = NSAlert(error: error)
+                        alert.runModal()
+                    }
+                }
+                
+            case .error(let error):
+                self.setLoading(false)
+                let alert = NSAlert(messageText: "Error occured", informativeText: "Fetch receipt failed: \(error). Please contact us for further assistance.", buttonText: "Close", alertStyle: .critical)
+                alert.runModal()
+            }
+        }
+    }
+    
+    private func alertPaymentSuccessful() {
+        let alert = NSAlert(messageText: "Thank you for using our service", informativeText: "The app will be refreshed shortly.", buttonText: "Got it", alertStyle: .informational)
+        
+        switch alert.runModal() {
+        default: restart()
+        }
+    }
+}
+
 // MARK: - IBActions
 extension IapViewController {
     @objc @IBAction func cancelButtonClicked(_ sender: Any) {
@@ -126,11 +202,23 @@ extension IapViewController {
     }
     
     @IBAction private func upgradeButtonClicked(_ sender: Any) {
-        restart()
+        let _product: SKProduct?
+        switch selectedIapProduct {
+        case .monthly: _product = productMonthly
+        case .yearly: _product = productYearly
+        }
+        
+        guard let product = _product else {
+            let alert = NSAlert(messageText: "Error occured", informativeText: "Product is null", buttonText: "Close", alertStyle: .warning)
+            alert.runModal()
+            return
+        }
+        
+        buy(product)
     }
     
     @IBAction private func restoreButtonClicked(_ sender: Any) {
-        print(#function)
+        fetchAndSendReceiptToServer()
     }
     
     @IBAction private func contactUsButtonClicked(_ sender: Any) {
