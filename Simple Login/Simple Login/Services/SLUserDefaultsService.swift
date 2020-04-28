@@ -35,4 +35,19 @@ final class SLUserDefaultsService {
     static func getApiUrl() -> String {
         sharedUserDefaults?.string(forKey: API_URL) ?? "https://app.simplelogin.io"
     }
+    
+    // MARK: - Show Upgrade sheet
+    private static let NEEDS_SHOW_UPGRADE_SHEET = "NEEDS_SHOW_UPGRADE_SHEET"
+    
+    static func needsShowUpgradeSheet() -> Bool {
+        return sharedUserDefaults?.bool(forKey: NEEDS_SHOW_UPGRADE_SHEET) ?? false
+    }
+    
+    static func setNeedsShowUpgradeSheet() {
+        sharedUserDefaults?.set(true, forKey: NEEDS_SHOW_UPGRADE_SHEET)
+    }
+    
+    static func finishShowingUpgradeSheet() {
+        sharedUserDefaults?.set(false, forKey: NEEDS_SHOW_UPGRADE_SHEET)
+    }
 }

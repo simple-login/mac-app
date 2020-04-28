@@ -352,7 +352,8 @@ extension ExtensionHomeViewController {
     
     @objc
     @IBAction func upgrade(_ sender: Any) {
-        print("Go premium!!!")
+        SLUserDefaultsService.setNeedsShowUpgradeSheet()
+        openHostApp()
     }
 }
 

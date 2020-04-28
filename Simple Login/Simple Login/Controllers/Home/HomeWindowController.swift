@@ -86,7 +86,7 @@ final class HomeWindowController: NSWindowController {
     }
 }
 
-// MARK: - NSWindowDelegate
+// MARK: - HomeViewControllerDelegate
 extension HomeWindowController: HomeViewControllerDelegate {
     func homeViewControllerDidAppear() {
         guard let userInfo = userInfo else { return }
@@ -106,6 +106,12 @@ extension HomeWindowController: HomeViewControllerDelegate {
         
         if userInfo.isPremium {
             removeUpgradeViewFromToolbar()
+        }
+        
+        // Check if app is opened from Safari Extension to upgrade
+        if SLUserDefaultsService.needsShowUpgradeSheet() {
+            upgradeButtonClicked("")
+            SLUserDefaultsService.finishShowingUpgradeSheet()
         }
     }
 
