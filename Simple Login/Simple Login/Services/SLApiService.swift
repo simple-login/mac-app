@@ -233,4 +233,25 @@ final class SLApiService {
             }
         }
     }
+    
+    static func processPayment(apiKey: ApiKey, receiptData: String, completion: @escaping (Result<Any?, SLError>) -> Void) {
+        let headers: HTTPHeaders = ["Authentication": apiKey]
+        let parameters = ["receipt_data": receiptData]
+        
+        AF.request("\(BASE_URL)/api/apple/process_payment", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: nil).response { response in
+            
+            guard let statusCode = response.response?.statusCode else {
+                completion(.failure(.unknownResponseStatusCode))
+                return
+            }
+            
+            switch statusCode {
+            case 200: completion(.success(nil))
+            case 401: completion(.failure(.invalidApiKey))
+            case 500: completion(.failure(.internalServerError))
+            case 502: completion(.failure(.badGateway))
+            default: completion(.failure(.unknownErrorWithStatusCode(statusCode: statusCode)))
+            }
+        }
+    }
 }

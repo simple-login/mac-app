@@ -395,11 +395,14 @@
                                     </customView>
                                     <button verticalHuggingPriority="897" translatesAutoresizingMaskIntoConstraints="NO" id="Yuw-xr-kq6">
                                         <rect key="frame" x="-1" y="273" width="493" height="18"/>
-                                        <buttonCell key="cell" type="radio" title="Yearly subscription ---/year" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="Esa-I2-bHh">
+                                        <buttonCell key="cell" type="radio" title="Yearly subscription ---/year" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="Esa-I2-bHh">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="systemMedium" size="13"/>
                                         </buttonCell>
                                         <color key="contentTintColor" name="TintColor"/>
+                                        <connections>
+                                            <action selector="changeSubscription:" target="Pp6-cb-eNq" id="iqF-dT-TDt"/>
+                                        </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="896" translatesAutoresizingMaskIntoConstraints="NO" id="2RB-gc-Y7q">
                                         <rect key="frame" x="-2" y="251" width="494" height="16"/>
@@ -422,6 +425,9 @@
                                             <font key="font" metaFont="systemMedium" size="13"/>
                                         </buttonCell>
                                         <color key="contentTintColor" name="TintColor"/>
+                                        <connections>
+                                            <action selector="changeSubscription:" target="Pp6-cb-eNq" id="tRI-6r-Lyv"/>
+                                        </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="894" translatesAutoresizingMaskIntoConstraints="NO" id="hqJ-HD-69U">
                                         <rect key="frame" x="-2" y="193" width="494" height="16"/>
@@ -644,6 +650,9 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="yfE-wf-eEn">
+                                <rect key="frame" x="257" y="351" width="16" height="16"/>
+                            </progressIndicator>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zI1-7M-aNx">
                                 <rect key="frame" x="434" y="13" width="82" height="32"/>
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4BO-z9-fPD">
@@ -662,15 +671,23 @@ Gw
                             <constraint firstItem="RE3-lK-1mh" firstAttribute="leading" secondItem="iLE-lo-Cmn" secondAttribute="leading" id="08M-wA-2YQ"/>
                             <constraint firstItem="RE3-lK-1mh" firstAttribute="top" secondItem="iLE-lo-Cmn" secondAttribute="top" id="5cg-Zm-HC4"/>
                             <constraint firstItem="teu-Oo-jcc" firstAttribute="leading" secondItem="iLE-lo-Cmn" secondAttribute="leading" constant="20" symbolic="YES" id="9lY-VI-Naa"/>
+                            <constraint firstItem="yfE-wf-eEn" firstAttribute="centerX" secondItem="iLE-lo-Cmn" secondAttribute="centerX" id="MFY-F9-PQb"/>
                             <constraint firstItem="zI1-7M-aNx" firstAttribute="top" secondItem="teu-Oo-jcc" secondAttribute="bottom" constant="20" symbolic="YES" id="Rn6-Mj-szQ"/>
                             <constraint firstAttribute="bottom" secondItem="zI1-7M-aNx" secondAttribute="bottom" constant="20" symbolic="YES" id="Sxb-HW-c3u"/>
                             <constraint firstAttribute="trailing" secondItem="teu-Oo-jcc" secondAttribute="trailing" constant="20" symbolic="YES" id="WPt-cP-RaD"/>
                             <constraint firstAttribute="bottom" secondItem="RE3-lK-1mh" secondAttribute="bottom" id="ahj-L5-hVw"/>
                             <constraint firstAttribute="trailing" secondItem="RE3-lK-1mh" secondAttribute="trailing" id="b7v-sv-wdP"/>
                             <constraint firstItem="teu-Oo-jcc" firstAttribute="top" secondItem="iLE-lo-Cmn" secondAttribute="top" constant="20" symbolic="YES" id="bJH-pC-kuT"/>
+                            <constraint firstItem="yfE-wf-eEn" firstAttribute="centerY" secondItem="iLE-lo-Cmn" secondAttribute="centerY" id="g5o-9D-Zpn"/>
                             <constraint firstAttribute="trailing" secondItem="zI1-7M-aNx" secondAttribute="trailing" constant="20" symbolic="YES" id="zrN-b0-e1X"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="monthlyButton" destination="2cY-hp-pHF" id="BuP-fc-89O"/>
+                        <outlet property="progressIndicator" destination="yfE-wf-eEn" id="jFU-fF-MbI"/>
+                        <outlet property="rootStackView" destination="teu-Oo-jcc" id="qjN-C6-yGB"/>
+                        <outlet property="yearlyButton" destination="Yuw-xr-kq6" id="MME-2h-1px"/>
+                    </connections>
                 </viewController>
                 <customObject id="GFd-kF-iPE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
