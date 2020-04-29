@@ -11,7 +11,7 @@ import SafariServices
 final class ExtensionHomeViewController: SFSafariExtensionViewController {
     static let shared: ExtensionHomeViewController = {
         let shared = ExtensionHomeViewController()
-        shared.preferredContentSize = NSSize(width:320, height:400)
+        shared.preferredContentSize = NSSize(width:320, height:500)
         return shared
     }()
     
@@ -40,6 +40,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     
     @IBOutlet private weak var scrollView: NSScrollView!
     @IBOutlet private weak var scrollViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var clipView: NSClipView!
     @IBOutlet private weak var tableView: NSTableView!
     @IBOutlet private weak var manageAliasesButton: NSTextField!
     @IBOutlet private weak var signOutButton: NSTextField!
@@ -117,7 +118,10 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         // Set minimum width
         rootStackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 400).isActive = true
         
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        clipView.translatesAutoresizingMaskIntoConstraints = false
         // Set up tableView
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = NSColor.clear
         
         EmptyTableCellView.register(with: tableView)
@@ -212,7 +216,6 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     
     private func fetchAliases() {
         guard let apiKey = apiKey, moreToLoad, !isFetching else { return }
-        
         isFetching = true
         
         SLApiService.fetchAliases(apiKey: apiKey, page: fetchedPage + 1) { [weak self] result in
@@ -225,6 +228,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                 self.fetchedPage += 1
                 self.aliases.append(contentsOf: aliases)
                 self.tableView.reloadData()
+                self.scrollViewHeightConstraint.constant = CGFloat(min(75 * self.aliases.count, 400))
                 
             case .failure(let error):
                 let alert = NSAlert(error: error)
@@ -255,9 +259,6 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         
         suffixPopupButton.removeAllItems()
         userOptions.suffixes.forEach({suffixPopupButton.addItem(withTitle: $0)})
-        
-        tableView.reloadData()
-        scrollViewHeightConstraint.constant = min(tableView.intrinsicContentSize.height, 400)
 
         isValidEmailPrefix = userOptions.prefixSuggestion != ""
         
