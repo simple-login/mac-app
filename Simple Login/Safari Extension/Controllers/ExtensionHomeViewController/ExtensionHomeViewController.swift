@@ -17,7 +17,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     
     // Outlets
     @IBOutlet private weak var usernameLabel: NSTextField!
-    @IBOutlet private weak var premiumOrUpgradeLabel: NSTextField!
+    @IBOutlet private weak var statusLabel: NSTextField!
     
     @IBOutlet private weak var rootStackView: NSStackView!
     
@@ -107,7 +107,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         preferredContentSize = rootStackView.intrinsicContentSize
         
         usernameLabel.stringValue = ""
-        premiumOrUpgradeLabel.stringValue = ""
+        statusLabel.stringValue = ""
         suffixPopupButton.removeAllItems()
         
         setLoading(false)
@@ -237,14 +237,15 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         guard let userInfo = userInfo else { return }
         usernameLabel.stringValue = userInfo.name
         
-        if userInfo.isPremium {
-            premiumOrUpgradeLabel.stringValue = "Premium"
-            premiumOrUpgradeLabel.textColor = .systemGreen
-            premiumOrUpgradeLabel.font = NSFont.systemFont(ofSize: 14)
+        if userInfo.inTrial {
+            statusLabel.stringValue = "Premium trial"
+            statusLabel.textColor = .systemGreen
+        } else if userInfo.isPremium {
+            statusLabel.stringValue = "Premium"
+            statusLabel.textColor = .systemGreen
         } else {
-            premiumOrUpgradeLabel.stringValue = "Freemium"
-            premiumOrUpgradeLabel.textColor = .systemBlue
-            premiumOrUpgradeLabel.font = NSFont.boldSystemFont(ofSize: 14)
+            statusLabel.stringValue = "Free plan"
+            statusLabel.textColor = .labelColor
         }
     }
     

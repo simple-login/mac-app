@@ -17,12 +17,12 @@
                 <outlet property="manageAliasesButton" destination="pfN-sv-LSA" id="XEA-Da-mwi"/>
                 <outlet property="newAliasLabel" destination="TxL-lj-hkA" id="tTU-YL-C2H"/>
                 <outlet property="premiumDescriptionLabel" destination="tU7-T5-Bly" id="b3R-YP-n2E"/>
-                <outlet property="premiumOrUpgradeLabel" destination="F12-xe-AEJ" id="9h7-jd-ukc"/>
                 <outlet property="progressIndicator" destination="vST-qQ-X4u" id="O8Q-bg-xWY"/>
                 <outlet property="rootStackView" destination="VfM-Vs-fq2" id="Pga-zN-Z5H"/>
                 <outlet property="scrollView" destination="4ym-8p-Hnp" id="MD4-tR-x76"/>
                 <outlet property="scrollViewHeightConstraint" destination="qNf-Sb-EkI" id="FDx-5x-zOF"/>
                 <outlet property="signOutButton" destination="kPs-eV-a7j" id="oND-zj-qKd"/>
+                <outlet property="statusLabel" destination="F12-xe-AEJ" id="9h7-jd-ukc"/>
                 <outlet property="suffixPopupButton" destination="DO5-MU-g2U" id="ugn-Pw-vkA"/>
                 <outlet property="suffixPrefixStackView" destination="YZz-hS-Qcd" id="RA6-Yx-KLA"/>
                 <outlet property="tableView" destination="SfY-oo-xy0" id="07b-oD-e7V"/>
@@ -52,7 +52,7 @@
                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="SimpleLogin" id="yHE-a0-uWO"/>
                                 </imageView>
                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tMo-BC-6bk">
-                                    <rect key="frame" x="36" y="6" width="665" height="19"/>
+                                    <rect key="frame" x="36" y="6" width="662" height="19"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Username" id="xpf-sr-gIn">
                                         <font key="font" metaFont="systemSemibold" size="16"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -60,9 +60,9 @@
                                     </textFieldCell>
                                 </textField>
                                 <textField horizontalHuggingPriority="1000" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F12-xe-AEJ">
-                                    <rect key="frame" x="705" y="7" width="58" height="16"/>
+                                    <rect key="frame" x="702" y="7" width="61" height="16"/>
                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Premium" id="0yf-ba-UKq">
-                                        <font key="font" metaFont="system"/>
+                                        <font key="font" metaFont="systemSemibold" size="13"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
