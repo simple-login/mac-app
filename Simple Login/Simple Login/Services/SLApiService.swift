@@ -236,7 +236,7 @@ final class SLApiService {
     
     static func processPayment(apiKey: ApiKey, receiptData: String, completion: @escaping (Result<Any?, SLError>) -> Void) {
         let headers: HTTPHeaders = ["Authentication": apiKey]
-        let parameters = ["receipt_data": receiptData]
+        let parameters: [String : Any] = ["receipt_data": receiptData, "is_macapp": true]
         
         AF.request("\(BASE_URL)/api/apple/process_payment", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: nil).response { response in
             
