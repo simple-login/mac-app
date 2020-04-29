@@ -104,7 +104,7 @@ extension HomeWindowController: HomeViewControllerDelegate {
             statusLabel.textColor = .labelColor
         }
         
-        if userInfo.isPremium {
+        if userInfo.isPremium && !userInfo.inTrial {
             removeUpgradeViewFromToolbar()
         }
         

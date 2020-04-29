@@ -36,7 +36,8 @@ extension HomeWindowController: NSTouchBarDelegate {
     func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
         switch identifier {
         case .upgrade:
-            guard let userInfo = userInfo, !userInfo.isPremium else { return nil }
+            guard let userInfo = userInfo, !(userInfo.isPremium && !userInfo.inTrial) else { return nil }
+
             let upgradeTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
             upgradeTouchBarItem.customizationLabel = "Upgrade"
             upgradeTouchBarItem.view = NSButton(image: NSImage(named: NSImage.Name("Diamond"))!, target: self, action: #selector(upgradeButtonClicked))
