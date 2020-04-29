@@ -283,11 +283,6 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         }
     }
     
-//    @objc @IBAction private func upgrade(_ sender: Any) {
-//        guard let url = URL(string: "\(BASE_URL)/dashboard/pricing") else { return }
-//        NSWorkspace.shared.open(url)
-//    }
-    
     func copyAliasToClipboard(_ alias: Alias) {
         let pasteboard = NSPasteboard.general
         pasteboard.clearContents()

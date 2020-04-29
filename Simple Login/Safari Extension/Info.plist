@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Simple Login</string>
+	<string>SimpleLogin</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -44,7 +44,7 @@
 			<key>Image</key>
 			<string>ToolbarItemIcon.pdf</string>
 			<key>Label</key>
-			<string>Simple Login</string>
+			<string>SimpleLogin</string>
 		</dict>
 		<key>SFSafariWebsiteAccess</key>
 		<dict>
@@ -55,6 +55,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019-2020 SimpleLogin. All rights reserved.</string>
 	<key>NSHumanReadableDescription</key>
-	<string>Simple Login needs to know the name of the site you are visiting in order to propose you an accurate alias prefix.</string>
+	<string>SimpleLogin needs to know the name of the site you are visiting in order to propose you an accurate alias prefix.</string>
 </dict>
 </plist>
