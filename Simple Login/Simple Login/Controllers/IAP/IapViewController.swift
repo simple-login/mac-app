@@ -15,6 +15,8 @@ final class IapViewController: NSViewController {
     @IBOutlet private weak var progressIndicator: NSProgressIndicator!
     @IBOutlet private weak var monthlyButton: NSButton!
     @IBOutlet private weak var yearlyButton: NSButton!
+    @IBOutlet private weak var termsLabel: NSTextField!
+    @IBOutlet private weak var privacyLabel: NSTextField!
     
     private var productMonthly: SKProduct?
     private var productYearly: SKProduct?
@@ -34,6 +36,13 @@ final class IapViewController: NSViewController {
         /* Opt-out dark mode for this controller because in dark mode labels become white and they are visually dimmed out in the pink background
          */
         view.appearance = NSAppearance(named: .aqua)
+        
+        // Add gestures
+        let termsClick = NSClickGestureRecognizer(target: self, action: #selector(termsLabelClicked))
+        termsLabel.addGestureRecognizer(termsClick)
+        
+        let privacyClick = NSClickGestureRecognizer(target: self, action: #selector(privacyLabelClicked))
+        privacyLabel.addGestureRecognizer(privacyClick)
     }
     
     override func viewDidAppear() {
@@ -228,5 +237,15 @@ extension IapViewController {
         if emailService.canPerform(withItems: [""]) {
             emailService.perform(withItems: [""])
         }
+    }
+    
+    @objc private func termsLabelClicked(_ sender: Any) {
+        guard let url = URL(string: "https://simplelogin.io/terms/") else { return }
+        NSWorkspace.shared.open(url)
+    }
+    
+    @objc private func privacyLabelClicked(_ sender: Any) {
+        guard let url = URL(string: "https://simplelogin.io/privacy/") else { return }
+        NSWorkspace.shared.open(url)
     }
 }
