@@ -49,12 +49,12 @@
 		<key>SFSafariWebsiteAccess</key>
 		<dict>
 			<key>Level</key>
-			<string>All</string>
+			<string>None</string>
 		</dict>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019-2020 SimpleLogin. All rights reserved.</string>
 	<key>NSHumanReadableDescription</key>
-	<string>SimpleLogin needs to know the name of the site you are visiting in order to propose you an accurate alias prefix.</string>
+	<string>Create and use aliases on the fly without leaving your current tab with SimpleLogin Safari Extension.</string>
 </dict>
 </plist>

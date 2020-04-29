@@ -92,6 +92,7 @@ final class EnterApiKeyViewController: NSViewController {
                 self.view.window?.performClose(nil)
                 
             case .failure(let error):
+                self.apiKeyTextField.stringValue = ""
                 self.showErrorAlert(error)
             }
         }

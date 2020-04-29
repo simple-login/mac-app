@@ -55,8 +55,17 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     }()
     
     var apiKey: String?
-    private var userInfo: UserInfo?
-    private(set) var userOptions: UserOptions?
+    private var userInfo: UserInfo? {
+        didSet {
+            refreshUserInfo()
+        }
+    }
+    
+    private(set) var userOptions: UserOptions? {
+        didSet {
+            refreshUserOptions()
+        }
+    }
     
     // Aliases
     private var aliases: [Alias] = []
@@ -92,8 +101,6 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
             }
         }
     }
-    
-    private var highLightFirstAlias = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,79 +139,74 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     
     private func refresh() {
         guard let apiKey = self.apiKey else { return }
-        // Fetch user info
-        self.setLoading(true)
         
+        var storedError: SLError?
+        let fetchGroup = DispatchGroup()
+        
+        self.setLoading(true)
+        // Fetch user info
+        fetchGroup.enter()
         SLApiService.fetchUserInfo(apiKey: apiKey) { [weak self] result in
             guard let self = self else { return }
-            self.setLoading(false)
-            
+        
             switch result {
             case .success(let userInfo):
                 self.userInfo = userInfo
-                self.refreshUserInfo()
+                fetchGroup.leave()
                 
             case .failure(let error):
-                self.showErrorAlert(error)
+                storedError = error
+                fetchGroup.leave()
             }
         }
         
         // Fetch user options
-        getURL { [unowned self] (url) in
-            let hostname = url?.host ?? ""
+        fetchGroup.enter()
+        SLApiService.fetchUserOptions(apiKey: apiKey) { [weak self] result in
+            guard let self = self else { return }
             
-            self.setLoading(true)
-            
-            SLApiService.fetchUserOptions(apiKey: apiKey, hostname: hostname) { [weak self] result in
-                guard let self = self else { return }
-                self.setLoading(false)
+            switch result {
+            case .success(let userOptions):
+                self.userOptions = userOptions
+                fetchGroup.leave()
                 
-                switch result {
-                case .success(let userOptions):
-                    self.userOptions = userOptions
-                    self.refreshUserOptions()
-                    
-                case .failure(let error):
-                    switch error {
-                    case .invalidApiKey:
-                        // Invalid API key, prompt user to open host app
-                        let alert = NSAlert(messageText: "Invalid API key", informativeText: "Please open the app and enter a valid API key", buttonText: "Open app", alertStyle: .informational)
-                        alert.icon = NSImage(named: NSImage.Name(stringLiteral: "SimpleLogin"))
-                        let modalResult = alert.runModal()
-                        
-                        switch modalResult {
-                        case .alertFirstButtonReturn: self.openHostApp()
-                        default: return
-                        }
-                        
-                        return
-                    default:
-                        // Unknown error, display error alert
-                        let alert = NSAlert(error: error)
-                        alert.runModal()
-                        return
-                    }
-                }
+            case .failure(let error):
+               storedError = error
+               fetchGroup.leave()
             }
         }
         
-        // Fetch aliases
-        fetchedPage = -1
-        isFetching = false
-        moreToLoad = true
-        aliases.removeAll()
-        fetchAliases()
-    }
-    
-    private func getURL(_ completion: @escaping (_ url: URL?) -> Void) {
-        SFSafariApplication.getActiveWindow { (window) in
-            window?.getActiveTab(completionHandler: { (tab) in
-                tab?.getActivePage(completionHandler: { (page) in
-                    page?.getPropertiesWithCompletionHandler({ (properties) in
-                        completion(properties?.url)
-                    })
-                })
-            })
+        fetchGroup.notify(queue: DispatchQueue.main) { [weak self] in
+            guard let self = self else { return }
+            self.setLoading(false)
+            if let error = storedError {
+                switch error {
+                case .invalidApiKey:
+                    // Invalid API key, prompt user to open host app
+                    let alert = NSAlert(messageText: "Invalid API key", informativeText: "Please open the app and enter a valid API key", buttonText: "Open app", alertStyle: .informational)
+                    alert.icon = NSImage(named: NSImage.Name(stringLiteral: "SimpleLogin"))
+                    let modalResult = alert.runModal()
+                    
+                    switch modalResult {
+                    case .alertFirstButtonReturn: self.openHostApp()
+                    default: return
+                    }
+                    
+                    return
+                default:
+                    // Unknown error, display error alert
+                    let alert = NSAlert(error: error)
+                    alert.runModal()
+                    return
+                }
+            }
+            
+            // Fetch aliases
+            self.fetchedPage = -1
+            self.isFetching = false
+            self.moreToLoad = true
+            self.aliases.removeAll()
+            self.fetchAliases()
         }
     }
     
@@ -313,11 +315,10 @@ extension ExtensionHomeViewController {
             
             switch result {
             case .success(_):
-                self.highLightFirstAlias = true
                 self.refresh()
                 
             case .failure(let error):
-                let alert = NSAlert(messageText: "Error occured", informativeText: error.description, buttonText: "Close", alertStyle: .critical)
+                let alert = NSAlert(error: error)
                 alert.runModal()
             }
         }
@@ -335,11 +336,10 @@ extension ExtensionHomeViewController {
             
             switch result {
             case .success(_):
-                self.highLightFirstAlias = true
                 self.refresh()
                 
             case .failure(let error):
-                let alert = NSAlert(messageText: "Error occured", informativeText: error.description, buttonText: "Close", alertStyle: .critical)
+                let alert = NSAlert(error: error)
                 alert.runModal()
             }
         }
@@ -378,6 +378,11 @@ extension ExtensionHomeViewController {
 // MARK: - NSTableViewDataSource
 extension ExtensionHomeViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
+        if aliases.isEmpty && !isFetching {
+            // Currently fetching userInfo and userOptions
+            return 0
+        }
+        
         if aliases.isEmpty {
             return 1
         }
@@ -410,13 +415,6 @@ extension ExtensionHomeViewController: NSTableViewDelegate {
         aliasCell.didClickCopyButton = { [unowned self] in
             self.copyAliasToClipboard(alias)
         }
-        
-//        if highLightFirstAlias && row == 0 {
-//            aliasCell.setHighLight(true)
-//            highLightFirstAlias = false
-//        } else {
-//            aliasCell.setHighLight(false)
-//        }
         
         return aliasCell
     }
