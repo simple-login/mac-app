@@ -228,7 +228,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
                 self.fetchedPage += 1
                 self.aliases.append(contentsOf: aliases)
                 self.tableView.reloadData()
-                self.scrollViewHeightConstraint.constant = CGFloat(min(75 * self.aliases.count, 400))
+                self.scrollViewHeightConstraint.constant = CGFloat(min(75 * max(self.aliases.count, 1), 400))
                 
             case .failure(let error):
                 let alert = NSAlert(error: error)
@@ -380,7 +380,7 @@ extension ExtensionHomeViewController {
 // MARK: - NSTableViewDataSource
 extension ExtensionHomeViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        if aliases.isEmpty && !isFetching {
+        if aliases.isEmpty && fetchedPage < 0 {
             // Currently fetching userInfo and userOptions
             return 0
         }
