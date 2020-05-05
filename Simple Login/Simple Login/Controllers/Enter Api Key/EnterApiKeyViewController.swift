@@ -46,11 +46,13 @@ final class EnterApiKeyViewController: NSViewController {
     @IBAction func modifyApiUrl(_ sender: Any) {
         let alert = NSAlert()
         alert.messageText = "Enter your custom API URL"
+        alert.informativeText = "DO NOT change API URL unless you are hosting SimpleLogin with your own server. The default value is \"https://app.simplelogin.io\"."
         alert.addButton(withTitle: "Set API URL")
+        alert.addButton(withTitle: "Reset to default value")
         alert.addButton(withTitle: "Cancel")
-        alert.alertStyle = .informational
+        alert.alertStyle = .critical
         
-        let input = NSTextField(frame: NSRect(x: 0, y: 0, width: 300, height: 20))
+        let input = NSTextField(frame: NSRect(x: 0, y: 0, width: 400, height: 20))
         alert.accessoryView = input
         
         let modalResult = alert.runModal()
@@ -59,6 +61,10 @@ final class EnterApiKeyViewController: NSViewController {
         case .alertFirstButtonReturn:
             SLUserDefaultsService.setApiUrl(input.stringValue)
             apiUrlTextField.stringValue = input.stringValue
+            
+        case .alertSecondButtonReturn:
+            SLUserDefaultsService.setApiUrl("https://app.simplelogin.io")
+            apiUrlTextField.stringValue = "https://app.simplelogin.io"
             
         default: return
         }
