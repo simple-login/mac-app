@@ -20,26 +20,20 @@ private extension NSTouchBarItem.Identifier {
     
     static let upgrade = NSTouchBarItem.Identifier("io.simplelogin.macapp.safariextension.touchBar.upgrade")
     
-    static let manageAndSignOutGroup = NSTouchBarItem.Identifier("io.simplelogin.macapp.safariextension.touchBar.manageAndSignOutGroup")
-    static let manageAliases = NSTouchBarItem.Identifier("io.simplelogin.macapp.safariextension.touchBar.manageAliases")
+    static let rateAndSignOutGroup = NSTouchBarItem.Identifier("io.simplelogin.macapp.safariextension.touchBar.rateAndSignOutGroup")
+    static let rateUs = NSTouchBarItem.Identifier("io.simplelogin.macapp.safariextension.touchBar.rateUs")
     static let signOut = NSTouchBarItem.Identifier("io.simplelogin.macapp.safariextension.touchBar.signOut")
-}
-
-private extension NSUserInterfaceItemIdentifier {
-    static let itemViewIdentifier = NSUserInterfaceItemIdentifier(rawValue: "TextItemViewIdentifier")
 }
 
 // MARK: - NSTouchBarDelegate
 extension ExtensionHomeViewController: NSTouchBarDelegate {
     override func makeTouchBar() -> NSTouchBar? {
-        guard let userOptions = userOptions else { return nil }
+        guard let _ = userOptions else { return nil }
         
         let touchBar = NSTouchBar()
         touchBar.delegate = self
         touchBar.customizationIdentifier = .touchBar
-        touchBar.defaultItemIdentifiers = userOptions.canCreate ?
-            [.otherItemsProxy, .centeredGroup, .fixedSpaceLarge, .manageAndSignOutGroup] :
-            [.otherItemsProxy, .centeredGroup, .fixedSpaceLarge, .manageAndSignOutGroup]
+        touchBar.defaultItemIdentifiers = [.centeredGroup, .fixedSpaceLarge, .rateAndSignOutGroup, .otherItemsProxy]
         touchBar.principalItemIdentifier = .centeredGroup
         
         return touchBar
@@ -59,13 +53,13 @@ extension ExtensionHomeViewController: NSTouchBarDelegate {
             
             return centeredGroupItem
             
-        case .manageAndSignOutGroup:
+        case .rateAndSignOutGroup:
             let manageAndSignOutGroupItem = NSGroupTouchBarItem(alertStyleWithIdentifier: identifier)
             manageAndSignOutGroupItem.customizationLabel = "Create & random alias"
             
             let touchBar = NSTouchBar()
             touchBar.delegate = self
-            touchBar.defaultItemIdentifiers = [.manageAliases, .signOut]
+            touchBar.defaultItemIdentifiers = [.rateUs, .signOut]
             
             manageAndSignOutGroupItem.groupTouchBar = touchBar
             
@@ -99,10 +93,10 @@ extension ExtensionHomeViewController: NSTouchBarDelegate {
             
             return upgradeTouchBarItem
             
-        case .manageAliases:
+        case .rateUs:
             let manageAliasesTouchBarItem = NSCustomTouchBarItem(identifier: identifier)
-            manageAliasesTouchBarItem.customizationLabel = "Manage your aliases"
-            manageAliasesTouchBarItem.view = NSButton(image: NSImage(named: NSImage.Name("Management"))!, target: self, action: #selector(manageAliases))
+            manageAliasesTouchBarItem.customizationLabel = "Rate Us"
+            manageAliasesTouchBarItem.view = NSButton(image: NSImage(named: NSImage.Name("Star"))!, target: self, action: #selector(rateUs))
             
             return manageAliasesTouchBarItem
             

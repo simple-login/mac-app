@@ -15,10 +15,10 @@
                 <outlet property="createRandomlyUpperSeparator" destination="gfu-M0-aCb" id="kMM-5t-4MZ"/>
                 <outlet property="customPrefixStatusLabel" destination="SCA-GX-fLM" id="kwf-0f-K1u"/>
                 <outlet property="hostnameTextField" destination="lJh-5o-atI" id="AgC-Vk-exA"/>
-                <outlet property="manageAliasesButton" destination="pfN-sv-LSA" id="XEA-Da-mwi"/>
                 <outlet property="newAliasLabel" destination="TxL-lj-hkA" id="tTU-YL-C2H"/>
                 <outlet property="premiumDescriptionLabel" destination="tU7-T5-Bly" id="b3R-YP-n2E"/>
                 <outlet property="progressIndicator" destination="vST-qQ-X4u" id="O8Q-bg-xWY"/>
+                <outlet property="rateUsButton" destination="pfN-sv-LSA" id="XEA-Da-mwi"/>
                 <outlet property="rootStackView" destination="VfM-Vs-fq2" id="Pga-zN-Z5H"/>
                 <outlet property="scrollView" destination="4ym-8p-Hnp" id="MD4-tR-x76"/>
                 <outlet property="scrollViewHeightConstraint" destination="qNf-Sb-EkI" id="FDx-5x-zOF"/>
@@ -281,7 +281,7 @@
                             <subviews>
                                 <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="pfN-sv-LSA">
                                     <rect key="frame" x="-2" y="0.0" width="396" height="521"/>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="MANAGE ALIASES" id="amm-2X-JW7">
+                                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="RATE US" id="amm-2X-JW7">
                                         <font key="font" metaFont="systemMedium" size="13"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

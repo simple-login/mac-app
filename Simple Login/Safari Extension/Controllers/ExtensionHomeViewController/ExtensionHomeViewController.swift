@@ -42,7 +42,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
     @IBOutlet private weak var scrollViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var clipView: NSClipView!
     @IBOutlet private weak var tableView: NSTableView!
-    @IBOutlet private weak var manageAliasesButton: NSTextField!
+    @IBOutlet private weak var rateUsButton: NSTextField!
     @IBOutlet private weak var signOutButton: NSTextField!
     
     @IBOutlet private weak var progressIndicator: NSProgressIndicator!
@@ -129,8 +129,8 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         LoadingTableCellView.register(with: tableView)
         
         // Set up bottom options
-        let manageAliasesClickGesture = NSClickGestureRecognizer(target: self, action: #selector(manageAliases))
-        manageAliasesButton.addGestureRecognizer(manageAliasesClickGesture)
+        let rateUsClickGesture = NSClickGestureRecognizer(target: self, action: #selector(rateUs))
+        rateUsButton.addGestureRecognizer(rateUsClickGesture)
         
         let signOutClickGesture = NSClickGestureRecognizer(target: self, action: #selector(signOut))
         signOutButton.addGestureRecognizer(signOutClickGesture)
@@ -356,8 +356,8 @@ extension ExtensionHomeViewController {
 
 // MARK: - Bottom options
 extension ExtensionHomeViewController {
-    @objc func manageAliases() {
-        guard let url = URL(string: "\(BASE_URL)/dashboard/".replacingOccurrences(of: "//", with: "/")) else { return }
+    @objc func rateUs() {
+        guard let url = URL(string: "https://apps.apple.com/us/app/simplelogin/id1494051017?action=write-review") else { return }
         NSWorkspace.shared.open(url)
     }
     
