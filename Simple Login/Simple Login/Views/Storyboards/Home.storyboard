@@ -10,7 +10,7 @@
         <!--Window Controller-->
         <scene sceneID="WkD-Ch-S1O">
             <objects>
-                <windowController storyboardIdentifier="HomeWindowController" id="W2Z-us-w3g" customClass="HomeWindowController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="HomeWindowController" id="W2Z-us-w3g" customClass="HomeWindowController" customModule="SimpleLogin" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="SimpleLogin" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="YlA-Wf-s0w">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -31,7 +31,6 @@
                         <outlet property="avatarImageView" destination="gGM-gz-KmT" id="7BB-0K-SoU"/>
                         <outlet property="emailLabel" destination="L3g-2Z-wgK" id="M3w-Ok-V0V"/>
                         <outlet property="iOSView" destination="E5I-er-oDp" id="zZp-bW-egs"/>
-                        <outlet property="manageAliasesView" destination="Yiv-V5-1Zr" id="jdw-to-KQ5"/>
                         <outlet property="nameLabel" destination="hRV-xf-sj4" id="1YN-1Y-bIk"/>
                         <outlet property="ratingView" destination="hhG-Qp-Sl8" id="zcT-iH-QWv"/>
                         <outlet property="signOutView" destination="krO-GT-MUD" id="Hke-pD-OlS"/>
@@ -135,29 +134,6 @@
                         <constraint firstAttribute="trailing" secondItem="YXA-wi-9ym" secondAttribute="trailing" id="rLd-oh-k2u"/>
                     </constraints>
                 </customView>
-                <customView id="Yiv-V5-1Zr">
-                    <rect key="frame" x="0.0" y="0.0" width="165" height="96"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <button translatesAutoresizingMaskIntoConstraints="NO" id="d1b-oC-LCW">
-                            <rect key="frame" x="0.0" y="0.0" width="165" height="96"/>
-                            <buttonCell key="cell" type="square" title="Manage Aliases" bezelStyle="shadowlessSquare" image="Management" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="JYr-rY-9Yk">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <color key="contentTintColor" name="TintColor"/>
-                            <connections>
-                                <action selector="manageAliasesButtonClicked:" target="W2Z-us-w3g" id="U5W-Us-tgv"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="d1b-oC-LCW" secondAttribute="bottom" id="0Sr-gP-Yls"/>
-                        <constraint firstAttribute="trailing" secondItem="d1b-oC-LCW" secondAttribute="trailing" id="6Yq-js-9rd"/>
-                        <constraint firstItem="d1b-oC-LCW" firstAttribute="leading" secondItem="Yiv-V5-1Zr" secondAttribute="leading" id="93X-qX-aJg"/>
-                        <constraint firstItem="d1b-oC-LCW" firstAttribute="top" secondItem="Yiv-V5-1Zr" secondAttribute="top" id="D3G-Cu-cth"/>
-                    </constraints>
-                </customView>
                 <customView id="krO-GT-MUD">
                     <rect key="frame" x="0.0" y="0.0" width="165" height="96"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -256,7 +232,7 @@
         <!--Home View Controller-->
         <scene sceneID="wL3-zH-d1i">
             <objects>
-                <viewController id="qua-cv-Csc" customClass="HomeViewController" customModule="Simple_Login" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qua-cv-Csc" customClass="HomeViewController" customModule="SimpleLogin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" translatesAutoresizingMaskIntoConstraints="NO" id="kuu-Er-TjJ">
                         <rect key="frame" x="0.0" y="0.0" width="726" height="608"/>
                         <subviews>
@@ -428,12 +404,11 @@
     </scenes>
     <resources>
         <image name="Diamond" width="24" height="24"/>
-        <image name="ExtensionIcon" width="1131" height="76"/>
+        <image name="ExtensionIcon" width="647" height="36"/>
         <image name="Info" width="24" height="24"/>
         <image name="LogOut" width="24" height="24"/>
-        <image name="Management" width="24" height="24"/>
         <image name="Person" width="42.5" height="42.5"/>
-        <image name="SafariExtensions" width="1123" height="417"/>
+        <image name="SafariExtensions" width="561" height="210"/>
         <image name="SafariPreferences" width="588" height="572"/>
         <image name="Star" width="24" height="24"/>
         <image name="iOS" width="24" height="24"/>

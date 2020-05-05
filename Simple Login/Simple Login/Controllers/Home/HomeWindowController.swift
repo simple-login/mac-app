@@ -11,7 +11,6 @@ import Cocoa
 private extension NSToolbarItem.Identifier {
     static let userInfoItem = NSToolbarItem.Identifier(rawValue: "UserInfo")
     static let upgrade = NSToolbarItem.Identifier(rawValue: "Upgrade")
-    static let manageAliases = NSToolbarItem.Identifier(rawValue: "ManageAliases")
     static let signOut = NSToolbarItem.Identifier(rawValue: "SignOut")
     static let ios = NSToolbarItem.Identifier(rawValue: "iOS")
     static let rating = NSToolbarItem.Identifier(rawValue: "Rating")
@@ -28,7 +27,6 @@ final class HomeWindowController: NSWindowController {
     @IBOutlet private weak var statusLabel: NSTextField!
     
     @IBOutlet private weak var upgradeView: NSView!
-    @IBOutlet private weak var manageAliasesView: NSView!
     @IBOutlet private weak var signOutView: NSView!
     
     @IBOutlet private weak var iOSView: NSView!
@@ -134,11 +132,6 @@ extension HomeWindowController {
         contentViewController?.presentAsSheet(iapViewController)
     }
     
-    @objc @IBAction func manageAliasesButtonClicked(_ sender: Any) {
-        guard let url = URL(string: "\(BASE_URL)/dashboard".replacingOccurrences(of: "//", with: "/")) else { return }
-        NSWorkspace.shared.open(url)
-    }
-    
     @objc @IBAction func signOutButtonClicked(_ sender: Any) {
         let alert = NSAlert.signOutAlert()
         let modalResult = alert.runModal()
@@ -178,11 +171,11 @@ extension HomeWindowController {
 // MARK: - NSToolbarDelegate
 extension HomeWindowController: NSToolbarDelegate {
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.userInfoItem, .upgrade, .manageAliases, .signOut, .ios, .rating, .about, .space, .flexibleSpace]
+        return [.userInfoItem, .upgrade, .signOut, .ios, .rating, .about, .space, .flexibleSpace]
     }
     
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.userInfoItem, .flexibleSpace, .upgrade, .manageAliases, .signOut, .space, .ios, .rating, .about]
+        return [.userInfoItem, .flexibleSpace, .upgrade, .signOut, .space, .ios, .rating, .about]
     }
     
     func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
@@ -195,9 +188,6 @@ extension HomeWindowController: NSToolbarDelegate {
             
         case .upgrade:
             toolbarItem = customToolbarItem(itemForItemIdentifier: NSToolbarItem.Identifier.upgrade.rawValue, label: "", paletteLabel: "", toolTip: "Enhance your superpowers", itemContent: upgradeView)!
-            
-        case .manageAliases:
-            toolbarItem = customToolbarItem(itemForItemIdentifier: NSToolbarItem.Identifier.manageAliases.rawValue, label: "", paletteLabel: "", toolTip: "Manages your aliases", itemContent: manageAliasesView)!
             
         case .signOut:
             toolbarItem = customToolbarItem(itemForItemIdentifier: NSToolbarItem.Identifier.signOut.rawValue, label: "", paletteLabel: "", toolTip: "Sign out from SimpleLogin", itemContent: signOutView)!
