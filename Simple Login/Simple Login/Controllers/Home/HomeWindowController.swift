@@ -14,7 +14,6 @@ private extension NSToolbarItem.Identifier {
     static let signOut = NSToolbarItem.Identifier(rawValue: "SignOut")
     static let ios = NSToolbarItem.Identifier(rawValue: "iOS")
     static let rating = NSToolbarItem.Identifier(rawValue: "Rating")
-    static let about = NSToolbarItem.Identifier(rawValue: "About")
 }
 
 final class HomeWindowController: NSWindowController {
@@ -31,7 +30,6 @@ final class HomeWindowController: NSWindowController {
     
     @IBOutlet private weak var iOSView: NSView!
     @IBOutlet private weak var ratingView: NSView!
-    @IBOutlet private weak var aboutView: NSView!
     
     var userInfo: UserInfo?
     
@@ -171,11 +169,11 @@ extension HomeWindowController {
 // MARK: - NSToolbarDelegate
 extension HomeWindowController: NSToolbarDelegate {
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.userInfoItem, .upgrade, .signOut, .ios, .rating, .about, .space, .flexibleSpace]
+        return [.userInfoItem, .upgrade, .signOut, .ios, .rating, .space, .flexibleSpace]
     }
     
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.userInfoItem, .flexibleSpace, .upgrade, .signOut, .space, .ios, .rating, .about]
+        return [.userInfoItem, .flexibleSpace, .upgrade, .signOut, .space, .ios, .rating]
     }
     
     func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
@@ -197,9 +195,6 @@ extension HomeWindowController: NSToolbarDelegate {
             
         case .rating:
             toolbarItem = customToolbarItem(itemForItemIdentifier: NSToolbarItem.Identifier.rating.rawValue, label: "", paletteLabel: "", toolTip: "Rate us", itemContent: ratingView)!
-            
-        case .about:
-            toolbarItem = customToolbarItem(itemForItemIdentifier: NSToolbarItem.Identifier.about.rawValue, label: "", paletteLabel: "", toolTip: "Our team", itemContent: aboutView)!
             
         default: break
         }

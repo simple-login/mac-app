@@ -22,7 +22,9 @@ final class EnterApiKeyViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        preferredContentSize = NSSize(width: 600, height: 300)
+        apiUrlTextField.stringValue = BASE_URL
+        
         setLoading(false)
         setApiKeyButton.isEnabled = false
     }
@@ -121,56 +123,6 @@ final class EnterApiKeyViewController: NSViewController {
             progressIndicator.isHidden = true
             progressIndicator.stopAnimation(self)
         }
-    }
-}
-
-// MARK: Set up labels
-extension EnterApiKeyViewController {
-    private func setupUI() {
-        preferredContentSize = NSSize(width: 600, height: 300)
-        apiUrlTextField.stringValue = BASE_URL
-        setupCreateAccountLabel()
-        setupCreateAndCopyApiKeyLabel()
-    }
-    
-    private func setupCreateAccountLabel() {
-        let createAccountPlainString = "Create your SimpleLogin account here ↗"
-        
-        let createAccountAttributedString = NSMutableAttributedString(string: createAccountPlainString)
-        createAccountAttributedString.addAttribute(.font, value: NSFont.systemFont(ofSize: 13), range: NSMakeRange(0, createAccountPlainString.count))
-        
-        if let hereStringRange = createAccountPlainString.range(of: "here ↗") {
-            createAccountAttributedString.addAttributes(
-                [.font : NSFont.systemFont(ofSize: 13, weight: .medium),
-             .underlineStyle : NSUnderlineStyle.single.rawValue,
-             .link : URL(string: "\(BASE_URL)/auth/register") as Any,
-             .toolTip : "\(BASE_URL)/auth/register"],
-            range: NSRange(hereStringRange, in: createAccountPlainString))
-        }
-        
-        // If allowsEditingTextAttributes is not set to "true", when the user clicks the label, the attributedsStringValue is gone
-        createAccountLabel.allowsEditingTextAttributes = true
-        createAccountLabel.attributedStringValue = createAccountAttributedString
-    }
-    
-    private func setupCreateAndCopyApiKeyLabel() {
-        let createAndCopyApiKeyPlainString = "Create and copy your API Key ↗"
-        
-        let createAndCopyApiKeyAttributedString = NSMutableAttributedString(string: createAndCopyApiKeyPlainString)
-        createAndCopyApiKeyAttributedString.addAttribute(.font, value: NSFont.systemFont(ofSize: 13), range: NSMakeRange(0, createAndCopyApiKeyPlainString.count))
-        
-        if let hereStringRange = createAndCopyApiKeyPlainString.range(of: "API Key ↗") {
-            createAndCopyApiKeyAttributedString.addAttributes(
-                [.font : NSFont.systemFont(ofSize: 13, weight: .medium),
-             .underlineStyle : NSUnderlineStyle.single.rawValue,
-             .link : URL(string: "\(BASE_URL)/dashboard/api_key") as Any,
-             .toolTip : "\(BASE_URL)/dashboard/api_key"],
-            range: NSRange(hereStringRange, in: createAndCopyApiKeyPlainString))
-        }
-
-        // If allowsEditingTextAttributes is not set to "true", when the user clicks the label, the attributedsStringValue is gone
-        createAndCopyApiKeyLabel.allowsEditingTextAttributes = true
-        createAndCopyApiKeyLabel.attributedStringValue = createAndCopyApiKeyAttributedString
     }
 }
 

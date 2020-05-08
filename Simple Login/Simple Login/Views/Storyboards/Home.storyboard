@@ -27,7 +27,6 @@
                         </connections>
                     </window>
                     <connections>
-                        <outlet property="aboutView" destination="Sdj-J3-MU9" id="o5E-Nc-4Rj"/>
                         <outlet property="avatarImageView" destination="gGM-gz-KmT" id="7BB-0K-SoU"/>
                         <outlet property="emailLabel" destination="L3g-2Z-wgK" id="M3w-Ok-V0V"/>
                         <outlet property="iOSView" destination="E5I-er-oDp" id="zZp-bW-egs"/>
@@ -201,29 +200,6 @@
                         <constraint firstAttribute="bottom" secondItem="8mU-A4-YYB" secondAttribute="bottom" id="C2t-nD-e3I"/>
                         <constraint firstItem="8mU-A4-YYB" firstAttribute="leading" secondItem="hhG-Qp-Sl8" secondAttribute="leading" id="JKd-0b-TV7"/>
                         <constraint firstItem="8mU-A4-YYB" firstAttribute="top" secondItem="hhG-Qp-Sl8" secondAttribute="top" id="YVh-1Q-LPq"/>
-                    </constraints>
-                </customView>
-                <customView id="Sdj-J3-MU9">
-                    <rect key="frame" x="0.0" y="0.0" width="165" height="96"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <button translatesAutoresizingMaskIntoConstraints="NO" id="szg-Uv-39N">
-                            <rect key="frame" x="0.0" y="0.0" width="165" height="96"/>
-                            <buttonCell key="cell" type="square" title="About Us" bezelStyle="shadowlessSquare" image="Info" imagePosition="above" alignment="center" imageScaling="proportionallyDown" inset="2" id="vtp-Gw-q2b">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <color key="contentTintColor" name="TintColor"/>
-                            <connections>
-                                <action selector="aboutButtonClicked:" target="W2Z-us-w3g" id="8Fp-bQ-H4p"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="szg-Uv-39N" firstAttribute="top" secondItem="Sdj-J3-MU9" secondAttribute="top" id="GTq-3G-6aq"/>
-                        <constraint firstAttribute="trailing" secondItem="szg-Uv-39N" secondAttribute="trailing" id="MoJ-t3-hOJ"/>
-                        <constraint firstAttribute="bottom" secondItem="szg-Uv-39N" secondAttribute="bottom" id="bJe-xA-9PI"/>
-                        <constraint firstItem="szg-Uv-39N" firstAttribute="leading" secondItem="Sdj-J3-MU9" secondAttribute="leading" id="x40-w8-khW"/>
                     </constraints>
                 </customView>
             </objects>
@@ -405,7 +381,6 @@
     <resources>
         <image name="Diamond" width="24" height="24"/>
         <image name="ExtensionIcon" width="647" height="36"/>
-        <image name="Info" width="24" height="24"/>
         <image name="LogOut" width="24" height="24"/>
         <image name="Person" width="42.5" height="42.5"/>
         <image name="SafariExtensions" width="561" height="210"/>

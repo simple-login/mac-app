@@ -62,7 +62,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WE4-dS-Wxc">
-                                        <rect key="frame" x="0.0" y="255" width="422" height="16"/>
+                                        <rect key="frame" x="0.0" y="255" width="382" height="16"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3NY-1X-31G">
                                                 <rect key="frame" x="-2" y="0.0" width="27" height="16"/>
@@ -73,8 +73,8 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iFg-HZ-oYc">
-                                                <rect key="frame" x="29" y="0.0" width="395" height="16"/>
-                                                <textFieldCell key="cell" selectable="YES" title="Create your SimpleLogin account here if this is not already done." id="b1H-E1-3fX">
+                                                <rect key="frame" x="29" y="0.0" width="355" height="16"/>
+                                                <textFieldCell key="cell" selectable="YES" title="Create your SimpleLogin account at https://simplelogin.io/" id="b1H-E1-3fX">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -91,7 +91,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="30Q-2j-OZw">
-                                        <rect key="frame" x="0.0" y="218" width="211" height="16"/>
+                                        <rect key="frame" x="0.0" y="218" width="378" height="16"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tN2-NL-y8p">
                                                 <rect key="frame" x="-2" y="0.0" width="27" height="16"/>
@@ -102,8 +102,8 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RcG-Zm-Bv4">
-                                                <rect key="frame" x="29" y="0.0" width="184" height="16"/>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Create and copy your API Key" id="u7z-H0-pHo">
+                                                <rect key="frame" x="29" y="0.0" width="351" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" title="Log in and go to &quot;API Keys&quot; tab to create/copy an API Key" id="u7z-H0-pHo">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
