@@ -67,6 +67,8 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
             refreshUserOptions()
         }
     }
+
+    private var defaultMailbox: Mailbox?
     
     // Aliases
     private var aliases: [Alias] = []
@@ -177,6 +179,22 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
             case .failure(let error):
                storedError = error
                fetchGroup.leave()
+            }
+        }
+
+        // Fetch mailboxes
+        fetchGroup.enter()
+        SLApiService.fetchMailboxes(apiKey: apiKey) { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case .success(let mailboxes):
+                self.defaultMailbox = mailboxes.first { $0.isDefault }
+                fetchGroup.leave()
+
+            case .failure(let error):
+                storedError = error
+                fetchGroup.leave()
             }
         }
         
@@ -300,18 +318,18 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
 extension ExtensionHomeViewController {
     @objc
     @IBAction func createNewAlias(_ sender: Any) {
-        guard isValidEmailPrefix, let apiKey = apiKey else { return }
+        guard isValidEmailPrefix, let apiKey = apiKey, let defaultMailbox = defaultMailbox else { return }
         
         let prefix = hostnameTextField.stringValue
         
-        guard let suffix = suffixPopupButton.titleOfSelectedItem else {
+        guard let suffix = userOptions?.suffixes[suffixPopupButton.indexOfSelectedItem] else {
             showErrorAlert(SLError.emptySuffix)
             return
         }
         
         setLoading(true)
         
-        SLApiService.createAlias(apiKey: apiKey, prefix: prefix, suffix: suffix, note: nil) { [weak self] result in
+        SLApiService.createAlias(apiKey: apiKey, prefix: prefix, signedSuffix: suffix.signature, note: nil, mailboxId: defaultMailbox.id) { [weak self] result in
             guard let self = self else { return }
             self.setLoading(false)
             

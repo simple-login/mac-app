@@ -85,15 +85,17 @@ final class SLApiService {
         }
     }
     
-    static func createAlias(apiKey: ApiKey, prefix: String, suffix: String, note: String?, completion: @escaping (Result<Alias, SLError>) -> Void) {
+    static func createAlias(apiKey: ApiKey, prefix: String, signedSuffix: String, note: String?, mailboxId: Int, completion: @escaping (Result<Alias, SLError>) -> Void) {
         let headers: HTTPHeaders = ["Authentication": apiKey]
-        var parameters = ["alias_prefix" : prefix, "alias_suffix" : suffix]
+        var parameters = ["alias_prefix" : prefix,
+                          "signed_suffix" : signedSuffix,
+                          "mailbox_ids": [mailboxId]] as [String : Any]
         
         if let note = note {
             parameters["note"] = note
         }
         
-        AF.request("\(BASE_URL)/api/alias/custom/new", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: nil).response { response in
+        AF.request("\(BASE_URL)/api/v3/alias/custom/new", method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: nil).response { response in
             
             guard let statusCode = response.response?.statusCode else {
                 completion(.failure(.unknownResponseStatusCode))
@@ -186,7 +188,6 @@ final class SLApiService {
             method = .get
         }
         
-        
         AF.request("\(BASE_URL)/api/v2/aliases?page_id=\(page)", method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers, interceptor: nil).response { response in
             
             guard let statusCode = response.response?.statusCode else {
@@ -225,6 +226,39 @@ final class SLApiService {
                     completion(.failure(.failToSerializeJSONData))
                 }
                 
+            case 400: completion(.failure(.badRequest(description: "page_id must be provided in request query.")))
+            case 401: completion(.failure(.invalidApiKey))
+            case 500: completion(.failure(.internalServerError))
+            case 502: completion(.failure(.badGateway))
+            default: completion(.failure(.unknownErrorWithStatusCode(statusCode: statusCode)))
+            }
+        }
+    }
+
+    static func fetchMailboxes(apiKey: ApiKey, completion: @escaping (Result<[Mailbox], SLError>) -> Void) {
+        let headers: HTTPHeaders = ["Authentication": apiKey]
+
+        AF.request("\(BASE_URL)/api/v2/mailboxes", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers, interceptor: nil).response { response in
+
+            guard let statusCode = response.response?.statusCode else {
+                completion(.failure(.unknownResponseStatusCode))
+                return
+            }
+
+            switch statusCode {
+            case 200:
+                guard let data = response.data else {
+                    completion(.failure(.noData))
+                    return
+                }
+
+                do {
+                    let mailboxArray = try JSONDecoder().decode(MailboxArray.self, from: data)
+                    completion(.success(mailboxArray.mailboxes))
+                } catch {
+                    completion(.failure(.failToSerializeJSONData))
+                }
+
             case 400: completion(.failure(.badRequest(description: "page_id must be provided in request query.")))
             case 401: completion(.failure(.invalidApiKey))
             case 500: completion(.failure(.internalServerError))

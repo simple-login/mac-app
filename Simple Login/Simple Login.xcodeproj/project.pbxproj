@@ -47,6 +47,8 @@
 		C066A31B2458B3C400FFF46B /* SKProductExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C066A31A2458B3C400FFF46B /* SKProductExtensions.swift */; };
 		C066A31C2458B52400FFF46B /* IapProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = C066A3182458B36A00FFF46B /* IapProduct.swift */; };
 		C066A31D2458BEE800FFF46B /* SKProductExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C066A31A2458B3C400FFF46B /* SKProductExtensions.swift */; };
+		C070F00B264FC95700686084 /* Mailbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C070F00A264FC95600686084 /* Mailbox.swift */; };
+		C070F00C264FC95700686084 /* Mailbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C070F00A264FC95600686084 /* Mailbox.swift */; };
 		C0AC5E8C245503AC003D188B /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C0AC5E8B245503AC003D188B /* ToolbarItemIcon.pdf */; };
 		C0BA379423C0C2F000F23554 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BA379323C0C2F000F23554 /* StringExtensions.swift */; };
 		C0BA379623C0C36600F23554 /* RegexHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BA379523C0C36600F23554 /* RegexHelpers.swift */; };
@@ -156,6 +158,7 @@
 		C066A31424585CB700FFF46B /* ExtensionHomeViewController+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExtensionHomeViewController+TouchBar.swift"; sourceTree = "<group>"; };
 		C066A3182458B36A00FFF46B /* IapProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IapProduct.swift; sourceTree = "<group>"; };
 		C066A31A2458B3C400FFF46B /* SKProductExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKProductExtensions.swift; sourceTree = "<group>"; };
+		C070F00A264FC95600686084 /* Mailbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mailbox.swift; sourceTree = "<group>"; };
 		C0AC5E8B245503AC003D188B /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		C0BA379323C0C2F000F23554 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C0BA379523C0C36600F23554 /* RegexHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegexHelpers.swift; sourceTree = "<group>"; };
@@ -390,6 +393,7 @@
 				C0D6C11B2454BFD7001AA865 /* LatestActivity.swift */,
 				C0D6C1252454C2A2001AA865 /* ContactLite.swift */,
 				C066A3182458B36A00FFF46B /* IapProduct.swift */,
+				C070F00A264FC95600686084 /* Mailbox.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -678,6 +682,7 @@
 				C05587A523C22AAF00CA7418 /* SFSafariExtensionVCExtensions.swift in Sources */,
 				C000DFF823C4D25D005D61E4 /* HomeViewController.swift in Sources */,
 				C0D6C1242454C0E2001AA865 /* Date+Distance.swift in Sources */,
+				C070F00C264FC95700686084 /* Mailbox.swift in Sources */,
 				C03B0BE523BA76550040DA37 /* ExtensionHomeViewController.swift in Sources */,
 				C059108D24561DF4004A766C /* HomeWindowController.swift in Sources */,
 				C064846C23C1042F00AD97CA /* NSViewExtensions.swift in Sources */,
@@ -724,6 +729,7 @@
 				C0BE6CB123BF3F470082C2C2 /* Statics.swift in Sources */,
 				C064846E23C1062100AD97CA /* NSAlertExtensions.swift in Sources */,
 				C05910852455D974004A766C /* IapViewController.swift in Sources */,
+				C070F00B264FC95700686084 /* Mailbox.swift in Sources */,
 				C0E6000823BFBFEA0011982B /* SLApiService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
