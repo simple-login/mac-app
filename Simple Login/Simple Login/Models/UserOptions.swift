@@ -8,40 +8,58 @@
 
 import Foundation
 
-struct UserOptions {
+struct Suffix: Decodable {
+    let value: String
+    let signature: String
+
+    // swiftlint:disable:next type_name
+    private enum Key: String, CodingKey {
+        case value = "suffix"
+        case signature = "signed_suffix"
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Key.self)
+
+        self.value = try container.decode(String.self, forKey: .value)
+        self.signature = try container.decode(String.self, forKey: .signature)
+    }
+
+    init(value: String, signature: String) {
+        self.value = value
+        self.signature = signature
+    }
+}
+
+struct UserOptions: Decodable {
     let canCreate: Bool
     let prefixSuggestion: String
-    let suffixes: [String]
-    
+    let suffixes: [Suffix]
+
     lazy var domains: [String] = {
         var domains: [String] = []
-        
-        suffixes.forEach { (suffix) in
-            if let domain = RegexHelpers.firstMatch(for: #"(?<=@).*"#, inString: suffix) {
+
+        suffixes.forEach { suffix in
+            if let domain = RegexHelpers.firstMatch(for: #"(?<=@).*"#, inString: suffix.value) {
                 domains.append(domain)
             }
         }
-        
+
         return domains
     }()
-    
-    init(fromData data: Data) throws {
-        guard let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-            throw SLError.failToSerializeJSONData
-        }
-        
-        let canCreate = jsonDictionary["can_create"] as? Bool
-        let prefixSuggestion = jsonDictionary["prefix_suggestion"] as? String
-        let suffixes = jsonDictionary["suffixes"] as? [String]
-        
-        if let canCreate = canCreate,
-            let prefixSuggestion = prefixSuggestion,
-            let suffixes = suffixes {
-            self.canCreate = canCreate
-            self.prefixSuggestion = prefixSuggestion
-            self.suffixes = suffixes
-        } else {
-            throw SLError.failToParseObject(objectName: "UserOptions")
-        }
+
+    // swiftlint:disable:next type_name
+    private enum Key: String, CodingKey {
+        case canCreate = "can_create"
+        case prefixSuggestion = "prefix_suggestion"
+        case suffixes = "suffixes"
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Key.self)
+
+        self.canCreate = try container.decode(Bool.self, forKey: .canCreate)
+        self.prefixSuggestion = try container.decode(String.self, forKey: .prefixSuggestion)
+        self.suffixes = try container.decode([Suffix].self, forKey: .suffixes)
     }
 }

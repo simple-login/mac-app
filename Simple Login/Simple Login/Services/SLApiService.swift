@@ -49,9 +49,9 @@ final class SLApiService {
         
         let urlString: String
         if let hostname = hostname {
-            urlString = "\(BASE_URL)/api/v3/alias/options?hostname=\(hostname)"
+            urlString = "\(BASE_URL)/api/v5/alias/options?hostname=\(hostname)"
         } else {
-            urlString = "\(BASE_URL)/api/v3/alias/options"
+            urlString = "\(BASE_URL)/api/v5/alias/options"
         }
         
         AF.request(urlString, method: .get, parameters: nil, encoding: URLEncoding.default, headers: headers, interceptor: nil).response { response in
@@ -69,7 +69,7 @@ final class SLApiService {
             switch statusCode {
             case 200:
                 do {
-                    let userOptions = try UserOptions(fromData: data)
+                    let userOptions = try JSONDecoder().decode(UserOptions.self, from: data)
                     completion(.success(userOptions))
                 } catch let error as SLError {
                     completion(.failure(error))

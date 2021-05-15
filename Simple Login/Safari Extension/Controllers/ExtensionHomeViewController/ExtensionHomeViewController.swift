@@ -258,7 +258,7 @@ final class ExtensionHomeViewController: SFSafariExtensionViewController {
         hostnameTextField.stringValue = userOptions.prefixSuggestion
         
         suffixPopupButton.removeAllItems()
-        userOptions.suffixes.forEach({suffixPopupButton.addItem(withTitle: $0)})
+        userOptions.suffixes.forEach({suffixPopupButton.addItem(withTitle: $0.value)})
 
         isValidEmailPrefix = userOptions.prefixSuggestion != ""
         
