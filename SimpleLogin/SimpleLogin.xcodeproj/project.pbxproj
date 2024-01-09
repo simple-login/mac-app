@@ -7,15 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		353136DE2B4D544200695FEA /* popup in Resources */ = {isa = PBXBuildFile; fileRef = 353136DD2B4D544200695FEA /* popup */; };
 		3577E8862B4D521C00DCFA53 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3577E8852B4D521C00DCFA53 /* SafariWebExtensionHandler.swift */; };
 		3577E8892B4D521C00DCFA53 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 3577E8882B4D521C00DCFA53 /* _locales */; };
 		3577E88B2B4D521C00DCFA53 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 3577E88A2B4D521C00DCFA53 /* images */; };
 		3577E88D2B4D521C00DCFA53 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 3577E88C2B4D521C00DCFA53 /* manifest.json */; };
 		3577E88F2B4D521C00DCFA53 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 3577E88E2B4D521C00DCFA53 /* background.js */; };
 		3577E8912B4D521C00DCFA53 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 3577E8902B4D521C00DCFA53 /* content.js */; };
-		3577E8932B4D521C00DCFA53 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 3577E8922B4D521C00DCFA53 /* popup.html */; };
-		3577E8952B4D521C00DCFA53 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 3577E8942B4D521C00DCFA53 /* popup.css */; };
-		3577E8972B4D521C00DCFA53 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 3577E8962B4D521C00DCFA53 /* popup.js */; };
 		3577E89C2B4D521C00DCFA53 /* Safari Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3577E8832B4D521C00DCFA53 /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		359144BE2B4D4ACA00FC5C41 /* SimpleLoginApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359144BD2B4D4ACA00FC5C41 /* SimpleLoginApp.swift */; };
 		359144C22B4D4ACB00FC5C41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359144C12B4D4ACB00FC5C41 /* Assets.xcassets */; };
@@ -48,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		353136DD2B4D544200695FEA /* popup */ = {isa = PBXFileReference; lastKnownFileType = folder; path = popup; sourceTree = "<group>"; };
 		3577E8832B4D521C00DCFA53 /* Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3577E8852B4D521C00DCFA53 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
 		3577E8882B4D521C00DCFA53 /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _locales; sourceTree = "<group>"; };
@@ -55,9 +54,6 @@
 		3577E88C2B4D521C00DCFA53 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
 		3577E88E2B4D521C00DCFA53 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
 		3577E8902B4D521C00DCFA53 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
-		3577E8922B4D521C00DCFA53 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
-		3577E8942B4D521C00DCFA53 /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
-		3577E8962B4D521C00DCFA53 /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = popup.js; sourceTree = "<group>"; };
 		3577E8982B4D521C00DCFA53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3577E8992B4D521C00DCFA53 /* Safari_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Safari_Extension.entitlements; sourceTree = "<group>"; };
 		359144BA2B4D4ACA00FC5C41 /* SimpleLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,12 +98,10 @@
 			children = (
 				3577E8882B4D521C00DCFA53 /* _locales */,
 				3577E88A2B4D521C00DCFA53 /* images */,
+				353136DD2B4D544200695FEA /* popup */,
 				3577E88C2B4D521C00DCFA53 /* manifest.json */,
 				3577E88E2B4D521C00DCFA53 /* background.js */,
 				3577E8902B4D521C00DCFA53 /* content.js */,
-				3577E8922B4D521C00DCFA53 /* popup.html */,
-				3577E8942B4D521C00DCFA53 /* popup.css */,
-				3577E8962B4D521C00DCFA53 /* popup.js */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -232,13 +226,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3577E88F2B4D521C00DCFA53 /* background.js in Resources */,
-				3577E8952B4D521C00DCFA53 /* popup.css in Resources */,
-				3577E8932B4D521C00DCFA53 /* popup.html in Resources */,
 				3577E88B2B4D521C00DCFA53 /* images in Resources */,
 				3577E88D2B4D521C00DCFA53 /* manifest.json in Resources */,
+				353136DE2B4D544200695FEA /* popup in Resources */,
 				3577E8892B4D521C00DCFA53 /* _locales in Resources */,
 				3577E8912B4D521C00DCFA53 /* content.js in Resources */,
-				3577E8972B4D521C00DCFA53 /* popup.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

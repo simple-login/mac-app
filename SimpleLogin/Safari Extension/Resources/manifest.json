@@ -24,7 +24,7 @@
     }],
 
     "action": {
-        "default_popup": "popup.html",
+        "default_popup": "popup/popup.html",
         "default_icon": {
             "16": "images/toolbar-icon-16.png",
             "19": "images/toolbar-icon-19.png",
