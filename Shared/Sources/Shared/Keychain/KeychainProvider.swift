@@ -1,5 +1,5 @@
-//
-// SimpleLoginApp.swift
+//  
+// KeychainProvider.swift
 // SimpleLogin - Created on 09/01/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
@@ -19,14 +19,6 @@
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 //
 
-import Shared
-import SwiftUI
+import Foundation
 
-@main
-struct SimpleLoginApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
-}
+public protocol KeychainProvider {}
