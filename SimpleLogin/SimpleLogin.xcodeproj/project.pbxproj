@@ -7,13 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3577E8862B4D521C00DCFA53 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3577E8852B4D521C00DCFA53 /* SafariWebExtensionHandler.swift */; };
+		3577E8892B4D521C00DCFA53 /* _locales in Resources */ = {isa = PBXBuildFile; fileRef = 3577E8882B4D521C00DCFA53 /* _locales */; };
+		3577E88B2B4D521C00DCFA53 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 3577E88A2B4D521C00DCFA53 /* images */; };
+		3577E88D2B4D521C00DCFA53 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 3577E88C2B4D521C00DCFA53 /* manifest.json */; };
+		3577E88F2B4D521C00DCFA53 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 3577E88E2B4D521C00DCFA53 /* background.js */; };
+		3577E8912B4D521C00DCFA53 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = 3577E8902B4D521C00DCFA53 /* content.js */; };
+		3577E8932B4D521C00DCFA53 /* popup.html in Resources */ = {isa = PBXBuildFile; fileRef = 3577E8922B4D521C00DCFA53 /* popup.html */; };
+		3577E8952B4D521C00DCFA53 /* popup.css in Resources */ = {isa = PBXBuildFile; fileRef = 3577E8942B4D521C00DCFA53 /* popup.css */; };
+		3577E8972B4D521C00DCFA53 /* popup.js in Resources */ = {isa = PBXBuildFile; fileRef = 3577E8962B4D521C00DCFA53 /* popup.js */; };
+		3577E89C2B4D521C00DCFA53 /* Safari Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3577E8832B4D521C00DCFA53 /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		359144BE2B4D4ACA00FC5C41 /* SimpleLoginApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359144BD2B4D4ACA00FC5C41 /* SimpleLoginApp.swift */; };
 		359144C22B4D4ACB00FC5C41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359144C12B4D4ACB00FC5C41 /* Assets.xcassets */; };
 		359144C52B4D4ACB00FC5C41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */; };
 		359144CD2B4D4D4F00FC5C41 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359144CC2B4D4D4F00FC5C41 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3577E89A2B4D521C00DCFA53 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 359144B22B4D4ACA00FC5C41 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3577E8822B4D521C00DCFA53;
+			remoteInfo = "Safari Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3577E89D2B4D521C00DCFA53 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3577E89C2B4D521C00DCFA53 /* Safari Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		3577E8832B4D521C00DCFA53 /* Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3577E8852B4D521C00DCFA53 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		3577E8882B4D521C00DCFA53 /* _locales */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _locales; sourceTree = "<group>"; };
+		3577E88A2B4D521C00DCFA53 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		3577E88C2B4D521C00DCFA53 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
+		3577E88E2B4D521C00DCFA53 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
+		3577E8902B4D521C00DCFA53 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = content.js; sourceTree = "<group>"; };
+		3577E8922B4D521C00DCFA53 /* popup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = popup.html; sourceTree = "<group>"; };
+		3577E8942B4D521C00DCFA53 /* popup.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = popup.css; sourceTree = "<group>"; };
+		3577E8962B4D521C00DCFA53 /* popup.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = popup.js; sourceTree = "<group>"; };
+		3577E8982B4D521C00DCFA53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3577E8992B4D521C00DCFA53 /* Safari_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Safari_Extension.entitlements; sourceTree = "<group>"; };
 		359144BA2B4D4ACA00FC5C41 /* SimpleLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		359144BD2B4D4ACA00FC5C41 /* SimpleLoginApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLoginApp.swift; sourceTree = "<group>"; };
 		359144C12B4D4ACB00FC5C41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -23,6 +69,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3577E8802B4D521C00DCFA53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		359144B72B4D4ACA00FC5C41 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,10 +86,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3577E8842B4D521C00DCFA53 /* Safari Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3577E8852B4D521C00DCFA53 /* SafariWebExtensionHandler.swift */,
+				3577E8982B4D521C00DCFA53 /* Info.plist */,
+				3577E8992B4D521C00DCFA53 /* Safari_Extension.entitlements */,
+				3577E8872B4D521C00DCFA53 /* Resources */,
+			);
+			path = "Safari Extension";
+			sourceTree = "<group>";
+		};
+		3577E8872B4D521C00DCFA53 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3577E8882B4D521C00DCFA53 /* _locales */,
+				3577E88A2B4D521C00DCFA53 /* images */,
+				3577E88C2B4D521C00DCFA53 /* manifest.json */,
+				3577E88E2B4D521C00DCFA53 /* background.js */,
+				3577E8902B4D521C00DCFA53 /* content.js */,
+				3577E8922B4D521C00DCFA53 /* popup.html */,
+				3577E8942B4D521C00DCFA53 /* popup.css */,
+				3577E8962B4D521C00DCFA53 /* popup.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		359144B12B4D4ACA00FC5C41 = {
 			isa = PBXGroup;
 			children = (
 				359144BC2B4D4ACA00FC5C41 /* SimpleLogin */,
+				3577E8842B4D521C00DCFA53 /* Safari Extension */,
 				359144BB2B4D4ACA00FC5C41 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				359144BA2B4D4ACA00FC5C41 /* SimpleLogin.app */,
+				3577E8832B4D521C00DCFA53 /* Safari Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,6 +153,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3577E8822B4D521C00DCFA53 /* Safari Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3577E8A02B4D521C00DCFA53 /* Build configuration list for PBXNativeTarget "Safari Extension" */;
+			buildPhases = (
+				3577E87F2B4D521C00DCFA53 /* Sources */,
+				3577E8802B4D521C00DCFA53 /* Frameworks */,
+				3577E8812B4D521C00DCFA53 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Safari Extension";
+			productName = "Safari Extension";
+			productReference = 3577E8832B4D521C00DCFA53 /* Safari Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		359144B92B4D4ACA00FC5C41 /* SimpleLogin */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 359144C92B4D4ACB00FC5C41 /* Build configuration list for PBXNativeTarget "SimpleLogin" */;
@@ -79,10 +177,12 @@
 				359144B62B4D4ACA00FC5C41 /* Sources */,
 				359144B72B4D4ACA00FC5C41 /* Frameworks */,
 				359144B82B4D4ACA00FC5C41 /* Resources */,
+				3577E89D2B4D521C00DCFA53 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3577E89B2B4D521C00DCFA53 /* PBXTargetDependency */,
 			);
 			name = SimpleLogin;
 			productName = SimpleLogin;
@@ -96,9 +196,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1510;
+				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
+					3577E8822B4D521C00DCFA53 = {
+						CreatedOnToolsVersion = 15.2;
+					};
 					359144B92B4D4ACA00FC5C41 = {
 						CreatedOnToolsVersion = 15.1;
 					};
@@ -118,11 +221,27 @@
 			projectRoot = "";
 			targets = (
 				359144B92B4D4ACA00FC5C41 /* SimpleLogin */,
+				3577E8822B4D521C00DCFA53 /* Safari Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3577E8812B4D521C00DCFA53 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3577E88F2B4D521C00DCFA53 /* background.js in Resources */,
+				3577E8952B4D521C00DCFA53 /* popup.css in Resources */,
+				3577E8932B4D521C00DCFA53 /* popup.html in Resources */,
+				3577E88B2B4D521C00DCFA53 /* images in Resources */,
+				3577E88D2B4D521C00DCFA53 /* manifest.json in Resources */,
+				3577E8892B4D521C00DCFA53 /* _locales in Resources */,
+				3577E8912B4D521C00DCFA53 /* content.js in Resources */,
+				3577E8972B4D521C00DCFA53 /* popup.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		359144B82B4D4ACA00FC5C41 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -135,6 +254,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3577E87F2B4D521C00DCFA53 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3577E8862B4D521C00DCFA53 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		359144B62B4D4ACA00FC5C41 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -146,7 +273,77 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		3577E89B2B4D521C00DCFA53 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3577E8822B4D521C00DCFA53 /* Safari Extension */;
+			targetProxy = 3577E89A2B4D521C00DCFA53 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		3577E89E2B4D521C00DCFA53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Safari Extension/Safari_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 72VC334CSX;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Safari Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Safari Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.mac-app.Safari-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3577E89F2B4D521C00DCFA53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Safari Extension/Safari_Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 72VC334CSX;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Safari Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Safari Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.mac-app.Safari-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		359144C72B4D4ACB00FC5C41 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -268,6 +465,7 @@
 		359144CA2B4D4ACB00FC5C41 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SimpleLogin/SimpleLogin.entitlements;
@@ -297,6 +495,7 @@
 		359144CB2B4D4ACB00FC5C41 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SimpleLogin/SimpleLogin.entitlements;
@@ -326,6 +525,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3577E8A02B4D521C00DCFA53 /* Build configuration list for PBXNativeTarget "Safari Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3577E89E2B4D521C00DCFA53 /* Debug */,
+				3577E89F2B4D521C00DCFA53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		359144B52B4D4ACA00FC5C41 /* Build configuration list for PBXProject "SimpleLogin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
