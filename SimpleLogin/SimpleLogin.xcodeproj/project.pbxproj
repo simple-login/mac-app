@@ -176,6 +176,8 @@
 				3577E89B2B4D521C00DCFA53 /* PBXTargetDependency */,
 			);
 			name = SimpleLogin;
+			packageProductDependencies = (
+			);
 			productName = SimpleLogin;
 			productReference = 359144BA2B4D4ACA00FC5C41 /* SimpleLogin.app */;
 			productType = "com.apple.product-type.application";
@@ -207,6 +209,8 @@
 				Base,
 			);
 			mainGroup = 359144B12B4D4ACA00FC5C41;
+			packageReferences = (
+			);
 			productRefGroup = 359144BB2B4D4ACA00FC5C41 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
