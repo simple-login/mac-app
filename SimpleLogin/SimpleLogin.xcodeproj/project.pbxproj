@@ -288,7 +288,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Safari Extension/Safari_Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72VC334CSX;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Safari Extension/Info.plist";
@@ -305,7 +305,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.mac-app.Safari-Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.proton.simplelogin.macos.safari-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -319,7 +319,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Safari Extension/Safari_Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72VC334CSX;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Safari Extension/Info.plist";
@@ -336,7 +336,7 @@
 					"-framework",
 					SafariServices,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.mac-app.Safari-Extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.proton.simplelogin.macos.safari-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -474,7 +474,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SimpleLogin/Preview Content\"";
-				DEVELOPMENT_TEAM = 72VC334CSX;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -485,7 +485,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.mac-app";
+				PRODUCT_BUNDLE_IDENTIFIER = me.proton.simplelogin.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -504,7 +504,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SimpleLogin/Preview Content\"";
-				DEVELOPMENT_TEAM = 72VC334CSX;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -515,7 +515,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.simplelogin.mac-app";
+				PRODUCT_BUNDLE_IDENTIFIER = me.proton.simplelogin.macos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
