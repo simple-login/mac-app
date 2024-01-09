@@ -1,5 +1,5 @@
 //
-// KeychainProvider.swift
+// Constants.swift
 // SimpleLogin - Created on 09/01/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
@@ -20,19 +20,10 @@
 //
 
 import Foundation
-import KeychainAccess
 
-public protocol KeychainProvider {
-    func getValueFromKeychain(for key: String) -> String?
-    func setValueToKeychain(_ value: String?, for key: String)
-}
-
-extension Keychain: KeychainProvider {
-    public func getValueFromKeychain(for key: String) -> String? {
-        self[key]
-    }
-    
-    public func setValueToKeychain(_ value: String?, for key: String) {
-        self[key] = value
-    }
+public enum Constants {
+    static let appGroup = "group.me.proton.simplelogin.macos"
+    static let defaultApiUrl = "https://app.simplelogin.io"
+    static let apiUrlKey = "API_URL"
+    static let apiKeyKey = "API_KEY"
 }
