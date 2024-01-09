@@ -20,6 +20,10 @@
 		359144C22B4D4ACB00FC5C41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359144C12B4D4ACB00FC5C41 /* Assets.xcassets */; };
 		359144C52B4D4ACB00FC5C41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */; };
 		359144CD2B4D4D4F00FC5C41 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359144CC2B4D4D4F00FC5C41 /* ContentView.swift */; };
+		35F9F7A22B4DA537002B9430 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 35F9F7A12B4DA537002B9430 /* Factory */; };
+		35F9F7A42B4DA543002B9430 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 35F9F7A32B4DA543002B9430 /* Factory */; };
+		35F9F7A72B4DA59B002B9430 /* SimpleLoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F9F7A62B4DA59B002B9430 /* SimpleLoginContainer.swift */; };
+		35F9F7A82B4DA59D002B9430 /* SimpleLoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F9F7A62B4DA59B002B9430 /* SimpleLoginContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +66,7 @@
 		359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		359144C62B4D4ACB00FC5C41 /* SimpleLogin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLogin.entitlements; sourceTree = "<group>"; };
 		359144CC2B4D4D4F00FC5C41 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		35F9F7A62B4DA59B002B9430 /* SimpleLoginContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLoginContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +75,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35841BDA2B4D9990007DC24A /* Shared in Frameworks */,
+				35F9F7A42B4DA543002B9430 /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35841BD72B4D9563007DC24A /* Shared in Frameworks */,
+				35F9F7A22B4DA537002B9430 /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +143,7 @@
 		359144BC2B4D4ACA00FC5C41 /* SimpleLogin */ = {
 			isa = PBXGroup;
 			children = (
+				35F9F7A52B4DA573002B9430 /* DI */,
 				359144BD2B4D4ACA00FC5C41 /* SimpleLoginApp.swift */,
 				359144CC2B4D4D4F00FC5C41 /* ContentView.swift */,
 				359144C12B4D4ACB00FC5C41 /* Assets.xcassets */,
@@ -151,6 +159,14 @@
 				359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		35F9F7A52B4DA573002B9430 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				35F9F7A62B4DA59B002B9430 /* SimpleLoginContainer.swift */,
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +187,7 @@
 			name = "Safari Extension";
 			packageProductDependencies = (
 				35841BD92B4D9990007DC24A /* Shared */,
+				35F9F7A32B4DA543002B9430 /* Factory */,
 			);
 			productName = "Safari Extension";
 			productReference = 3577E8832B4D521C00DCFA53 /* Safari Extension.appex */;
@@ -193,6 +210,7 @@
 			name = SimpleLogin;
 			packageProductDependencies = (
 				35841BD62B4D9563007DC24A /* Shared */,
+				35F9F7A12B4DA537002B9430 /* Factory */,
 			);
 			productName = SimpleLogin;
 			productReference = 359144BA2B4D4ACA00FC5C41 /* SimpleLogin.app */;
@@ -227,6 +245,7 @@
 			mainGroup = 359144B12B4D4ACA00FC5C41;
 			packageReferences = (
 				35841BD52B4D9563007DC24A /* XCLocalSwiftPackageReference "../Shared" */,
+				35F9F7A02B4DA536002B9430 /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			productRefGroup = 359144BB2B4D4ACA00FC5C41 /* Products */;
 			projectDirPath = "";
@@ -267,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35F9F7A82B4DA59D002B9430 /* SimpleLoginContainer.swift in Sources */,
 				3577E8862B4D521C00DCFA53 /* SafariWebExtensionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +297,7 @@
 			files = (
 				359144BE2B4D4ACA00FC5C41 /* SimpleLoginApp.swift in Sources */,
 				359144CD2B4D4D4F00FC5C41 /* ContentView.swift in Sources */,
+				35F9F7A72B4DA59B002B9430 /* SimpleLoginContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +599,17 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		35F9F7A02B4DA536002B9430 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		35841BD62B4D9563007DC24A /* Shared */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -587,6 +619,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 35841BD52B4D9563007DC24A /* XCLocalSwiftPackageReference "../Shared" */;
 			productName = Shared;
+		};
+		35F9F7A12B4DA537002B9430 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35F9F7A02B4DA536002B9430 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
+		35F9F7A32B4DA543002B9430 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35F9F7A02B4DA536002B9430 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -1,5 +1,5 @@
 //
-// Constants.swift
+// SimpleLoginContainer.swift
 // SimpleLogin - Created on 09/01/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
@@ -17,13 +17,27 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
-//
 
+import Factory
 import Foundation
+import KeychainAccess
+import Shared
 
-public enum Constants {
-    public static let appGroup = "group.me.proton.simplelogin.macos"
-    public static let defaultApiUrl = "https://app.simplelogin.io"
-    public static let apiUrlKey = "API_URL"
-    public static let apiKeyKey = "API_KEY"
+final class SimpleLoginContainer: SharedContainer, AutoRegistering {
+    static let shared = SimpleLoginContainer()
+    let manager = ContainerManager()
+
+    func autoRegister() {
+        manager.defaultScope = .singleton
+    }
+}
+
+extension SimpleLoginContainer {
+    var keychain: Factory<KeychainProvider> {
+        self { Keychain(accessGroup: Constants.appGroup) }
+    }
+
+    var simpleLoginKeychain: Factory<SimpleLoginKeychainProtocol> {
+        self { SimpleLoginKeychain(keychain: self.keychain()) }
+    }
 }
