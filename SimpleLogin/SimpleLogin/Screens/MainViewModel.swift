@@ -37,6 +37,7 @@ final class MainViewModel: ObservableObject {
     private let getSafariExtensionState = resolve(\SharedUseCaseContainer.getSafariExtensionState)
     private let getApiUrl = resolve(\SharedUseCaseContainer.getApiUrl)
     private let getApiKey = resolve(\SharedUseCaseContainer.getApiKey)
+    private let setApiKey = resolve(\SharedUseCaseContainer.setApiKey)
 
     init() {}
 }
@@ -61,6 +62,29 @@ extension MainViewModel {
             }
         } catch {
             state = .error(error)
+        }
+    }
+
+    func logOut() async {
+        setApiKey(nil)
+        state = .loading
+        await refreshState()
+    }
+}
+
+extension MainViewModelState: Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        switch (lhs, rhs) {
+        case (.loading, .loading),
+            (.safariExtensionDisabled, .safariExtensionDisabled),
+            (.loggedOut, .loggedOut):
+            return true
+        case let (.loggedIn(lApiUrl, lApiKey), .loggedIn(rApiUrl, rApiKey)):
+            return lApiUrl == rApiUrl && lApiKey == rApiKey
+        case let (.error(lError), .error(rError)):
+            return lError.localizedDescription == rError.localizedDescription
+        default:
+            return false
         }
     }
 }

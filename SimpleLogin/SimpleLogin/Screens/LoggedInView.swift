@@ -23,12 +23,29 @@ import SwiftUI
 
 struct LoggedInView: View {
     @StateObject private var viewModel: LoggedInViewModel
+    @State private var showingLogOutAlert = false
+    private let onLogOut: () -> Void
 
-    init(apiUrl: ApiUrl, apiKey: ApiKey) {
+    init(apiUrl: ApiUrl, 
+         apiKey: ApiKey,
+         onLogOut: @escaping () -> Void) {
         _viewModel = .init(wrappedValue: .init(apiUrl: apiUrl, apiKey: apiKey))
+        self.onLogOut = onLogOut
     }
 
     var body: some View {
-        Text("You're logged in")
+        VStack {
+            Text("You're logged in")
+            Button(action: {
+                showingLogOutAlert.toggle()
+            }, label: {
+                Text("Log out")
+            })
+        }
+        .alert("Log out from SimpleLogin?",
+               isPresented: $showingLogOutAlert) {
+            Button("Cancel", role: .cancel, action: {})
+            Button("Yes, log me out", role: .destructive, action: onLogOut)
+        }
     }
 }

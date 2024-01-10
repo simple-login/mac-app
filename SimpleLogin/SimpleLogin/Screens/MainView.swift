@@ -29,6 +29,7 @@ struct MainView: View {
         ZStack {
             view(for: viewModel.state)
         }
+        .animation(.default, value: viewModel.state)
         .onChange(of: controlActiveState) { controlActiveState in
             switch controlActiveState {
             case .active, .key:
@@ -53,7 +54,9 @@ private extension MainView {
         case .loggedOut:
             LoggedOutView()
         case let .loggedIn(apiUrl, apiKey):
-            LoggedInView(apiUrl: apiUrl, apiKey: apiKey)
+            LoggedInView(apiUrl: apiUrl, 
+                         apiKey: apiKey,
+                         onLogOut: { Task { await viewModel.logOut() } })
         case .error(let error):
             Text(error.localizedDescription)
         }
