@@ -1,5 +1,5 @@
 //
-// ContentView.swift
+// MainView.swift
 // SimpleLogin - Created on 09/01/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
@@ -21,9 +21,9 @@
 import Shared
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
     @Environment(\.controlActiveState) var controlActiveState
-    @StateObject private var viewModel = ContentViewModel()
+    @StateObject private var viewModel = MainViewModel()
 
     var body: some View {
         ZStack {
@@ -47,13 +47,13 @@ struct ContentView: View {
     }
 }
 
-private extension ContentView {
+private extension MainView {
     func errorView(_ error: Error) -> some View {
         Text(error.localizedDescription)
     }
 }
 
-private extension ContentView {
+private extension MainView {
     @ViewBuilder
     func statusView(_ status: SafariExtensionCheckingStatus) -> some View {
         switch status {
@@ -69,8 +69,4 @@ private extension ContentView {
             errorView(error)
         }
     }
-}
-
-#Preview {
-    ContentView()
 }

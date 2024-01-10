@@ -1,5 +1,5 @@
 //
-// ContentViewModel.swift
+// MainViewModel.swift
 // SimpleLogin - Created on 10/01/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
@@ -23,7 +23,7 @@ import Foundation
 import Shared
 
 @MainActor
-final class ContentViewModel: ObservableObject {
+final class MainViewModel: ObservableObject {
     @Published private(set) var status: SafariExtensionCheckingStatus = .inProgress
     @Published private(set) var error: Error?
 
@@ -32,7 +32,7 @@ final class ContentViewModel: ObservableObject {
     init() {}
 }
 
-extension ContentViewModel {
+extension MainViewModel {
     func checkExtensionStatus() async {
         do {
             status = .inProgress
