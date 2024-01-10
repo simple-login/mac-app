@@ -1,6 +1,6 @@
 //
-// KeychainProvider.swift
-// SimpleLogin - Created on 09/01/2024.
+// SetApiKey.swift
+// SimpleLogin - Created on 10/01/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -20,19 +20,25 @@
 //
 
 import Foundation
-import KeychainAccess
 
-public protocol KeychainProvider: Sendable {
-    func getValueFromKeychain(for key: String) -> String?
-    func setValueToKeychain(_ value: String?, for key: String)
+public protocol SetApiKeyUseCase: Sendable {
+    func execute(_ apiKey: String?)
 }
 
-extension Keychain: KeychainProvider {
-    public func getValueFromKeychain(for key: String) -> String? {
-        self[key]
+public extension SetApiKeyUseCase {
+    func callAsFunction(_ apiKey: String?) {
+        execute(apiKey)
     }
-    
-    public func setValueToKeychain(_ value: String?, for key: String) {
-        self[key] = value
+}
+
+public final class SetApiKey: SetApiKeyUseCase {
+    private let keychain: KeychainProvider
+
+    public init(keychain: KeychainProvider) {
+        self.keychain = keychain
+    }
+
+    public func execute(_ apiKey: String?) {
+        keychain.setValueToKeychain(apiKey, for: Constants.apiKeyKey)
     }
 }

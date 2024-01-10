@@ -1,6 +1,6 @@
 //
-// SimpleLoginContainer.swift
-// SimpleLogin - Created on 09/01/2024.
+// GetApiKey.swift
+// SimpleLogin - Created on 10/01/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -17,27 +17,28 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
+//
 
-import Factory
 import Foundation
-import KeychainAccess
-import Shared
 
-final class SimpleLoginContainer: SharedContainer, AutoRegistering {
-    static let shared = SimpleLoginContainer()
-    let manager = ContainerManager()
+public protocol GetApiKeyUseCase: Sendable {
+    func execute() -> String?
+}
 
-    func autoRegister() {
-        manager.defaultScope = .singleton
+public extension GetApiKeyUseCase {
+    func callAsFunction() -> String? {
+        execute()
     }
 }
 
-extension SimpleLoginContainer {
-    var keychain: Factory<KeychainProvider> {
-        self { Keychain(accessGroup: Constants.appGroup) }
+public final class GetApiKey: GetApiKeyUseCase {
+    private let keychain: KeychainProvider
+
+    public init(keychain: KeychainProvider) {
+        self.keychain = keychain
     }
 
-    var simpleLoginKeychain: Factory<SimpleLoginKeychainProtocol> {
-        self { SimpleLoginKeychain(keychain: self.keychain()) }
+    public func execute() -> String? {
+        keychain.getValueFromKeychain(for: Constants.apiKeyKey)
     }
 }

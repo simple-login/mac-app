@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		353136DE2B4D544200695FEA /* popup in Resources */ = {isa = PBXBuildFile; fileRef = 353136DD2B4D544200695FEA /* popup */; };
+		354247B72B4EB279000EF604 /* SharedToolingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B1522B4EAFCA00A5066B /* SharedToolingContainer.swift */; };
 		3577E8862B4D521C00DCFA53 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3577E8852B4D521C00DCFA53 /* SafariWebExtensionHandler.swift */; };
 		3577E88B2B4D521C00DCFA53 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 3577E88A2B4D521C00DCFA53 /* images */; };
 		3577E88D2B4D521C00DCFA53 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 3577E88C2B4D521C00DCFA53 /* manifest.json */; };
@@ -16,14 +17,15 @@
 		35841BCC2B4D5631007DC24A /* content_script in Resources */ = {isa = PBXBuildFile; fileRef = 35841BCB2B4D5631007DC24A /* content_script */; };
 		35841BD72B4D9563007DC24A /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 35841BD62B4D9563007DC24A /* Shared */; };
 		35841BDA2B4D9990007DC24A /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 35841BD92B4D9990007DC24A /* Shared */; };
+		3587B1532B4EAFCA00A5066B /* SharedToolingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B1522B4EAFCA00A5066B /* SharedToolingContainer.swift */; };
+		3587B1552B4EAFFC00A5066B /* SharedUseCaseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B1542B4EAFFC00A5066B /* SharedUseCaseContainer.swift */; };
+		3587B1562B4EB1E100A5066B /* SharedUseCaseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B1542B4EAFFC00A5066B /* SharedUseCaseContainer.swift */; };
 		359144BE2B4D4ACA00FC5C41 /* SimpleLoginApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359144BD2B4D4ACA00FC5C41 /* SimpleLoginApp.swift */; };
 		359144C22B4D4ACB00FC5C41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359144C12B4D4ACB00FC5C41 /* Assets.xcassets */; };
 		359144C52B4D4ACB00FC5C41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */; };
 		359144CD2B4D4D4F00FC5C41 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359144CC2B4D4D4F00FC5C41 /* ContentView.swift */; };
 		35F9F7A22B4DA537002B9430 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 35F9F7A12B4DA537002B9430 /* Factory */; };
 		35F9F7A42B4DA543002B9430 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 35F9F7A32B4DA543002B9430 /* Factory */; };
-		35F9F7A72B4DA59B002B9430 /* SimpleLoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F9F7A62B4DA59B002B9430 /* SimpleLoginContainer.swift */; };
-		35F9F7A82B4DA59D002B9430 /* SimpleLoginContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F9F7A62B4DA59B002B9430 /* SimpleLoginContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,13 +62,14 @@
 		3577E8982B4D521C00DCFA53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3577E8992B4D521C00DCFA53 /* Safari_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Safari_Extension.entitlements; sourceTree = "<group>"; };
 		35841BCB2B4D5631007DC24A /* content_script */ = {isa = PBXFileReference; lastKnownFileType = folder; path = content_script; sourceTree = "<group>"; };
+		3587B1522B4EAFCA00A5066B /* SharedToolingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedToolingContainer.swift; sourceTree = "<group>"; };
+		3587B1542B4EAFFC00A5066B /* SharedUseCaseContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedUseCaseContainer.swift; sourceTree = "<group>"; };
 		359144BA2B4D4ACA00FC5C41 /* SimpleLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		359144BD2B4D4ACA00FC5C41 /* SimpleLoginApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLoginApp.swift; sourceTree = "<group>"; };
 		359144C12B4D4ACB00FC5C41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		359144C62B4D4ACB00FC5C41 /* SimpleLogin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLogin.entitlements; sourceTree = "<group>"; };
 		359144CC2B4D4D4F00FC5C41 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		35F9F7A62B4DA59B002B9430 /* SimpleLoginContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLoginContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +167,8 @@
 		35F9F7A52B4DA573002B9430 /* DI */ = {
 			isa = PBXGroup;
 			children = (
-				35F9F7A62B4DA59B002B9430 /* SimpleLoginContainer.swift */,
+				3587B1522B4EAFCA00A5066B /* SharedToolingContainer.swift */,
+				3587B1542B4EAFFC00A5066B /* SharedUseCaseContainer.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -286,7 +290,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35F9F7A82B4DA59D002B9430 /* SimpleLoginContainer.swift in Sources */,
+				354247B72B4EB279000EF604 /* SharedToolingContainer.swift in Sources */,
+				3587B1562B4EB1E100A5066B /* SharedUseCaseContainer.swift in Sources */,
 				3577E8862B4D521C00DCFA53 /* SafariWebExtensionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,8 +301,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				359144BE2B4D4ACA00FC5C41 /* SimpleLoginApp.swift in Sources */,
+				3587B1532B4EAFCA00A5066B /* SharedToolingContainer.swift in Sources */,
+				3587B1552B4EAFFC00A5066B /* SharedUseCaseContainer.swift in Sources */,
 				359144CD2B4D4D4F00FC5C41 /* ContentView.swift in Sources */,
-				35F9F7A72B4DA59B002B9430 /* SimpleLoginContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

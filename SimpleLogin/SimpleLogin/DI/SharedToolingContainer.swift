@@ -1,6 +1,6 @@
 //
-// KeychainProvider.swift
-// SimpleLogin - Created on 09/01/2024.
+// SharedToolingContainer.swift
+// SimpleLogin - Created on 10/01/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -17,22 +17,23 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
-//
 
+import Factory
 import Foundation
 import KeychainAccess
+import Shared
 
-public protocol KeychainProvider: Sendable {
-    func getValueFromKeychain(for key: String) -> String?
-    func setValueToKeychain(_ value: String?, for key: String)
+final class SharedToolingContainer: SharedContainer, AutoRegistering {
+    static let shared = SharedToolingContainer()
+    let manager = ContainerManager()
+
+    func autoRegister() {
+        manager.defaultScope = .singleton
+    }
 }
 
-extension Keychain: KeychainProvider {
-    public func getValueFromKeychain(for key: String) -> String? {
-        self[key]
-    }
-    
-    public func setValueToKeychain(_ value: String?, for key: String) {
-        self[key] = value
+extension SharedToolingContainer {
+    var keychain: Factory<KeychainProvider> {
+        self { Keychain(accessGroup: Constants.appGroup) }
     }
 }

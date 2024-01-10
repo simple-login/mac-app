@@ -1,6 +1,6 @@
 //
-// SimpleLoginKeychain.swift
-// SimpleLogin - Created on 09/01/2024.
+// SetApiUrl.swift
+// SimpleLogin - Created on 10/01/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -21,35 +21,24 @@
 
 import Foundation
 
-public protocol SimpleLoginKeychainProtocol {
-    func getApiUrl() -> String
-    func setApiUrl(_ apiUrl: String)
-    func getApiKey() -> String?
-    func setApiKey(_ apiKey: String?)
+public protocol SetApiUrlUseCase: Sendable {
+    func execute(_ apiUrl: String)
 }
 
-public final class SimpleLoginKeychain: SimpleLoginKeychainProtocol {
+public extension SetApiUrlUseCase {
+    func callAsFunction(_ apiUrl: String) {
+        execute(apiUrl)
+    }
+}
+
+public final class SetApiUrl: SetApiUrlUseCase {
     private let keychain: KeychainProvider
 
     public init(keychain: KeychainProvider) {
         self.keychain = keychain
     }
-}
 
-public extension SimpleLoginKeychain {
-    func getApiUrl() -> String {
-        keychain.getValueFromKeychain(for: Constants.apiUrlKey) ?? Constants.defaultApiUrl
-    }
-
-    func setApiUrl(_ apiUrl: String) {
+    public func execute(_ apiUrl: String) {
         keychain.setValueToKeychain(apiUrl, for: Constants.apiUrlKey)
-    }
-
-    func getApiKey() -> String? {
-        keychain.getValueFromKeychain(for: Constants.apiKeyKey)
-    }
-
-    func setApiKey(_ apiKey: String?) {
-        keychain.setValueToKeychain(apiKey, for: Constants.apiKeyKey)
     }
 }
