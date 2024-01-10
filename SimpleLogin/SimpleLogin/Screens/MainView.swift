@@ -27,18 +27,13 @@ struct MainView: View {
 
     var body: some View {
         ZStack {
-            if let error = viewModel.error {
-                errorView(error)
-            } else {
-                statusView(viewModel.status)
-            }
+            view(for: viewModel.state)
         }
-        .animation(.default, value: viewModel.status)
         .onChange(of: controlActiveState) { controlActiveState in
             switch controlActiveState {
             case .active, .key:
                 Task {
-                    await viewModel.checkExtensionStatus()
+                    await viewModel.refreshState()
                 }
             default:
                 break
@@ -48,25 +43,19 @@ struct MainView: View {
 }
 
 private extension MainView {
-    func errorView(_ error: Error) -> some View {
-        Text(error.localizedDescription)
-    }
-}
-
-private extension MainView {
     @ViewBuilder
-    func statusView(_ status: SafariExtensionCheckingStatus) -> some View {
-        switch status {
-        case .inProgress:
+    func view(for state: MainViewModelState) -> some View {
+        switch state {
+        case .loading:
             ProgressView()
-        case let .done(enabled):
-            if enabled {
-                Text("Extension is enabled")
-            } else {
-                Text("Extension is not enabled")
-            }
+        case .safariExtensionDisabled:
+            ExtensionDisabledView()
+        case .loggedOut:
+            LoggedOutView()
+        case let .loggedIn(apiUrl, apiKey):
+            LoggedInView(apiUrl: apiUrl, apiKey: apiKey)
         case .error(let error):
-            errorView(error)
+            Text(error.localizedDescription)
         }
     }
 }

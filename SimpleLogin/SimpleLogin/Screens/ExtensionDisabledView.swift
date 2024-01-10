@@ -1,6 +1,6 @@
 //
-// Constants.swift
-// SimpleLogin - Created on 09/01/2024.
+// ExtensionDisabledView.swift
+// SimpleLogin - Created on 10/01/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -17,17 +17,15 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
-//
 
-import Foundation
+import SwiftUI
 
-public enum Constants {
-    public static let extensionBundleId = "me.proton.simplelogin.macos.safari-extension"
-    public static let appGroup = "group.me.proton.simplelogin.macos"
-    public static let defaultApiUrl: ApiUrl = "https://app.simplelogin.io"
-    public static let apiUrlKey = "API_URL"
-    public static let apiKeyKey = "API_KEY"
+struct ExtensionDisabledView: View {
+    var body: some View {
+        Text("Enable SimpleLogin Safari Extension in Safari -> Settings -> Extensions")
+    }
 }
 
-public typealias ApiUrl = String
-public typealias ApiKey = String
+#Preview {
+    ExtensionDisabledView()
+}

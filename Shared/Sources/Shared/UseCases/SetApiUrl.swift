@@ -22,11 +22,11 @@
 import Foundation
 
 public protocol SetApiUrlUseCase: Sendable {
-    func execute(_ apiUrl: String)
+    func execute(_ apiUrl: ApiUrl)
 }
 
 public extension SetApiUrlUseCase {
-    func callAsFunction(_ apiUrl: String) {
+    func callAsFunction(_ apiUrl: ApiUrl) {
         execute(apiUrl)
     }
 }
@@ -38,7 +38,7 @@ public final class SetApiUrl: SetApiUrlUseCase {
         self.keychain = keychain
     }
 
-    public func execute(_ apiUrl: String) {
+    public func execute(_ apiUrl: ApiUrl) {
         keychain.setValueToKeychain(apiUrl, for: Constants.apiUrlKey)
     }
 }

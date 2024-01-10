@@ -22,24 +22,45 @@ import Factory
 import Foundation
 import Shared
 
+enum MainViewModelState {
+    case loading
+    case safariExtensionDisabled
+    case loggedIn(ApiUrl, ApiKey)
+    case loggedOut
+    case error(Error)
+}
+
 @MainActor
 final class MainViewModel: ObservableObject {
-    @Published private(set) var status: SafariExtensionCheckingStatus = .inProgress
-    @Published private(set) var error: Error?
+    @Published private(set) var state: MainViewModelState = .loading
 
     private let getSafariExtensionState = resolve(\SharedUseCaseContainer.getSafariExtensionState)
+    private let getApiUrl = resolve(\SharedUseCaseContainer.getApiUrl)
+    private let getApiKey = resolve(\SharedUseCaseContainer.getApiKey)
 
     init() {}
 }
 
 extension MainViewModel {
-    func checkExtensionStatus() async {
+    func refreshState() async {
         do {
-            status = .inProgress
-            let state = try await getSafariExtensionState()
-            status = .done(state.isEnabled)
+            if case .error = state {
+                state = .loading
+            }
+
+            let safariExtensionState = try await getSafariExtensionState()
+            if safariExtensionState.isEnabled {
+                let apiUrl = getApiUrl()
+                if let apiKey = getApiKey() {
+                    state = .loggedIn(apiUrl, apiKey)
+                } else {
+                    state = .loggedOut
+                }
+            } else {
+                state = .safariExtensionDisabled
+            }
         } catch {
-            self.error = error
+            state = .error(error)
         }
     }
 }

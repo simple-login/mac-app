@@ -22,11 +22,11 @@
 import Foundation
 
 public protocol SetApiKeyUseCase: Sendable {
-    func execute(_ apiKey: String?)
+    func execute(_ apiKey: ApiKey?)
 }
 
 public extension SetApiKeyUseCase {
-    func callAsFunction(_ apiKey: String?) {
+    func callAsFunction(_ apiKey: ApiKey?) {
         execute(apiKey)
     }
 }
@@ -38,7 +38,7 @@ public final class SetApiKey: SetApiKeyUseCase {
         self.keychain = keychain
     }
 
-    public func execute(_ apiKey: String?) {
+    public func execute(_ apiKey: ApiKey?) {
         keychain.setValueToKeychain(apiKey, for: Constants.apiKeyKey)
     }
 }
