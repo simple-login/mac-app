@@ -18,11 +18,56 @@
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 
+import Shared
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.controlActiveState) var controlActiveState
+    @StateObject private var viewModel = ContentViewModel()
+
     var body: some View {
-        Text("Hello, World!")
+        ZStack {
+            if let error = viewModel.error {
+                errorView(error)
+            } else {
+                statusView(viewModel.status)
+            }
+        }
+        .animation(.default, value: viewModel.status)
+        .onChange(of: controlActiveState) { controlActiveState in
+            switch controlActiveState {
+            case .active, .key:
+                Task {
+                    await viewModel.checkExtensionStatus()
+                }
+            default:
+                break
+            }
+        }
+    }
+}
+
+private extension ContentView {
+    func errorView(_ error: Error) -> some View {
+        Text(error.localizedDescription)
+    }
+}
+
+private extension ContentView {
+    @ViewBuilder
+    func statusView(_ status: SafariExtensionCheckingStatus) -> some View {
+        switch status {
+        case .inProgress:
+            ProgressView()
+        case let .done(enabled):
+            if enabled {
+                Text("Extension is enabled")
+            } else {
+                Text("Extension is not enabled")
+            }
+        case .error(let error):
+            errorView(error)
+        }
     }
 }
 
