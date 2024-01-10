@@ -1,6 +1,6 @@
 //
-// Constants.swift
-// SimpleLogin - Created on 09/01/2024.
+// GetSafariExtensionState.swift
+// SimpleLogin - Created on 10/01/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -19,12 +19,23 @@
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 //
 
-import Foundation
+import SafariServices.SFSafariExtensionManager
 
-public enum Constants {
-    public static let extensionBundleId = "me.proton.simplelogin.macos.safari-extension"
-    public static let appGroup = "group.me.proton.simplelogin.macos"
-    public static let defaultApiUrl = "https://app.simplelogin.io"
-    public static let apiUrlKey = "API_URL"
-    public static let apiKeyKey = "API_KEY"
+public protocol GetSafariExtensionStateUseCase: Sendable {
+    func execute() async throws -> SFSafariExtensionState
+}
+
+public extension GetSafariExtensionStateUseCase {
+    func callAsFunction() async throws -> SFSafariExtensionState {
+        try await execute()
+    }
+}
+
+public final class GetSafariExtensionState: GetSafariExtensionStateUseCase {
+    public init() {}
+
+    public func execute() async throws -> SFSafariExtensionState {
+        let id = Constants.extensionBundleId
+        return try await SFSafariExtensionManager.stateOfSafariExtension(withIdentifier: id)
+    }
 }

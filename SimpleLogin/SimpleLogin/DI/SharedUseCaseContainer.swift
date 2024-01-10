@@ -38,6 +38,10 @@ private extension SharedUseCaseContainer {
 }
 
 extension SharedUseCaseContainer {
+    var getSafariExtensionState: Factory<GetSafariExtensionStateUseCase> {
+        self { GetSafariExtensionState() }
+    }
+
     var getApiUrl: Factory<GetApiUrlUseCase> {
         self { GetApiUrl(keychain: self.keychain) }
     }
