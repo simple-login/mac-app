@@ -54,9 +54,7 @@ private extension MainView {
         case .loggedOut:
             LoggedOutView()
         case let .loggedIn(apiUrl, apiKey):
-            LoggedInView(apiUrl: apiUrl, 
-                         apiKey: apiKey,
-                         onLogOut: { Task { await viewModel.logOut() } })
+            LoggedInView(apiUrl: apiUrl, apiKey: apiKey)
         case .error(let error):
             Text(error.localizedDescription)
         }

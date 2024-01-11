@@ -37,7 +37,6 @@ final class MainViewModel: ObservableObject {
     private let getSafariExtensionState = resolve(\SharedUseCaseContainer.getSafariExtensionState)
     private let getApiUrl = resolve(\SharedUseCaseContainer.getApiUrl)
     private let getApiKey = resolve(\SharedUseCaseContainer.getApiKey)
-    private let setApiKey = resolve(\SharedUseCaseContainer.setApiKey)
 
     init() {}
 }
@@ -63,12 +62,6 @@ extension MainViewModel {
         } catch {
             state = .error(error)
         }
-    }
-
-    func logOut() async {
-        setApiKey(nil)
-        state = .loading
-        await refreshState()
     }
 }
 
