@@ -65,4 +65,8 @@ extension SharedUseCaseContainer {
     var makeApiService: Factory<MakeApiServiceUseCase> {
         self { MakeApiService() }
     }
+
+    var getUserInfo: Factory<GetUserInfoUseCase> {
+        self { GetUserInfo(makeApiService: self.makeApiService()) }
+    }
 }

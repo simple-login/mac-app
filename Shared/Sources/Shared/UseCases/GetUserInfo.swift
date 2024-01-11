@@ -1,5 +1,5 @@
 //
-// MakeApiService.swift
+// GetUserInfo.swift
 // SimpleLogin - Created on 11/01/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
@@ -22,29 +22,26 @@
 import Foundation
 import SimpleLoginPackage
 
-public protocol MakeApiServiceUseCase: Sendable {
-    func execute(apiUrl: ApiUrl) throws -> APIServiceProtocol
+public protocol GetUserInfoUseCase: Sendable {
+    func execute(apiUrl: ApiUrl, apiKey: ApiKey) async throws -> UserInfo
 }
 
-public extension MakeApiServiceUseCase {
-    func callAsFunction(apiUrl: ApiUrl) throws -> APIServiceProtocol {
-        try execute(apiUrl: apiUrl)
+public extension GetUserInfoUseCase {
+    func callAsFunction(apiUrl: ApiUrl, apiKey: ApiKey) async throws -> UserInfo {
+        try await execute(apiUrl: apiUrl, apiKey: apiKey)
     }
 }
 
-public final class MakeApiService: MakeApiServiceUseCase {
-    public init() {}
+public final class GetUserInfo: GetUserInfoUseCase {
+    private let makeApiService: MakeApiServiceUseCase
 
-    public func execute(apiUrl: ApiUrl) throws -> APIServiceProtocol {
-        var printDebugInformation = false
-        #if DEBUG
-        printDebugInformation = true
-        #endif
-        guard let baseUrl = URL(string: apiUrl) else {
-            throw SLError.badApiUrl(apiUrl)
-        }
-        return APIService(baseURL: baseUrl, 
-                          session: .shared,
-                          printDebugInformation: printDebugInformation)
+    public init(makeApiService: MakeApiServiceUseCase) {
+        self.makeApiService = makeApiService
+    }
+
+    public func execute(apiUrl: ApiUrl, apiKey: ApiKey) async throws -> UserInfo {
+        let apiService = try makeApiService(apiUrl: apiUrl)
+        let endpoint = GetUserInfoEndpoint(apiKey: apiKey)
+        return try await apiService.execute(endpoint)
     }
 }
