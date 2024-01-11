@@ -30,6 +30,7 @@
 		35EB724F2B4ED718008BAF5A /* LoggedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB724E2B4ED718008BAF5A /* LoggedInView.swift */; };
 		35EB72512B4ED72B008BAF5A /* LoggedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72502B4ED72B008BAF5A /* LoggedOutView.swift */; };
 		35EB72532B4ED7FB008BAF5A /* LoggedInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72522B4ED7FB008BAF5A /* LoggedInViewModel.swift */; };
+		35EDF0B92B4FE9BE00A969FC /* SimpleLoginPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 35EDF0B82B4FE9BE00A969FC /* SimpleLoginPackage */; };
 		35F9F7A22B4DA537002B9430 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 35F9F7A12B4DA537002B9430 /* Factory */; };
 		35F9F7A42B4DA543002B9430 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 35F9F7A32B4DA543002B9430 /* Factory */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,7 @@
 			files = (
 				35841BDA2B4D9990007DC24A /* Shared in Frameworks */,
 				35F9F7A42B4DA543002B9430 /* Factory in Frameworks */,
+				35EDF0B92B4FE9BE00A969FC /* SimpleLoginPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +223,7 @@
 			packageProductDependencies = (
 				35841BD92B4D9990007DC24A /* Shared */,
 				35F9F7A32B4DA543002B9430 /* Factory */,
+				35EDF0B82B4FE9BE00A969FC /* SimpleLoginPackage */,
 			);
 			productName = "Safari Extension";
 			productReference = 3577E8832B4D521C00DCFA53 /* Safari Extension.appex */;
@@ -671,6 +674,11 @@
 			productName = Shared;
 		};
 		3597025A2B4FE69A0034CD02 /* SimpleLoginPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 359702592B4FE69A0034CD02 /* XCRemoteSwiftPackageReference "swift-package" */;
+			productName = SimpleLoginPackage;
+		};
+		35EDF0B82B4FE9BE00A969FC /* SimpleLoginPackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 359702592B4FE69A0034CD02 /* XCRemoteSwiftPackageReference "swift-package" */;
 			productName = SimpleLoginPackage;

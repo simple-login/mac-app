@@ -24,4 +24,5 @@ import Foundation
 public enum SLError: Error {
     case notUtf8Data
     case badJsonFormat
+    case badApiUrl(String)
 }

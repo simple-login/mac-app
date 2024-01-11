@@ -61,4 +61,8 @@ extension SharedUseCaseContainer {
     var setApiKey: Factory<SetApiKeyUseCase> {
         self { SetApiKey(keychain: self.keychain) }
     }
+
+    var makeApiService: Factory<MakeApiServiceUseCase> {
+        self { MakeApiService() }
+    }
 }
