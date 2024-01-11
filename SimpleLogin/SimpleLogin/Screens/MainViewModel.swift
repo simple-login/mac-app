@@ -25,7 +25,7 @@ import Shared
 enum MainViewModelState {
     case loading
     case safariExtensionDisabled
-    case loggedIn(ApiUrl, ApiKey)
+    case loggedIn
     case loggedOut
     case error(Error)
 }
@@ -50,9 +50,8 @@ extension MainViewModel {
 
             let safariExtensionState = try await getSafariExtensionState()
             if safariExtensionState.isEnabled {
-                let apiUrl = getApiUrl()
-                if let apiKey = getApiKey() {
-                    state = .loggedIn(apiUrl, apiKey)
+                if getApiKey() != nil {
+                    state = .loggedIn
                 } else {
                     state = .loggedOut
                 }
@@ -70,10 +69,9 @@ extension MainViewModelState: Equatable {
         switch (lhs, rhs) {
         case (.loading, .loading),
             (.safariExtensionDisabled, .safariExtensionDisabled),
+            (.loggedIn, .loggedIn),
             (.loggedOut, .loggedOut):
             return true
-        case let (.loggedIn(lApiUrl, lApiKey), .loggedIn(rApiUrl, rApiKey)):
-            return lApiUrl == rApiUrl && lApiKey == rApiKey
         case let (.error(lError), .error(rError)):
             return lError.localizedDescription == rError.localizedDescription
         default:

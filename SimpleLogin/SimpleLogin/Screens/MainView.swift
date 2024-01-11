@@ -53,8 +53,8 @@ private extension MainView {
             ExtensionDisabledView()
         case .loggedOut:
             LoggedOutView()
-        case let .loggedIn(apiUrl, apiKey):
-            LoggedInView(apiUrl: apiUrl, apiKey: apiKey)
+        case .loggedIn:
+            LoggedInView()
         case .error(let error):
             Text(error.localizedDescription)
         }

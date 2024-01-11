@@ -18,15 +18,39 @@
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 
+import Factory
 import Foundation
+import SimpleLoginPackage
 import Shared
 
-final class LoggedInViewModel: ObservableObject {
-    private let apiUrl: ApiUrl
-    private let apiKey: ApiKey
+enum LoggedInState {
+    case loading
+    case loaded(UserInfo)
+    case error(Error)
+}
 
-    init(apiUrl: ApiUrl, apiKey: ApiKey) {
-        self.apiUrl = apiUrl
-        self.apiKey = apiKey
+@MainActor
+final class LoggedInViewModel: ObservableObject {
+    @Published private(set) var state: LoggedInState = .loading
+    private let getApiUrl = resolve(\SharedUseCaseContainer.getApiUrl)
+    private let getApiKey = resolve(\SharedUseCaseContainer.getApiKey)
+    private let getUserInfo = resolve(\SharedUseCaseContainer.getUserInfo)
+
+    init() {}
+}
+
+extension LoggedInViewModel {
+    func refreshUserInfo() async {
+        do {
+            state = .loading
+            let apiUrl = getApiUrl()
+            guard let apiKey = getApiKey() else {
+                throw SLError.noApiKey
+            }
+            let userInfo = try await getUserInfo(apiUrl: apiUrl, apiKey: apiKey)
+            state = .loaded(userInfo)
+        } catch {
+            state = .error(error)
+        }
     }
 }
