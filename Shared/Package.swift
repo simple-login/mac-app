@@ -26,7 +26,8 @@ let package = Package(name: "Shared",
                           // package depends on.
                           .target(name: "Shared",
                                   dependencies: [
-                                      .product(name: "KeychainAccess", package: "KeychainAccess")
+                                      .product(name: "KeychainAccess", package: "KeychainAccess"),
+                                      .product(name: "SimpleLoginPackage", package: "swift-package")
                                   ],
                                   resources: [
                                       .process("Resources")

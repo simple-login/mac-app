@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,6 @@
 		3577E89C2B4D521C00DCFA53 /* Safari Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3577E8832B4D521C00DCFA53 /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		35841BCC2B4D5631007DC24A /* content_script in Resources */ = {isa = PBXBuildFile; fileRef = 35841BCB2B4D5631007DC24A /* content_script */; };
 		35841BD72B4D9563007DC24A /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 35841BD62B4D9563007DC24A /* Shared */; };
-		35841BDA2B4D9990007DC24A /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 35841BD92B4D9990007DC24A /* Shared */; };
 		3587B1532B4EAFCA00A5066B /* SharedToolingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B1522B4EAFCA00A5066B /* SharedToolingContainer.swift */; };
 		3587B1552B4EAFFC00A5066B /* SharedUseCaseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B1542B4EAFFC00A5066B /* SharedUseCaseContainer.swift */; };
 		3587B1562B4EB1E100A5066B /* SharedUseCaseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B1542B4EAFFC00A5066B /* SharedUseCaseContainer.swift */; };
@@ -25,6 +24,7 @@
 		359144C52B4D4ACB00FC5C41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */; };
 		359144CD2B4D4D4F00FC5C41 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359144CC2B4D4D4F00FC5C41 /* MainView.swift */; };
 		3597025B2B4FE69A0034CD02 /* SimpleLoginPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 3597025A2B4FE69A0034CD02 /* SimpleLoginPackage */; };
+		35DD2CE52B4FEDCB00AA0562 /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 35DD2CE42B4FEDCB00AA0562 /* Shared */; };
 		35EB72442B4ECA8A008BAF5A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */; };
 		35EB72492B4ED5F5008BAF5A /* ExtensionDisabledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72482B4ED5F5008BAF5A /* ExtensionDisabledView.swift */; };
 		35EB724F2B4ED718008BAF5A /* LoggedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB724E2B4ED718008BAF5A /* LoggedInView.swift */; };
@@ -79,6 +79,7 @@
 		359144CC2B4D4D4F00FC5C41 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		35B0F40C2B4F441300AACE1E /* SimpleLoginRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLoginRelease.entitlements; sourceTree = "<group>"; };
 		35B0F40D2B4F442400AACE1E /* Safari ExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Safari ExtensionRelease.entitlements"; sourceTree = "<group>"; };
+		35D256202B4FED9500F819CF /* Shared */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Shared; path = ../Shared; sourceTree = "<group>"; };
 		35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		35EB72482B4ED5F5008BAF5A /* ExtensionDisabledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDisabledView.swift; sourceTree = "<group>"; };
 		35EB724E2B4ED718008BAF5A /* LoggedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInView.swift; sourceTree = "<group>"; };
@@ -91,9 +92,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35841BDA2B4D9990007DC24A /* Shared in Frameworks */,
 				35F9F7A42B4DA543002B9430 /* Factory in Frameworks */,
 				35EDF0B92B4FE9BE00A969FC /* SimpleLoginPackage in Frameworks */,
+				35DD2CE52B4FEDCB00AA0562 /* Shared in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +147,7 @@
 			children = (
 				359144BC2B4D4ACA00FC5C41 /* SimpleLogin */,
 				3577E8842B4D521C00DCFA53 /* Safari Extension */,
+				35D256202B4FED9500F819CF /* Shared */,
 				359144BB2B4D4ACA00FC5C41 /* Products */,
 				35841BD82B4D9990007DC24A /* Frameworks */,
 			);
@@ -221,9 +223,9 @@
 			);
 			name = "Safari Extension";
 			packageProductDependencies = (
-				35841BD92B4D9990007DC24A /* Shared */,
 				35F9F7A32B4DA543002B9430 /* Factory */,
 				35EDF0B82B4FE9BE00A969FC /* SimpleLoginPackage */,
+				35DD2CE42B4FEDCB00AA0562 /* Shared */,
 			);
 			productName = "Safari Extension";
 			productReference = 3577E8832B4D521C00DCFA53 /* Safari Extension.appex */;
@@ -281,7 +283,6 @@
 			);
 			mainGroup = 359144B12B4D4ACA00FC5C41;
 			packageReferences = (
-				35841BD52B4D9563007DC24A /* XCLocalSwiftPackageReference "../Shared" */,
 				35F9F7A02B4DA536002B9430 /* XCRemoteSwiftPackageReference "Factory" */,
 				359702592B4FE69A0034CD02 /* XCRemoteSwiftPackageReference "swift-package" */,
 			);
@@ -637,13 +638,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		35841BD52B4D9563007DC24A /* XCLocalSwiftPackageReference "../Shared" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../Shared;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
 		359702592B4FE69A0034CD02 /* XCRemoteSwiftPackageReference "swift-package" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -668,15 +662,14 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Shared;
 		};
-		35841BD92B4D9990007DC24A /* Shared */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 35841BD52B4D9563007DC24A /* XCLocalSwiftPackageReference "../Shared" */;
-			productName = Shared;
-		};
 		3597025A2B4FE69A0034CD02 /* SimpleLoginPackage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 359702592B4FE69A0034CD02 /* XCRemoteSwiftPackageReference "swift-package" */;
 			productName = SimpleLoginPackage;
+		};
+		35DD2CE42B4FEDCB00AA0562 /* Shared */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Shared;
 		};
 		35EDF0B82B4FE9BE00A969FC /* SimpleLoginPackage */ = {
 			isa = XCSwiftPackageProductDependency;
