@@ -17,6 +17,15 @@
         "revision" : "84e546727d66f1adc5439debad16270d0fdd04e7",
         "version" : "4.2.2"
       }
+    },
+    {
+      "identity" : "swift-package",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/simple-login/swift-package",
+      "state" : {
+        "revision" : "d7e1661c5ab4fba1a5be8b166fbf55911c5786e3",
+        "version" : "2.1.1"
+      }
     }
   ],
   "version" : 2

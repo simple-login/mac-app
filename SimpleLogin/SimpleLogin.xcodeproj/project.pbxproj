@@ -24,6 +24,7 @@
 		359144C22B4D4ACB00FC5C41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359144C12B4D4ACB00FC5C41 /* Assets.xcassets */; };
 		359144C52B4D4ACB00FC5C41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */; };
 		359144CD2B4D4D4F00FC5C41 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359144CC2B4D4D4F00FC5C41 /* MainView.swift */; };
+		3597025B2B4FE69A0034CD02 /* SimpleLoginPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 3597025A2B4FE69A0034CD02 /* SimpleLoginPackage */; };
 		35EB72442B4ECA8A008BAF5A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */; };
 		35EB72492B4ED5F5008BAF5A /* ExtensionDisabledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72482B4ED5F5008BAF5A /* ExtensionDisabledView.swift */; };
 		35EB724F2B4ED718008BAF5A /* LoggedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB724E2B4ED718008BAF5A /* LoggedInView.swift */; };
@@ -100,6 +101,7 @@
 			files = (
 				35841BD72B4D9563007DC24A /* Shared in Frameworks */,
 				35F9F7A22B4DA537002B9430 /* Factory in Frameworks */,
+				3597025B2B4FE69A0034CD02 /* SimpleLoginPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +244,7 @@
 			packageProductDependencies = (
 				35841BD62B4D9563007DC24A /* Shared */,
 				35F9F7A12B4DA537002B9430 /* Factory */,
+				3597025A2B4FE69A0034CD02 /* SimpleLoginPackage */,
 			);
 			productName = SimpleLogin;
 			productReference = 359144BA2B4D4ACA00FC5C41 /* SimpleLogin.app */;
@@ -277,6 +280,7 @@
 			packageReferences = (
 				35841BD52B4D9563007DC24A /* XCLocalSwiftPackageReference "../Shared" */,
 				35F9F7A02B4DA536002B9430 /* XCRemoteSwiftPackageReference "Factory" */,
+				359702592B4FE69A0034CD02 /* XCRemoteSwiftPackageReference "swift-package" */,
 			);
 			productRefGroup = 359144BB2B4D4ACA00FC5C41 /* Products */;
 			projectDirPath = "";
@@ -638,6 +642,14 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		359702592B4FE69A0034CD02 /* XCRemoteSwiftPackageReference "swift-package" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simple-login/swift-package";
+			requirement = {
+				kind = exactVersion;
+				version = 2.1.1;
+			};
+		};
 		35F9F7A02B4DA536002B9430 /* XCRemoteSwiftPackageReference "Factory" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hmlongco/Factory";
@@ -657,6 +669,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 35841BD52B4D9563007DC24A /* XCLocalSwiftPackageReference "../Shared" */;
 			productName = Shared;
+		};
+		3597025A2B4FE69A0034CD02 /* SimpleLoginPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 359702592B4FE69A0034CD02 /* XCRemoteSwiftPackageReference "swift-package" */;
+			productName = SimpleLoginPackage;
 		};
 		35F9F7A12B4DA537002B9430 /* Factory */ = {
 			isa = XCSwiftPackageProductDependency;

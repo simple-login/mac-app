@@ -16,7 +16,8 @@ let package = Package(name: "Shared",
                                    targets: ["Shared"])
                       ],
                       dependencies: [
-                          .package(url: "https://github.com/kishikawakatsumi/KeychainAccess", exact: "4.2.2")
+                          .package(url: "https://github.com/kishikawakatsumi/KeychainAccess", exact: "4.2.2"),
+                          .package(url: "https://github.com/simple-login/swift-package", exact: "2.1.1")
                       ],
                       targets: [
                           // Targets are the basic building blocks of a package. A target can define a module or a
