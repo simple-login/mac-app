@@ -1,7 +1,7 @@
 {
-  "name": "SimpleLogin:Receive & Send emails anonymously",
+  "name": "SimpleLogin",
   "short_name": "SimpleLogin",
-  "description": "Easily create a different email for each website to hide your real email. Protect your inbox against spams, phishing, data breaches",
+  "description": "Easily create a different email for each website to hide your real email",
   "version": "2.10.2",
   "manifest_version": 2,
   "icons": {
