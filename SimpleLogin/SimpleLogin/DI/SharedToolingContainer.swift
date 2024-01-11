@@ -34,6 +34,6 @@ final class SharedToolingContainer: SharedContainer, AutoRegistering {
 
 extension SharedToolingContainer {
     var keychain: Factory<KeychainProvider> {
-        self { Keychain(accessGroup: Constants.appGroup) }
+        self { Keychain(service: Constants.appGroup, accessGroup: Constants.keychainAccessGroup) }
     }
 }

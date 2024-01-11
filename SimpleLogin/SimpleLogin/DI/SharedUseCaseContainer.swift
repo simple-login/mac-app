@@ -42,6 +42,10 @@ extension SharedUseCaseContainer {
         self { GetSafariExtensionState() }
     }
 
+    var processSafariExtensionEvent: Factory<ProcessSafariExtensionEventUseCase> {
+        self { ProcessSafariExtensionEvent() }
+    }
+
     var getApiUrl: Factory<GetApiUrlUseCase> {
         self { GetApiUrl(keychain: self.keychain) }
     }

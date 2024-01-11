@@ -75,6 +75,8 @@
 		359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		359144C62B4D4ACB00FC5C41 /* SimpleLogin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLogin.entitlements; sourceTree = "<group>"; };
 		359144CC2B4D4D4F00FC5C41 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		35B0F40C2B4F441300AACE1E /* SimpleLoginRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLoginRelease.entitlements; sourceTree = "<group>"; };
+		35B0F40D2B4F442400AACE1E /* Safari ExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Safari ExtensionRelease.entitlements"; sourceTree = "<group>"; };
 		35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		35EB72482B4ED5F5008BAF5A /* ExtensionDisabledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDisabledView.swift; sourceTree = "<group>"; };
 		35EB724E2B4ED718008BAF5A /* LoggedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInView.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		3577E8842B4D521C00DCFA53 /* Safari Extension */ = {
 			isa = PBXGroup;
 			children = (
+				35B0F40D2B4F442400AACE1E /* Safari ExtensionRelease.entitlements */,
 				3577E8852B4D521C00DCFA53 /* SafariWebExtensionHandler.swift */,
 				3577E8982B4D521C00DCFA53 /* Info.plist */,
 				3577E8992B4D521C00DCFA53 /* Safari_Extension.entitlements */,
@@ -156,6 +159,7 @@
 		359144BC2B4D4ACA00FC5C41 /* SimpleLogin */ = {
 			isa = PBXGroup;
 			children = (
+				35B0F40C2B4F441300AACE1E /* SimpleLoginRelease.entitlements */,
 				359144BD2B4D4ACA00FC5C41 /* SimpleLoginApp.swift */,
 				35F9F7A52B4DA573002B9430 /* DI */,
 				35EB72472B4ED4B4008BAF5A /* Screens */,
@@ -381,7 +385,7 @@
 		3577E89F2B4D521C00DCFA53 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "Safari Extension/Safari_Extension.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Safari Extension/Safari ExtensionRelease.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -568,7 +572,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = SimpleLogin/SimpleLogin.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SimpleLogin/SimpleLoginRelease.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;

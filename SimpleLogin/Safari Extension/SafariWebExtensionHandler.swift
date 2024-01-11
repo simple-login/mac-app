@@ -18,19 +18,17 @@
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 
-import SafariServices
+import Factory
 import os.log
+import SafariServices
 
 final class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
+    private let processSafariExtensionEvent = resolve(\SharedUseCaseContainer.processSafariExtensionEvent)
+    private let setApiUrl = resolve(\SharedUseCaseContainer.setApiUrl)
+    private let setApiKey = resolve(\SharedUseCaseContainer.setApiKey)
+
     func beginRequest(with context: NSExtensionContext) {
         let request = context.inputItems.first as? NSExtensionItem
-
-        let profile: UUID?
-        if #available(iOS 17.0, macOS 14.0, *) {
-            profile = request?.userInfo?[SFExtensionProfileKey] as? UUID
-        } else {
-            profile = request?.userInfo?["profile"] as? UUID
-        }
 
         let message: Any?
         if #available(iOS 17.0, macOS 14.0, *) {
@@ -39,11 +37,58 @@ final class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
             message = request?.userInfo?["message"]
         }
 
-        os_log(.default, "Received message from browser.runtime.sendNativeMessage: %@ (profile: %@)", String(describing: message), profile?.uuidString ?? "none")
-
-        let response = NSExtensionItem()
-        response.userInfo = [ SFExtensionMessageKey: [ "echo": message ] ]
-
-        context.completeRequest(returningItems: [ response ], completionHandler: nil)
+        if let message {
+            handle(message: String(describing: message))
+        }
     }
 }
+
+private extension SafariWebExtensionHandler {
+    func handle(message: String) {
+        os_log(.default, "[SimpleLogin] Received message %{public}@", message)
+        do {
+            switch try processSafariExtensionEvent(message) {
+            case let .loggedIn(apiUrl, apiKey):
+                setApiUrl(apiUrl)
+                setApiKey(apiKey)
+            case .loggedOut:
+                setApiKey(nil)
+            case .upgrade:
+                break
+            case .unknown:
+                break
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+}
+
+/*
+ Default implementation of `beginRequest` function for reference
+
+ func beginRequest(with context: NSExtensionContext) {
+     let request = context.inputItems.first as? NSExtensionItem
+
+     let profile: UUID?
+     if #available(iOS 17.0, macOS 14.0, *) {
+         profile = request?.userInfo?[SFExtensionProfileKey] as? UUID
+     } else {
+         profile = request?.userInfo?["profile"] as? UUID
+     }
+
+     let message: Any?
+     if #available(iOS 17.0, macOS 14.0, *) {
+         message = request?.userInfo?[SFExtensionMessageKey]
+     } else {
+         message = request?.userInfo?["message"]
+     }
+
+     os_log(.default, "Received message from browser.runtime.sendNativeMessage: %{public}@ (profile: %{public}@)", String(describing: message), profile?.uuidString ?? "none")
+
+     let response = NSExtensionItem()
+     response.userInfo = [ SFExtensionMessageKey: [ "echo": message ] ]
+
+     context.completeRequest(returningItems: [ response ], completionHandler: nil)
+ }
+ */

@@ -1,6 +1,6 @@
 //
-// KeychainProvider.swift
-// SimpleLogin - Created on 09/01/2024.
+// SafariExtensionEvent.swift
+// SimpleLogin - Created on 10/01/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -20,22 +20,10 @@
 //
 
 import Foundation
-import os.object
-import KeychainAccess
 
-public protocol KeychainProvider: Sendable {
-    func getValueFromKeychain(for key: String) -> String?
-    func setValueToKeychain(_ value: String?, for key: String)
-}
-
-extension Keychain: KeychainProvider {
-    public func getValueFromKeychain(for key: String) -> String? {
-        os_log(.default, "[SimpleLogin] Get value for key %{public}@", key)
-        return self[key]
-    }
-    
-    public func setValueToKeychain(_ value: String?, for key: String) {
-        os_log(.default, "[SimpleLogin] Set value %{public}@ for key %{public}@", value ?? "", key)
-        self[key] = value
-    }
+public enum SafariExtensionEvent {
+    case loggedIn(ApiUrl, ApiKey)
+    case loggedOut
+    case upgrade
+    case unknown
 }
