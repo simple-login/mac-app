@@ -22,12 +22,12 @@
 import Foundation
 
 public protocol GetApiUrlUseCase: Sendable {
-    func execute() -> ApiUrl
+    func execute() async throws-> ApiUrl
 }
 
 public extension GetApiUrlUseCase {
-    func callAsFunction() -> ApiUrl {
-        execute()
+    func callAsFunction() async throws -> ApiUrl {
+        try await execute()
     }
 }
 
@@ -38,7 +38,7 @@ public final class GetApiUrl: GetApiUrlUseCase {
         self.keychain = keychain
     }
 
-    public func execute() -> ApiUrl {
-        keychain.getValueFromKeychain(for: Constants.apiUrlKey) ?? Constants.defaultApiUrl
+    public func execute() async throws -> ApiUrl {
+        try await keychain.getValueFromKeychain(for: Constants.apiUrlKey) ?? Constants.defaultApiUrl
     }
 }

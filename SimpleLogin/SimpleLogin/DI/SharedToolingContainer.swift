@@ -20,7 +20,7 @@
 
 import Factory
 import Foundation
-import KeychainAccess
+import SimpleKeychain
 import Shared
 
 final class SharedToolingContainer: SharedContainer, AutoRegistering {
@@ -34,6 +34,6 @@ final class SharedToolingContainer: SharedContainer, AutoRegistering {
 
 extension SharedToolingContainer {
     var keychain: Factory<KeychainProvider> {
-        self { Keychain(service: Constants.appGroup, accessGroup: Constants.keychainAccessGroup) }
+        self { SimpleKeychain(service: Constants.appGroup, accessGroup: Constants.keychainAccessGroup)}
     }
 }

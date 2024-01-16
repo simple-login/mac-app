@@ -22,12 +22,12 @@
 import Foundation
 
 public protocol GetApiKeyUseCase: Sendable {
-    func execute() -> ApiKey?
+    func execute() async throws -> ApiKey?
 }
 
 public extension GetApiKeyUseCase {
-    func callAsFunction() -> ApiKey? {
-        execute()
+    func callAsFunction() async throws -> ApiKey? {
+        try await execute()
     }
 }
 
@@ -38,7 +38,7 @@ public final class GetApiKey: GetApiKeyUseCase {
         self.keychain = keychain
     }
 
-    public func execute() -> ApiKey? {
-        keychain.getValueFromKeychain(for: Constants.apiKeyKey)
+    public func execute() async throws -> ApiKey? {
+        try await keychain.getValueFromKeychain(for: Constants.apiKeyKey)
     }
 }

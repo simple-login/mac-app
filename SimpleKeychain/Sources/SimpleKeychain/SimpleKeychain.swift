@@ -110,6 +110,7 @@ private extension SimpleKeychain {
         query[kSecClass] = itemClassType.rawValue
         query[kSecAttrAccount] = key
         query[kSecAttrAccessible] = access.value
+        query[kSecUseDataProtectionKeychain] = kCFBooleanTrue
 
         if let data {
             query[kSecValueData] = data

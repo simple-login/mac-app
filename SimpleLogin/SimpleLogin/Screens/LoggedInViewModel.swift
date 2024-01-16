@@ -43,8 +43,8 @@ extension LoggedInViewModel {
     func refreshUserInfo() async {
         do {
             state = .loading
-            let apiUrl = getApiUrl()
-            guard let apiKey = getApiKey() else {
+            let apiUrl = try await getApiUrl()
+            guard let apiKey = try await getApiKey() else {
                 throw SLError.noApiKey
             }
             let userInfo = try await getUserInfo(apiUrl: apiUrl, apiKey: apiKey)

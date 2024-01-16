@@ -21,21 +21,25 @@
 
 import Foundation
 import os.object
-import KeychainAccess
+import SimpleKeychain
 
 public protocol KeychainProvider: Sendable {
-    func getValueFromKeychain(for key: String) -> String?
-    func setValueToKeychain(_ value: String?, for key: String)
+    func getValueFromKeychain(for key: String) async throws -> String?
+    func setValueToKeychain(_ value: String?, for key: String) async throws
 }
 
-extension Keychain: KeychainProvider {
-    public func getValueFromKeychain(for key: String) -> String? {
-        os_log(.default, "[SimpleLogin] Get value for key %{public}@", key)
-        return self[key]
+extension SimpleKeychain: KeychainProvider {
+    public func getValueFromKeychain(for key: String) async throws -> String? {
+        runIfDebug {
+            os_log(.default, "[SimpleLogin] Get value for key %{public}@", key)
+        }
+        return try get(key: key)
     }
-    
-    public func setValueToKeychain(_ value: String?, for key: String) {
-        os_log(.default, "[SimpleLogin] Set value %{public}@ for key %{public}@", value ?? "", key)
-        self[key] = value
+
+    public func setValueToKeychain(_ value: String?, for key: String) async throws {
+        runIfDebug {
+            os_log(.default, "[SimpleLogin] Set value %{public}@ for key %{public}@", value ?? "", key)
+        }
+        try set(value, for: key)
     }
 }

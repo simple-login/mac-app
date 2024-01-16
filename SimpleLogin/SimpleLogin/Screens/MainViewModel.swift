@@ -20,6 +20,7 @@
 
 import Factory
 import Foundation
+import SimpleKeychain
 import Shared
 
 enum MainViewModelState {
@@ -50,7 +51,7 @@ extension MainViewModel {
 
             let safariExtensionState = try await getSafariExtensionState()
             if safariExtensionState.isEnabled {
-                if getApiKey() != nil {
+                if try await getApiKey() != nil {
                     state = .loggedIn
                 } else {
                     state = .loggedOut
@@ -59,6 +60,12 @@ extension MainViewModel {
                 state = .safariExtensionDisabled
             }
         } catch {
+            if let keychainError = error as? SimpleKeychainError, 
+                case .itemNotFound = keychainError {
+                // Ignore item not found error
+                state = .loggedOut
+                return
+            }
             state = .error(error)
         }
     }

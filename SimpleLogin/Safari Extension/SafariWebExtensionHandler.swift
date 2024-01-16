@@ -21,6 +21,7 @@
 import Factory
 import os.log
 import SafariServices
+import Shared
 
 final class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     private let processSafariExtensionEvent = resolve(\SharedUseCaseContainer.processSafariExtensionEvent)
@@ -38,21 +39,25 @@ final class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
         }
 
         if let message {
-            handle(message: String(describing: message))
+            Task { [weak self] in
+                await self?.handle(message: String(describing: message))
+            }
         }
     }
 }
 
 private extension SafariWebExtensionHandler {
-    func handle(message: String) {
-        os_log(.default, "[SimpleLogin] Received message %{public}@", message)
+    func handle(message: String) async {
+        runIfDebug {
+            os_log(.default, "[SimpleLogin] Received message %{public}@", message)
+        }
         do {
             switch try processSafariExtensionEvent(message) {
             case let .loggedIn(apiUrl, apiKey):
-                setApiUrl(apiUrl)
-                setApiKey(apiKey)
+                try await setApiUrl(apiUrl)
+                try await setApiKey(apiKey)
             case .loggedOut:
-                setApiKey(nil)
+                try await setApiKey(nil)
             case .upgrade:
                 break
             case .unknown:
