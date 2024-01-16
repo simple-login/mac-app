@@ -16,7 +16,7 @@ let package = Package(name: "Shared",
                                  targets: ["Shared"])
                       ],
                       dependencies: [
-                        .package(name: "SimpleKeychain", path: "../SimpleKeychain"),
+                        .package(url: "https://github.com/lukacs-m/SimpleKeychain", branch: "main"),
                         .package(url: "https://github.com/simple-login/swift-package", exact: "2.1.1")
                       ],
                       targets: [
