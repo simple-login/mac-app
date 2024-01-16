@@ -78,6 +78,7 @@
 		359144C62B4D4ACB00FC5C41 /* SimpleLogin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLogin.entitlements; sourceTree = "<group>"; };
 		359144CC2B4D4D4F00FC5C41 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		35AD4C202B56983300B7B6A7 /* SimpleKeychain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SimpleKeychain; path = ../SimpleKeychain; sourceTree = "<group>"; };
+		35AD4C212B56B99900B7B6A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		35B0F40C2B4F441300AACE1E /* SimpleLoginRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLoginRelease.entitlements; sourceTree = "<group>"; };
 		35B0F40D2B4F442400AACE1E /* Safari ExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Safari ExtensionRelease.entitlements"; sourceTree = "<group>"; };
 		35D256202B4FED9500F819CF /* Shared */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Shared; path = ../Shared; sourceTree = "<group>"; };
@@ -167,6 +168,7 @@
 		359144BC2B4D4ACA00FC5C41 /* SimpleLogin */ = {
 			isa = PBXGroup;
 			children = (
+				35AD4C212B56B99900B7B6A7 /* Info.plist */,
 				35B0F40C2B4F441300AACE1E /* SimpleLoginRelease.entitlements */,
 				359144BD2B4D4ACA00FC5C41 /* SimpleLoginApp.swift */,
 				35F9F7A52B4DA573002B9430 /* DI */,
@@ -565,6 +567,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SimpleLogin/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -598,6 +601,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SimpleLogin/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
