@@ -77,6 +77,7 @@
 		359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		359144C62B4D4ACB00FC5C41 /* SimpleLogin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLogin.entitlements; sourceTree = "<group>"; };
 		359144CC2B4D4D4F00FC5C41 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		35AD4C202B56983300B7B6A7 /* SimpleKeychain */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SimpleKeychain; path = ../SimpleKeychain; sourceTree = "<group>"; };
 		35B0F40C2B4F441300AACE1E /* SimpleLoginRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLoginRelease.entitlements; sourceTree = "<group>"; };
 		35B0F40D2B4F442400AACE1E /* Safari ExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Safari ExtensionRelease.entitlements"; sourceTree = "<group>"; };
 		35D256202B4FED9500F819CF /* Shared */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Shared; path = ../Shared; sourceTree = "<group>"; };
@@ -147,6 +148,7 @@
 			children = (
 				359144BC2B4D4ACA00FC5C41 /* SimpleLogin */,
 				3577E8842B4D521C00DCFA53 /* Safari Extension */,
+				35AD4C202B56983300B7B6A7 /* SimpleKeychain */,
 				35D256202B4FED9500F819CF /* Shared */,
 				359144BB2B4D4ACA00FC5C41 /* Products */,
 				35841BD82B4D9990007DC24A /* Frameworks */,
