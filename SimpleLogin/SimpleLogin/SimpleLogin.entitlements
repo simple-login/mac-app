@@ -14,7 +14,7 @@
 	<true/>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)$(TeamIdentifierPrefix).group.me.proton.simplelogin.macos</string>
+		<string>$(AppIdentifierPrefix)group.me.proton.simplelogin.macos</string>
 	</array>
 </dict>
 </plist>
