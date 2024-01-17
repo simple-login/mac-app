@@ -62,6 +62,7 @@ private extension SafariWebExtensionHandler {
                 break
             }
         } catch {
+            Logger.logError(for: "SafariWebExtensionHandler", with: "Error handling message \(error.localizedDescription)")
             print(error.localizedDescription)
         }
     }
