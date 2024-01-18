@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "factory",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hmlongco/Factory",
+      "state" : {
+        "revision" : "8ca11a7bd1ede031e8e6d7a912bb116e2e43961b",
+        "version" : "2.3.1"
+      }
+    },
+    {
+      "identity" : "simplekeychain",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lukacs-m/SimpleKeychain",
+      "state" : {
+        "branch" : "main",
+        "revision" : "82afa78dab0e7baa8b005cd80dac982ce0e29e05"
+      }
+    },
+    {
+      "identity" : "swift-package",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/simple-login/swift-package",
+      "state" : {
+        "revision" : "d7e1661c5ab4fba1a5be8b166fbf55911c5786e3",
+        "version" : "2.1.1"
+      }
+    }
+  ],
+  "version" : 2
+}

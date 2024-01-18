@@ -1,0 +1,702 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		353136DE2B4D544200695FEA /* popup in Resources */ = {isa = PBXBuildFile; fileRef = 353136DD2B4D544200695FEA /* popup */; };
+		354247B72B4EB279000EF604 /* SharedToolingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B1522B4EAFCA00A5066B /* SharedToolingContainer.swift */; };
+		3577E8862B4D521C00DCFA53 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3577E8852B4D521C00DCFA53 /* SafariWebExtensionHandler.swift */; };
+		3577E88B2B4D521C00DCFA53 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 3577E88A2B4D521C00DCFA53 /* images */; };
+		3577E88D2B4D521C00DCFA53 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 3577E88C2B4D521C00DCFA53 /* manifest.json */; };
+		3577E88F2B4D521C00DCFA53 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = 3577E88E2B4D521C00DCFA53 /* background.js */; };
+		3577E89C2B4D521C00DCFA53 /* Safari Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3577E8832B4D521C00DCFA53 /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		35841BCC2B4D5631007DC24A /* content_script in Resources */ = {isa = PBXBuildFile; fileRef = 35841BCB2B4D5631007DC24A /* content_script */; };
+		35841BD72B4D9563007DC24A /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 35841BD62B4D9563007DC24A /* Shared */; };
+		3587B1532B4EAFCA00A5066B /* SharedToolingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B1522B4EAFCA00A5066B /* SharedToolingContainer.swift */; };
+		3587B1552B4EAFFC00A5066B /* SharedUseCaseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B1542B4EAFFC00A5066B /* SharedUseCaseContainer.swift */; };
+		3587B1562B4EB1E100A5066B /* SharedUseCaseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B1542B4EAFFC00A5066B /* SharedUseCaseContainer.swift */; };
+		359144BE2B4D4ACA00FC5C41 /* SimpleLoginApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359144BD2B4D4ACA00FC5C41 /* SimpleLoginApp.swift */; };
+		359144C22B4D4ACB00FC5C41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359144C12B4D4ACB00FC5C41 /* Assets.xcassets */; };
+		359144C52B4D4ACB00FC5C41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */; };
+		359144CD2B4D4D4F00FC5C41 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359144CC2B4D4D4F00FC5C41 /* MainView.swift */; };
+		3597025B2B4FE69A0034CD02 /* SimpleLoginPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 3597025A2B4FE69A0034CD02 /* SimpleLoginPackage */; };
+		35DD2CE52B4FEDCB00AA0562 /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 35DD2CE42B4FEDCB00AA0562 /* Shared */; };
+		35EB72442B4ECA8A008BAF5A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */; };
+		35EB72492B4ED5F5008BAF5A /* ExtensionDisabledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72482B4ED5F5008BAF5A /* ExtensionDisabledView.swift */; };
+		35EB724F2B4ED718008BAF5A /* LoggedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB724E2B4ED718008BAF5A /* LoggedInView.swift */; };
+		35EB72512B4ED72B008BAF5A /* LoggedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72502B4ED72B008BAF5A /* LoggedOutView.swift */; };
+		35EB72532B4ED7FB008BAF5A /* LoggedInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72522B4ED7FB008BAF5A /* LoggedInViewModel.swift */; };
+		35EDF0B92B4FE9BE00A969FC /* SimpleLoginPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 35EDF0B82B4FE9BE00A969FC /* SimpleLoginPackage */; };
+		35F9F7A22B4DA537002B9430 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 35F9F7A12B4DA537002B9430 /* Factory */; };
+		35F9F7A42B4DA543002B9430 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 35F9F7A32B4DA543002B9430 /* Factory */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3577E89A2B4D521C00DCFA53 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 359144B22B4D4ACA00FC5C41 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3577E8822B4D521C00DCFA53;
+			remoteInfo = "Safari Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3577E89D2B4D521C00DCFA53 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3577E89C2B4D521C00DCFA53 /* Safari Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		353136DD2B4D544200695FEA /* popup */ = {isa = PBXFileReference; lastKnownFileType = folder; path = popup; sourceTree = "<group>"; };
+		3577E8832B4D521C00DCFA53 /* Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3577E8852B4D521C00DCFA53 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		3577E88A2B4D521C00DCFA53 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		3577E88C2B4D521C00DCFA53 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
+		3577E88E2B4D521C00DCFA53 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = background.js; sourceTree = "<group>"; };
+		3577E8982B4D521C00DCFA53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3577E8992B4D521C00DCFA53 /* Safari_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Safari_Extension.entitlements; sourceTree = "<group>"; };
+		35841BCB2B4D5631007DC24A /* content_script */ = {isa = PBXFileReference; lastKnownFileType = folder; path = content_script; sourceTree = "<group>"; };
+		3587B1522B4EAFCA00A5066B /* SharedToolingContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedToolingContainer.swift; sourceTree = "<group>"; };
+		3587B1542B4EAFFC00A5066B /* SharedUseCaseContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedUseCaseContainer.swift; sourceTree = "<group>"; };
+		359144BA2B4D4ACA00FC5C41 /* SimpleLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		359144BD2B4D4ACA00FC5C41 /* SimpleLoginApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLoginApp.swift; sourceTree = "<group>"; };
+		359144C12B4D4ACB00FC5C41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		359144C62B4D4ACB00FC5C41 /* SimpleLogin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLogin.entitlements; sourceTree = "<group>"; };
+		359144CC2B4D4D4F00FC5C41 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		35AD4C212B56B99900B7B6A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		35B0F40C2B4F441300AACE1E /* SimpleLoginRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLoginRelease.entitlements; sourceTree = "<group>"; };
+		35B0F40D2B4F442400AACE1E /* Safari ExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Safari ExtensionRelease.entitlements"; sourceTree = "<group>"; };
+		35D256202B4FED9500F819CF /* Shared */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Shared; path = ../Shared; sourceTree = "<group>"; };
+		35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		35EB72482B4ED5F5008BAF5A /* ExtensionDisabledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDisabledView.swift; sourceTree = "<group>"; };
+		35EB724E2B4ED718008BAF5A /* LoggedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInView.swift; sourceTree = "<group>"; };
+		35EB72502B4ED72B008BAF5A /* LoggedOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutView.swift; sourceTree = "<group>"; };
+		35EB72522B4ED7FB008BAF5A /* LoggedInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3577E8802B4D521C00DCFA53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35F9F7A42B4DA543002B9430 /* Factory in Frameworks */,
+				35EDF0B92B4FE9BE00A969FC /* SimpleLoginPackage in Frameworks */,
+				35DD2CE52B4FEDCB00AA0562 /* Shared in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		359144B72B4D4ACA00FC5C41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35841BD72B4D9563007DC24A /* Shared in Frameworks */,
+				35F9F7A22B4DA537002B9430 /* Factory in Frameworks */,
+				3597025B2B4FE69A0034CD02 /* SimpleLoginPackage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3577E8842B4D521C00DCFA53 /* Safari Extension */ = {
+			isa = PBXGroup;
+			children = (
+				35B0F40D2B4F442400AACE1E /* Safari ExtensionRelease.entitlements */,
+				3577E8852B4D521C00DCFA53 /* SafariWebExtensionHandler.swift */,
+				3577E8982B4D521C00DCFA53 /* Info.plist */,
+				3577E8992B4D521C00DCFA53 /* Safari_Extension.entitlements */,
+				3577E8872B4D521C00DCFA53 /* Resources */,
+			);
+			path = "Safari Extension";
+			sourceTree = "<group>";
+		};
+		3577E8872B4D521C00DCFA53 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				35841BCB2B4D5631007DC24A /* content_script */,
+				3577E88A2B4D521C00DCFA53 /* images */,
+				353136DD2B4D544200695FEA /* popup */,
+				3577E88E2B4D521C00DCFA53 /* background.js */,
+				3577E88C2B4D521C00DCFA53 /* manifest.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		35841BD82B4D9990007DC24A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		359144B12B4D4ACA00FC5C41 = {
+			isa = PBXGroup;
+			children = (
+				359144BC2B4D4ACA00FC5C41 /* SimpleLogin */,
+				3577E8842B4D521C00DCFA53 /* Safari Extension */,
+				35D256202B4FED9500F819CF /* Shared */,
+				359144BB2B4D4ACA00FC5C41 /* Products */,
+				35841BD82B4D9990007DC24A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		359144BB2B4D4ACA00FC5C41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				359144BA2B4D4ACA00FC5C41 /* SimpleLogin.app */,
+				3577E8832B4D521C00DCFA53 /* Safari Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		359144BC2B4D4ACA00FC5C41 /* SimpleLogin */ = {
+			isa = PBXGroup;
+			children = (
+				35AD4C212B56B99900B7B6A7 /* Info.plist */,
+				35B0F40C2B4F441300AACE1E /* SimpleLoginRelease.entitlements */,
+				359144BD2B4D4ACA00FC5C41 /* SimpleLoginApp.swift */,
+				35F9F7A52B4DA573002B9430 /* DI */,
+				35EB72472B4ED4B4008BAF5A /* Screens */,
+				359144C12B4D4ACB00FC5C41 /* Assets.xcassets */,
+				359144C62B4D4ACB00FC5C41 /* SimpleLogin.entitlements */,
+				359144C32B4D4ACB00FC5C41 /* Preview Content */,
+			);
+			path = SimpleLogin;
+			sourceTree = "<group>";
+		};
+		359144C32B4D4ACB00FC5C41 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		35EB72472B4ED4B4008BAF5A /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				35EB72482B4ED5F5008BAF5A /* ExtensionDisabledView.swift */,
+				35EB724E2B4ED718008BAF5A /* LoggedInView.swift */,
+				35EB72522B4ED7FB008BAF5A /* LoggedInViewModel.swift */,
+				35EB72502B4ED72B008BAF5A /* LoggedOutView.swift */,
+				359144CC2B4D4D4F00FC5C41 /* MainView.swift */,
+				35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		35F9F7A52B4DA573002B9430 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				3587B1522B4EAFCA00A5066B /* SharedToolingContainer.swift */,
+				3587B1542B4EAFFC00A5066B /* SharedUseCaseContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3577E8822B4D521C00DCFA53 /* Safari Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3577E8A02B4D521C00DCFA53 /* Build configuration list for PBXNativeTarget "Safari Extension" */;
+			buildPhases = (
+				3577E87F2B4D521C00DCFA53 /* Sources */,
+				3577E8802B4D521C00DCFA53 /* Frameworks */,
+				3577E8812B4D521C00DCFA53 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Safari Extension";
+			packageProductDependencies = (
+				35F9F7A32B4DA543002B9430 /* Factory */,
+				35EDF0B82B4FE9BE00A969FC /* SimpleLoginPackage */,
+				35DD2CE42B4FEDCB00AA0562 /* Shared */,
+			);
+			productName = "Safari Extension";
+			productReference = 3577E8832B4D521C00DCFA53 /* Safari Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		359144B92B4D4ACA00FC5C41 /* SimpleLogin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 359144C92B4D4ACB00FC5C41 /* Build configuration list for PBXNativeTarget "SimpleLogin" */;
+			buildPhases = (
+				359144B62B4D4ACA00FC5C41 /* Sources */,
+				359144B72B4D4ACA00FC5C41 /* Frameworks */,
+				359144B82B4D4ACA00FC5C41 /* Resources */,
+				3577E89D2B4D521C00DCFA53 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3577E89B2B4D521C00DCFA53 /* PBXTargetDependency */,
+			);
+			name = SimpleLogin;
+			packageProductDependencies = (
+				35841BD62B4D9563007DC24A /* Shared */,
+				35F9F7A12B4DA537002B9430 /* Factory */,
+				3597025A2B4FE69A0034CD02 /* SimpleLoginPackage */,
+			);
+			productName = SimpleLogin;
+			productReference = 359144BA2B4D4ACA00FC5C41 /* SimpleLogin.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		359144B22B4D4ACA00FC5C41 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					3577E8822B4D521C00DCFA53 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					359144B92B4D4ACA00FC5C41 = {
+						CreatedOnToolsVersion = 15.1;
+					};
+				};
+			};
+			buildConfigurationList = 359144B52B4D4ACA00FC5C41 /* Build configuration list for PBXProject "SimpleLogin" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 359144B12B4D4ACA00FC5C41;
+			packageReferences = (
+				35F9F7A02B4DA536002B9430 /* XCRemoteSwiftPackageReference "Factory" */,
+				359702592B4FE69A0034CD02 /* XCRemoteSwiftPackageReference "swift-package" */,
+			);
+			productRefGroup = 359144BB2B4D4ACA00FC5C41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				359144B92B4D4ACA00FC5C41 /* SimpleLogin */,
+				3577E8822B4D521C00DCFA53 /* Safari Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3577E8812B4D521C00DCFA53 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35841BCC2B4D5631007DC24A /* content_script in Resources */,
+				3577E88F2B4D521C00DCFA53 /* background.js in Resources */,
+				3577E88B2B4D521C00DCFA53 /* images in Resources */,
+				3577E88D2B4D521C00DCFA53 /* manifest.json in Resources */,
+				353136DE2B4D544200695FEA /* popup in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		359144B82B4D4ACA00FC5C41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				359144C52B4D4ACB00FC5C41 /* Preview Assets.xcassets in Resources */,
+				359144C22B4D4ACB00FC5C41 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3577E87F2B4D521C00DCFA53 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				354247B72B4EB279000EF604 /* SharedToolingContainer.swift in Sources */,
+				3587B1562B4EB1E100A5066B /* SharedUseCaseContainer.swift in Sources */,
+				3577E8862B4D521C00DCFA53 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		359144B62B4D4ACA00FC5C41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35EB72492B4ED5F5008BAF5A /* ExtensionDisabledView.swift in Sources */,
+				359144BE2B4D4ACA00FC5C41 /* SimpleLoginApp.swift in Sources */,
+				35EB724F2B4ED718008BAF5A /* LoggedInView.swift in Sources */,
+				35EB72512B4ED72B008BAF5A /* LoggedOutView.swift in Sources */,
+				3587B1532B4EAFCA00A5066B /* SharedToolingContainer.swift in Sources */,
+				35EB72532B4ED7FB008BAF5A /* LoggedInViewModel.swift in Sources */,
+				3587B1552B4EAFFC00A5066B /* SharedUseCaseContainer.swift in Sources */,
+				359144CD2B4D4D4F00FC5C41 /* MainView.swift in Sources */,
+				35EB72442B4ECA8A008BAF5A /* MainViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3577E89B2B4D521C00DCFA53 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3577E8822B4D521C00DCFA53 /* Safari Extension */;
+			targetProxy = 3577E89A2B4D521C00DCFA53 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3577E89E2B4D521C00DCFA53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Safari Extension/Safari_Extension.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Safari Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Safari Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.proton.simplelogin.macos.safari-extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		3577E89F2B4D521C00DCFA53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Safari Extension/Safari ExtensionRelease.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Safari Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Safari Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.proton.simplelogin.macos.safari-extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		359144C72B4D4ACB00FC5C41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		359144C82B4D4ACB00FC5C41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		359144CA2B4D4ACB00FC5C41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SimpleLogin/SimpleLogin.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"SimpleLogin/Preview Content\"";
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SimpleLogin/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.proton.simplelogin.macos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		359144CB2B4D4ACB00FC5C41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SimpleLogin/SimpleLoginRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"SimpleLogin/Preview Content\"";
+				DEVELOPMENT_TEAM = 2SB5Z68H26;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SimpleLogin/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = me.proton.simplelogin.macos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3577E8A02B4D521C00DCFA53 /* Build configuration list for PBXNativeTarget "Safari Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3577E89E2B4D521C00DCFA53 /* Debug */,
+				3577E89F2B4D521C00DCFA53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		359144B52B4D4ACA00FC5C41 /* Build configuration list for PBXProject "SimpleLogin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				359144C72B4D4ACB00FC5C41 /* Debug */,
+				359144C82B4D4ACB00FC5C41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		359144C92B4D4ACB00FC5C41 /* Build configuration list for PBXNativeTarget "SimpleLogin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				359144CA2B4D4ACB00FC5C41 /* Debug */,
+				359144CB2B4D4ACB00FC5C41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		359702592B4FE69A0034CD02 /* XCRemoteSwiftPackageReference "swift-package" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simple-login/swift-package";
+			requirement = {
+				kind = exactVersion;
+				version = 2.1.1;
+			};
+		};
+		35F9F7A02B4DA536002B9430 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		35841BD62B4D9563007DC24A /* Shared */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Shared;
+		};
+		3597025A2B4FE69A0034CD02 /* SimpleLoginPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 359702592B4FE69A0034CD02 /* XCRemoteSwiftPackageReference "swift-package" */;
+			productName = SimpleLoginPackage;
+		};
+		35DD2CE42B4FEDCB00AA0562 /* Shared */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Shared;
+		};
+		35EDF0B82B4FE9BE00A969FC /* SimpleLoginPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 359702592B4FE69A0034CD02 /* XCRemoteSwiftPackageReference "swift-package" */;
+			productName = SimpleLoginPackage;
+		};
+		35F9F7A12B4DA537002B9430 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35F9F7A02B4DA536002B9430 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
+		35F9F7A32B4DA543002B9430 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 35F9F7A02B4DA536002B9430 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 359144B22B4D4ACA00FC5C41 /* Project object */;
+}

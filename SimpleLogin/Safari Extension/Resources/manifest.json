@@ -1,0 +1,51 @@
+{
+  "name": "SimpleLogin",
+  "short_name": "SimpleLogin",
+  "description": "Easily create a different email for each website to hide your real email",
+  "version": "2.10.2",
+  "manifest_version": 2,
+  "icons": {
+    "16": "images/icon-simplelogin.png",
+    "32": "images/icon-simplelogin.png",
+    "48": "images/icon-simplelogin.png",
+    "96": "images/icon-simplelogin.png",
+    "128": "images/icon-simplelogin.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus",
+    "https://*.simplelogin.io/*",
+    "http://*/*",
+    "https://*/*",
+    "nativeMessaging"
+  ],
+  "browser_action": {
+    "default_title": "SimpleLogin",
+    "default_popup": "popup/popup.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "addon@simplelogin"
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "commands": {
+    "generate-random-alias": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+X"
+      },
+      "description": "Generate a random email alias"
+    },
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S"
+      },
+      "description": "Open the extension action menu"
+    }
+  }
+}
