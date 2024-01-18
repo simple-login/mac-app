@@ -1,5 +1,5 @@
 //
-// MakeApiService.swift
+// ApiServiceProvider.swift
 // SimpleLogin - Created on 11/01/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
@@ -22,24 +22,24 @@
 import Foundation
 import SimpleLoginPackage
 
-public protocol MakeApiServiceUseCase: Sendable {
+public protocol ApiServiceProviderUseCase: Sendable {
     func execute(apiUrl: ApiUrl) throws -> APIServiceProtocol
 }
 
-public extension MakeApiServiceUseCase {
+public extension ApiServiceProviderUseCase {
     func callAsFunction(apiUrl: ApiUrl) throws -> APIServiceProtocol {
         try execute(apiUrl: apiUrl)
     }
 }
 
-public final class MakeApiService: MakeApiServiceUseCase {
-    public init() {}
+public final class ApiServiceProvider: ApiServiceProviderUseCase {
+    private let printDebugInformation: Bool
+
+    public init(printDebugInformation: Bool) {
+        self.printDebugInformation = printDebugInformation
+    }
 
     public func execute(apiUrl: ApiUrl) throws -> APIServiceProtocol {
-        var printDebugInformation = false
-        #if DEBUG
-        printDebugInformation = true
-        #endif
         guard let baseUrl = URL(string: apiUrl) else {
             throw SLError.badApiUrl(apiUrl)
         }

@@ -22,20 +22,19 @@
 import SafariServices.SFSafariExtensionManager
 
 public protocol GetSafariExtensionStateUseCase: Sendable {
-    func execute() async throws -> SFSafariExtensionState
+    func execute(bundleId: String) async throws -> SFSafariExtensionState
 }
 
 public extension GetSafariExtensionStateUseCase {
-    func callAsFunction() async throws -> SFSafariExtensionState {
-        try await execute()
+    func callAsFunction(bundleId: String) async throws -> SFSafariExtensionState {
+        try await execute(bundleId: bundleId)
     }
 }
 
 public final class GetSafariExtensionState: GetSafariExtensionStateUseCase {
     public init() {}
 
-    public func execute() async throws -> SFSafariExtensionState {
-        let id = Constants.extensionBundleId
-        return try await SFSafariExtensionManager.stateOfSafariExtension(withIdentifier: id)
+    public func execute(bundleId: String) async throws -> SFSafariExtensionState {
+        try await SFSafariExtensionManager.stateOfSafariExtension(withIdentifier: bundleId)
     }
 }

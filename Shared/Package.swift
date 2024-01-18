@@ -28,8 +28,5 @@ let package = Package(name: "Shared",
                                 dependencies: [
                                     .product(name: "SimpleKeychain", package: "SimpleKeychain"),
                                     .product(name: "SimpleLoginPackage", package: "swift-package")
-                                ],
-                                resources: [
-                                    .process("Resources")
                                 ])
                       ])

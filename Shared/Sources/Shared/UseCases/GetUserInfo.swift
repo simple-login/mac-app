@@ -33,14 +33,14 @@ public extension GetUserInfoUseCase {
 }
 
 public final class GetUserInfo: GetUserInfoUseCase {
-    private let makeApiService: MakeApiServiceUseCase
+    private let apiServiceProvider: ApiServiceProviderUseCase
 
-    public init(makeApiService: MakeApiServiceUseCase) {
-        self.makeApiService = makeApiService
+    public init(apiServiceProvider: ApiServiceProviderUseCase) {
+        self.apiServiceProvider = apiServiceProvider
     }
 
     public func execute(apiUrl: ApiUrl, apiKey: ApiKey) async throws -> UserInfo {
-        let apiService = try makeApiService(apiUrl: apiUrl)
+        let apiService = try apiServiceProvider(apiUrl: apiUrl)
         let endpoint = GetUserInfoEndpoint(apiKey: apiKey)
         return try await apiService.execute(endpoint)
     }

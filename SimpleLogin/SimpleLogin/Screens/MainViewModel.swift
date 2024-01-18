@@ -49,7 +49,7 @@ extension MainViewModel {
                 state = .loading
             }
 
-            let safariExtensionState = try await getSafariExtensionState()
+            let safariExtensionState = try await getSafariExtensionState(bundleId: Constants.extensionBundleId)
             if safariExtensionState.isEnabled {
                 if try await getApiKey() != nil {
                     state = .loggedIn

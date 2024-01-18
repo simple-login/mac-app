@@ -62,11 +62,17 @@ extension SharedUseCaseContainer {
         self { SetApiKey(keychain: self.keychain) }
     }
 
-    var makeApiService: Factory<MakeApiServiceUseCase> {
-        self { MakeApiService() }
+    var apiServiceProvider: Factory<ApiServiceProviderUseCase> {
+        self {
+            #if DEBUG
+            ApiServiceProvider(printDebugInformation: true)
+            #else
+            ApiServiceProvider(printDebugInformation: false)
+            #endif
+        }
     }
 
     var getUserInfo: Factory<GetUserInfoUseCase> {
-        self { GetUserInfo(makeApiService: self.makeApiService()) }
+        self { GetUserInfo(apiServiceProvider: self.apiServiceProvider()) }
     }
 }
