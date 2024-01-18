@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import os.object
+import OSLog
 import SimpleKeychain
 
 public protocol KeychainProvider: Sendable {
@@ -30,16 +30,12 @@ public protocol KeychainProvider: Sendable {
 
 extension SimpleKeychain: KeychainProvider {
     public func getValueFromKeychain(for key: String) async throws -> String? {
-        runIfDebug {
-            os_log(.default, "[SimpleLogin] Get value for key %{public}@", key)
-        }
+        Logger.log(with: "Get value for key \(key)")
         return try get(key: key)
     }
 
     public func setValueToKeychain(_ value: String?, for key: String) async throws {
-        runIfDebug {
-            os_log(.default, "[SimpleLogin] Set value %{public}@ for key %{public}@", value ?? "", key)
-        }
+        Logger.log(with: "Set value \(value ?? "") for key \(key)")
         try set(value, for: key)
     }
 }

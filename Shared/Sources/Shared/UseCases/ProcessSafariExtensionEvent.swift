@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import os.log
+import OSLog
 
 public protocol ProcessSafariExtensionEventUseCase: Sendable {
     func execute(_ json: String) throws -> SafariExtensionEvent
@@ -37,16 +37,12 @@ public final class ProcessSafariExtensionEvent: ProcessSafariExtensionEventUseCa
 
     public func execute(_ json: String) throws -> SafariExtensionEvent {
         guard let data = json.data(using: .utf8) else {
-            runIfDebug {
-                os_log(.default, "[SimpleLogin] Not UTF8 data")
-            }
+            Logger.logError(with: "Not UTF8 data")
             throw SLError.notUtf8Data
         }
 
         guard let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
-            runIfDebug {
-                os_log(.default, "[SimpleLogin] Bad JSON format")
-            }
+            Logger.logError(with: "Bad JSON format")
             throw SLError.badJsonFormat
         }
 
@@ -72,31 +68,23 @@ public final class ProcessSafariExtensionEvent: ProcessSafariExtensionEventUseCa
 
          */
 
-        runIfDebug {
-            os_log(.default, "[SimpleLogin] %{public}@", dict)
-        }
+        Logger.log(with: "[SimpleLogin] \(dict)")
+
         if let loggedIn = dict["logged_in"] as? [String: Any],
            let loggedInData = loggedIn["data"] as? [String: String],
            let apiKey = loggedInData["api_key"],
            let apiUrl = loggedInData["api_url"] {
-            runIfDebug {
-                os_log(.default, "[SimpleLogin] Logged in event")
-            }
+            Logger.log(with: "Logged in event")
             return .loggedIn(apiUrl, apiKey)
         } else if dict["logged_out"] != nil {
-            runIfDebug {
-                os_log(.default, "[SimpleLogin] Logged out event")
-            }
+            Logger.log(with: "Logged out event")
             return .loggedOut
         } else if dict["upgrade"] != nil {
-            runIfDebug {
-                os_log(.default, "[SimpleLogin] Upgrade event")
-            }
+            Logger.log(with: "Upgrade event")
             return .upgrade
         }
-        runIfDebug {
-            os_log(.default, "[SimpleLogin] Unknown event")
-        }
+
+        Logger.log(with: "Unknown event")
         return .unknown
     }
 }

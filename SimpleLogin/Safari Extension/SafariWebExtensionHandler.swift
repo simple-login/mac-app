@@ -19,7 +19,7 @@
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 
 import Factory
-import os.log
+import OSLog
 import SafariServices
 import Shared
 
@@ -48,9 +48,7 @@ final class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
 private extension SafariWebExtensionHandler {
     func handle(message: String) async {
-        runIfDebug {
-            os_log(.default, "[SimpleLogin] Received message %{public}@", message)
-        }
+        Logger.log(with: "Received message \(message)")
         do {
             switch try processSafariExtensionEvent(message) {
             case let .loggedIn(apiUrl, apiKey):
@@ -64,6 +62,7 @@ private extension SafariWebExtensionHandler {
                 break
             }
         } catch {
+            Logger.logError(with: "Error handling message \(error.localizedDescription)")
             print(error.localizedDescription)
         }
     }
