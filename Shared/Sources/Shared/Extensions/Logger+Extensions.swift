@@ -28,13 +28,13 @@ public extension Logger {
     static let error = Logger(subsystem: subsystem, category: "Error")
     static let infos = Logger(subsystem: subsystem, category: "Infos")
 
-   static func logError(for type: String, with message: String?) {
+   static func logError(for type: String? = nil, with message: String) {
         #if DEBUG
-        guard let message else {
-            return
-        }
-
-        Logger.error.debug("SimpleLogin::Error \(type, align: .left(columns: type.count)) \(message)")
+       if let type {
+           Logger.error.debug("\(type, align: .left(columns: type.count)) \(message)")
+       } else {
+           Logger.error.debug("\(message)")
+       }
         #endif
     }
     
@@ -42,13 +42,13 @@ public extension Logger {
     /// ```swift
     /// Logger.log(for: "Login", with: "The message you want")
     /// ```
-    static func log(for type: String, with message: String?) {
+    static func log(for type: String? = nil, with message: String) {
         #if DEBUG
-        guard let message else {
-            return
+        if let type {
+            Logger.infos.debug("\(type, align: .left(columns: type.count)) \(message)")
+        } else {
+            Logger.infos.debug("\(message)")
         }
-
-        Logger.infos.debug("SimpleLogin::Log \(type, align: .left(columns: type.count)) \(message)")
         #endif
     }
 }

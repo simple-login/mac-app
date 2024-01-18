@@ -48,7 +48,7 @@ final class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
 private extension SafariWebExtensionHandler {
     func handle(message: String) async {
-        Logger.log(for: "SafariWebExtensionHandler", with: "Received message \(message)")
+        Logger.log(with: "Received message \(message)")
         do {
             switch try processSafariExtensionEvent(message) {
             case let .loggedIn(apiUrl, apiKey):
@@ -62,7 +62,7 @@ private extension SafariWebExtensionHandler {
                 break
             }
         } catch {
-            Logger.logError(for: "SafariWebExtensionHandler", with: "Error handling message \(error.localizedDescription)")
+            Logger.logError(with: "Error handling message \(error.localizedDescription)")
             print(error.localizedDescription)
         }
     }
