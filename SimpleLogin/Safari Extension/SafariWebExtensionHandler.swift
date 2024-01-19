@@ -57,7 +57,7 @@ private extension SafariWebExtensionHandler {
             case .loggedOut:
                 try await setApiKey(nil)
             case .upgrade:
-                break
+                openHostApplication()
             case .unknown:
                 break
             }
@@ -65,6 +65,13 @@ private extension SafariWebExtensionHandler {
             Logger.logError(with: "Error handling message \(error.localizedDescription)")
             print(error.localizedDescription)
         }
+    }
+
+    func openHostApplication() {
+        guard let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: Constants.bundleId) else {
+            return
+        }
+        NSWorkspace.shared.open(url, configuration: NSWorkspace.OpenConfiguration())
     }
 }
 

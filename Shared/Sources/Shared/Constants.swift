@@ -23,6 +23,7 @@ import Foundation
 
 public enum Constants {
     public static let teamId = "2SB5Z68H26"
+    public static let bundleId = "me.proton.simplelogin.macos"
     public static let extensionBundleId = "me.proton.simplelogin.macos.safari-extension"
     public static let appGroup = "group.me.proton.simplelogin.macos"
     public static let keychainAccessGroup = "\(teamId).\(appGroup)"
