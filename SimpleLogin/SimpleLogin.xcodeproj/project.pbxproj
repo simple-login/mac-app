@@ -24,6 +24,7 @@
 		359144C52B4D4ACB00FC5C41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */; };
 		359144CD2B4D4D4F00FC5C41 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359144CC2B4D4D4F00FC5C41 /* MainView.swift */; };
 		3597025B2B4FE69A0034CD02 /* SimpleLoginPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 3597025A2B4FE69A0034CD02 /* SimpleLoginPackage */; };
+		35B98E232B6FD8F000A50940 /* LoggedOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B98E222B6FD8F000A50940 /* LoggedOutViewModel.swift */; };
 		35DD2CE52B4FEDCB00AA0562 /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 35DD2CE42B4FEDCB00AA0562 /* Shared */; };
 		35EB72442B4ECA8A008BAF5A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */; };
 		35EB72492B4ED5F5008BAF5A /* ExtensionDisabledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72482B4ED5F5008BAF5A /* ExtensionDisabledView.swift */; };
@@ -80,6 +81,7 @@
 		35AD4C212B56B99900B7B6A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		35B0F40C2B4F441300AACE1E /* SimpleLoginRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLoginRelease.entitlements; sourceTree = "<group>"; };
 		35B0F40D2B4F442400AACE1E /* Safari ExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Safari ExtensionRelease.entitlements"; sourceTree = "<group>"; };
+		35B98E222B6FD8F000A50940 /* LoggedOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutViewModel.swift; sourceTree = "<group>"; };
 		35D256202B4FED9500F819CF /* Shared */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Shared; path = ../Shared; sourceTree = "<group>"; };
 		35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		35EB72482B4ED5F5008BAF5A /* ExtensionDisabledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDisabledView.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				35EB724E2B4ED718008BAF5A /* LoggedInView.swift */,
 				35EB72522B4ED7FB008BAF5A /* LoggedInViewModel.swift */,
 				35EB72502B4ED72B008BAF5A /* LoggedOutView.swift */,
+				35B98E222B6FD8F000A50940 /* LoggedOutViewModel.swift */,
 				359144CC2B4D4D4F00FC5C41 /* MainView.swift */,
 				35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */,
 			);
@@ -346,6 +349,7 @@
 				3587B1552B4EAFFC00A5066B /* SharedUseCaseContainer.swift in Sources */,
 				359144CD2B4D4D4F00FC5C41 /* MainView.swift in Sources */,
 				35EB72442B4ECA8A008BAF5A /* MainViewModel.swift in Sources */,
+				35B98E232B6FD8F000A50940 /* LoggedOutViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

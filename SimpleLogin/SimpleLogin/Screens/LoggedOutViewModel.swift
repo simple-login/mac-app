@@ -1,6 +1,6 @@
 //
-// SimpleLoginApp.swift
-// SimpleLogin - Created on 09/01/2024.
+// LoggedOutViewModel.swift
+// SimpleLogin - Created on 04/02/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -17,17 +17,15 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
-//
 
+import Foundation
+import SafariServices
 import Shared
-import SwiftUI
 
-@main
-struct SimpleLoginApp: App {
-    var body: some Scene {
-        WindowGroup {
-            MainView()
-        }
-        .windowResizability(.contentSize)
+final class LoggedOutViewModel: ObservableObject {
+    public init() {}
+
+    func openSafariPreferences() {
+        SFSafariApplication.showPreferencesForExtension(withIdentifier: Constants.extensionBundleId)
     }
 }
