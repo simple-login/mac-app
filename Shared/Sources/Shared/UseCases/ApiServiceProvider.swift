@@ -43,7 +43,7 @@ public final class ApiServiceProvider: ApiServiceProviderUseCase {
         guard let baseUrl = URL(string: apiUrl) else {
             throw SLError.badApiUrl(apiUrl)
         }
-        return APIService(baseURL: baseUrl, 
+        return APIService(baseURL: baseUrl,
                           session: .shared,
                           printDebugInformation: printDebugInformation)
     }

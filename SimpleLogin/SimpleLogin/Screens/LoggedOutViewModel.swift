@@ -1,6 +1,6 @@
 //
-// ExtensionDisabledView.swift
-// SimpleLogin - Created on 10/01/2024.
+// LoggedOutViewModel.swift
+// SimpleLogin - Created on 04/02/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -18,14 +18,14 @@
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 
-import SwiftUI
+import Foundation
+import SafariServices
+import Shared
 
-struct ExtensionDisabledView: View {
-    var body: some View {
-        Text("Enable SimpleLogin Safari Extension in Safari -> Settings -> Extensions")
+final class LoggedOutViewModel: ObservableObject {
+    public init() {}
+
+    func openSafariPreferences() {
+        SFSafariApplication.showPreferencesForExtension(withIdentifier: Constants.extensionBundleId)
     }
-}
-
-#Preview {
-    ExtensionDisabledView()
 }

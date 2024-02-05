@@ -21,8 +21,65 @@
 import SwiftUI
 
 struct LoggedOutView: View {
+    @StateObject private var viewModel = LoggedOutViewModel()
+
     var body: some View {
-        Text("Please log in via Safari Extension")
+        VStack(alignment: .center) {
+            LogoView()
+                .padding(.vertical, 50)
+            HStack {
+                step1
+                Divider()
+                step2
+            }
+            .frame(maxWidth: .infinity)
+        }
+        .frame(width: 800, height: 480)
+    }
+}
+
+private extension LoggedOutView {
+    func stepNumber(_ number: Int) -> some View {
+        Text("\(number)")
+            .padding(8)
+            .background(Color.blue)
+            .clipShape(Circle())
+    }
+
+    func stepDescription(_ description: String) -> some View {
+        Text("Enable SimpleLogin in Safari Extensions preferences.")
+            .multilineTextAlignment(.center)
+            .font(.headline.weight(.medium))
+    }
+
+    func stepImage(_ named: String) -> some View {
+        Image(named)
+            .resizable()
+            .scaledToFit()
+    }
+
+    var step1: some View {
+        VStack(alignment: .center) {
+            stepNumber(1)
+            stepDescription("Enable SimpleLogin in Safari Extensions preferences.")
+            Button(action: viewModel.openSafariPreferences) {
+                Text("Open Safari Preferences")
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(Color.blue)
+            stepImage("Step1")
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+    }
+
+    var step2: some View {
+        VStack(alignment: .center) {
+            stepNumber(2)
+            stepDescription("Sign into your SimpleLogin account.")
+            Spacer()
+            stepImage("Step2")
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
 }
 

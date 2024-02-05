@@ -88,7 +88,9 @@ private extension SafariWebExtensionHandler {
          message = request?.userInfo?["message"]
      }
 
-     os_log(.default, "Received message from browser.runtime.sendNativeMessage: %{public}@ (profile: %{public}@)", String(describing: message), profile?.uuidString ?? "none")
+     os_log(.default, "Received message from browser.runtime.sendNativeMessage: %{public}@ (profile: %{public}@)",
+            String(describing: message),
+            profile?.uuidString ?? "none")
 
      let response = NSExtensionItem()
      response.userInfo = [ SFExtensionMessageKey: [ "echo": message ] ]

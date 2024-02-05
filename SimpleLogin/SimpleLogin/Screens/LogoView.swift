@@ -1,6 +1,6 @@
 //
-// GetApiUrl.swift
-// SimpleLogin - Created on 10/01/2024.
+// LogoView.swift
+// SimpleLogin - Created on 05/02/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -17,28 +17,14 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
-//
 
-import Foundation
+import SwiftUI
 
-public protocol GetApiUrlUseCase: Sendable {
-    func execute() async throws -> ApiUrl
-}
-
-public extension GetApiUrlUseCase {
-    func callAsFunction() async throws -> ApiUrl {
-        try await execute()
-    }
-}
-
-public final class GetApiUrl: GetApiUrlUseCase {
-    private let keychain: KeychainProvider
-
-    public init(keychain: KeychainProvider) {
-        self.keychain = keychain
-    }
-
-    public func execute() async throws -> ApiUrl {
-        try await keychain.getValueFromKeychain(for: Constants.apiUrlKey) ?? Constants.defaultApiUrl
+struct LogoView: View {
+    var body: some View {
+        Image("Logo")
+            .resizable()
+            .scaledToFit()
+            .frame(maxWidth: 190)
     }
 }

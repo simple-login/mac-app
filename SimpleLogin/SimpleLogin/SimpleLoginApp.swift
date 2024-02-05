@@ -28,5 +28,6 @@ struct SimpleLoginApp: App {
         WindowGroup {
             MainView()
         }
+        .windowResizability(.contentSize)
     }
 }

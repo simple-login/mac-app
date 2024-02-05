@@ -29,6 +29,7 @@ struct MainView: View {
         ZStack {
             view(for: viewModel.state)
         }
+        .preferredColorScheme(.dark)
         .animation(.default, value: viewModel.state)
         .onChange(of: controlActiveState) { controlActiveState in
             switch controlActiveState {
@@ -49,9 +50,8 @@ private extension MainView {
         switch state {
         case .loading:
             ProgressView()
-        case .safariExtensionDisabled:
-            ExtensionDisabledView()
-        case .loggedOut:
+                .frame(width: 800, height: 480, alignment: .center)
+        case .loggedOut, .safariExtensionDisabled:
             LoggedOutView()
         case .loggedIn:
             LoggedInView()

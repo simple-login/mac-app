@@ -60,7 +60,7 @@ extension MainViewModel {
                 state = .safariExtensionDisabled
             }
         } catch {
-            if let keychainError = error as? SimpleKeychainError, 
+            if let keychainError = error as? SimpleKeychainError,
                 case .itemNotFound = keychainError {
                 // Ignore item not found error
                 state = .loggedOut

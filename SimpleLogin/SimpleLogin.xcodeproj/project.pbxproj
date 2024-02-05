@@ -24,9 +24,14 @@
 		359144C52B4D4ACB00FC5C41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 359144C42B4D4ACB00FC5C41 /* Preview Assets.xcassets */; };
 		359144CD2B4D4D4F00FC5C41 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359144CC2B4D4D4F00FC5C41 /* MainView.swift */; };
 		3597025B2B4FE69A0034CD02 /* SimpleLoginPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 3597025A2B4FE69A0034CD02 /* SimpleLoginPackage */; };
+		35B98E232B6FD8F000A50940 /* LoggedOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B98E222B6FD8F000A50940 /* LoggedOutViewModel.swift */; };
+		35B98E252B70947500A50940 /* PremiumPerksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B98E242B70947500A50940 /* PremiumPerksView.swift */; };
+		35B98E2A2B709F8600A50940 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B98E292B709F8600A50940 /* View+Extensions.swift */; };
+		35B98E2D2B70A2D600A50940 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B98E2C2B70A2D600A50940 /* UserInfoView.swift */; };
+		35B98E2F2B70ACC600A50940 /* StatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B98E2E2B70ACC600A50940 /* StatCell.swift */; };
+		35B98E312B70AEE300A50940 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B98E302B70AEE300A50940 /* LogoView.swift */; };
 		35DD2CE52B4FEDCB00AA0562 /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 35DD2CE42B4FEDCB00AA0562 /* Shared */; };
 		35EB72442B4ECA8A008BAF5A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */; };
-		35EB72492B4ED5F5008BAF5A /* ExtensionDisabledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72482B4ED5F5008BAF5A /* ExtensionDisabledView.swift */; };
 		35EB724F2B4ED718008BAF5A /* LoggedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB724E2B4ED718008BAF5A /* LoggedInView.swift */; };
 		35EB72512B4ED72B008BAF5A /* LoggedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72502B4ED72B008BAF5A /* LoggedOutView.swift */; };
 		35EB72532B4ED7FB008BAF5A /* LoggedInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72522B4ED7FB008BAF5A /* LoggedInViewModel.swift */; };
@@ -80,9 +85,14 @@
 		35AD4C212B56B99900B7B6A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		35B0F40C2B4F441300AACE1E /* SimpleLoginRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleLoginRelease.entitlements; sourceTree = "<group>"; };
 		35B0F40D2B4F442400AACE1E /* Safari ExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Safari ExtensionRelease.entitlements"; sourceTree = "<group>"; };
+		35B98E222B6FD8F000A50940 /* LoggedOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutViewModel.swift; sourceTree = "<group>"; };
+		35B98E242B70947500A50940 /* PremiumPerksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumPerksView.swift; sourceTree = "<group>"; };
+		35B98E292B709F8600A50940 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		35B98E2C2B70A2D600A50940 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		35B98E2E2B70ACC600A50940 /* StatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCell.swift; sourceTree = "<group>"; };
+		35B98E302B70AEE300A50940 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		35D256202B4FED9500F819CF /* Shared */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Shared; path = ../Shared; sourceTree = "<group>"; };
 		35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		35EB72482B4ED5F5008BAF5A /* ExtensionDisabledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDisabledView.swift; sourceTree = "<group>"; };
 		35EB724E2B4ED718008BAF5A /* LoggedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInView.swift; sourceTree = "<group>"; };
 		35EB72502B4ED72B008BAF5A /* LoggedOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutView.swift; sourceTree = "<group>"; };
 		35EB72522B4ED7FB008BAF5A /* LoggedInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInViewModel.swift; sourceTree = "<group>"; };
@@ -171,6 +181,7 @@
 				359144BD2B4D4ACA00FC5C41 /* SimpleLoginApp.swift */,
 				35F9F7A52B4DA573002B9430 /* DI */,
 				35EB72472B4ED4B4008BAF5A /* Screens */,
+				35B98E282B709F7300A50940 /* Utils */,
 				359144C12B4D4ACB00FC5C41 /* Assets.xcassets */,
 				359144C62B4D4ACB00FC5C41 /* SimpleLogin.entitlements */,
 				359144C32B4D4ACB00FC5C41 /* Preview Content */,
@@ -186,13 +197,33 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		35B98E282B709F7300A50940 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				35B98E292B709F8600A50940 /* View+Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		35B98E2B2B70A29400A50940 /* Logged in */ = {
+			isa = PBXGroup;
+			children = (
+				35EB724E2B4ED718008BAF5A /* LoggedInView.swift */,
+				35EB72522B4ED7FB008BAF5A /* LoggedInViewModel.swift */,
+				35B98E242B70947500A50940 /* PremiumPerksView.swift */,
+				35B98E2E2B70ACC600A50940 /* StatCell.swift */,
+				35B98E2C2B70A2D600A50940 /* UserInfoView.swift */,
+			);
+			path = "Logged in";
+			sourceTree = "<group>";
+		};
 		35EB72472B4ED4B4008BAF5A /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				35EB72482B4ED5F5008BAF5A /* ExtensionDisabledView.swift */,
-				35EB724E2B4ED718008BAF5A /* LoggedInView.swift */,
-				35EB72522B4ED7FB008BAF5A /* LoggedInViewModel.swift */,
+				35B98E2B2B70A29400A50940 /* Logged in */,
 				35EB72502B4ED72B008BAF5A /* LoggedOutView.swift */,
+				35B98E222B6FD8F000A50940 /* LoggedOutViewModel.swift */,
+				35B98E302B70AEE300A50940 /* LogoView.swift */,
 				359144CC2B4D4D4F00FC5C41 /* MainView.swift */,
 				35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */,
 			);
@@ -337,15 +368,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35EB72492B4ED5F5008BAF5A /* ExtensionDisabledView.swift in Sources */,
+				35B98E252B70947500A50940 /* PremiumPerksView.swift in Sources */,
 				359144BE2B4D4ACA00FC5C41 /* SimpleLoginApp.swift in Sources */,
+				35B98E2A2B709F8600A50940 /* View+Extensions.swift in Sources */,
+				35B98E2D2B70A2D600A50940 /* UserInfoView.swift in Sources */,
 				35EB724F2B4ED718008BAF5A /* LoggedInView.swift in Sources */,
 				35EB72512B4ED72B008BAF5A /* LoggedOutView.swift in Sources */,
+				35B98E2F2B70ACC600A50940 /* StatCell.swift in Sources */,
 				3587B1532B4EAFCA00A5066B /* SharedToolingContainer.swift in Sources */,
 				35EB72532B4ED7FB008BAF5A /* LoggedInViewModel.swift in Sources */,
 				3587B1552B4EAFFC00A5066B /* SharedUseCaseContainer.swift in Sources */,
 				359144CD2B4D4D4F00FC5C41 /* MainView.swift in Sources */,
+				35B98E312B70AEE300A50940 /* LogoView.swift in Sources */,
 				35EB72442B4ECA8A008BAF5A /* MainViewModel.swift in Sources */,
+				35B98E232B6FD8F000A50940 /* LoggedOutViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,7 +690,7 @@
 			repositoryURL = "https://github.com/simple-login/swift-package";
 			requirement = {
 				kind = exactVersion;
-				version = 2.1.1;
+				version = 2.1.3;
 			};
 		};
 		35F9F7A02B4DA536002B9430 /* XCRemoteSwiftPackageReference "Factory" */ = {
