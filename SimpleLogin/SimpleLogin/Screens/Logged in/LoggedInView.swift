@@ -30,6 +30,7 @@ struct LoggedInView: View {
             switch viewModel.state {
             case .loading:
                 ProgressView()
+                    .frame(width: 800, height: 480, alignment: .center)
             case let .loaded(userInfo):
                 view(for: userInfo)
             case let .error(error):
@@ -44,39 +45,34 @@ struct LoggedInView: View {
 
 private extension LoggedInView {
     func view(for userInfo: UserInfo) -> some View {
-        VStack {
-            if let profilePictureUrl = userInfo.profilePictureUrl,
-               let url = URL(string: profilePictureUrl) {
-                AsyncImage(url: url)
-            }
-            Text(userInfo.name)
-            Text(userInfo.email)
-            Text(userInfo.isPremium ? "Premium" : "Free")
+        HStack(spacing: 20) {
+            VStack(alignment: .leading) {
+                LogoView()
 
-            if userInfo.inTrial {
-                Text("In trial")
-            }
+                UserInfoView(userInfo: userInfo)
+                    .padding(.top, 20)
+                    .padding(.bottom, 10)
 
-            if let connectedProtonAddress = userInfo.connectedProtonAddress {
-                Text("Connected to Proton account \(connectedProtonAddress)")
+                HStack(spacing: 16) {
+                    StatCell(title: "Aliases", description: "All time", value: 1358)
+                    StatCell(title: "Forwarded", description: "Last 14 days", value: 789)
+                }
+                .padding(.bottom, 8)
+
+                HStack(spacing: 16) {
+                    StatCell(title: "Replies/sent", description: "Last 14 days", value: 29)
+                    StatCell(title: "Blocked", description: "Last 14 days", value: 108)
+                }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
 
             if !userInfo.isPremium {
-                Button(action: {
-                    print("Upgrade")
-                }, label: {
-                    Text("Upgrade")
-                })
+                PremiumPerksView(onUpgrade: { viewModel.upgrade() })
+                    .frame(maxWidth: 320)
             }
-
-            Button(action: {
-                Task {
-                    await viewModel.refreshUserInfo()
-                }
-            }, label: {
-                Image(systemName: "arrow.circlepath")
-            })
         }
+        .padding(20)
+        .frame(width: userInfo.isPremium ? 480 : 800, height: 480)
     }
 }
 
@@ -92,5 +88,6 @@ private extension LoggedInView {
                 Image(systemName: "arrow.circlepath")
             })
         }
+        .frame(width: 800, height: 480)
     }
 }

@@ -1,6 +1,6 @@
 //
-// ExtensionDisabledView.swift
-// SimpleLogin - Created on 10/01/2024.
+// LogoView.swift
+// SimpleLogin - Created on 05/02/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -20,12 +20,11 @@
 
 import SwiftUI
 
-struct ExtensionDisabledView: View {
+struct LogoView: View {
     var body: some View {
-        Text("Enable SimpleLogin Safari Extension in Safari -> Settings -> Extensions")
+        Image("Logo")
+            .resizable()
+            .scaledToFit()
+            .frame(maxWidth: 190)
     }
-}
-
-#Preview {
-    ExtensionDisabledView()
 }

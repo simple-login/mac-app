@@ -50,6 +50,7 @@ private extension MainView {
         switch state {
         case .loading:
             ProgressView()
+                .frame(width: 800, height: 480, alignment: .center)
         case .loggedOut, .safariExtensionDisabled:
             LoggedOutView()
         case .loggedIn:

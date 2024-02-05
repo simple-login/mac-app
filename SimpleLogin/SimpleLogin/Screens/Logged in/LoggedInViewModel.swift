@@ -53,4 +53,8 @@ extension LoggedInViewModel {
             state = .error(error)
         }
     }
+
+    func upgrade() {
+        print(#function)
+    }
 }

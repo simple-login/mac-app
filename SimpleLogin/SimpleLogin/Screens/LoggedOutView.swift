@@ -25,7 +25,7 @@ struct LoggedOutView: View {
 
     var body: some View {
         VStack(alignment: .center) {
-            logo
+            LogoView()
                 .padding(.vertical, 50)
             HStack {
                 step1
@@ -39,13 +39,6 @@ struct LoggedOutView: View {
 }
 
 private extension LoggedOutView {
-    var logo: some View {
-        Image("Logo")
-            .resizable()
-            .scaledToFit()
-            .frame(maxWidth: 190)
-    }
-
     func stepNumber(_ number: Int) -> some View {
         Text("\(number)")
             .padding(8)

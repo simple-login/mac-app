@@ -37,8 +37,7 @@ public extension Logger {
        }
         #endif
     }
-    
-    
+
     /// ```swift
     /// Logger.log(for: "Login", with: "The message you want")
     /// ```
