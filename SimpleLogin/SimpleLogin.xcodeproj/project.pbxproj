@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35293F162B5AA81100F9EDA3 /* IAPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35293F152B5AA81100F9EDA3 /* IAPView.swift */; };
 		353136DE2B4D544200695FEA /* popup in Resources */ = {isa = PBXBuildFile; fileRef = 353136DD2B4D544200695FEA /* popup */; };
 		354247B72B4EB279000EF604 /* SharedToolingContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3587B1522B4EAFCA00A5066B /* SharedToolingContainer.swift */; };
 		3577E8862B4D521C00DCFA53 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3577E8852B4D521C00DCFA53 /* SafariWebExtensionHandler.swift */; };
@@ -30,6 +31,7 @@
 		35B98E2D2B70A2D600A50940 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B98E2C2B70A2D600A50940 /* UserInfoView.swift */; };
 		35B98E2F2B70ACC600A50940 /* StatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B98E2E2B70ACC600A50940 /* StatCell.swift */; };
 		35B98E312B70AEE300A50940 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B98E302B70AEE300A50940 /* LogoView.swift */; };
+		35B98E332B70C39800A50940 /* IAPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B98E322B70C39800A50940 /* IAPViewModel.swift */; };
 		35DD2CE52B4FEDCB00AA0562 /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 35DD2CE42B4FEDCB00AA0562 /* Shared */; };
 		35EB72442B4ECA8A008BAF5A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */; };
 		35EB724F2B4ED718008BAF5A /* LoggedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB724E2B4ED718008BAF5A /* LoggedInView.swift */; };
@@ -65,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		35293F152B5AA81100F9EDA3 /* IAPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPView.swift; sourceTree = "<group>"; };
 		353136DD2B4D544200695FEA /* popup */ = {isa = PBXFileReference; lastKnownFileType = folder; path = popup; sourceTree = "<group>"; };
 		3577E8832B4D521C00DCFA53 /* Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3577E8852B4D521C00DCFA53 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
@@ -91,6 +94,7 @@
 		35B98E2C2B70A2D600A50940 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 		35B98E2E2B70ACC600A50940 /* StatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCell.swift; sourceTree = "<group>"; };
 		35B98E302B70AEE300A50940 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
+		35B98E322B70C39800A50940 /* IAPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPViewModel.swift; sourceTree = "<group>"; };
 		35D256202B4FED9500F819CF /* Shared */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Shared; path = ../Shared; sourceTree = "<group>"; };
 		35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		35EB724E2B4ED718008BAF5A /* LoggedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInView.swift; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 		35B98E2B2B70A29400A50940 /* Logged in */ = {
 			isa = PBXGroup;
 			children = (
+				35293F152B5AA81100F9EDA3 /* IAPView.swift */,
+				35B98E322B70C39800A50940 /* IAPViewModel.swift */,
 				35EB724E2B4ED718008BAF5A /* LoggedInView.swift */,
 				35EB72522B4ED7FB008BAF5A /* LoggedInViewModel.swift */,
 				35B98E242B70947500A50940 /* PremiumPerksView.swift */,
@@ -371,8 +377,10 @@
 				35B98E252B70947500A50940 /* PremiumPerksView.swift in Sources */,
 				359144BE2B4D4ACA00FC5C41 /* SimpleLoginApp.swift in Sources */,
 				35B98E2A2B709F8600A50940 /* View+Extensions.swift in Sources */,
+				35B98E332B70C39800A50940 /* IAPViewModel.swift in Sources */,
 				35B98E2D2B70A2D600A50940 /* UserInfoView.swift in Sources */,
 				35EB724F2B4ED718008BAF5A /* LoggedInView.swift in Sources */,
+				35293F162B5AA81100F9EDA3 /* IAPView.swift in Sources */,
 				35EB72512B4ED72B008BAF5A /* LoggedOutView.swift in Sources */,
 				35B98E2F2B70ACC600A50940 /* StatCell.swift in Sources */,
 				3587B1532B4EAFCA00A5066B /* SharedToolingContainer.swift in Sources */,
@@ -690,7 +698,7 @@
 			repositoryURL = "https://github.com/simple-login/swift-package";
 			requirement = {
 				kind = exactVersion;
-				version = 2.1.3;
+				version = 2.1.4;
 			};
 		};
 		35F9F7A02B4DA536002B9430 /* XCRemoteSwiftPackageReference "Factory" */ = {

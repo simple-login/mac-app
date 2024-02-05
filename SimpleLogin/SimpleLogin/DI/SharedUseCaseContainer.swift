@@ -75,4 +75,8 @@ extension SharedUseCaseContainer {
     var getUserInfo: Factory<GetUserInfoUseCase> {
         self { GetUserInfo(apiServiceProvider: self.apiServiceProvider()) }
     }
+
+    var getStats: Factory<GetStatsUseCase> {
+        self { GetStats(apiServiceProvider: self.apiServiceProvider()) }
+    }
 }
