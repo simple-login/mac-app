@@ -18,14 +18,12 @@
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 
-import Combine
 import Shared
 import SwiftUI
 
 struct IAPView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel: IAPViewModelModel
-    @State private var showUpgradeAlert = false
     private let onUpgrade: () -> Void
 
     init(subscriptions: Shared.Subscriptions, onUpgrade: @escaping () -> Void) {
@@ -52,26 +50,54 @@ struct IAPView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             .padding()
-        }
-        .frame(width: 400, height: 280)
-        .onReceive(Just(viewModel.upgradeState)) { state in
-            if case .upgraded = state {
-                showUpgradeAlert.toggle()
+
+            if case .upgrading = viewModel.upgradeState {
+                cover
             }
         }
+        .frame(width: 400, height: 280)
+        .animation(.default, value: viewModel.upgradeState)
         .alert(
             "You're all set",
-            isPresented: $showUpgradeAlert,
+            isPresented: upgradedBinding,
             actions: {
-                Button("Close", action: onUpgrade)
+                Button("Close") {
+                    dismiss()
+                    onUpgrade()
+                }
             },
             message: {
                 Text("Thank you for subscribing. Enjoy our premium service.")
+            })
+        .alert(
+            "Error occured",
+            isPresented: errorBinding,
+            actions: {
+                Button("Cancel", role: .cancel, action: {})
+                Button("Retry", action: { viewModel.retry() })
+            },
+            message: {
+                Text(viewModel.upgradeState.error?.localizedDescription ?? "")
             })
     }
 }
 
 private extension IAPView {
+    var upgradedBinding: Binding<Bool> {
+        .init(get: {
+            if case .upgraded = viewModel.upgradeState {
+                return true
+            }
+            return false
+        }, set: { _ in })
+    }
+
+    var errorBinding: Binding<Bool> {
+        .init(get: {
+            viewModel.upgradeState.error != nil
+        }, set: { _ in })
+    }
+
     var closeButton: some View {
         Button(action: dismiss.callAsFunction) {
             Image(systemName: "xmark.circle.fill")
@@ -80,6 +106,14 @@ private extension IAPView {
                 .frame(width: 18)
         }
         .buttonStyle(.borderless)
+    }
+
+    var cover: some View {
+        ZStack {
+            Color.black.opacity(0.4)
+            ProgressView()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

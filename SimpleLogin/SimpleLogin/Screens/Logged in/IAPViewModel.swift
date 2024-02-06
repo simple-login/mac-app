@@ -42,12 +42,12 @@ final class IAPViewModelModel: ObservableObject {
     @Published private(set) var upgradeState: UpgradeState = .idle
     let subscriptions: Subscriptions
 
+    private var lastProduct: Product?
     private let purchaseProduct = resolve(\SharedUseCaseContainer.purchaseProduct)
     private let fetchAndSendReceipt = resolve(\SharedUseCaseContainer.fetchAndSendReceipt)
 
     init(subscriptions: Subscriptions) {
         self.subscriptions = subscriptions
-        refreshPurchasedProducts()
     }
 
     func subscribeYearly() {
@@ -57,12 +57,19 @@ final class IAPViewModelModel: ObservableObject {
     func subscribeMonthly() {
         buy(product: subscriptions.monthly)
     }
+
+    func retry() {
+        if let lastProduct {
+            buy(product: lastProduct)
+        }
+    }
 }
 
 private extension IAPViewModelModel {
     func buy(product: Product) {
         Task { @MainActor [weak self] in
             guard let self else { return }
+            lastProduct = product
             do {
                 upgradeState = .upgrading
                 try await purchaseProduct(product)
@@ -73,16 +80,19 @@ private extension IAPViewModelModel {
             }
         }
     }
+}
 
-    func refreshPurchasedProducts() {
-        Task { @MainActor [weak self] in
-            guard let self else { return }
-            for await result in Transaction.currentEntitlements {
-                if case .verified = result {
-                    _ = try await fetchAndSendReceipt()
-                    upgradeState = .upgraded
-                }
-            }
+extension UpgradeState: Equatable {
+    static func == (lhs: UpgradeState, rhs: UpgradeState) -> Bool {
+        switch (lhs, rhs) {
+        case (.idle, .idle),
+            (.upgrading, .upgrading),
+            (.upgraded, .upgraded):
+            return true
+        case let (.error(lError), .error(rError)):
+            return lError.localizedDescription == rError.localizedDescription
+        default:
+            return false
         }
     }
 }

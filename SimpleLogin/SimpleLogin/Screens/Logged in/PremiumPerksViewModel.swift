@@ -42,6 +42,7 @@ final class PremiumPerksViewModel: ObservableObject {
     @Published private(set) var restorePurchaseState: RestorePurchaseState = .idle
 
     private let getSubscriptions = resolve(\SharedUseCaseContainer.getSubscriptions)
+    private let fetchAndSendReceipt = resolve(\SharedUseCaseContainer.fetchAndSendReceipt)
 
     var isGettingSubscriptions: Bool {
         if case .fetching = getSubscriptionsState {
@@ -88,7 +89,7 @@ extension PremiumPerksViewModel {
             guard let self else { return }
             do {
                 restorePurchaseState = .restoring
-                try await Task.sleep(nanoseconds: 1_000_000_000)
+                try await fetchAndSendReceipt()
                 restorePurchaseState = .restored
             } catch {
                 restorePurchaseState = .error(error)

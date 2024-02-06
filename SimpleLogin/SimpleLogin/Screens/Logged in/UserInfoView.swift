@@ -59,6 +59,7 @@ private extension UserInfoView {
            let url = URL(string: profilePictureUrl) {
             AsyncImage(url: url)
                 .scaledToFit()
+                .frame(width: 24, height: 24)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
         } else {
             ZStack {
