@@ -30,16 +30,92 @@ struct IAPView: View {
     }
 
     var body: some View {
-        VStack {
-            Text("IAP")
-            Spacer()
+        ZStack(alignment: .topTrailing) {
+            Color.clear
+            closeButton
+                .padding()
 
-            HStack {
-                Button(action: dismiss.callAsFunction) {
-                    Text("Cancel")
-                }
+            VStack(alignment: .leading) {
+                Text("Go premium")
+                    .font(.title.bold())
+                yearlyButton
+                yearlyDescription
+                monthlyButton
+                    .padding(.vertical)
+                manageSubscriptionText
+                tosLink
+                privacyLink
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            .padding()
         }
-        .frame(width: 400, height: 300)
+        .frame(width: 400, height: 280)
+    }
+}
+
+private extension IAPView {
+    var closeButton: some View {
+        Button(action: dismiss.callAsFunction) {
+            Image(systemName: "xmark.circle.fill")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 18)
+        }
+        .buttonStyle(.borderless)
+    }
+}
+
+private extension IAPView {
+    var yearlyButton: some View {
+        Button(
+            action: { viewModel.subscribeYearly() },
+            label: {
+                Text("Subscribe yearly \(viewModel.subscriptions.yearly.displayPrice)/year")
+                    .frame(maxWidth: .infinity)
+                    .padding(8)
+            })
+        .buttonStyle(.borderedProminent)
+        .tint(Color.blue)
+    }
+
+    var yearlyDescription: some View {
+        Text("Save 2 months by subscribing yearly")
+            .frame(maxWidth: .infinity)
+            .foregroundStyle(Color.secondary)
+    }
+
+    var monthlyButton: some View {
+        Button(
+            action: { viewModel.subscribeMonthly() },
+            label: {
+                Text("Subscribe monthly \(viewModel.subscriptions.monthly.displayPrice)/month")
+                    .frame(maxWidth: .infinity)
+                    .padding(8)
+            })
+    }
+}
+
+private extension IAPView {
+    var manageSubscriptionText: some View {
+        // swiftlint:disable:next line_length
+        Text("Subscription can be managed and canceled at anytime by going to System Settings → Media and Purchases → Subscriptions")
+            .font(.caption.weight(.light))
+            .foregroundStyle(Color.secondary)
+    }
+
+    @ViewBuilder
+    var tosLink: some View {
+        if let url = URL(string: "https://simplelogin.io/terms/") {
+            Link(destination: url, label: { Text("Terms and Conditions") })
+                .font(.caption)
+        }
+    }
+
+    @ViewBuilder
+    var privacyLink: some View {
+        if let url = URL(string: "https://simplelogin.io/privacy/") {
+            Link(destination: url, label: { Text("Privacy Policy") })
+                .font(.caption)
+        }
     }
 }

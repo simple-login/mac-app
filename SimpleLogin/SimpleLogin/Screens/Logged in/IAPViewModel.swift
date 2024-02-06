@@ -18,8 +18,9 @@
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 
-import Shared
 import Foundation
+import Shared
+import StoreKit
 
 enum UpgradeState {
     case idle
@@ -44,11 +45,17 @@ final class IAPViewModelModel: ObservableObject {
         self.subscriptions = subscriptions
     }
 
-    func upgrade() {
-        print(#function)
+    func subscribeYearly() {
+        buy(product: subscriptions.yearly)
     }
 
-    func retry() {
+    func subscribeMonthly() {
+        buy(product: subscriptions.monthly)
+    }
+}
+
+private extension IAPViewModelModel {
+    func buy(product: Product) {
         print(#function)
     }
 }
