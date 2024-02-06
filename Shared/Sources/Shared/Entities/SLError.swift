@@ -26,6 +26,7 @@ public enum SLError: Error {
     case badJsonFormat
     case badApiUrl(String)
     case noApiKey
+    case failedPurchaseVerification
     case missingMonthlySubscription
     case missingYearlySubscription
     case missingAppStoreReceiptURL

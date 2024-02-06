@@ -88,6 +88,10 @@ extension SharedUseCaseContainer {
         self { GetSubscriptions() }
     }
 
+    var purchaseProduct: Factory<PurchaseProductUseCase> {
+        self { PurchaseProduct() }
+    }
+
     var fetchAndSendReceipt: Factory<FetchAndSendReceiptUseCase> {
         self { FetchAndSendReceipt(apiServiceProvider: self.apiServiceProvider(),
                                    getApiUrl: self.getApiUrl(),

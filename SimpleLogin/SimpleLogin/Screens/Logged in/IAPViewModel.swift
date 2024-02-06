@@ -42,6 +42,7 @@ final class IAPViewModelModel: ObservableObject {
     @Published private(set) var upgradeState: UpgradeState = .idle
     let subscriptions: Subscriptions
 
+    private let purchaseProduct = resolve(\SharedUseCaseContainer.purchaseProduct)
     private let fetchAndSendReceipt = resolve(\SharedUseCaseContainer.fetchAndSendReceipt)
 
     init(subscriptions: Subscriptions) {
@@ -64,8 +65,8 @@ private extension IAPViewModelModel {
             guard let self else { return }
             do {
                 upgradeState = .upgrading
-                _ = try await product.purchase()
-                _ = try await fetchAndSendReceipt()
+                try await purchaseProduct(product)
+                try await fetchAndSendReceipt()
                 upgradeState = .upgraded
             } catch {
                 upgradeState = .error(error)

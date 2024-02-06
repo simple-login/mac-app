@@ -28,6 +28,7 @@ public protocol FetchAndSendReceiptUseCase: Sendable {
 }
 
 public extension FetchAndSendReceiptUseCase {
+    @discardableResult
     func callAsFunction() async throws -> Bool {
         try await execute()
     }
