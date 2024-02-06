@@ -18,6 +18,7 @@
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 
+import Factory
 import Foundation
 import Shared
 import StoreKit
@@ -41,8 +42,11 @@ final class IAPViewModelModel: ObservableObject {
     @Published private(set) var upgradeState: UpgradeState = .idle
     let subscriptions: Subscriptions
 
+    private let fetchAndSendReceipt = resolve(\SharedUseCaseContainer.fetchAndSendReceipt)
+
     init(subscriptions: Subscriptions) {
         self.subscriptions = subscriptions
+        refreshPurchasedProducts()
     }
 
     func subscribeYearly() {
@@ -56,6 +60,28 @@ final class IAPViewModelModel: ObservableObject {
 
 private extension IAPViewModelModel {
     func buy(product: Product) {
-        print(#function)
+        Task { @MainActor [weak self] in
+            guard let self else { return }
+            do {
+                upgradeState = .upgrading
+                _ = try await product.purchase()
+                _ = try await fetchAndSendReceipt()
+                upgradeState = .upgraded
+            } catch {
+                upgradeState = .error(error)
+            }
+        }
+    }
+
+    func refreshPurchasedProducts() {
+        Task { @MainActor [weak self] in
+            guard let self else { return }
+            for await result in Transaction.currentEntitlements {
+                if case .verified = result {
+                    _ = try await fetchAndSendReceipt()
+                    upgradeState = .upgraded
+                }
+            }
+        }
     }
 }

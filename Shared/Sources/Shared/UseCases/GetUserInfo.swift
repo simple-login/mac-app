@@ -23,23 +23,33 @@ import Foundation
 import SimpleLoginPackage
 
 public protocol GetUserInfoUseCase: Sendable {
-    func execute(apiUrl: ApiUrl, apiKey: ApiKey) async throws -> UserInfo
+    func execute() async throws -> UserInfo
 }
 
 public extension GetUserInfoUseCase {
-    func callAsFunction(apiUrl: ApiUrl, apiKey: ApiKey) async throws -> UserInfo {
-        try await execute(apiUrl: apiUrl, apiKey: apiKey)
+    func callAsFunction() async throws -> UserInfo {
+        try await execute()
     }
 }
 
 public final class GetUserInfo: GetUserInfoUseCase {
-    private let apiServiceProvider: ApiServiceProviderUseCase
+    private let apiServiceProvider: any ApiServiceProviderUseCase
+    private let getApiUrl: any GetApiUrlUseCase
+    private let getApiKey: any GetApiKeyUseCase
 
-    public init(apiServiceProvider: ApiServiceProviderUseCase) {
+    public init(apiServiceProvider: any ApiServiceProviderUseCase,
+                getApiUrl: any GetApiUrlUseCase,
+                getApiKey: any GetApiKeyUseCase) {
         self.apiServiceProvider = apiServiceProvider
+        self.getApiUrl = getApiUrl
+        self.getApiKey = getApiKey
     }
 
-    public func execute(apiUrl: ApiUrl, apiKey: ApiKey) async throws -> UserInfo {
+    public func execute() async throws -> UserInfo {
+        let apiUrl = try await getApiUrl()
+        guard let apiKey = try await getApiKey() else {
+            throw SLError.noApiKey
+        }
         let apiService = try apiServiceProvider(apiUrl: apiUrl)
         let endpoint = GetUserInfoEndpoint(apiKey: apiKey)
         return try await apiService.execute(endpoint)

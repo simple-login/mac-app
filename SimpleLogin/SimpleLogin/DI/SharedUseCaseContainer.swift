@@ -73,14 +73,24 @@ extension SharedUseCaseContainer {
     }
 
     var getUserInfo: Factory<GetUserInfoUseCase> {
-        self { GetUserInfo(apiServiceProvider: self.apiServiceProvider()) }
+        self { GetUserInfo(apiServiceProvider: self.apiServiceProvider(),
+                           getApiUrl: self.getApiUrl(),
+                           getApiKey: self.getApiKey()) }
     }
 
     var getStats: Factory<GetStatsUseCase> {
-        self { GetStats(apiServiceProvider: self.apiServiceProvider()) }
+        self { GetStats(apiServiceProvider: self.apiServiceProvider(),
+                        getApiUrl: self.getApiUrl(),
+                        getApiKey: self.getApiKey()) }
     }
 
     var getSubscriptions: Factory<GetSubscriptionsUseCase> {
         self { GetSubscriptions() }
+    }
+
+    var fetchAndSendReceipt: Factory<FetchAndSendReceiptUseCase> {
+        self { FetchAndSendReceipt(apiServiceProvider: self.apiServiceProvider(),
+                                   getApiUrl: self.getApiUrl(),
+                                   getApiKey: self.getApiKey()) }
     }
 }

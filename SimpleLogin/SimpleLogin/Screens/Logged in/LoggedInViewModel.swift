@@ -33,8 +33,6 @@ enum LoggedInState {
 final class LoggedInViewModel: ObservableObject {
     @Published private(set) var state: LoggedInState = .loading
 
-    private let getApiUrl = resolve(\SharedUseCaseContainer.getApiUrl)
-    private let getApiKey = resolve(\SharedUseCaseContainer.getApiKey)
     private let getUserInfo = resolve(\SharedUseCaseContainer.getUserInfo)
     private let getStats = resolve(\SharedUseCaseContainer.getStats)
 
@@ -45,12 +43,8 @@ extension LoggedInViewModel {
     func refreshUserInfo() async {
         do {
             state = .loading
-            let apiUrl = try await getApiUrl()
-            guard let apiKey = try await getApiKey() else {
-                throw SLError.noApiKey
-            }
-            async let userInfoRequest = getUserInfo(apiUrl: apiUrl, apiKey: apiKey)
-            async let statsRequest = getStats(apiUrl: apiUrl, apiKey: apiKey)
+            async let userInfoRequest = getUserInfo()
+            async let statsRequest = getStats()
             let (userInfo, stats) = try await (userInfoRequest, statsRequest)
             state = .loaded(userInfo, stats)
         } catch {

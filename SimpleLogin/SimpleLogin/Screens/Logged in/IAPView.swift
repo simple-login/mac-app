@@ -18,15 +18,19 @@
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 
+import Combine
 import Shared
 import SwiftUI
 
 struct IAPView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel: IAPViewModelModel
+    @State private var showUpgradeAlert = false
+    private let onUpgrade: () -> Void
 
-    init(subscriptions: Subscriptions) {
+    init(subscriptions: Shared.Subscriptions, onUpgrade: @escaping () -> Void) {
         _viewModel = .init(wrappedValue: .init(subscriptions: subscriptions))
+        self.onUpgrade = onUpgrade
     }
 
     var body: some View {
@@ -50,6 +54,20 @@ struct IAPView: View {
             .padding()
         }
         .frame(width: 400, height: 280)
+        .onReceive(Just(viewModel.upgradeState)) { state in
+            if case .upgraded = state {
+                showUpgradeAlert.toggle()
+            }
+        }
+        .alert(
+            "You're all set",
+            isPresented: $showUpgradeAlert,
+            actions: {
+                Button("Close", action: onUpgrade)
+            },
+            message: {
+                Text("Thank you for subscribing. Enjoy our premium service.")
+            })
     }
 }
 

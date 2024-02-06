@@ -43,7 +43,8 @@ struct LoggedInView: View {
         }
         .sheet(isPresented: subscriptionsBinding) {
             if let subscriptions {
-                IAPView(subscriptions: subscriptions)
+                IAPView(subscriptions: subscriptions,
+                        onUpgrade: { Task { await viewModel.refreshUserInfo() } })
             }
         }
     }

@@ -28,4 +28,5 @@ public enum SLError: Error {
     case noApiKey
     case missingMonthlySubscription
     case missingYearlySubscription
+    case missingAppStoreReceiptURL
 }

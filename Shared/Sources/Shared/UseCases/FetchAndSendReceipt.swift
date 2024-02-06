@@ -1,6 +1,6 @@
 //
-// GetStats.swift
-// SimpleLogin - Created on 05/02/2024.
+// FetchAndSendReceipt.swift
+// SimpleLogin - Created on 06/02/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -21,18 +21,19 @@
 
 import Foundation
 import SimpleLoginPackage
+import StoreKit
 
-public protocol GetStatsUseCase: Sendable {
-    func execute() async throws -> Stats
+public protocol FetchAndSendReceiptUseCase: Sendable {
+    func execute() async throws -> Bool
 }
 
-public extension GetStatsUseCase {
-    func callAsFunction() async throws -> Stats {
+public extension FetchAndSendReceiptUseCase {
+    func callAsFunction() async throws -> Bool {
         try await execute()
     }
 }
 
-public final class GetStats: GetStatsUseCase {
+public final class FetchAndSendReceipt: FetchAndSendReceiptUseCase {
     private let apiServiceProvider: any ApiServiceProviderUseCase
     private let getApiUrl: any GetApiUrlUseCase
     private let getApiKey: any GetApiKeyUseCase
@@ -45,13 +46,23 @@ public final class GetStats: GetStatsUseCase {
         self.getApiKey = getApiKey
     }
 
-    public func execute() async throws -> Stats {
+    public func execute() async throws -> Bool {
         let apiUrl = try await getApiUrl()
         guard let apiKey = try await getApiKey() else {
             throw SLError.noApiKey
         }
+
+        guard let appStoreReceiptUrl = Bundle.main.appStoreReceiptURL,
+              FileManager.default.fileExists(atPath: appStoreReceiptUrl.path()) else {
+            throw SLError.missingAppStoreReceiptURL
+        }
+
+        let receiptData = try Data(contentsOf: appStoreReceiptUrl)
+        let endpoint = ProcessPaymentEndpoint(apiKey: apiKey,
+                                              receiptData: receiptData.base64EncodedString(),
+                                              isMacApp: true)
         let apiService = try apiServiceProvider(apiUrl: apiUrl)
-        let endpoint = GetStatsEndpoint(apiKey: apiKey)
-        return try await apiService.execute(endpoint)
+        let result = try await apiService.execute(endpoint)
+        return result.value
     }
 }

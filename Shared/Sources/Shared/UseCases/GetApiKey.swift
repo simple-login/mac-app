@@ -32,9 +32,9 @@ public extension GetApiKeyUseCase {
 }
 
 public final class GetApiKey: GetApiKeyUseCase {
-    private let keychain: KeychainProvider
+    private let keychain: any KeychainProvider
 
-    public init(keychain: KeychainProvider) {
+    public init(keychain: any KeychainProvider) {
         self.keychain = keychain
     }
 
