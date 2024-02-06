@@ -1,6 +1,6 @@
 //
-// SLError.swift
-// SimpleLogin - Created on 10/01/2024.
+// Subscription.swift
+// SimpleLogin - Created on 06/02/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -19,13 +19,9 @@
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 //
 
-import Foundation
+import StoreKit
 
-public enum SLError: Error {
-    case notUtf8Data
-    case badJsonFormat
-    case badApiUrl(String)
-    case noApiKey
-    case missingMonthlySubscription
-    case missingYearlySubscription
+public struct Subscriptions {
+    public let monthly: Product
+    public let yearly: Product
 }

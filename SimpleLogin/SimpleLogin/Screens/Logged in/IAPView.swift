@@ -18,13 +18,27 @@
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 
+import Shared
 import SwiftUI
 
 struct IAPView: View {
+    @Environment(\.dismiss) private var dismiss
+    @StateObject private var viewModel: IAPViewModelModel
+
+    init(subscriptions: Subscriptions) {
+        _viewModel = .init(wrappedValue: .init(subscriptions: subscriptions))
+    }
+
     var body: some View {
         VStack {
             Text("IAP")
             Spacer()
+
+            HStack {
+                Button(action: dismiss.callAsFunction) {
+                    Text("Cancel")
+                }
+            }
         }
         .frame(width: 400, height: 300)
     }

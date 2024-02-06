@@ -24,7 +24,7 @@ import SwiftUI
 
 struct LoggedInView: View {
     @StateObject private var viewModel = LoggedInViewModel()
-    @State private var showingIapSheet = false
+    @State private var subscriptions: Subscriptions?
 
     var body: some View {
         ZStack {
@@ -41,9 +41,23 @@ struct LoggedInView: View {
         .task {
             await viewModel.refreshUserInfo()
         }
-        .sheet(isPresented: $showingIapSheet) {
-            IAPView()
+        .sheet(isPresented: subscriptionsBinding) {
+            if let subscriptions {
+                IAPView(subscriptions: subscriptions)
+            }
         }
+    }
+}
+
+private extension LoggedInView {
+    var subscriptionsBinding: Binding<Bool> {
+        .init(get: {
+            subscriptions != nil
+        }, set: { newValue in
+            if !newValue {
+                subscriptions = nil
+            }
+        })
     }
 }
 
@@ -71,8 +85,9 @@ private extension LoggedInView {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
 
             if !userInfo.isPremium {
-                PremiumPerksView(onUpgrade: { showingIapSheet.toggle() })
-                    .frame(maxWidth: 320)
+                PremiumPerksView(onUpgrade: { subscriptions = $0},
+                                 onRestore: { Task { await viewModel.refreshUserInfo() } })
+                .frame(maxWidth: 320)
             }
         }
         .padding(20)

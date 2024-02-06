@@ -32,6 +32,7 @@ enum LoggedInState {
 @MainActor
 final class LoggedInViewModel: ObservableObject {
     @Published private(set) var state: LoggedInState = .loading
+
     private let getApiUrl = resolve(\SharedUseCaseContainer.getApiUrl)
     private let getApiKey = resolve(\SharedUseCaseContainer.getApiKey)
     private let getUserInfo = resolve(\SharedUseCaseContainer.getUserInfo)

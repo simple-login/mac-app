@@ -18,36 +18,37 @@
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 
+import Shared
 import Foundation
 
-enum PlanState {
-    case loading
-    case loaded
-    case error(Error)
-}
-
 enum UpgradeState {
+    case idle
     case upgrading
     case upgraded
     case error(Error)
+
+    var error: Error? {
+        if case let .error(error) = self {
+            return error
+        }
+        return nil
+    }
 }
 
 @MainActor
 final class IAPViewModelModel: ObservableObject {
-    @Published private(set) var planState: PlanState = .loading
-    @Published private(set) var upgradeState: UpgradeState = .upgrading
+    @Published private(set) var upgradeState: UpgradeState = .idle
+    let subscriptions: Subscriptions
 
-    init() {}
+    init(subscriptions: Subscriptions) {
+        self.subscriptions = subscriptions
+    }
 
     func upgrade() {
-        Task { @MainActor [weak self] in
-            guard let self else { return }
-            do {
-                upgradeState = .upgrading
-                try await Task.sleep(nanoseconds: 1_000_000_000)
-            } catch {
-                upgradeState = .error(error)
-            }
-        }
+        print(#function)
+    }
+
+    func retry() {
+        print(#function)
     }
 }

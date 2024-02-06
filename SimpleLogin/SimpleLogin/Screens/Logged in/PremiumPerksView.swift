@@ -18,43 +18,74 @@
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 
+import Combine
 import SwiftUI
 import SimpleLoginPackage
+import Shared
 
 struct PremiumPerksView: View {
-    var onUpgrade: () -> Void
+    @StateObject private var viewModel = PremiumPerksViewModel()
+
+    var onUpgrade: (Shared.Subscriptions) -> Void
+    var onRestore: () -> Void
 
     var body: some View {
         VStack(spacing: 0) {
             Text("Discover Premium")
                 .font(.title.bold())
                 .padding(.bottom)
-
             Spacer()
-
             perks
-
             Spacer()
 
-            Button(action: onUpgrade) {
-                Text("Upgrade")
-                    .frame(maxWidth: .infinity)
-                    .font(.headline)
-                    .padding(8)
+            Group {
+                upgradeButton
+                restoreButton
             }
-            .frame(maxWidth: .infinity)
-            .buttonStyle(.borderedProminent)
-            .tint(Color.blue)
-            .padding(.top)
+            .disabled(viewModel.isGettingSubscriptions || viewModel.isRestoring)
         }
         .padding()
         .roundedBorderedBackground()
+        .onReceive(Just(viewModel.restorePurchaseState)) { state in
+            if case .restored = state {
+                onRestore()
+                viewModel.resetStates()
+            }
+        }
+        .onReceive(Just(viewModel.getSubscriptionsState)) { state in
+            if case let .fetched(subscriptions) = state {
+                onUpgrade(subscriptions)
+                viewModel.resetStates()
+            }
+        }
+        .alert(
+            "Error occured",
+            isPresented: errorBinding,
+            actions: {
+                Button("Cancel", role: .cancel, action: { viewModel.resetStates() })
+                Button("Retry", action: { viewModel.retry() })
+            },
+            message: {
+                Text(viewModel.error?.localizedDescription ?? "")
+            })
+    }
+}
+
+private extension PremiumPerksView {
+    var errorBinding: Binding<Bool> {
+        .init(get: {
+            viewModel.error != nil
+        }, set: { newValue in
+            if !newValue {
+                viewModel.resetStates()
+            }
+        })
     }
 }
 
 private extension PremiumPerksView {
     var perks: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 12) {
             ForEach(PremiumPerk.allCases, id: \.self) { perk in
                 row(for: perk)
             }
@@ -84,8 +115,62 @@ private extension PremiumPerksView {
     }
 }
 
+private extension PremiumPerksView {
+    var upgradeButton: some View {
+        Button(action: {
+            if case .idle = viewModel.getSubscriptionsState {
+                viewModel.fetchSubscriptions()
+            }
+        }, label: {
+            if case .fetching = viewModel.getSubscriptionsState {
+                ZStack {
+                    Text(verbatim: "Dummy text")
+                        .frame(maxWidth: .infinity)
+                        .foregroundStyle(Color.clear)
+                        .padding(8)
+                    ProgressView()
+                        .controlSize(.mini)
+                }
+            } else {
+                Text("Upgrade")
+                    .frame(maxWidth: .infinity)
+                    .font(.headline)
+                    .padding(8)
+            }
+        })
+        .frame(maxWidth: .infinity)
+        .buttonStyle(.borderedProminent)
+        .tint(Color.blue)
+        .padding(.vertical)
+    }
+}
+
+private extension PremiumPerksView {
+    var restoreButton: some View {
+        Button(action: {
+            if case .idle = viewModel.restorePurchaseState {
+                viewModel.restorePurchase()
+            }
+        }, label: {
+            if case .restoring = viewModel.restorePurchaseState {
+                ZStack {
+                    Text(verbatim: "Dummy text")
+                        .foregroundStyle(Color.clear)
+                    ProgressView()
+                        .controlSize(.mini)
+                }
+            } else {
+                Text("Restore purchase")
+                    .foregroundStyle(Color.blue)
+            }
+        })
+        .frame(maxWidth: .infinity, alignment: .center)
+        .buttonStyle(.borderless)
+    }
+}
+
 #Preview {
-    PremiumPerksView(onUpgrade: {})
+    PremiumPerksView(onUpgrade: { _ in }, onRestore: {})
         .padding()
         .preferredColorScheme(.dark)
 }
