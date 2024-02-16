@@ -1,6 +1,6 @@
 //
-// SharedToolingContainer.swift
-// SimpleLogin - Created on 10/01/2024.
+// CreateLogger.swift
+// SimpleLogin - Created on 16/02/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -17,30 +17,25 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
+//
 
-import Factory
 import Foundation
 import OSLog
-import SimpleKeychain
-import Shared
 
-final class SharedToolingContainer: SharedContainer, AutoRegistering {
-    static let shared = SharedToolingContainer()
-    let manager = ContainerManager()
+public protocol CreateLoggerUseCase: Sendable {
+    func execute(category: String) -> Logger
+}
 
-    func autoRegister() {
-        manager.defaultScope = .singleton
+public extension CreateLoggerUseCase {
+    func callAsFunction(category: String = String(describing: Self.self)) -> Logger {
+        execute(category: category)
     }
 }
 
-extension SharedToolingContainer {
-    var keychain: Factory<KeychainProvider> {
-        self { SimpleKeychain(service: Constants.appGroup, accessGroup: Constants.keychainAccessGroup)}
-    }
+public final class CreateLogger: CreateLoggerUseCase {
+    public init() {}
 
-    var logger: ParameterFactory<String, Logger> {
-        self { Logger(subsystem: Bundle.main.bundleIdentifier ?? "SimpleLogin",
-                      category: $0) }
-        .unique
+    public func execute(category: String) -> Logger {
+        Logger(subsystem: Bundle.main.bundleIdentifier ?? "SimpleLogin", category: category)
     }
 }

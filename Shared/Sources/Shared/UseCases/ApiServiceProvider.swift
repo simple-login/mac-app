@@ -33,10 +33,10 @@ public extension ApiServiceProviderUseCase {
 }
 
 public final class ApiServiceProvider: ApiServiceProviderUseCase {
-    private let printDebugInformation: Bool
+    private let logEnabled: any LogEnabledUseCase
 
-    public init(printDebugInformation: Bool) {
-        self.printDebugInformation = printDebugInformation
+    public init(logEnabled: any LogEnabledUseCase) {
+        self.logEnabled = logEnabled
     }
 
     public func execute(apiUrl: ApiUrl) throws -> APIServiceProtocol {
@@ -45,6 +45,6 @@ public final class ApiServiceProvider: ApiServiceProviderUseCase {
         }
         return APIService(baseURL: baseUrl,
                           session: .shared,
-                          printDebugInformation: printDebugInformation)
+                          printDebugInformation: logEnabled())
     }
 }

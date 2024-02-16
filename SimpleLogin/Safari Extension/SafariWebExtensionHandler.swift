@@ -27,6 +27,8 @@ final class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
     private let processSafariExtensionEvent = resolve(\SharedUseCaseContainer.processSafariExtensionEvent)
     private let setApiUrl = resolve(\SharedUseCaseContainer.setApiUrl)
     private let setApiKey = resolve(\SharedUseCaseContainer.setApiKey)
+    private let createLogger = resolve(\SharedUseCaseContainer.createLogger)
+    private let logEnabled = resolve(\SharedUseCaseContainer.logEnabled)
 
     func beginRequest(with context: NSExtensionContext) {
         let request = context.inputItems.first as? NSExtensionItem
@@ -48,7 +50,11 @@ final class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
 private extension SafariWebExtensionHandler {
     func handle(message: String) async {
-        Logger.log(with: "Received message \(message)")
+        let logger = createLogger()
+        let logEnabled = logEnabled()
+        if logEnabled {
+            logger.publicDebug("Received message \(message)")
+        }
         do {
             switch try processSafariExtensionEvent(message) {
             case let .loggedIn(apiUrl, apiKey):
@@ -62,8 +68,9 @@ private extension SafariWebExtensionHandler {
                 break
             }
         } catch {
-            Logger.logError(with: "Error handling message \(error.localizedDescription)")
-            print(error.localizedDescription)
+            if logEnabled {
+                logger.publicError("Error handling message \(error.localizedDescription)")
+            }
         }
     }
 

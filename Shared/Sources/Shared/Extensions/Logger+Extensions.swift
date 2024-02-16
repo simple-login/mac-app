@@ -24,30 +24,34 @@ import OSLog
 public extension Logger {
     private static var subsystem = "SimpleLogin"
 
-    // this could be changed
     static let error = Logger(subsystem: subsystem, category: "Error")
-    static let infos = Logger(subsystem: subsystem, category: "Infos")
+    static let info = Logger(subsystem: subsystem, category: "Info")
 
-   static func logError(for type: String? = nil, with message: String) {
+    func publicDebug(_ message: String) {
+        debug("\(message, privacy: .public)")
         #if DEBUG
-       if let type {
-           Logger.error.debug("\(type, align: .left(columns: type.count)) \(message)")
-       } else {
-           Logger.error.debug("\(message)")
-       }
+        print(message)
         #endif
     }
 
-    /// ```swift
-    /// Logger.log(for: "Login", with: "The message you want")
-    /// ```
-    static func log(for type: String? = nil, with message: String) {
+    func publicInfo(_ message: String) {
+        info("\(message, privacy: .public)")
         #if DEBUG
-        if let type {
-            Logger.infos.debug("\(type, align: .left(columns: type.count)) \(message)")
-        } else {
-            Logger.infos.debug("\(message)")
-        }
+        print(message)
+        #endif
+    }
+
+    func publicWarning(_ message: String) {
+        warning("\(message, privacy: .public)")
+        #if DEBUG
+        print(message)
+        #endif
+    }
+
+    func publicError(_ message: String) {
+        error("\(message, privacy: .public)")
+        #if DEBUG
+        print(message)
         #endif
     }
 }

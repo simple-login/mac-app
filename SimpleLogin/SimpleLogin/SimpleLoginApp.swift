@@ -29,5 +29,24 @@ struct SimpleLoginApp: App {
             MainView()
         }
         .windowResizability(.contentSize)
+        .commands {
+            CommandGroup(replacing: .saveItem) {}
+            CommandGroup(replacing: .newItem) {}
+            CommandGroup(replacing: .help) {}
+            DebugMenu()
+        }
+    }
+}
+
+private struct DebugMenu: Commands {
+    @AppStorage(Constants.logEnabledKey, store: kSharedUserDefaults)
+    private var logEnabled = false
+
+    var body: some Commands {
+        CommandMenu("Debug") {
+            Toggle(isOn: $logEnabled, label: {
+                Text("Enable logging")
+            })
+        }
     }
 }

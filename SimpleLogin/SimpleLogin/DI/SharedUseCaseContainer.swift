@@ -38,12 +38,22 @@ private extension SharedUseCaseContainer {
 }
 
 extension SharedUseCaseContainer {
+    var logEnabled: Factory<LogEnabledUseCase> {
+        self { LogEnabled() }
+    }
+
+    var createLogger: Factory<CreateLoggerUseCase> {
+        self { CreateLogger() }
+            .unique
+    }
+
     var getSafariExtensionState: Factory<GetSafariExtensionStateUseCase> {
         self { GetSafariExtensionState() }
     }
 
     var processSafariExtensionEvent: Factory<ProcessSafariExtensionEventUseCase> {
-        self { ProcessSafariExtensionEvent() }
+        self { ProcessSafariExtensionEvent(createLogger: self.createLogger(),
+                                           logEnabled: self.logEnabled()) }
     }
 
     var getApiUrl: Factory<GetApiUrlUseCase> {
@@ -63,13 +73,7 @@ extension SharedUseCaseContainer {
     }
 
     var apiServiceProvider: Factory<ApiServiceProviderUseCase> {
-        self {
-            #if DEBUG
-            ApiServiceProvider(printDebugInformation: true)
-            #else
-            ApiServiceProvider(printDebugInformation: false)
-            #endif
-        }
+        self { ApiServiceProvider(logEnabled: self.logEnabled()) }
     }
 
     var getUserInfo: Factory<GetUserInfoUseCase> {
