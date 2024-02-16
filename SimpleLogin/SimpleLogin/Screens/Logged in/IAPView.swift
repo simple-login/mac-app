@@ -77,7 +77,7 @@ struct IAPView: View {
                 Button("Retry", action: { viewModel.retry() })
             },
             message: {
-                Text(viewModel.upgradeState.error?.localizedDescription ?? "")
+                Text(viewModel.upgradeState.error?.userFacingMessage ?? "")
             })
     }
 }

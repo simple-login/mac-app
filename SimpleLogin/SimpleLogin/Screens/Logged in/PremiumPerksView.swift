@@ -66,7 +66,7 @@ struct PremiumPerksView: View {
                 Button("Retry", action: { viewModel.retry() })
             },
             message: {
-                Text(viewModel.error?.localizedDescription ?? "")
+                Text(viewModel.error?.userFacingMessage ?? "")
             })
     }
 }

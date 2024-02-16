@@ -53,8 +53,7 @@ public final class FetchAndSendReceipt: FetchAndSendReceiptUseCase {
             throw SLError.noApiKey
         }
 
-        guard let appStoreReceiptUrl = Bundle.main.appStoreReceiptURL,
-              FileManager.default.fileExists(atPath: appStoreReceiptUrl.path()) else {
+        guard let appStoreReceiptUrl = Bundle.main.appStoreReceiptURL else {
             throw SLError.missingAppStoreReceiptURL
         }
 

@@ -21,7 +21,7 @@
 
 import Foundation
 
-public enum SLError: Error {
+public enum SLError: Error, CustomStringConvertible {
     case notUtf8Data
     case badJsonFormat
     case badApiUrl(String)
@@ -30,4 +30,25 @@ public enum SLError: Error {
     case missingMonthlySubscription
     case missingYearlySubscription
     case missingAppStoreReceiptURL
+
+    public var description: String {
+        switch self {
+        case .notUtf8Data:
+            "Not UTF8 data"
+        case .badJsonFormat:
+            "Bad JSON format"
+        case let .badApiUrl(string):
+            "Bad API URL \(string)"
+        case .noApiKey:
+            "No API key"
+        case .failedPurchaseVerification:
+            "Failed purchase verification"
+        case .missingMonthlySubscription:
+            "Missing monthly subscription"
+        case .missingYearlySubscription:
+            "Missing yearly subscription"
+        case .missingAppStoreReceiptURL:
+            "Missing App Store receipt URL"
+        }
+    }
 }
