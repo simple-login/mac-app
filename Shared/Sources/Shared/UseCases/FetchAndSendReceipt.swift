@@ -20,6 +20,7 @@
 //
 
 import Foundation
+@preconcurrency import OSLog
 import SimpleLoginPackage
 import StoreKit
 
@@ -38,13 +39,19 @@ public final class FetchAndSendReceipt: FetchAndSendReceiptUseCase {
     private let apiServiceProvider: any ApiServiceProviderUseCase
     private let getApiUrl: any GetApiUrlUseCase
     private let getApiKey: any GetApiKeyUseCase
+    private let logger: Logger
+    private let logEnabled: any LogEnabledUseCase
 
     public init(apiServiceProvider: any ApiServiceProviderUseCase,
                 getApiUrl: any GetApiUrlUseCase,
-                getApiKey: any GetApiKeyUseCase) {
+                getApiKey: any GetApiKeyUseCase,
+                createLogger: any CreateLoggerUseCase,
+                logEnabled: any LogEnabledUseCase) {
         self.apiServiceProvider = apiServiceProvider
         self.getApiUrl = getApiUrl
         self.getApiKey = getApiKey
+        logger = createLogger(category: String(describing: Self.self))
+        self.logEnabled = logEnabled
     }
 
     public func execute() async throws -> Bool {
@@ -57,12 +64,27 @@ public final class FetchAndSendReceipt: FetchAndSendReceiptUseCase {
             throw SLError.missingAppStoreReceiptURL
         }
 
+        let logEnabled = logEnabled()
+
+        if logEnabled {
+            logger.publicDebug("Found receipt URL \(appStoreReceiptUrl.absoluteString)")
+        }
+
         let receiptData = try Data(contentsOf: appStoreReceiptUrl)
+        let receiptDataBase64 = receiptData.base64EncodedString()
+
+        if logEnabled {
+            logger.publicDebug("Sending receipt data \(receiptDataBase64)")
+        }
+
         let endpoint = ProcessPaymentEndpoint(apiKey: apiKey,
-                                              receiptData: receiptData.base64EncodedString(),
+                                              receiptData: receiptDataBase64,
                                               isMacApp: true)
         let apiService = try apiServiceProvider(apiUrl: apiUrl)
         let result = try await apiService.execute(endpoint)
+        if logEnabled {
+            logger.publicInfo("Sent receipt data \(receiptDataBase64)")
+        }
         return result.value
     }
 }

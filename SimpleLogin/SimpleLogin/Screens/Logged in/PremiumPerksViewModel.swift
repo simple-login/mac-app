@@ -43,6 +43,8 @@ final class PremiumPerksViewModel: ObservableObject {
 
     private let getSubscriptions = resolve(\SharedUseCaseContainer.getSubscriptions)
     private let fetchAndSendReceipt = resolve(\SharedUseCaseContainer.fetchAndSendReceipt)
+    private let createLogger = resolve(\SharedUseCaseContainer.createLogger)
+    private let logEnabled = resolve(\SharedUseCaseContainer.logEnabled)
 
     var isGettingSubscriptions: Bool {
         if case .fetching = getSubscriptionsState {
@@ -74,11 +76,24 @@ extension PremiumPerksViewModel {
     func fetchSubscriptions() {
         Task { @MainActor [weak self] in
             guard let self else { return }
+            let logger = createLogger(category: String(describing: Self.self))
+            let logEnabled = logEnabled()
             do {
                 getSubscriptionsState = .fetching
+                if logEnabled {
+                    logger.publicDebug("Fetching subscriptions")
+                }
+
                 let subscriptions = try await getSubscriptions()
+
                 getSubscriptionsState = .fetched(subscriptions)
+                if logEnabled {
+                    logger.publicInfo("Fetched subscriptions \(String(describing: subscriptions))")
+                }
             } catch {
+                if logEnabled {
+                    logger.publicError("Failed to fetching subscriptions \(error.localizedDescription)")
+                }
                 getSubscriptionsState = .error(error)
             }
         }
@@ -87,11 +102,24 @@ extension PremiumPerksViewModel {
     func restorePurchase() {
         Task { @MainActor [weak self] in
             guard let self else { return }
+            let logger = createLogger(category: String(describing: Self.self))
+            let logEnabled = logEnabled()
             do {
                 restorePurchaseState = .restoring
+                if logEnabled {
+                    logger.publicDebug("Restoring purchase")
+                }
+
                 try await fetchAndSendReceipt()
+
                 restorePurchaseState = .restored
+                if logEnabled {
+                    logger.publicInfo("Restored purchase")
+                }
             } catch {
+                if logEnabled {
+                    logger.publicError("Failed to restore purchase \(error.localizedDescription)")
+                }
                 restorePurchaseState = .error(error)
             }
         }

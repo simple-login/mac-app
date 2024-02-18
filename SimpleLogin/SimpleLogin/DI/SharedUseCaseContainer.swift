@@ -93,12 +93,15 @@ extension SharedUseCaseContainer {
     }
 
     var purchaseProduct: Factory<PurchaseProductUseCase> {
-        self { PurchaseProduct() }
+        self { PurchaseProduct(createLogger: self.createLogger(),
+                               logEnabled: self.logEnabled()) }
     }
 
     var fetchAndSendReceipt: Factory<FetchAndSendReceiptUseCase> {
         self { FetchAndSendReceipt(apiServiceProvider: self.apiServiceProvider(),
                                    getApiUrl: self.getApiUrl(),
-                                   getApiKey: self.getApiKey()) }
+                                   getApiKey: self.getApiKey(),
+                                   createLogger: self.createLogger(),
+                                   logEnabled: self.logEnabled()) }
     }
 }

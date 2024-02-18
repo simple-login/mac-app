@@ -27,31 +27,33 @@ public extension Logger {
     static let error = Logger(subsystem: subsystem, category: "Error")
     static let info = Logger(subsystem: subsystem, category: "Info")
 
+    /*
+     While in development (debug mode), all logs are shown in Xcode console
+     but only warning & error logs are shown in Console app.
+     Not sure why so we fallback to warning when not in debug mode
+     */
+
     func publicDebug(_ message: String) {
-        debug("\(message, privacy: .public)")
         #if DEBUG
-        print(message)
+        debug("\(message, privacy: .public)")
+        #else
+        warning("\(message, privacy: .public)")
         #endif
     }
 
     func publicInfo(_ message: String) {
-        info("\(message, privacy: .public)")
         #if DEBUG
-        print(message)
+        info("\(message, privacy: .public)")
+        #else
+        warning("\(message, privacy: .public)")
         #endif
     }
 
     func publicWarning(_ message: String) {
         warning("\(message, privacy: .public)")
-        #if DEBUG
-        print(message)
-        #endif
     }
 
     func publicError(_ message: String) {
         error("\(message, privacy: .public)")
-        #if DEBUG
-        print(message)
-        #endif
     }
 }

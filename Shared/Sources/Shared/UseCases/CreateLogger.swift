@@ -27,7 +27,7 @@ public protocol CreateLoggerUseCase: Sendable {
 }
 
 public extension CreateLoggerUseCase {
-    func callAsFunction(category: String = String(describing: Self.self)) -> Logger {
+    func callAsFunction(category: String) -> Logger {
         execute(category: category)
     }
 }

@@ -50,7 +50,7 @@ final class SafariWebExtensionHandler: NSObject, NSExtensionRequestHandling {
 
 private extension SafariWebExtensionHandler {
     func handle(message: String) async {
-        let logger = createLogger()
+        let logger = createLogger(category: String(describing: Self.self))
         let logEnabled = logEnabled()
         if logEnabled {
             logger.publicDebug("Received message \(message)")

@@ -45,6 +45,8 @@ final class IAPViewModelModel: ObservableObject {
     private var lastProduct: Product?
     private let purchaseProduct = resolve(\SharedUseCaseContainer.purchaseProduct)
     private let fetchAndSendReceipt = resolve(\SharedUseCaseContainer.fetchAndSendReceipt)
+    private let createLogger = resolve(\SharedUseCaseContainer.createLogger)
+    private let logEnabled = resolve(\SharedUseCaseContainer.logEnabled)
 
     init(subscriptions: Subscriptions) {
         self.subscriptions = subscriptions
@@ -69,6 +71,7 @@ private extension IAPViewModelModel {
     func buy(product: Product) {
         Task { @MainActor [weak self] in
             guard let self else { return }
+            let logger = createLogger(category: String(describing: Self.self))
             lastProduct = product
             do {
                 upgradeState = .upgrading
@@ -76,6 +79,9 @@ private extension IAPViewModelModel {
                 try await fetchAndSendReceipt()
                 upgradeState = .upgraded
             } catch {
+                if logEnabled() {
+                    logger.publicError("Failed to purchase \(error.localizedDescription)")
+                }
                 upgradeState = .error(error)
             }
         }

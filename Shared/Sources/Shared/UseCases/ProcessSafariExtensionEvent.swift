@@ -38,7 +38,7 @@ public final class ProcessSafariExtensionEvent: ProcessSafariExtensionEventUseCa
 
     public init(createLogger: any CreateLoggerUseCase,
                 logEnabled: any LogEnabledUseCase) {
-        self.logger = createLogger()
+        self.logger = createLogger(category: String(describing: Self.self))
         self.logEnabled = logEnabled
     }
 
