@@ -2,7 +2,7 @@
   "name": "SimpleLogin",
   "short_name": "SimpleLogin",
   "description": "Easily create a different email for each website to hide your real email",
-  "version": "2.11.0",
+  "version": "2.11.1",
   "manifest_version": 2,
   "icons": {
     "16": "images/icon-simplelogin.png",
