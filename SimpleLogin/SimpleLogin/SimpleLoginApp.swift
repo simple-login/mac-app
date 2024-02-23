@@ -29,10 +29,8 @@ struct SimpleLoginApp: App {
             MainView()
         }
         .windowResizability(.contentSize)
+        .commandsRemoved()
         .commands {
-            CommandGroup(replacing: .saveItem) {}
-            CommandGroup(replacing: .newItem) {}
-            CommandGroup(replacing: .help) {}
             DebugMenu()
         }
     }
