@@ -85,7 +85,7 @@ private extension LoggedInView {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
 
-            if !userInfo.isPremium {
+            if !userInfo.isPremium || userInfo.inTrial {
                 PremiumPerksView(onUpgrade: { subscriptions = $0},
                                  onRestore: { Task { await viewModel.refreshUserInfo() } })
                 .frame(maxWidth: 320)
