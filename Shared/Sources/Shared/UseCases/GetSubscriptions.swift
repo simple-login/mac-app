@@ -33,11 +33,15 @@ public extension GetSubscriptionsUseCase {
 }
 
 public final class GetSubscriptions: GetSubscriptionsUseCase {
-    public init() {}
+    private let monthlyId: String
+    private let yearlyId: String
+    public init(monthlyId: String = "me.proton.simplelogin.macos.premium.monthly",
+                yearlyId: String = "me.proton.simplelogin.macos.premium.yearly") {
+        self.monthlyId = monthlyId
+        self.yearlyId = yearlyId
+    }
 
     public func execute() async throws -> Subscriptions {
-        let monthlyId = "me.proton.simplelogin.macos.premium.monthly"
-        let yearlyId = "me.proton.simplelogin.macos.premium.yearly"
         let products = try await Product.products(for: [monthlyId, yearlyId])
 
         guard let monthlySubscription = products.first(where: { $0.id == monthlyId}) else {

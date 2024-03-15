@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/lukacs-m/SimpleKeychain",
       "state" : {
-        "branch" : "main",
-        "revision" : "82afa78dab0e7baa8b005cd80dac982ce0e29e05"
+        "revision" : "a41b93b2565cc53ed26e547f013590dd484afb06",
+        "version" : "0.1.2"
       }
     },
     {

@@ -18,7 +18,6 @@
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 
-import Combine
 import SwiftUI
 import SimpleLoginPackage
 import Shared
@@ -46,13 +45,13 @@ struct PremiumPerksView: View {
         }
         .padding()
         .roundedBorderedBackground()
-        .onReceive(Just(viewModel.restorePurchaseState)) { state in
+        .onReceive(viewModel.$restorePurchaseState) { state in
             if case .restored = state {
                 onRestore()
                 viewModel.resetStates()
             }
         }
-        .onReceive(Just(viewModel.getSubscriptionsState)) { state in
+        .onReceive(viewModel.$getSubscriptionsState) { state in
             if case let .fetched(subscriptions) = state {
                 onUpgrade(subscriptions)
                 viewModel.resetStates()

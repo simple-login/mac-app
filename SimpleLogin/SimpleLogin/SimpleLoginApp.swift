@@ -30,10 +30,20 @@ struct SimpleLoginApp: App {
         WindowGroup {
             MainView()
         }
-        .windowResizability(.contentSize)
+        .contentSizeWindowResizability()
         .commands {
             CommandGroup(replacing: .newItem) {}
             DebugMenu()
+        }
+    }
+}
+
+private extension Scene {
+    func contentSizeWindowResizability() -> some Scene {
+        if #available(macOS 13, *) {
+            return windowResizability(.contentSize)
+        } else {
+            return self
         }
     }
 }

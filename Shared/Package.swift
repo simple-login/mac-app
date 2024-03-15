@@ -4,7 +4,7 @@
 import PackageDescription
 
 var platforms: [SupportedPlatform] = [
-    .macOS(.v13)
+    .macOS(.v12)
 ]
 
 let package = Package(name: "Shared",
@@ -16,7 +16,7 @@ let package = Package(name: "Shared",
                                  targets: ["Shared"])
                       ],
                       dependencies: [
-                        .package(url: "https://github.com/lukacs-m/SimpleKeychain", branch: "main"),
+                        .package(url: "https://github.com/lukacs-m/SimpleKeychain", exact: "0.1.2"),
                         .package(url: "https://github.com/simple-login/swift-package", exact: "2.1.4")
                       ],
                       targets: [

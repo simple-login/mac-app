@@ -32,9 +32,13 @@ public extension LogEnabledUseCase {
 }
 
 public final class LogEnabled: LogEnabledUseCase {
-    public init() {}
+    private let userDefaults: UserDefaults
+
+    public init(userDefaults: UserDefaults = kSharedUserDefaults ?? .standard) {
+        self.userDefaults = userDefaults
+    }
 
     public func execute() -> Bool {
-        kSharedUserDefaults?.bool(forKey: Constants.logEnabledKey) ?? false
+        userDefaults.bool(forKey: Constants.logEnabledKey)
     }
 }
