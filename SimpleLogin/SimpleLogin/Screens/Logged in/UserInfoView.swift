@@ -38,8 +38,8 @@ struct UserInfoView: View {
 
             Spacer()
 
-            if userInfo.isPremium {
-                Text("Premium")
+            if let status = userInfo.subscriptionStatus {
+                Text(status)
                     .font(.body.bold())
                     .padding(.horizontal, 8)
                     .padding(.vertical, 6)
@@ -59,6 +59,7 @@ private extension UserInfoView {
            let url = URL(string: profilePictureUrl) {
             AsyncImage(url: url)
                 .scaledToFit()
+                .frame(width: 24, height: 24)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
         } else {
             ZStack {
@@ -71,6 +72,18 @@ private extension UserInfoView {
             }
             .frame(width: 40, height: 40)
             .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
+    }
+}
+
+private extension UserInfo {
+    var subscriptionStatus: String? {
+        if inTrial {
+            "Trial"
+        } else if isPremium {
+            "Premium"
+        } else {
+            nil
         }
     }
 }

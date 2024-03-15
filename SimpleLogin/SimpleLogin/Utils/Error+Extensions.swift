@@ -1,6 +1,6 @@
 //
-// GetApiUrl.swift
-// SimpleLogin - Created on 10/01/2024.
+// Error+Extensions.swift
+// SimpleLogin - Created on 08/02/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -17,28 +17,18 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
-//
 
 import Foundation
+import SimpleLoginPackage
+import Shared
 
-public protocol GetApiUrlUseCase: Sendable {
-    func execute() async throws -> ApiUrl
-}
-
-public extension GetApiUrlUseCase {
-    func callAsFunction() async throws -> ApiUrl {
-        try await execute()
-    }
-}
-
-public final class GetApiUrl: GetApiUrlUseCase {
-    private let keychain: any KeychainProvider
-
-    public init(keychain: any KeychainProvider) {
-        self.keychain = keychain
-    }
-
-    public func execute() async throws -> ApiUrl {
-        try await keychain.getValueFromKeychain(for: Constants.apiUrlKey) ?? Constants.defaultApiUrl
+extension Error {
+    var userFacingMessage: String {
+        if let slError = self as? SLError {
+            return slError.description
+        } else if let apiServiceError = self as? APIServiceError {
+            return apiServiceError.description
+        }
+        return localizedDescription
     }
 }

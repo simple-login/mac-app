@@ -24,10 +24,39 @@ import SwiftUI
 
 @main
 struct SimpleLoginApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
         WindowGroup {
             MainView()
         }
-        .windowResizability(.contentSize)
+        .contentSizeWindowResizability()
+        .commands {
+            CommandGroup(replacing: .newItem) {}
+            DebugMenu()
+        }
+    }
+}
+
+private extension Scene {
+    func contentSizeWindowResizability() -> some Scene {
+        if #available(macOS 13, *) {
+            return windowResizability(.contentSize)
+        } else {
+            return self
+        }
+    }
+}
+
+private struct DebugMenu: Commands {
+    @AppStorage(Constants.logEnabledKey, store: kSharedUserDefaults)
+    private var logEnabled = false
+
+    var body: some Commands {
+        CommandMenu("Debug") {
+            Toggle(isOn: $logEnabled, label: {
+                Text("Enable logging")
+            })
+        }
     }
 }

@@ -24,6 +24,7 @@ import SwiftUI
 
 struct LoggedInView: View {
     @StateObject private var viewModel = LoggedInViewModel()
+    @State private var subscriptions: Subscriptions?
 
     var body: some View {
         ZStack {
@@ -31,8 +32,8 @@ struct LoggedInView: View {
             case .loading:
                 ProgressView()
                     .frame(width: 800, height: 480, alignment: .center)
-            case let .loaded(userInfo):
-                view(for: userInfo)
+            case let .loaded(userInfo, stats):
+                view(userInfo: userInfo, stats: stats)
             case let .error(error):
                 view(for: error)
             }
@@ -40,11 +41,29 @@ struct LoggedInView: View {
         .task {
             await viewModel.refreshUserInfo()
         }
+        .sheet(isPresented: subscriptionsBinding) {
+            if let subscriptions {
+                IAPView(subscriptions: subscriptions,
+                        onUpgrade: { Task { await viewModel.refreshUserInfo() } })
+            }
+        }
     }
 }
 
 private extension LoggedInView {
-    func view(for userInfo: UserInfo) -> some View {
+    var subscriptionsBinding: Binding<Bool> {
+        .init(get: {
+            subscriptions != nil
+        }, set: { newValue in
+            if !newValue {
+                subscriptions = nil
+            }
+        })
+    }
+}
+
+private extension LoggedInView {
+    func view(userInfo: UserInfo, stats: Stats) -> some View {
         HStack(spacing: 20) {
             VStack(alignment: .leading) {
                 LogoView()
@@ -54,21 +73,22 @@ private extension LoggedInView {
                     .padding(.bottom, 10)
 
                 HStack(spacing: 16) {
-                    StatCell(title: "Aliases", description: "All time", value: 1358)
-                    StatCell(title: "Forwarded", description: "Last 14 days", value: 789)
+                    StatCell(title: "Aliases", description: "All time", value: stats.aliasCount)
+                    StatCell(title: "Forwarded", description: "Last 14 days", value: stats.forwardCount)
                 }
                 .padding(.bottom, 8)
 
                 HStack(spacing: 16) {
-                    StatCell(title: "Replies/sent", description: "Last 14 days", value: 29)
-                    StatCell(title: "Blocked", description: "Last 14 days", value: 108)
+                    StatCell(title: "Replies/sent", description: "Last 14 days", value: stats.replyCount)
+                    StatCell(title: "Blocked", description: "Last 14 days", value: stats.blockCount)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
 
-            if !userInfo.isPremium {
-                PremiumPerksView(onUpgrade: { viewModel.upgrade() })
-                    .frame(maxWidth: 320)
+            if !userInfo.isPremium || userInfo.inTrial {
+                PremiumPerksView(onUpgrade: { subscriptions = $0},
+                                 onRestore: { Task { await viewModel.refreshUserInfo() } })
+                .frame(maxWidth: 320)
             }
         }
         .padding(20)

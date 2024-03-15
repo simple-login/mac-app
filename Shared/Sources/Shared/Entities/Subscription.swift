@@ -1,6 +1,6 @@
 //
-// GetApiUrl.swift
-// SimpleLogin - Created on 10/01/2024.
+// Subscription.swift
+// SimpleLogin - Created on 06/02/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -19,26 +19,9 @@
 // along with SimpleLogin. If not, see https://www.gnu.org/licenses/.
 //
 
-import Foundation
+import StoreKit
 
-public protocol GetApiUrlUseCase: Sendable {
-    func execute() async throws -> ApiUrl
-}
-
-public extension GetApiUrlUseCase {
-    func callAsFunction() async throws -> ApiUrl {
-        try await execute()
-    }
-}
-
-public final class GetApiUrl: GetApiUrlUseCase {
-    private let keychain: any KeychainProvider
-
-    public init(keychain: any KeychainProvider) {
-        self.keychain = keychain
-    }
-
-    public func execute() async throws -> ApiUrl {
-        try await keychain.getValueFromKeychain(for: Constants.apiUrlKey) ?? Constants.defaultApiUrl
-    }
+public struct Subscriptions {
+    public let monthly: Product
+    public let yearly: Product
 }

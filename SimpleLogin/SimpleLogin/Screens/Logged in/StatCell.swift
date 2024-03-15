@@ -33,7 +33,7 @@ struct StatCell: View {
                 Spacer()
                 Text(description)
                     .foregroundStyle(Color.secondary)
-                    .fontWeight(.medium)
+                    .font(.body.weight(.medium))
             }
 
             Text("\(value)")

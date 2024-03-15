@@ -1,6 +1,6 @@
 //
-// GetApiUrl.swift
-// SimpleLogin - Created on 10/01/2024.
+// CreateLogger.swift
+// SimpleLogin - Created on 16/02/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -20,25 +20,22 @@
 //
 
 import Foundation
+import OSLog
 
-public protocol GetApiUrlUseCase: Sendable {
-    func execute() async throws -> ApiUrl
+public protocol CreateLoggerUseCase: Sendable {
+    func execute(category: String) -> Logger
 }
 
-public extension GetApiUrlUseCase {
-    func callAsFunction() async throws -> ApiUrl {
-        try await execute()
+public extension CreateLoggerUseCase {
+    func callAsFunction(category: String) -> Logger {
+        execute(category: category)
     }
 }
 
-public final class GetApiUrl: GetApiUrlUseCase {
-    private let keychain: any KeychainProvider
+public final class CreateLogger: CreateLoggerUseCase {
+    public init() {}
 
-    public init(keychain: any KeychainProvider) {
-        self.keychain = keychain
-    }
-
-    public func execute() async throws -> ApiUrl {
-        try await keychain.getValueFromKeychain(for: Constants.apiUrlKey) ?? Constants.defaultApiUrl
+    public func execute(category: String) -> Logger {
+        Logger(subsystem: Bundle.main.bundleIdentifier ?? "SimpleLogin", category: category)
     }
 }

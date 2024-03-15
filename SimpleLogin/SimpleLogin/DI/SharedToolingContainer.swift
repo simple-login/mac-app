@@ -20,6 +20,7 @@
 
 import Factory
 import Foundation
+import OSLog
 import SimpleKeychain
 import Shared
 
@@ -35,5 +36,11 @@ final class SharedToolingContainer: SharedContainer, AutoRegistering {
 extension SharedToolingContainer {
     var keychain: Factory<KeychainProvider> {
         self { SimpleKeychain(service: Constants.appGroup, accessGroup: Constants.keychainAccessGroup)}
+    }
+
+    var logger: ParameterFactory<String, Logger> {
+        self { Logger(subsystem: Bundle.main.bundleIdentifier ?? "SimpleLogin",
+                      category: $0) }
+        .unique
     }
 }

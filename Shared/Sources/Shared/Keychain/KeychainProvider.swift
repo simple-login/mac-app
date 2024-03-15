@@ -30,12 +30,10 @@ public protocol KeychainProvider: Sendable {
 
 extension SimpleKeychain: KeychainProvider {
     public func getValueFromKeychain(for key: String) async throws -> String? {
-        Logger.log(with: "Get value for key \(key)")
-        return try get(key: key)
+        try get(key: key)
     }
 
     public func setValueToKeychain(_ value: String?, for key: String) async throws {
-        Logger.log(with: "Set value \(value ?? "") for key \(key)")
         try set(value, for: key)
     }
 }

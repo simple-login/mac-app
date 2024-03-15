@@ -24,30 +24,36 @@ import OSLog
 public extension Logger {
     private static var subsystem = "SimpleLogin"
 
-    // this could be changed
     static let error = Logger(subsystem: subsystem, category: "Error")
-    static let infos = Logger(subsystem: subsystem, category: "Infos")
+    static let info = Logger(subsystem: subsystem, category: "Info")
 
-   static func logError(for type: String? = nil, with message: String) {
+    /*
+     While in development (debug mode), all logs are shown in Xcode console
+     but only warning & error logs are shown in Console app.
+     Not sure why so we fallback to warning when not in debug mode
+     */
+
+    func publicDebug(_ message: String) {
         #if DEBUG
-       if let type {
-           Logger.error.debug("\(type, align: .left(columns: type.count)) \(message)")
-       } else {
-           Logger.error.debug("\(message)")
-       }
+        debug("\(message, privacy: .public)")
+        #else
+        warning("\(message, privacy: .public)")
         #endif
     }
 
-    /// ```swift
-    /// Logger.log(for: "Login", with: "The message you want")
-    /// ```
-    static func log(for type: String? = nil, with message: String) {
+    func publicInfo(_ message: String) {
         #if DEBUG
-        if let type {
-            Logger.infos.debug("\(type, align: .left(columns: type.count)) \(message)")
-        } else {
-            Logger.infos.debug("\(message)")
-        }
+        info("\(message, privacy: .public)")
+        #else
+        warning("\(message, privacy: .public)")
         #endif
+    }
+
+    func publicWarning(_ message: String) {
+        warning("\(message, privacy: .public)")
+    }
+
+    func publicError(_ message: String) {
+        error("\(message, privacy: .public)")
     }
 }

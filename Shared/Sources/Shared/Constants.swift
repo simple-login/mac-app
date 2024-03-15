@@ -21,14 +21,18 @@
 
 import Foundation
 
+public let kSharedUserDefaults = UserDefaults(suiteName: Constants.appGroup)
+
 public enum Constants {
     public static let teamId = "2SB5Z68H26"
+    public static let bundleId = "me.proton.simplelogin.macos"
     public static let extensionBundleId = "me.proton.simplelogin.macos.safari-extension"
     public static let appGroup = "group.me.proton.simplelogin.macos"
     public static let keychainAccessGroup = "\(teamId).\(appGroup)"
     public static let defaultApiUrl: ApiUrl = "https://app.simplelogin.io"
     public static let apiUrlKey = "API_URL"
     public static let apiKeyKey = "API_KEY"
+    public static let logEnabledKey = "LOG_ENABLED"
 }
 
 public typealias ApiUrl = String

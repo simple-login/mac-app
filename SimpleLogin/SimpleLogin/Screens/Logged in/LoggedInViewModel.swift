@@ -25,16 +25,16 @@ import Shared
 
 enum LoggedInState {
     case loading
-    case loaded(UserInfo)
+    case loaded(UserInfo, Stats)
     case error(Error)
 }
 
 @MainActor
 final class LoggedInViewModel: ObservableObject {
     @Published private(set) var state: LoggedInState = .loading
-    private let getApiUrl = resolve(\SharedUseCaseContainer.getApiUrl)
-    private let getApiKey = resolve(\SharedUseCaseContainer.getApiKey)
+
     private let getUserInfo = resolve(\SharedUseCaseContainer.getUserInfo)
+    private let getStats = resolve(\SharedUseCaseContainer.getStats)
 
     init() {}
 }
@@ -43,18 +43,12 @@ extension LoggedInViewModel {
     func refreshUserInfo() async {
         do {
             state = .loading
-            let apiUrl = try await getApiUrl()
-            guard let apiKey = try await getApiKey() else {
-                throw SLError.noApiKey
-            }
-            let userInfo = try await getUserInfo(apiUrl: apiUrl, apiKey: apiKey)
-            state = .loaded(userInfo)
+            async let userInfoRequest = getUserInfo()
+            async let statsRequest = getStats()
+            let (userInfo, stats) = try await (userInfoRequest, statsRequest)
+            state = .loaded(userInfo, stats)
         } catch {
             state = .error(error)
         }
-    }
-
-    func upgrade() {
-        print(#function)
     }
 }

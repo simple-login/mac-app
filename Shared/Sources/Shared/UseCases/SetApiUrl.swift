@@ -32,9 +32,9 @@ public extension SetApiUrlUseCase {
 }
 
 public final class SetApiUrl: SetApiUrlUseCase {
-    private let keychain: KeychainProvider
+    private let keychain: any KeychainProvider
 
-    public init(keychain: KeychainProvider) {
+    public init(keychain: any KeychainProvider) {
         self.keychain = keychain
     }
 

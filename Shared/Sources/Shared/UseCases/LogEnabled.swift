@@ -1,6 +1,6 @@
 //
-// GetApiUrl.swift
-// SimpleLogin - Created on 10/01/2024.
+// LogEnabled.swift
+// SimpleLogin - Created on 16/02/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -21,24 +21,24 @@
 
 import Foundation
 
-public protocol GetApiUrlUseCase: Sendable {
-    func execute() async throws -> ApiUrl
+public protocol LogEnabledUseCase: Sendable {
+    func execute() -> Bool
 }
 
-public extension GetApiUrlUseCase {
-    func callAsFunction() async throws -> ApiUrl {
-        try await execute()
+public extension LogEnabledUseCase {
+    func callAsFunction() -> Bool {
+        execute()
     }
 }
 
-public final class GetApiUrl: GetApiUrlUseCase {
-    private let keychain: any KeychainProvider
+public final class LogEnabled: LogEnabledUseCase {
+    private let userDefaults: UserDefaults
 
-    public init(keychain: any KeychainProvider) {
-        self.keychain = keychain
+    public init(userDefaults: UserDefaults = kSharedUserDefaults ?? .standard) {
+        self.userDefaults = userDefaults
     }
 
-    public func execute() async throws -> ApiUrl {
-        try await keychain.getValueFromKeychain(for: Constants.apiUrlKey) ?? Constants.defaultApiUrl
+    public func execute() -> Bool {
+        userDefaults.bool(forKey: Constants.logEnabledKey)
     }
 }

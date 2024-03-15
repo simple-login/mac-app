@@ -1,6 +1,6 @@
 //
-// GetUserInfo.swift
-// SimpleLogin - Created on 11/01/2024.
+// GetStats.swift
+// SimpleLogin - Created on 05/02/2024.
 // Copyright (c) 2024 Proton Technologies AG
 //
 // This file is part of SimpleLogin.
@@ -22,17 +22,17 @@
 import Foundation
 import SimpleLoginPackage
 
-public protocol GetUserInfoUseCase: Sendable {
-    func execute() async throws -> UserInfo
+public protocol GetStatsUseCase: Sendable {
+    func execute() async throws -> Stats
 }
 
-public extension GetUserInfoUseCase {
-    func callAsFunction() async throws -> UserInfo {
+public extension GetStatsUseCase {
+    func callAsFunction() async throws -> Stats {
         try await execute()
     }
 }
 
-public final class GetUserInfo: GetUserInfoUseCase {
+public final class GetStats: GetStatsUseCase {
     private let apiServiceProvider: any ApiServiceProviderUseCase
     private let getApiUrl: any GetApiUrlUseCase
     private let getApiKey: any GetApiKeyUseCase
@@ -45,13 +45,13 @@ public final class GetUserInfo: GetUserInfoUseCase {
         self.getApiKey = getApiKey
     }
 
-    public func execute() async throws -> UserInfo {
+    public func execute() async throws -> Stats {
         let apiUrl = try await getApiUrl()
         guard let apiKey = try await getApiKey() else {
             throw SLError.noApiKey
         }
         let apiService = try apiServiceProvider(apiUrl: apiUrl)
-        let endpoint = GetUserInfoEndpoint(apiKey: apiKey)
+        let endpoint = GetStatsEndpoint(apiKey: apiKey)
         return try await apiService.execute(endpoint)
     }
 }

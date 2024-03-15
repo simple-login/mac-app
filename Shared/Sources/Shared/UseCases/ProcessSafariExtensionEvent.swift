@@ -20,7 +20,7 @@
 //
 
 import Foundation
-import OSLog
+@preconcurrency import OSLog
 
 public protocol ProcessSafariExtensionEventUseCase: Sendable {
     func execute(_ json: String) throws -> SafariExtensionEvent
@@ -33,18 +33,25 @@ public extension ProcessSafariExtensionEventUseCase {
 }
 
 public final class ProcessSafariExtensionEvent: ProcessSafariExtensionEventUseCase {
-    public init() {}
+    private let logger: Logger
+    private let logEnabled: any LogEnabledUseCase
+
+    public init(createLogger: any CreateLoggerUseCase,
+                logEnabled: any LogEnabledUseCase) {
+        self.logger = createLogger(category: String(describing: Self.self))
+        self.logEnabled = logEnabled
+    }
 
     public func execute(_ json: String) throws -> SafariExtensionEvent {
         guard let data = json.data(using: .utf8) else {
-            Logger.logError(with: "Not UTF8 data")
             throw SLError.notUtf8Data
         }
 
         guard let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
-            Logger.logError(with: "Bad JSON format")
             throw SLError.badJsonFormat
         }
+
+        let logEnabled = logEnabled()
 
         /*
          JSON samples
@@ -68,23 +75,33 @@ public final class ProcessSafariExtensionEvent: ProcessSafariExtensionEventUseCa
 
          */
 
-        Logger.log(with: "[SimpleLogin] \(dict)")
+        if logEnabled {
+            logger.publicDebug("\(dict)")
+        }
 
         if let loggedIn = dict["logged_in"] as? [String: Any],
            let loggedInData = loggedIn["data"] as? [String: String],
            let apiKey = loggedInData["api_key"],
            let apiUrl = loggedInData["api_url"] {
-            Logger.log(with: "Logged in event")
+            if logEnabled {
+                logger.publicInfo("Logged in event")
+            }
             return .loggedIn(apiUrl, apiKey)
         } else if dict["logged_out"] != nil {
-            Logger.log(with: "Logged out event")
+            if logEnabled {
+                logger.publicInfo("Logged out event")
+            }
             return .loggedOut
         } else if dict["upgrade"] != nil {
-            Logger.log(with: "Upgrade event")
+            if logEnabled {
+                logger.publicInfo("Upgrade event")
+            }
             return .upgrade
         }
 
-        Logger.log(with: "Unknown event")
+        if logEnabled {
+            logger.publicWarning("Unknown event")
+        }
         return .unknown
     }
 }
