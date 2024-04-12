@@ -1,9 +1,9 @@
 {
   "name": "SimpleLogin",
   "short_name": "SimpleLogin",
-  "description": "Easily create a different email for each website to hide your real email",
-  "version": "2.11.1",
-  "manifest_version": 2,
+  "description": "Easily create a different email for each website to hide your real email.",
+  "version": "3.0.4",
+  "manifest_version": 3,
   "icons": {
     "16": "images/icon-simplelogin.png",
     "32": "images/icon-simplelogin.png",
@@ -15,24 +15,30 @@
     "activeTab",
     "storage",
     "contextMenus",
-    "https://*.simplelogin.io/*",
-    "http://*/*",
-    "https://*/*",
+    "scripting",
+    "tabs",
     "nativeMessaging"
   ],
-  "browser_action": {
+  "host_permissions": [
+    "https://*.simplelogin.io/*",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "action": {
     "default_title": "SimpleLogin",
-    "default_popup": "popup/popup.html"
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon_16.png",
+      "32": "icons/icon_32.png",
+      "48": "icons/icon_48.png",
+      "96": "icons/icon_96.png",
+      "128": "icons/icon_128.png"
+    }
   },
   "browser_specific_settings": {
     "gecko": {
       "id": "addon@simplelogin"
     }
-  },
-  "background": {
-    "scripts": [
-      "background.js"
-    ]
   },
   "commands": {
     "generate-random-alias": {
@@ -47,5 +53,9 @@
       },
       "description": "Open the extension action menu"
     }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
   }
 }
