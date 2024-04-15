@@ -36,6 +36,7 @@
 		35B98E312B70AEE300A50940 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B98E302B70AEE300A50940 /* LogoView.swift */; };
 		35B98E332B70C39800A50940 /* IAPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B98E322B70C39800A50940 /* IAPViewModel.swift */; };
 		35DD2CE52B4FEDCB00AA0562 /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 35DD2CE42B4FEDCB00AA0562 /* Shared */; };
+		35E24D512BCD0E1100199CB9 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = 35E24D502BCD0E1100199CB9 /* icons */; };
 		35EB72442B4ECA8A008BAF5A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */; };
 		35EB724F2B4ED718008BAF5A /* LoggedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB724E2B4ED718008BAF5A /* LoggedInView.swift */; };
 		35EB72512B4ED72B008BAF5A /* LoggedOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35EB72502B4ED72B008BAF5A /* LoggedOutView.swift */; };
@@ -102,6 +103,8 @@
 		35B98E302B70AEE300A50940 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		35B98E322B70C39800A50940 /* IAPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPViewModel.swift; sourceTree = "<group>"; };
 		35D256202B4FED9500F819CF /* Shared */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Shared; path = ../Shared; sourceTree = "<group>"; };
+		35E24D502BCD0E1100199CB9 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icons; sourceTree = "<group>"; };
+		35E24D522BCD0E2200199CB9 /* background.js.map */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = background.js.map; sourceTree = "<group>"; };
 		35EB72432B4ECA8A008BAF5A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		35EB724E2B4ED718008BAF5A /* LoggedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInView.swift; sourceTree = "<group>"; };
 		35EB72502B4ED72B008BAF5A /* LoggedOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutView.swift; sourceTree = "<group>"; };
@@ -148,9 +151,11 @@
 			isa = PBXGroup;
 			children = (
 				35841BCB2B4D5631007DC24A /* content_script */,
+				35E24D502BCD0E1100199CB9 /* icons */,
 				3577E88A2B4D521C00DCFA53 /* images */,
 				353136DD2B4D544200695FEA /* popup */,
 				3577E88E2B4D521C00DCFA53 /* background.js */,
+				35E24D522BCD0E2200199CB9 /* background.js.map */,
 				3577E88C2B4D521C00DCFA53 /* manifest.json */,
 			);
 			path = Resources;
@@ -352,6 +357,7 @@
 				35841BCC2B4D5631007DC24A /* content_script in Resources */,
 				3577E88F2B4D521C00DCFA53 /* background.js in Resources */,
 				3577E88B2B4D521C00DCFA53 /* images in Resources */,
+				35E24D512BCD0E1100199CB9 /* icons in Resources */,
 				3577E88D2B4D521C00DCFA53 /* manifest.json in Resources */,
 				353136DE2B4D544200695FEA /* popup in Resources */,
 			);
