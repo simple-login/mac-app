@@ -2,14 +2,14 @@
   "name": "SimpleLogin",
   "short_name": "SimpleLogin",
   "description": "Easily create a different email for each website to hide your real email.",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "manifest_version": 3,
   "icons": {
-    "16": "images/icon-simplelogin.png",
-    "32": "images/icon-simplelogin.png",
-    "48": "images/icon-simplelogin.png",
-    "96": "images/icon-simplelogin.png",
-    "128": "images/icon-simplelogin.png"
+    "16": "icons/icon_16.png",
+    "32": "icons/icon_32.png",
+    "48": "icons/icon_48.png",
+    "96": "icons/icon_96.png",
+    "128": "icons/icon_128.png"
   },
   "permissions": [
     "activeTab",
@@ -54,6 +54,24 @@
       "description": "Open the extension action menu"
     }
   },
+  "content_scripts": [
+    {
+      "js": [
+        "content_script/input_tools.js"
+      ],
+      "css": [
+        "content_script/input_tools.css"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "exclude_matches": [
+        "https://app.simplelogin.io/dashboard/*"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
   "background": {
     "service_worker": "background.js",
     "type": "module"
